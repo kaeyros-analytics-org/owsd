@@ -1,0 +1,128 @@
+# Basics of the R language 
+
+## Variables
+Variables are the identifier or the named space in the memory, which are stored and can be referenced and manipulated later in the program. 
+
+### Rule variable in R {-}
+It is recommended that you use nouns to name a variable. Use underscores (e.g. donnees_menages) rather than CamelCase (e.g. donneesMenages). If you prefer camelCase, use it systematically throughout the script to standardise the code.
+
+Notes:
+
++ Do not use T or F to name variables (as these are abbreviations for the Booleans TRUE and FALSE);
++ Do not use names that are already basic R functions(mean for example). This doesn't always generate errors, but it does prevent errors that are difficult to detect!
++ The variable name must start with letter and can contain number,letter,underscore('_') and period('.').
++ Special characters such as '#', '&', etc., along with White space (tabs, space) are not allowed in a variable name.
++ Underscore('_') at the beginning of the variable name are not allowed
+
+### Variable assignment {-}
+
+Variables in R can be assigned in one of three ways.
+
+- Assignment Operator: "=" used to assign the value.The following example contains 20 as value which is stored in the variable 'first.variable' Example: first.variable = 20
+
+- '<-' Operator: The following example contains the New Program as the character which gets assigned to 'second_variable'.
+Example: second_variable <- "New Program"
+
+- '->' Operator: The following example contains 565 as the integer which gets assigned to 'third.variable'.
+Example: 565 -> third.variable
+
+## Types
+In programming, data type is an important concept. Variables can store data of different types, and different types can do different things.In R, variables do not need to be declared with any particular type, and can even change type after they have been set:
+```{r}
+val <- 3 #val is type of numeric
+val <- "Hello" #val is now a type of character
+```
+
+There are several types of variable in R, but the most common are:
+
++ integer: for all whole numbers
+```{r}
+class(1L)
+```
+
++ numeric: for decimals
+```{r}
+class(1)
+```
+
++ character: for text
+```{r}
+class("This is an R course")
+```
+
++ logical: for booleans (**TRUE** or **FALSE**)
+```{r}
+class(TRUE)
+```
+
++ factor : for categories
+```{r}
+factor.1 <- as.factor(c("green","blue","red"))
+class(factor.1)
+```
+In addition to variable types in R, we also have data types, including:
+
++ vectors: A vector is simply a list of items that are of the same type.
+```{r}
+vector_1 <- c(1,8)
+print(vector_1)
+```
+
+```{r}
+vector_2 <- c(1,"diamond") #1 will become a character because all the elements 
+                           #in the vector are supposed to have the same type
+print(vector_2)
+```
++ list: Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.
+```{r}
+# Create a list containing strings, numbers, vectors and a logical values.
+list_data <- list("Red", c(21,32,11), TRUE)
+print(list_data)
+```
+
+
++ matrix : A matrix is a two dimensional data structure with variables of the same type
+```{r}
+matrix(1:9, nrow = 3, ncol = 3)
+```
++ dataframe : A dataframe is a two dimensional data structure with variables of differents types.
+```{r}
+data <- data.frame(id = c(1, 2), Age = c(21, 15), Name = c("John", "Dora"))
+print(data)
+```
+## Operators
+
+Cross-references make it easier for your readers to find and link to elements in your book.
+
+## Chapters and sub-chapters
+
+There are two steps to cross-reference any heading:
+
+1. Label the heading: `# Hello world {#nice-label}`. 
+    - Leave the label off if you like the automated heading generated based on your heading title: for example, `# Hello world` = `# Hello world {#hello-world}`.
+    - To label an un-numbered heading, use: `# Hello world {-#nice-label}` or `{# Hello world .unnumbered}`.
+
+1. Next, reference the labeled heading anywhere in the text using `\@ref(nice-label)`; for example, please see Chapter \@ref(cross). 
+    - If you prefer text as the link instead of a numbered reference use: [any text you want can go here](#cross).
+
+## Captioned figures and tables
+
+Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+
+See Figure \@ref(fig:nice-fig).
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', fig.alt='Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases.'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Don't miss Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(pressure, 10), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+Don't miss figure \@ref(fig:nice-fig).

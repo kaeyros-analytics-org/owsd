@@ -1,0 +1,131 @@
+"0","bookdown::render_book()
+"
+"2","Rendering book in directory '.'
+"
+"1","
+"
+"1","
+"
+"1","processing file: index.Rmd
+"
+"1","  |                                        |                                |   0%  |                                        |.....                           |  17%                    |                                        |...........                     |  33% [unnamed-chunk-1]  |                                        |................                |  50%                    |                                        |.....................           |  67% [unnamed-chunk-2]  |                                        |...........................     |  83%                    |                                        |................................| 100% [unnamed-chunk-3]                                                                                        
+"
+"1","output file: index.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 01-intro.Rmd
+"
+"1","  |                                                          |                                                  |   0%  |                                                          |..................................................| 100%                                                                      
+"
+"1","output file: 01-intro.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 02-cross-refs.Rmd
+"
+"1","  |                                               |                                       |   0%  |                                               |..........                             |  25%             |                                               |....................                   |  50% [nice-fig]  |                                               |.............................          |  75%             |                                               |.......................................| 100% [nice-tab]                                                                                 
+"
+"1","output file: 02-cross-refs.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 03-parts.Rmd
+"
+"1","  |                                                          |                                                  |   0%  |                                                          |..................................................| 100%                                                                      
+"
+"1","output file: 03-parts.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 04-citations.Rmd
+"
+"1","  |                                                          |                                                  |   0%  |                                                          |..................................................| 100%                                                                      
+"
+"1","output file: 04-citations.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 05-blocks.Rmd
+"
+"1","  |                                        |                                |   0%  |                                        |...........                     |  33%                    |                                        |.....................           |  67% [unnamed-chunk-1]  |                                        |................................| 100%                                                                                                          
+"
+"1","output file: 05-blocks.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 06-share.Rmd
+"
+"1","  |                                        |                                |   0%  |                                        |...........                     |  33%                    |                                        |.....................           |  67% [unnamed-chunk-1]  |                                        |................................| 100%                                                                                                          
+"
+"1","output file: 06-share.knit.md
+"
+"1","
+"
+"1","
+"
+"1","
+"
+"1","processing file: 07-references.Rmd
+"
+"1","  |                                                          |                                                  |   0%  |                                                          |..................................................| 100%                                                                      
+"
+"1","output file: 07-references.knit.md
+"
+"1","
+"
+"1","""C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/pandoc"" +RTS -K512m -RTS bookdown.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output bookdown.html --lua-filter ""C:\Users\LENOVO\AppData\Local\R\win-library\4.3\bookdown\rmarkdown\lua\custom-environment.lua"" --lua-filter ""C:\Users\LENOVO\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\pagebreak.lua"" --lua-filter ""C:\Users\LENOVO\AppData\Local\R\win-library\4.3\rmarkdown\rmarkdown\lua\latex-div.lua"" --metadata-file ""C:\Users\LENOVO\AppData\Local\Temp\Rtmpg5Szkq\file3a1c7be17e89"" --wrap preserve --standalone --section-divs --template ""C:\Users\LENOVO\AppData\Local\R\win-library\4.3\bookdown\templates\bs4_book.html"" --highlight-style pygments --number-sections --css style.css --mathjax --include-in-header ""C:\Users\LENOVO\AppData\Local\Temp\Rtmpg5Szkq\rmarkdown-str3a1c5d4535a9.html"" --citeproc"
+"1"," "
+"1","
+"
+"2","Tweaking _book/index.html
+"
+"2","TODO: Add a description field in the YAML metadata of index.Rmd.
+"
+"2","Tweaking _book/introduction-to-r-and-rstudio.html
+"
+"2","Tweaking _book/cross.html
+"
+"2","Tweaking _book/parts.html
+"
+"2","Tweaking _book/footnotes-and-citations.html
+"
+"2","Tweaking _book/blocks.html
+"
+"2","Tweaking _book/sharing-your-book.html
+"
+"2","Tweaking _book/references.html
+"
+"2","Tweaking _book/404.html
+"
+"2","
+Output created: _book/index.html
+"
+"1","[1]"
+"1"," ""C:/Users/LENOVO/Desktop/Projets/bookdown/_book/index.html"""
+"1","
+"
