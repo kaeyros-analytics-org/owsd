@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Functions and packages | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Functions and packages | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Functions and packages | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="As you embark on your R programming journey, understanding and utilizing functions and packages will be instrumental in your success. These powerful tools will empower you to tackle complex data...">
+<meta property="og:description" content="As you embark on your R programming journey, understanding and utilizing functions and packages will be instrumental in your success. These powerful tools will empower you to tackle complex data...">
+<meta name="twitter:description" content="As you embark on your R programming journey, understanding and utilizing functions and packages will be instrumental in your success. These powerful tools will empower you to tackle complex data...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 4</span> Functions and packages</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="functions-and-packages" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Functions and packages<a class="anchor" aria-label="anchor" href="#functions-and-packages"><i class="fas fa-link"></i></a>
+</h1>
+<p>As you embark on your R programming journey, understanding and utilizing functions and packages will be instrumental in your success. These powerful tools will empower you to tackle complex data analysis tasks, create insightful visualizations, and develop innovative applications. Embrace the world of functions and packages, and unlock the boundless possibilities of R.</p>
+<div id="r-flow-control" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> R flow control<a class="anchor" aria-label="anchor" href="#r-flow-control"><i class="fas fa-link"></i></a>
+</h2>
+<p>When you run code, R executes statements in the order in which they appear on the page, from top to bottom. Programming languages like R let you change the order in which code executes, which allows you to skip certain statements or run certain statements over and over again. Programming constructs that let you alter the order in which code executes are known as control flow statements. In R programming, there are many types of control statements and the most popular are: <code>if condition</code>, <code>if-else condition</code>, <code>for loop</code>, <code>while loop</code>.</p>
+<ul>
+<li>
+<p>if condition: This control structure checks the expression provided in parenthesis is true or not. If true, the execution of the statements in braces {} continues.
+Syntax:</p>
+<pre><code>  if(expression){
+    statements
+    ....
+  }</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"is greater than 10"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "100 is greater than 10"</span></span></code></pre></div>
+<ul>
+<li>
+<p>if-else condition:It is similar to if condition but when the test expression in if condition fails, then statements in else condition are executed.
+Syntax:</p>
+<pre><code>  if (expression) {
+    statements
+    ....
+  } else {
+    statements
+    ....
+  }</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="co"># Check value is less than or greater than 10 </span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">10</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"is greater than 10"</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="op">}</span><span class="kw">else</span><span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"is less than 10"</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "5 is less than 10"</span></span></code></pre></div>
+<ul>
+<li>for loop: It is a type of loop or sequence of statements executed repeatedly until exit condition is reached.
+Syntax:
+for (value in vector) {
+statements
+….
+}
+Example:</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span> </span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="va">x</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "c"</span></span>
+<span><span class="co">#&gt; [1] "d"</span></span>
+<span><span class="co">#&gt; [1] "e"</span></span></code></pre></div>
+<ul>
+<li>while loop: while loop is another kind of loop iterated until a condition is satisfied. The testing expression is checked first before executing the body of loop.
+Syntax:
+while(expression) {
+statement
+….
+}
+Example:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">3</span></span>
+<span></span>
+<span><span class="co"># Print 1 to 5 </span></span>
+<span><span class="kw">while</span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;=</span> <span class="fl">5</span><span class="op">)</span><span class="op">{</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> </span>
+<span>  <span class="va">x</span> <span class="op">=</span> <span class="va">x</span> <span class="op">+</span> <span class="fl">1</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] 3</span></span>
+<span><span class="co">#&gt; [1] 4</span></span>
+<span><span class="co">#&gt; [1] 5</span></span></code></pre></div>
+</div>
+<div id="functions" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Functions<a class="anchor" aria-label="anchor" href="#functions"><i class="fas fa-link"></i></a>
+</h2>
+<p>A function is a set of statements organized together to perform a specific task. They are useful when you want to perform a certain task multiple times.</p>
+<p>An R function is created by using the keyword <code>function</code>. The basic syntax of an R function definition is as follows:</p>
+<pre><code>    function_name &lt;- function(arg_1, arg_2,..) 
+                        function body
+    }
+    </code></pre>
+<p>Example1 : Single Input Single Output</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># A simple R function to calculate </span></span>
+<span><span class="co"># area of a circle</span></span>
+<span> </span>
+<span><span class="va">areaOfCircle</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">radius</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">area</span> <span class="op">=</span> <span class="va">pi</span><span class="op">*</span><span class="va">radius</span><span class="op">^</span><span class="fl">2</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">area</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu">areaOfCircle</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 12.56637</span></span></code></pre></div>
+<p>Example 2: Multiple Input Multiple Output</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># A simple R function to calculate area and perimeter of a rectangle</span></span>
+<span> </span>
+<span><span class="va">Rectangle</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">length</span>, <span class="va">width</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">area</span> <span class="op">=</span> <span class="va">length</span> <span class="op">*</span> <span class="va">width</span></span>
+<span>  <span class="va">perimeter</span> <span class="op">=</span> <span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="va">length</span> <span class="op">+</span> <span class="va">width</span><span class="op">)</span></span>
+<span>   </span>
+<span>  <span class="co"># create an object called result which is a list of area and perimeter</span></span>
+<span>  <span class="va">result</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Area"</span> <span class="op">=</span> <span class="va">area</span>, <span class="st">"Perimeter"</span> <span class="op">=</span> <span class="va">perimeter</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span> </span>
+<span><span class="va">resultList</span> <span class="op">=</span> <span class="fu">Rectangle</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">resultList</span><span class="op">[</span><span class="st">"Area"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $Area</span></span>
+<span><span class="co">#&gt; [1] 6</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">resultList</span><span class="op">[</span><span class="st">"Perimeter"</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $Perimeter</span></span>
+<span><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<p>Example 3: Inline Function</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># A simple R program to demonstrate the inline function</span></span>
+<span></span>
+<span><span class="va">f</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span><span class="op">*</span><span class="fl">4</span><span class="op">+</span><span class="va">x</span><span class="op">/</span><span class="fl">3</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 65.33333</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="op">-</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 15.33333</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span></code></pre></div>
+<p>Example 4: Function without an Argument</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Generate a random number between 0 and 1</span></span>
+<span><span class="va">generate_random_number</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="va">random_number</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">random_number</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<div id="function-components" class="section level3 unnumbered">
+<h3>Function Components<a class="anchor" aria-label="anchor" href="#function-components"><i class="fas fa-link"></i></a>
+</h3>
+<p>The different parts of a function are:</p>
+<ul>
+<li><p>Function Name: This is the actual name of the function. It is stored in R environment as an object with this name.</p></li>
+<li><p>Arguments: An argument is a placeholder. When a function is invoked, you pass a value to the argument. Arguments are optional; that is, a function may contain no arguments. Also arguments can have default values.</p></li>
+<li><p>Function Body: The function body contains a collection of statements that defines what the function does.</p></li>
+<li><p>Return Value: The return value of a function is the last expression in the function body to be evaluated.</p></li>
+</ul>
+<p>R has many in-built functions which can be directly called in the program without defining them first. We can also create and use our own functions referred as user defined functions.</p>
+</div>
+<div id="built-in-function" class="section level3 unnumbered">
+<h3>Built-in Function<a class="anchor" aria-label="anchor" href="#built-in-function"><i class="fas fa-link"></i></a>
+</h3>
+<p>Built-in Function are the functions that are already existing in R language and you just need to call them to use.</p>
+<p>There are several predefined functions, such as mathematical functions (<code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code>,<code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code>,<code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code>,…), statistical functions (<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code>, <code><a href="https://rdrr.io/r/stats/median.html">median()</a></code>, <code><a href="https://rdrr.io/r/stats/cor.html">cor()</a></code>,…), data manipulation functions (<code><a href="https://rdrr.io/r/stats/aggregate.html">aggregate()</a></code>,<code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>,<code><a href="https://rdrr.io/r/base/order.html">order()</a></code>,…) and file input/output functions (<code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>,<code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code>,<code><a href="https://rdrr.io/r/base/readRDS.html">readRDS()</a></code>,…).</p>
+</div>
+</div>
+<div id="packages" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Packages<a class="anchor" aria-label="anchor" href="#packages"><i class="fas fa-link"></i></a>
+</h2>
+<p>Packages in R Programming language are a set of R functions, compiled code, and sample data. These are stored under a directory called “library” within the R environment. By default, R installs a group of packages during installation. Once we start the R console, only the default packages are available by default. Other packages that are already installed need to be loaded explicitly to be utilized by the R program that’s getting to use them.</p>
+<div id="repositories" class="section level3 unnumbered">
+<h3>Repositories<a class="anchor" aria-label="anchor" href="#repositories"><i class="fas fa-link"></i></a>
+</h3>
+<p>A repository is a place where packages are located and stored so you can install R packages from it. Organizations and Developers have a local repository, typically they are online and accessible to everyone. Some of the most popular repositories for R packages are:</p>
+<ul>
+<li>
+<p>CRAN: Comprehensive R Archive Network(CRAN) is the official repository, it is a network of FTP and web servers maintained by the R community around the world. The R community coordinates it, and for a package to be published in CRAN, the Package needs to pass several tests to ensure that the package is following CRAN policies.</p>
+<pre><code>  install.packages("package_name")</code></pre>
+</li>
+<li>
+<p>Bioconductor: Bioconductor is a topic-specific repository, intended for open source software for bioinformatics. Similar to CRAN, it has its own submission and review processes, and its community is very active having several conferences and meetings per year in order to maintain quality.
+To download with this repository you have to install fist the <strong>BiocManager</strong> package and then run:</p>
+<pre><code>BiocManager::install("package_name")</code></pre>
+</li>
+<li>
+<p>Github: Github is the most popular repository for open-source projects. It’s popular as it comes from the unlimited space for open source, the integration with git, a version control software, and its ease to share and collaborate with others.
+To install an R packages from GitHub first, you need to install devtools by running the following code:</p>
+<pre><code>  install.packages("devtools")</code></pre>
+</li>
+</ul>
+<p>Once devtools is installed, we can use the install_github() function to install an R package from GitHub. The syntax is:</p>
+<pre><code>    devtools::install_github("github_username/github_repo")</code></pre>
+<p>We can also install packages in RStudio manually:
+In R Studio go to Tools -&gt; Install Package, and there we will get a pop-up window to type the package you want to install:</p>
+<div style="text-align: center" class="inline-figure">
+<img src="www/install_package.png">
+</div>
+</div>
+<div id="how-to-load-packages-in-r-programming-language" class="section level3 unnumbered">
+<h3>How to Load Packages in R Programming Language<a class="anchor" aria-label="anchor" href="#how-to-load-packages-in-r-programming-language"><i class="fas fa-link"></i></a>
+</h3>
+<p>When a R package is installed, we are ready to use its functionalities. If we just need a sporadic use of a few functions or data inside a package we can access them with the following notation.
+We can use library() or require() to load packages.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span></code></pre></div>
+<p>To load more than one package at a time:</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span>, <span class="va">ggplot2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: le package 'caret' a été compilé avec la version R</span></span>
+<span><span class="co">#&gt; 4.3.3</span></span>
+<span><span class="co">#&gt; Le chargement a nécessité le package : ggplot2</span></span>
+<span><span class="co">#&gt; Le chargement a nécessité le package : lattice</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-04-25.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
