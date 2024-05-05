@@ -18,28 +18,6 @@
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
-    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-        }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
 <link rel="stylesheet" href="style.css">
 <meta name="description" content="R is a widely used programming language for data analysis and data science. Its open-source and free nature makes it accessible to everyone, and its active community offers invaluable support to...">
 <meta property="og:description" content="R is a widely used programming language for data analysis and data science. Its open-source and free nature makes it accessible to everyone, and its active community offers invaluable support to...">
@@ -69,10 +47,10 @@
 <li><a class="active" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
 <li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
 <li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
-<li><a class="" href="footnotes-and-citations.html"><span class="header-section-number">5</span> Footnotes and citations</a></li>
-<li><a class="" href="blocks.html"><span class="header-section-number">6</span> Blocks</a></li>
-<li><a class="" href="sharing-your-book.html"><span class="header-section-number">7</span> Sharing your book</a></li>
-<li><a class="" href="references.html">References</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
 </ul>
 
         <div class="book-extra">
@@ -115,38 +93,41 @@ Although the professors started working on R in the early 90s, version 1.0.0 was
 <div id="strengths-of-r" class="section level3 unnumbered">
 <h3>Strengths of R<a class="anchor" aria-label="anchor" href="#strengths-of-r"><i class="fas fa-link"></i></a>
 </h3>
-<ul>
-<li>free software: has the advantage of being free and encouraging reproducible research;</li>
-<li>interpreted language: language closer to our language than to machine language, so simpler and more direct than, for example, C or C++;</li>
-<li>easier code sharing and re-use thanks to the package system and CRAN;</li>
-<li>an active community of developers and users:
+<ol style="list-style-type: decimal">
+<li><p>free software: has the advantage of being free and encouraging reproducible research;</p></li>
+<li><p>interpreted language: language closer to our language than to machine language, so simpler and more direct than, for example, C or C++;</p></li>
+<li><p>easier code sharing and re-use thanks to the package system and CRAN;</p></li>
+<li>
+<p>an active community of developers and users:</p>
 <ul>
 <li>R evolves quickly, and its bugs are quickly identified and corrected;</li>
 <li>There is a lot of information about programming in R on the Internet;</li>
 <li>The number of R packages is always growing, so new features are frequently added to R.</li>
 </ul>
 </li>
-</ul>
+</ol>
 </div>
 <div id="weaknesses-of-r" class="section level3 unnumbered">
 <h3>Weaknesses of r<a class="anchor" aria-label="anchor" href="#weaknesses-of-r"><i class="fas fa-link"></i></a>
 </h3>
+<ol style="list-style-type: decimal">
+<li>Performance Limitations: R is typically slower than compiled languages like C++ or Java for computationally intensive tasks involving large datasets. This can be a bottleneck when dealing with complex models or big data analysis.</li>
+<li>Basic security: R lacks basic security features, which are essential in most programming languages like Python. Consequently, there are limitations to embedding R into web applications.</li>
+<li>Complicated Language: R is not an easy language to learn and has a steep learning curve. Individuals without prior programming experience may find it challenging to learn R.</li>
+</ol>
 </div>
 </div>
 <div id="installation-of-r" class="section level2" number="2.2">
 <h2>
 <span class="header-section-number">2.2</span> Installation of R<a class="anchor" aria-label="anchor" href="#installation-of-r"><i class="fas fa-link"></i></a>
 </h2>
-<p>To install under Windows, go to this <a href="http://cran.r-project.org/bin/windows/base/" class="uri">http://cran.r-project.org/bin/windows/base/</a> and follow the first link to
-download the installer. Once the installer has been launched, simply install R with the default options.</p>
+<p>To install under Windows, go to this <a href="http://cran.r-project.org/bin/windows/base/" class="uri">http://cran.r-project.org/bin/windows/base/</a> and follow the first link to download the installer. Once the installer has been launched, simply install R with the default options.</p>
 </div>
 <div id="installation-of-rstudio" class="section level2" number="2.3">
 <h2>
 <span class="header-section-number">2.3</span> Installation of RStudio<a class="anchor" aria-label="anchor" href="#installation-of-rstudio"><i class="fas fa-link"></i></a>
 </h2>
-<p>Once R has been correctly installed, go to <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a> to download the latest stable version of RStudio. Specifically, this is the Open Source edition of RStudio Desktop (there is also a server version).
-Choose the installer for your operating system and follow the instructions in the installation program.
-If you want to try out the latest RStudio features, you can download the development version (which is more feature-rich than the stable version, but may contain bugs) from
+<p>Once R has been correctly installed, go to <a href="http://www.rstudio.com/products/rstudio/download/" class="uri">http://www.rstudio.com/products/rstudio/download/</a> to download the latest stable version of RStudio. Specifically, this is the Open Source edition of RStudio Desktop (there is also a server version).Choose the installer for your operating system and follow the instructions in the installation program. If you want to try out the latest RStudio features, you can download the development version (which is more feature-rich than the stable version, but may contain bugs) from
 <a href="http://www.rstudio.com/products/rstudio/download/preview/" class="uri">http://www.rstudio.com/products/rstudio/download/preview/</a>.</p>
 
 </div>
@@ -185,7 +166,7 @@ If you want to try out the latest RStudio features, you can download the develop
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-04-25.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -193,34 +174,6 @@ If you want to try out the latest RStudio features, you can download the develop
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

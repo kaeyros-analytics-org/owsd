@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Data manipulation | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Data manipulation | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Data manipulation | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+<meta property="og:description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+<meta name="twitter:description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="active" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-manipulation" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Data manipulation<a class="anchor" aria-label="anchor" href="#data-manipulation"><i class="fas fa-link"></i></a>
+</h1>
+<p>Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.</p>
+<div id="importation-of-data" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Importation of data<a class="anchor" aria-label="anchor" href="#importation-of-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.</p>
+<p>In this part, we will learn to load commonly used <strong>CSV</strong>, <strong>Excel</strong>, <strong>JSON</strong>, <strong>Database</strong>, and <strong>XML/HTML</strong> data files in R. Moreover, we will also look at less commonly used file formats such as <strong>SAS</strong>, <strong>SPSS</strong> and <strong>Stata</strong>.</p>
+<p>Importing data from csv to R:</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">children_anemia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/children_anemia.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from excel to R:</p>
+<p>Importing data from json to R:</p>
+<p>Importing data from database to R:</p>
+<p>Importing data from spss to R:</p>
+<p>Importing data from stata to R:</p>
+</div>
+<div id="basic-exploration-of-data" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Basic exploration of data<a class="anchor" aria-label="anchor" href="#basic-exploration-of-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data exploration helps you explore and think about the data you’re working. The goal with data exploration is to understand, and visualize data so that you can discover insights, relationships, patterns, and anomalies.
+To explore data in R we have many functions to achieve that.</p>
+<ul>
+<li><p>Function head(): is used to view the first few rows of your dataset.</p></li>
+<li><p>Function tail(): is used to view the last few rows of your dataset.</p></li>
+<li><p>Function str(): is used to provide the structure of your data frame, showing you the data types.</p></li>
+<li><p>Function dim(): is used to know about the number of rows and columns.</p></li>
+<li><p>Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.</p></li>
+<li><p>Function table(): used to build a contingency table of the counts at each combination of factor levels.</p></li>
+<li><p>Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.</p></li>
+<li><p>Function hist(): function to plot a basic histogram to view distribution of a variable.</p></li>
+<li><p>Function boxplot(): function to plot a boxplot, it provides a compact summary of the data’s central tendency, spread, and potential outliers.</p></li>
+</ul>
+</div>
+<div id="data-manipulation-with-dplyr" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Data manipulation with dplyr<a class="anchor" aria-label="anchor" href="#data-manipulation-with-dplyr"><i class="fas fa-link"></i></a>
+</h2>
+<p>In order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.</p>
+<ul>
+<li>
+<p>filter():</p>
+<p>The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:</p>
+<pre><code>  filter(dataframeName,condition)</code></pre>
+</li>
+<li>
+<p>distinct():</p>
+<p>The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:</p>
+<pre><code>  distinct(dataframeName, col1, col2,.., .keep_all=TRUE)</code></pre>
+</li>
+<li>
+<p>arrange():</p>
+<p>In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:</p>
+<pre><code>  arrange(dataframeName, columnName)</code></pre>
+</li>
+<li>
+<p>select():</p>
+<p>The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:</p>
+<pre><code>  select(dataframeName, col1,col2,…)</code></pre>
+</li>
+<li>
+<p>rename():</p>
+<p>The rename() function is used to change the column names. This can be done by the below syntax:</p>
+<pre><code>  rename(dataframeName, newName=oldName)</code></pre>
+</li>
+<li>
+<p>mutate():</p>
+<p>The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:</p>
+<pre><code>  mutate(dataframeName, newVariable=formula)</code></pre>
+</li>
+<li>
+<p>transmute():</p>
+<p>The transmute() function drops the old variables and creates new variables. Here is the syntax:</p>
+<pre><code>  transmute(dataframeName, newVariable=formula)</code></pre>
+</li>
+<li>
+<p>summarize():</p>
+<p>Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. The syntax of summarize() method is specified below:</p>
+<pre><code>  summarize(dataframeName, aggregate_function(columnName))</code></pre>
+</li>
+</ul>
+<p><strong>Putting it all together with %&gt;%</strong>:
+One of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.</p>
+<p>Example:</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></div>
+<div class="next"><a href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-manipulation"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="nav-link" href="#importation-of-data"><span class="header-section-number">5.1</span> Importation of data</a></li>
+<li><a class="nav-link" href="#basic-exploration-of-data"><span class="header-section-number">5.2</span> Basic exploration of data</a></li>
+<li><a class="nav-link" href="#data-manipulation-with-dplyr"><span class="header-section-number">5.3</span> Data manipulation with dplyr</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/04-data_manipulation.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/04-data_manipulation.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-04.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

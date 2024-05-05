@@ -1,9 +1,11 @@
 # Basics of the R language 
 
 ## Variables
+
 Variables are the identifier or the named space in the memory, which are stored and can be referenced and manipulated later in the program. 
 
 ### Rule variable in R {-}
+
 It is recommended that you use nouns to name a variable. Use underscores (e.g. donnees_menages) rather than CamelCase (e.g. donneesMenages). If you prefer camelCase, use it systematically throughout the script to standardise the code.
 
 Notes:
@@ -27,6 +29,7 @@ Example: second_variable <- "New Program"
 Example: 565 -> third.variable
 
 ## Types
+
 In programming, data type is an important concept. Variables can store data of different types, and different types can do different things.In R, variables do not need to be declared with any particular type, and can even change type after they have been set:
 
 ```r
@@ -124,102 +127,110 @@ print(data)
 #> 2  2  15 Dora
 ```
 ## Operators
+
 Operators in R can mainly be classified into the following categories: arithmetic Operators,relational Operators, logical Operators,assignment Operators
 
-+ R arithmetics operators:
+1. R arithmetics operators:
 
-  - addition (+)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- addition (+)
+    
 
 ```r
 print(5+2)
 #> [1] 7
 ```
-  
-  - subtraction(-)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- subtraction(-)
+     
 
 ```r
 print(1-9)
 #> [1] -8
 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- multiplication (*)
   
-  - multiplication (*)
 
 ```r
 print(6*500)
 #> [1] 3000
 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- division (/)
   
-  - division (/)
 
 ```r
 print(5/2)
 #> [1] 2.5
 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- exponent (^)
   
-  - exponent (^)
 
 ```r
 print(2^3)
 #> [1] 8
 ```
-  
-  - modulus (%%)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- modulus (%%)
+    
 
 ```r
 print(9%%2)
 #> [1] 1
 ```
-  
-  - integer division(%/%)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- integer division(%/%)
+ 
 
 ```r
 print(9%/%2)
 #> [1] 4
 ```
-+ relational operators:
+2. Relational operators:
 
-  - less than (<)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- less than (<)
+
 
 ```r
 print(5<10)
 #> [1] TRUE
 ```
-  - greater than (>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- greater than (>)
+    
 
 ```r
 print(2>8)
 #> [1] FALSE
 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- less than or equal to (<=)
   
-  - less than or equal to (<=)
 
 ```r
 print(5<=5)
 #> [1] TRUE
 ```
-  - greater than or equal to (>=)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- greater than or equal to (>=)
+    
 
 ```r
 print(5>=4)
 #> [1] TRUE
 ```
-  - equal to (==)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- equal to (==)
+   
 
 ```r
 x <- 7
 print(x == 7)
 #> [1] TRUE
 ```
-  - not equal to(!=)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- not equal to(!=)
+    
 
 ```r
 y = 6
 print(y!=4)
 #> [1] TRUE
 ```
-+ logical operators:
+3. Logical operators:
 
-  - logical NOT (!)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- logical NOT (!)
+
 
 ```r
 x <- c(TRUE, FALSE, 0, 6)
@@ -227,30 +238,32 @@ y <- c(FALSE, TRUE, FALSE, TRUE)
 !x
 #> [1] FALSE  TRUE  TRUE FALSE
 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Logical AND (&)
   
-  - Logical AND (&)
 
 ```r
 x & y
 #> [1] FALSE FALSE FALSE  TRUE
 ```
-  
-  - Logical OR (|)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Logical OR (|)
+ 
 
 ```r
 x | y
 #> [1]  TRUE  TRUE FALSE  TRUE
 ```
-+ assignment operators:
+4. Assignment operators:
 
-  - Leftwards assignment (<-,<<-)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Leftwards assignment (<-,<<-)
+
 
 ```r
-x <- 5
-x <<- 6
+ x <- 5
+    x <<- 6
 ```
-  
-  - Rightwards assignment (->, ->>)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Rightwards assignment (->, ->>)
+    
 
 ```r
 5 -> x

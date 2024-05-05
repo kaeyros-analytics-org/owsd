@@ -29,25 +29,27 @@ The R language takes its name from two sources: firstly, the first letter of the
 
 ### Strengths of R {-}
 
-* free software: has the advantage of being free and encouraging reproducible research;
-* interpreted language: language closer to our language than to machine language, so simpler and more direct than, for example, C or C++;
-* easier code sharing and re-use thanks to the package system and CRAN;
-* an active community of developers and users:
-  + R evolves quickly, and its bugs are quickly identified and corrected;
-  + There is a lot of information about programming in R on the Internet;
-  + The number of R packages is always growing, so new features are frequently added to R.
+1. free software: has the advantage of being free and encouraging reproducible research;
+2. interpreted language: language closer to our language than to machine language, so simpler and more direct than, for example, C or C++;
+3. easier code sharing and re-use thanks to the package system and CRAN;
+4. an active community of developers and users:
+
+    + R evolves quickly, and its bugs are quickly identified and corrected;
+    + There is a lot of information about programming in R on the Internet;
+    + The number of R packages is always growing, so new features are frequently added to R.
 
 ### Weaknesses of r {-}
 
+1. Performance Limitations: R is typically slower than compiled languages like C++ or Java for computationally intensive tasks involving large datasets. This can be a bottleneck when dealing with complex models or big data analysis.
+2. Basic security: R lacks basic security features, which are essential in most programming languages like Python. Consequently, there are limitations to embedding R into web applications.
+3. Complicated Language: R is not an easy language to learn and has a steep learning curve. Individuals without prior programming experience may find it challenging to learn R.
 
 ## Installation of R
-To install under Windows, go to this <http://cran.r-project.org/bin/windows/base/>  and follow the first link to
-download the installer. Once the installer has been launched, simply install R with the default options.
+To install under Windows, go to this <http://cran.r-project.org/bin/windows/base/>  and follow the first link to download the installer. Once the installer has been launched, simply install R with the default options.
 
 ## Installation of RStudio
-Once R has been correctly installed, go to <http://www.rstudio.com/products/rstudio/download/> to download the latest stable version of RStudio. Specifically, this is the Open Source edition of RStudio Desktop (there is also a server version).
-Choose the installer for your operating system and follow the instructions in the installation program.
-If you want to try out the latest RStudio features, you can download the development version (which is more feature-rich than the stable version, but may contain bugs) from 
+
+Once R has been correctly installed, go to <http://www.rstudio.com/products/rstudio/download/> to download the latest stable version of RStudio. Specifically, this is the Open Source edition of RStudio Desktop (there is also a server version).Choose the installer for your operating system and follow the instructions in the installation program. If you want to try out the latest RStudio features, you can download the development version (which is more feature-rich than the stable version, but may contain bugs) from 
 <http://www.rstudio.com/products/rstudio/download/preview/>.
 
 
