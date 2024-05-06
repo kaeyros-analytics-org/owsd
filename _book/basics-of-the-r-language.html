@@ -42,16 +42,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
-<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
-<li><a class="active" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
-<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
-<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
-<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
-<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
-<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Chapter 3</span> Basics of the R language</a></li></ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
@@ -85,10 +76,10 @@
 </h3>
 <p>Variables in R can be assigned in one of three ways.</p>
 <ul>
-<li><p>Assignment Operator: “=” used to assign the value.The following example contains 20 as value which is stored in the variable ‘first.variable’ Example: first.variable = 20</p></li>
-<li><p>‘&lt;-’ Operator: The following example contains the New Program as the character which gets assigned to ‘second_variable’.
+<li><p>Assignment Operator: <strong>=</strong> used to assign the value.The following example contains 20 as value which is stored in the variable ‘first.variable’ Example: first.variable = 20</p></li>
+<li><p><strong>&lt;-</strong> Operator: The following example contains the New Program as the character which gets assigned to ‘second_variable’.
 Example: second_variable &lt;- “New Program”</p></li>
-<li><p>‘-&gt;’ Operator: The following example contains 565 as the integer which gets assigned to ‘third.variable’.
+<li><p><strong>-&gt;</strong> Operator: The following example contains 565 as the integer which gets assigned to ‘third.variable’.
 Example: 565 -&gt; third.variable</p></li>
 </ul>
 </div>
@@ -112,7 +103,7 @@ Example: 565 -&gt; third.variable</p></li>
 <li>numeric: for decimals</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="fl">1.0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "numeric"</span></span></code></pre></div>
 <ul>
 <li>character: for text</li>
@@ -147,7 +138,8 @@ Example: 565 -&gt; third.variable</p></li>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">vector_2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "1"       "diamond"</span></span></code></pre></div>
 <ul>
-<li>list: Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.</li>
+<li>list:<br>
+Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create a list containing strings, numbers, vectors and a logical values.</span></span>
@@ -162,7 +154,8 @@ Example: 565 -&gt; third.variable</p></li>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <ul>
-<li>matrix : A matrix is a two dimensional data structure with variables of the same type</li>
+<li>matrix :<br>
+A matrix is a two dimensional data structure with variables of the same type</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
@@ -171,7 +164,8 @@ Example: 565 -&gt; third.variable</p></li>
 <span><span class="co">#&gt; [2,]    2    5    8</span></span>
 <span><span class="co">#&gt; [3,]    3    6    9</span></span></code></pre></div>
 <ul>
-<li>dataframe : A dataframe is a two dimensional data structure with variables of differents types.</li>
+<li>dataframe :<br>
+A dataframe is a two dimensional data structure with variables of differents types.</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>, <span class="fl">15</span><span class="op">)</span>, Name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"John"</span>, <span class="st">"Dora"</span><span class="op">)</span><span class="op">)</span></span>
@@ -267,8 +261,8 @@ Example: 565 -&gt; third.variable</p></li>
 </ol>
 <p>      - Leftwards assignment (&lt;-,&lt;&lt;-)</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span> <span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
-<span>    <span class="va">x</span> <span class="op">&lt;&lt;-</span> <span class="fl">6</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span><span class="va">x</span> <span class="op">&lt;&lt;-</span> <span class="fl">6</span></span></code></pre></div>
 <p>      - Rightwards assignment (-&gt;, -&gt;&gt;)</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">5</span> <span class="op">-&gt;</span> <span class="va">x</span></span>
@@ -277,26 +271,15 @@ Example: 565 -&gt; third.variable</p></li>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></div>
-<div class="next"><a href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#basics-of-the-r-language"><span class="header-section-number">3</span> Basics of the R language</a></li>
-<li>
-<a class="nav-link" href="#variables"><span class="header-section-number">3.1</span> Variables</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rule-variable-in-r">Rule variable in R</a></li>
-<li><a class="nav-link" href="#variable-assignment">Variable assignment</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#types"><span class="header-section-number">3.2</span> Types</a></li>
-<li><a class="nav-link" href="#operators"><span class="header-section-number">3.3</span> Operators</a></li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/02-basics_of_r.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/02-basics_of_r.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          
         </ul>
 </div>
     </nav>

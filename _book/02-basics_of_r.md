@@ -20,12 +20,12 @@ Notes:
 
 Variables in R can be assigned in one of three ways.
 
-- Assignment Operator: "=" used to assign the value.The following example contains 20 as value which is stored in the variable 'first.variable' Example: first.variable = 20
+- Assignment Operator: **=** used to assign the value.The following example contains 20 as value which is stored in the variable 'first.variable' Example: first.variable = 20
 
-- '<-' Operator: The following example contains the New Program as the character which gets assigned to 'second_variable'.
+- **<-** Operator: The following example contains the New Program as the character which gets assigned to 'second_variable'.
 Example: second_variable <- "New Program"
 
-- '->' Operator: The following example contains 565 as the integer which gets assigned to 'third.variable'.
+- **->** Operator: The following example contains 565 as the integer which gets assigned to 'third.variable'.
 Example: 565 -> third.variable
 
 ## Types
@@ -49,7 +49,7 @@ class(1L)
 + numeric: for decimals
 
 ```r
-class(1)
+class(1.0)
 #> [1] "numeric"
 ```
 
@@ -91,7 +91,8 @@ vector_2 <- c(1,"diamond") #1 will become a character because all the elements
 print(vector_2)
 #> [1] "1"       "diamond"
 ```
-+ list: Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.
++ list:\
+Lists are the R objects which contain elements of different types like − numbers, strings, vectors and another list inside it. A list can also contain a matrix or a function as its elements. List is created using list() function.
 
 ```r
 # Create a list containing strings, numbers, vectors and a logical values.
@@ -108,7 +109,8 @@ print(list_data)
 ```
 
 
-+ matrix : A matrix is a two dimensional data structure with variables of the same type
++ matrix :\
+A matrix is a two dimensional data structure with variables of the same type
 
 ```r
 matrix(1:9, nrow = 3, ncol = 3)
@@ -117,7 +119,8 @@ matrix(1:9, nrow = 3, ncol = 3)
 #> [2,]    2    5    8
 #> [3,]    3    6    9
 ```
-+ dataframe : A dataframe is a two dimensional data structure with variables of differents types.
++ dataframe :\
+A dataframe is a two dimensional data structure with variables of differents types.
 
 ```r
 data <- data.frame(id = c(1, 2), Age = c(21, 15), Name = c("John", "Dora"))
@@ -258,8 +261,8 @@ x | y
 
 
 ```r
- x <- 5
-    x <<- 6
+x <- 5
+x <<- 6
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Rightwards assignment (->, ->>)
