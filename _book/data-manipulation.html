@@ -14,7 +14,10 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -51,6 +54,7 @@
 <li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
 <li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
 <li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
 </ul>
 
         <div class="book-extra">
@@ -68,15 +72,54 @@
 <span class="header-section-number">5.1</span> Importation of data<a class="anchor" aria-label="anchor" href="#importation-of-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.</p>
-<p>In this part, we will learn to load commonly used <strong>CSV</strong>, <strong>Excel</strong>, <strong>JSON</strong>, <strong>Database</strong>, and <strong>XML/HTML</strong> data files in R. Moreover, we will also look at less commonly used file formats such as <strong>SAS</strong>, <strong>SPSS</strong> and <strong>Stata</strong>.</p>
+<p>In this part, we will learn to load commonly used <strong>CSV</strong>, <strong>Excel</strong>, <strong>JSON</strong>, <strong>Database</strong>, and <strong>XML/HTML</strong> data files in R. Moreover, we will also look at less commonly used file formats such as <strong>SPSS</strong> and <strong>Stata</strong>.</p>
 <p>Importing data from csv to R:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">children_anemia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/children_anemia.csv"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="va">children_anemia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/children_anemia.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from excel to R:</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop1.xls"</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from json to R:</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_json</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"./data/sample4.json"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#transform data into dataframe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">data_json</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from database to R:</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#establish the connection to the database</span></span>
+<span><span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"./data/mental_health.sqlite"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#list names of all the tables in the database</span></span>
+<span><span class="fu">dbListTables</span><span class="op">(</span><span class="va">conn</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Answer"   "Question" "Survey"</span></span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#retrieve data from table Question</span></span>
+<span><span class="va">data_sqlite</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Question"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_sqlite</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from spss to R:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_spss</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from stata to R:</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="va">data_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="basic-exploration-of-data" class="section level2" number="5.2">
 <h2>
@@ -85,21 +128,63 @@
 <p>Data exploration helps you explore and think about the data you’re working. The goal with data exploration is to understand, and visualize data so that you can discover insights, relationships, patterns, and anomalies.
 To explore data in R we have many functions to achieve that.</p>
 <ul>
-<li><p>Function head(): is used to view the first few rows of your dataset.</p></li>
-<li><p>Function tail(): is used to view the last few rows of your dataset.</p></li>
-<li><p>Function str(): is used to provide the structure of your data frame, showing you the data types.</p></li>
-<li><p>Function dim(): is used to know about the number of rows and columns.</p></li>
-<li><p>Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.</p></li>
-<li><p>Function table(): used to build a contingency table of the counts at each combination of factor levels.</p></li>
-<li><p>Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.</p></li>
-<li><p>Function hist(): function to plot a basic histogram to view distribution of a variable.</p></li>
-<li><p>Function boxplot(): function to plot a boxplot, it provides a compact summary of the data’s central tendency, spread, and potential outliers.</p></li>
+<li>Function head(): is used to view the first few rows of your dataset.</li>
 </ul>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function tail(): is used to view the last few rows of your dataset.</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function str(): is used to provide the structure of your data frame, showing you the data types.</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function dim(): is used to know about the number of rows and columns.</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function table(): used to build a contingency table of the counts at each combination of factor levels.</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Female   Male </span></span>
+<span><span class="co">#&gt;     58     49</span></span></code></pre></div>
+<ul>
+<li>Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Do you  have children?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "NO"  "YES"</span></span></code></pre></div>
+<ul>
+<li>Function hist(): function to plot a basic histogram to view distribution of a variable.</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-data_manipulation_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<ul>
+<li>Function boxplot(): function to plot a boxplot, it provides a compact summary of the data’s central tendency, spread, and potential outliers.</li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-data_manipulation_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 </div>
 <div id="data-manipulation-with-dplyr" class="section level2" number="5.3">
 <h2>
 <span class="header-section-number">5.3</span> Data manipulation with dplyr<a class="anchor" aria-label="anchor" href="#data-manipulation-with-dplyr"><i class="fas fa-link"></i></a>
 </h2>
+<p><strong>IMPORTANT POINT:</strong>
+One of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.</p>
 <p>In order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.</p>
 <ul>
 <li>
@@ -107,46 +192,200 @@ To explore data in R we have many functions to achieve that.</p>
 <p>The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:</p>
 <pre><code>  filter(dataframeName,condition)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">data_1</span>, <span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>distinct():</p>
 <p>The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:</p>
 <pre><code>  distinct(dataframeName, col1, col2,.., .keep_all=TRUE)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>arrange():</p>
 <p>In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:</p>
 <pre><code>  arrange(dataframeName, columnName)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>select():</p>
 <p>The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:</p>
 <pre><code>  select(dataframeName, col1,col2,…)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Sex</span>,<span class="va">`Do you  have children?`</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>rename():</p>
 <p>The rename() function is used to change the column names. This can be done by the below syntax:</p>
 <pre><code>  rename(dataframeName, newName=oldName)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Status<span class="op">=</span> <span class="va">`Are you married?`</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>mutate():</p>
 <p>The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:</p>
 <pre><code>  mutate(dataframeName, newVariable=formula)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>transmute():</p>
 <p>The transmute() function drops the old variables and creates new variables. Here is the syntax:</p>
 <pre><code>  transmute(dataframeName, newVariable=formula)</code></pre>
 </li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span>sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ul>
 <li>
 <p>summarize():</p>
-<p>Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. The syntax of summarize() method is specified below:</p>
+<p>Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the <code>group_by()</code> function. The syntax of summarize() method is specified below:</p>
 <pre><code>  summarize(dataframeName, aggregate_function(columnName))</code></pre>
 </li>
 </ul>
-<p><strong>Putting it all together with %&gt;%</strong>:
-One of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.</p>
 <p>Example:</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">`How many children do you have?`</span><span class="op">)</span>, count<span class="op">=</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt;   Sex     mean count</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1 Female  2.88    58</span></span>
+<span><span class="co">#&gt; 2 Male    1.76    49</span></span></code></pre></div>
 
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-manipulation.html#cb80-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">knit_child</span>(<span class="st">"04-data_manipulation.Rmd"</span>)</span>
+<span id="cb80-2"><a href="data-manipulation.html#cb80-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-3"><a href="data-manipulation.html#cb80-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-4"><a href="data-manipulation.html#cb80-4" tabindex="-1"></a><span class="co">#&gt; processing file: ./04-data_manipulation.Rmd</span></span>
+<span id="cb80-5"><a href="data-manipulation.html#cb80-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-6"><a href="data-manipulation.html#cb80-6" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-7"><a href="data-manipulation.html#cb80-7" tabindex="-1"></a>  <span class="er">|</span>                               <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb80-8"><a href="data-manipulation.html#cb80-8" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-9"><a href="data-manipulation.html#cb80-9" tabindex="-1"></a>  <span class="er">|</span>.                              <span class="sc">|</span>   <span class="dv">2</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-14</span>]</span>
+<span id="cb80-10"><a href="data-manipulation.html#cb80-10" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-11"><a href="data-manipulation.html#cb80-11" tabindex="-1"></a>  <span class="er">|</span>.                              <span class="sc">|</span>   <span class="dv">4</span>%                   </span>
+<span id="cb80-12"><a href="data-manipulation.html#cb80-12" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-13"><a href="data-manipulation.html#cb80-13" tabindex="-1"></a>  <span class="er">|</span>..                             <span class="sc">|</span>   <span class="dv">6</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-15</span>]</span>
+<span id="cb80-14"><a href="data-manipulation.html#cb80-14" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-15"><a href="data-manipulation.html#cb80-15" tabindex="-1"></a>  <span class="er">|</span>...                            <span class="sc">|</span>   <span class="dv">8</span>%                   </span>
+<span id="cb80-16"><a href="data-manipulation.html#cb80-16" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-17"><a href="data-manipulation.html#cb80-17" tabindex="-1"></a>  <span class="er">|</span>...                            <span class="sc">|</span>  <span class="dv">10</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-16</span>]</span>
+<span id="cb80-18"><a href="data-manipulation.html#cb80-18" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-19"><a href="data-manipulation.html#cb80-19" tabindex="-1"></a>  <span class="er">|</span>....                           <span class="sc">|</span>  <span class="dv">12</span>%                   </span>
+<span id="cb80-20"><a href="data-manipulation.html#cb80-20" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-21"><a href="data-manipulation.html#cb80-21" tabindex="-1"></a>  <span class="er">|</span>.....                          <span class="sc">|</span>  <span class="dv">15</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-17</span>]</span>
+<span id="cb80-22"><a href="data-manipulation.html#cb80-22" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-23"><a href="data-manipulation.html#cb80-23" tabindex="-1"></a>  <span class="er">|</span>.....                          <span class="sc">|</span>  <span class="dv">17</span>%                   </span>
+<span id="cb80-24"><a href="data-manipulation.html#cb80-24" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-25"><a href="data-manipulation.html#cb80-25" tabindex="-1"></a>  <span class="er">|</span>......                         <span class="sc">|</span>  <span class="dv">19</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-18</span>]</span>
+<span id="cb80-26"><a href="data-manipulation.html#cb80-26" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-27"><a href="data-manipulation.html#cb80-27" tabindex="-1"></a>  <span class="er">|</span>......                         <span class="sc">|</span>  <span class="dv">21</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-19</span>]</span>
+<span id="cb80-28"><a href="data-manipulation.html#cb80-28" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-29"><a href="data-manipulation.html#cb80-29" tabindex="-1"></a>  <span class="er">|</span>.......                        <span class="sc">|</span>  <span class="dv">23</span>%                   </span>
+<span id="cb80-30"><a href="data-manipulation.html#cb80-30" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-31"><a href="data-manipulation.html#cb80-31" tabindex="-1"></a>  <span class="er">|</span>........                       <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-20</span>]</span>
+<span id="cb80-32"><a href="data-manipulation.html#cb80-32" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-33"><a href="data-manipulation.html#cb80-33" tabindex="-1"></a>  <span class="er">|</span>........                       <span class="sc">|</span>  <span class="dv">27</span>%                   </span>
+<span id="cb80-34"><a href="data-manipulation.html#cb80-34" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-35"><a href="data-manipulation.html#cb80-35" tabindex="-1"></a>  <span class="er">|</span>.........                      <span class="sc">|</span>  <span class="dv">29</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-21</span>]</span>
+<span id="cb80-36"><a href="data-manipulation.html#cb80-36" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-37"><a href="data-manipulation.html#cb80-37" tabindex="-1"></a>  <span class="er">|</span>..........                     <span class="sc">|</span>  <span class="dv">31</span>%                   </span>
+<span id="cb80-38"><a href="data-manipulation.html#cb80-38" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-39"><a href="data-manipulation.html#cb80-39" tabindex="-1"></a>  <span class="er">|</span>..........                     <span class="sc">|</span>  <span class="dv">33</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-22</span>]</span>
+<span id="cb80-40"><a href="data-manipulation.html#cb80-40" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-41"><a href="data-manipulation.html#cb80-41" tabindex="-1"></a>  <span class="er">|</span>...........                    <span class="sc">|</span>  <span class="dv">35</span>%                   </span>
+<span id="cb80-42"><a href="data-manipulation.html#cb80-42" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-43"><a href="data-manipulation.html#cb80-43" tabindex="-1"></a>  <span class="er">|</span>............                   <span class="sc">|</span>  <span class="dv">38</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-23</span>]</span>
+<span id="cb80-44"><a href="data-manipulation.html#cb80-44" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-45"><a href="data-manipulation.html#cb80-45" tabindex="-1"></a>  <span class="er">|</span>............                   <span class="sc">|</span>  <span class="dv">40</span>%                   </span>
+<span id="cb80-46"><a href="data-manipulation.html#cb80-46" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-47"><a href="data-manipulation.html#cb80-47" tabindex="-1"></a>  <span class="er">|</span>.............                  <span class="sc">|</span>  <span class="dv">42</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-24</span>]</span>
+<span id="cb80-48"><a href="data-manipulation.html#cb80-48" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-49"><a href="data-manipulation.html#cb80-49" tabindex="-1"></a>  <span class="er">|</span>..............                 <span class="sc">|</span>  <span class="dv">44</span>%                   </span>
+<span id="cb80-50"><a href="data-manipulation.html#cb80-50" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-51"><a href="data-manipulation.html#cb80-51" tabindex="-1"></a>  <span class="er">|</span>..............                 <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-25</span>]</span>
+<span id="cb80-52"><a href="data-manipulation.html#cb80-52" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-53"><a href="data-manipulation.html#cb80-53" tabindex="-1"></a>  <span class="er">|</span>...............                <span class="sc">|</span>  <span class="dv">48</span>%                   </span>
+<span id="cb80-54"><a href="data-manipulation.html#cb80-54" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-55"><a href="data-manipulation.html#cb80-55" tabindex="-1"></a>  <span class="er">|</span>................               <span class="sc">|</span>  <span class="dv">50</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-26</span>]</span>
+<span id="cb80-56"><a href="data-manipulation.html#cb80-56" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-57"><a href="data-manipulation.html#cb80-57" tabindex="-1"></a>  <span class="er">|</span>................               <span class="sc">|</span>  <span class="dv">52</span>%                   </span>
+<span id="cb80-58"><a href="data-manipulation.html#cb80-58" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-59"><a href="data-manipulation.html#cb80-59" tabindex="-1"></a>  <span class="er">|</span>.................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-27</span>]</span>
+<span id="cb80-60"><a href="data-manipulation.html#cb80-60" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-61"><a href="data-manipulation.html#cb80-61" tabindex="-1"></a>  <span class="er">|</span>.................              <span class="sc">|</span>  <span class="dv">56</span>%                   </span>
+<span id="cb80-62"><a href="data-manipulation.html#cb80-62" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-63"><a href="data-manipulation.html#cb80-63" tabindex="-1"></a>  <span class="er">|</span>..................             <span class="sc">|</span>  <span class="dv">58</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-28</span>]</span>
+<span id="cb80-64"><a href="data-manipulation.html#cb80-64" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-65"><a href="data-manipulation.html#cb80-65" tabindex="-1"></a>  <span class="er">|</span>...................            <span class="sc">|</span>  <span class="dv">60</span>%                   </span>
+<span id="cb80-66"><a href="data-manipulation.html#cb80-66" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-67"><a href="data-manipulation.html#cb80-67" tabindex="-1"></a>  <span class="er">|</span>...................            <span class="sc">|</span>  <span class="dv">62</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-29</span>]</span>
+<span id="cb80-68"><a href="data-manipulation.html#cb80-68" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-69"><a href="data-manipulation.html#cb80-69" tabindex="-1"></a>  <span class="er">|</span>....................           <span class="sc">|</span>  <span class="dv">65</span>%                   </span>
+<span id="cb80-70"><a href="data-manipulation.html#cb80-70" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-71"><a href="data-manipulation.html#cb80-71" tabindex="-1"></a>  <span class="er">|</span>.....................          <span class="sc">|</span>  <span class="dv">67</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-30</span>]</span>
+<span id="cb80-72"><a href="data-manipulation.html#cb80-72" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-73"><a href="data-manipulation.html#cb80-73" tabindex="-1"></a>  <span class="er">|</span>.....................          <span class="sc">|</span>  <span class="dv">69</span>%                   </span>
+<span id="cb80-74"><a href="data-manipulation.html#cb80-74" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-75"><a href="data-manipulation.html#cb80-75" tabindex="-1"></a>  <span class="er">|</span>......................         <span class="sc">|</span>  <span class="dv">71</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-31</span>]</span>
+<span id="cb80-76"><a href="data-manipulation.html#cb80-76" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-77"><a href="data-manipulation.html#cb80-77" tabindex="-1"></a>  <span class="er">|</span>.......................        <span class="sc">|</span>  <span class="dv">73</span>%                   </span>
+<span id="cb80-78"><a href="data-manipulation.html#cb80-78" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-79"><a href="data-manipulation.html#cb80-79" tabindex="-1"></a>  <span class="er">|</span>.......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-32</span>]</span>
+<span id="cb80-80"><a href="data-manipulation.html#cb80-80" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-81"><a href="data-manipulation.html#cb80-81" tabindex="-1"></a>  <span class="er">|</span>........................       <span class="sc">|</span>  <span class="dv">77</span>%                   </span>
+<span id="cb80-82"><a href="data-manipulation.html#cb80-82" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-83"><a href="data-manipulation.html#cb80-83" tabindex="-1"></a>  <span class="er">|</span>.........................      <span class="sc">|</span>  <span class="dv">79</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-33</span>]</span>
+<span id="cb80-84"><a href="data-manipulation.html#cb80-84" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-85"><a href="data-manipulation.html#cb80-85" tabindex="-1"></a>  <span class="er">|</span>.........................      <span class="sc">|</span>  <span class="dv">81</span>%                   </span>
+<span id="cb80-86"><a href="data-manipulation.html#cb80-86" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-87"><a href="data-manipulation.html#cb80-87" tabindex="-1"></a>  <span class="er">|</span>..........................     <span class="sc">|</span>  <span class="dv">83</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-34</span>]</span>
+<span id="cb80-88"><a href="data-manipulation.html#cb80-88" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-89"><a href="data-manipulation.html#cb80-89" tabindex="-1"></a>  <span class="er">|</span>..........................     <span class="sc">|</span>  <span class="dv">85</span>%                   </span>
+<span id="cb80-90"><a href="data-manipulation.html#cb80-90" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-91"><a href="data-manipulation.html#cb80-91" tabindex="-1"></a>  <span class="er">|</span>...........................    <span class="sc">|</span>  <span class="dv">88</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-35</span>]</span>
+<span id="cb80-92"><a href="data-manipulation.html#cb80-92" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-93"><a href="data-manipulation.html#cb80-93" tabindex="-1"></a>  <span class="er">|</span>............................   <span class="sc">|</span>  <span class="dv">90</span>%                   </span>
+<span id="cb80-94"><a href="data-manipulation.html#cb80-94" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-95"><a href="data-manipulation.html#cb80-95" tabindex="-1"></a>  <span class="er">|</span>............................   <span class="sc">|</span>  <span class="dv">92</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-36</span>]</span>
+<span id="cb80-96"><a href="data-manipulation.html#cb80-96" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-97"><a href="data-manipulation.html#cb80-97" tabindex="-1"></a>  <span class="er">|</span>.............................  <span class="sc">|</span>  <span class="dv">94</span>%                   </span>
+<span id="cb80-98"><a href="data-manipulation.html#cb80-98" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-99"><a href="data-manipulation.html#cb80-99" tabindex="-1"></a>  <span class="er">|</span>.............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-37</span>]</span>
+<span id="cb80-100"><a href="data-manipulation.html#cb80-100" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-101"><a href="data-manipulation.html#cb80-101" tabindex="-1"></a>  <span class="er">|</span>.............................. <span class="sc">|</span>  <span class="dv">98</span>%                   </span>
+<span id="cb80-102"><a href="data-manipulation.html#cb80-102" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb80-103"><a href="data-manipulation.html#cb80-103" tabindex="-1"></a>  <span class="er">|</span>...............................<span class="sc">|</span> <span class="dv">100</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-38</span>]</span></code></pre></div>
+<pre><code>#&gt; [1] "\n\n```r\nsource(\"./dependencies.R\")\n#&gt; \n#&gt; Attachement du package : 'dplyr'\n#&gt; Les objets suivants sont masqués depuis 'package:stats':\n#&gt; \n#&gt;     filter, lag\n#&gt; Les objets suivants sont masqués depuis 'package:base':\n#&gt; \n#&gt;     intersect, setdiff, setequal, union\n#&gt; Warning: le package 'plotly' a été compilé avec la version\n#&gt; R 4.3.3\n#&gt; Le chargement a nécessité le package : ggplot2\n#&gt; \n#&gt; Attachement du package : 'plotly'\n#&gt; L'objet suivant est masqué depuis 'package:ggplot2':\n#&gt; \n#&gt;     last_plot\n#&gt; L'objet suivant est masqué depuis 'package:stats':\n#&gt; \n#&gt;     filter\n#&gt; L'objet suivant est masqué depuis 'package:graphics':\n#&gt; \n#&gt;     layout\n```\n\n# Data manipulation\n\nData manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.\n\n## Importation of data\nData import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.\n\nIn this part, we will learn to load commonly used **CSV**, **Excel**, **JSON**, **Database**, and **XML/HTML** data files in R. Moreover, we will also look at less commonly used file formats such as **SPSS** and **Stata**. \n\nImporting data from csv to R:\n\n```r\n#load data\nchildren_anemia &lt;- read.csv(\"./data/children_anemia.csv\")\n```\n\nImporting data from excel to R:\n\n```r\n#load package\nlibrary(readxl)\n\n#load data\ndata_1 &lt;- readxl::read_excel(\"./data/data_for_workshop1.xls\")\n```\n\n\nImporting data from json to R:\n\n```r\n#load package\nlibrary(jsonlite)\n\n#load data\ndata_json &lt;- jsonlite::fromJSON(\"./data/sample4.json\")\n\n#transform data into dataframe\nas.data.frame(data_json)\n```\n\n\nImporting data from database to R:\n\n```r\n#load package\nlibrary(RSQLite)\n\n#establish the connection to the database\nconn &lt;- dbConnect(RSQLite::SQLite(), \"./data/mental_health.sqlite\")\n\n#list names of all the tables in the database\ndbListTables(conn)\n#&gt; [1] \"Answer\"   \"Question\" \"Survey\"\n```\n\n```r\n#retrieve data from table Question\ndata_sqlite &lt;- dbGetQuery(conn, \"SELECT * FROM Question\")\nhead(data_sqlite)\n```\n\n\nImporting data from spss to R:\n\n```r\n#load package\nlibrary(haven)\n\n#load data\ndata_spss &lt;- haven::read_sav(\"./data/mental_health.sav\")\n```\n\nImporting data from stata to R:\n\n```r\n#load data\ndata_stata &lt;- haven::read_dta(\"./data/SMOKE.DTA\")\n```\n\n\n\n## Basic exploration of data\n\nData exploration helps you explore and think about the data you're working. The goal with data exploration is to understand,  and visualize data so that you can discover insights, relationships, patterns, and anomalies.\nTo explore data in R we have many functions to achieve that.\n\n+ Function head(): is used to view the first few rows of your dataset.\n\n```r\nhead(data_1)\n```\n\n\n+ Function tail(): is used to view the last few rows of your dataset.\n\n```r\ntail(data_1)\n```\n\n\n+ Function str(): is used to provide the structure of your data frame, showing you the data types.\n\n```r\nstr(data_1)\n```\n\n\n+ Function dim(): is used to know about the number of rows and columns.\n\n```r\ndim(data_1)\n```\n\n\n+ Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.\n\n```r\nsummary(data_1)\n```\n\n\n+ Function table(): used to build a contingency table of the counts at each combination of factor levels.\n\n```r\ntable(data_1$Sex)\n#&gt; \n#&gt; Female   Male \n#&gt;     58     49\n```\n\n\n+ Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.\n\n```r\nunique(data_1$`Do you  have children?`)\n#&gt; [1] \"NO\"  \"YES\"\n```\n\n+ Function hist(): function to plot a basic histogram to view distribution of a variable.\n\n```r\nhist(data_1$`How many children do you have?`)\n```\n\n\n&lt;img src=\"05-data_cleaning_files/figure-html/unnamed-chunk-29-1.png\" width=\"672\" /&gt;\n\n\n+ Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.\n\n```r\nboxplot(data_1$`How many children do you have?`)\n```\n\n\n&lt;img src=\"05-data_cleaning_files/figure-html/unnamed-chunk-30-1.png\" width=\"672\" /&gt;\n\n\n## Data manipulation with dplyr\n\n**IMPORTANT POINT:**\nOne of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.\n\nIn order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.\n\n+ filter(): \n\n  The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:\n\n        filter(dataframeName,condition)\n        \nExample:\n\n```r\ndplyr::filter(data_1, Sex==\"Female\")\n```\n\n+ distinct(): \n\n  The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:\n  \n        distinct(dataframeName, col1, col2,.., .keep_all=TRUE)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::distinct()\n```\n\n\n+ arrange():\n\n  In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:\n  \n        arrange(dataframeName, columnName)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::arrange(Sex)\n```\n\n\n+ select():\n\n  The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:\n        \n        select(dataframeName, col1,col2,…)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::select(Sex,`Do you  have children?`)\n```\n\n\n+ rename():\n\n  The rename() function is used to change the column names. This can be done by the below syntax:\n  \n        rename(dataframeName, newName=oldName)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::rename(Status= `Are you married?`)\n```\n\n\n+ mutate():\n\n  The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:\n  \n        mutate(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::mutate(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ transmute():\n\n  The transmute() function drops the old variables and creates new variables. Here is the syntax:\n  \n        transmute(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::transmute(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ summarize():\n\n  Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the `group_by()` function. The syntax of summarize() method is specified below:\n  \n        summarize(dataframeName, aggregate_function(columnName))\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  group_by(Sex) %&gt;%\n  summarize(mean=mean(`How many children do you have?`), count=n())\n#&gt; # A tibble: 2 × 3\n#&gt;   Sex     mean count\n#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;int&gt;\n#&gt; 1 Female  2.88    58\n#&gt; 2 Male    1.76    49\n```"</code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./dependencies.R"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -176,7 +415,7 @@ One of the more useful ways to use dplyr is with the pipe operator. The pipe ope
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-04.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -55,4 +55,14 @@ The process of hypothesis testing involves the following steps:
 
 ## Statistical tests
 
-## Regression
+There are various types of statistical tests, each designed to address different research questions and hypotheses. Some of the most commonly used statistical tests include:
+
+1. T test or Student test
+
+2. ANOVA
+
+3. Chi-Square test
+
+4. Pearson Correlation Coefficient
+
+5. Fischer test 

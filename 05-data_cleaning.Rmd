@@ -1,3 +1,8 @@
+```{r}
+knitr::knit_child("04-data_manipulation.Rmd")
+source("./dependencies.R")
+```
+
 # Data cleaning
 
 In the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. 
@@ -5,17 +10,13 @@ Data cleaning, a core competency of R, empowers us to clean, filter, transform, 
 
 There are several methods used for data cleansing, including:
 
-1) Adressing data Inconsistencies: 
+1) Renaming colums
 
-Suppose the dataset combines data from different sources, which are stored differently. We can standardise these inconsistencies as follows:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Data Standardisation*:
-
-We can standardise the names to follow a consistent format. For example below, the column names “Age” and “Score” have been standardised to “age” and “score” in the dataframe. This lowercase naming convention is consistent with the other column names.
-    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Data Integration*:
-
-When combining data from multiple sources, ensure that all data fields align correctly.
+During data cleansing, column renaming plays a crucial role in organizing and clarifying the dataset. This step involves assigning meaningful and consistent names to columns, which facilitates their interpretation and subsequent use in analysis.
+```{r eval=FALSE}
+data_1 %>%
+  rename(marital_status=`Are you married?`)
+```
 
 
 2) Handling Missing Data: 
@@ -27,28 +28,135 @@ Missing data, also known as missing values, is a common challenge encountered in
 we can use imputation by mean, median or mode.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by mean*:
+```{r eval=FALSE}
+#Create a new column of number of varieties
+data_1$number_variety <- str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)
+
+#verify the type of the column
+str(data_1$number_variety)
+
+#transform the type into number
+data_1$number_variety <- as.integer(data_1$number_variety)
+
+#impute NA values by mean
+data_1$number_variety[is.na(data_1$number_variety)]<-round(mean(data_1$number_variety, na.rm = TRUE))
+```
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by median*:
+```{r}
+#function to extract the number of kg in the column
+data_1$`What is the production in kg or ton/year?` <- sapply(data_1$`What is the production in kg or ton/year?`, function(x) {
+    # Extract digits using regular expression and convert to numeric
+    str_extract(x, "\\d+") %>% as.numeric()
+})
+
+#impute the column by median
+data_1$`What is the production in kg or ton/year?`[is.na(data_1$`What is the production in kg or ton/year?`)]<-median(data_1$`What is the production in kg or ton/year?`, na.rm = TRUE)
+
+
+```
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by mode*:
+```{r}
+data_1$`Where do you get your seeds?`[is.na(data_1$`Where do you get your seeds?`)] <- names(which.max(table(data_1$`Where do you get your seeds?`)))
+
+```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2) Removing data
 
-There are three primary methods for deleting data when dealing with missing data: listwise, pairwise and dropping variables.
+There are 2 usuals methods for deleting data when dealing with missing data: listwise and dropping variables.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Listwise*:
 
 In this method, all data for an observation that has one or more missing values are deleted. The analysis is run only on observations that have a complete set of data. 
+```{r eval=FALSE}
+#remove all rows who does'nt have a tasba farm
+data_listwise <- data_1
+na.omit(data_listwise)
+```
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Dropping variables*:
 
 If data is missing for a large proportion of the observations, it may be best to discard the variable entirely if it is insignificant.
+```{r eval=FALSE}
+subset( data_1, select = -c(`How do you call these varieties you have?`))
+```
+
+3) Handling outliers
+Data points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.
+
+```{r eval=FALSE}
+# data_1 <- data_1$`How many children do you have?`[!data_1$`How many children do you have?` %in% boxplot.stats(data_1$`How many children do you have?`)$out]
+```
 
 
-3) Removing duplicates: 
+4) Removing duplicates: 
 Removing duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.
+```{r eval=FALSE}
+data_1 <- data_1 %>% 
+  distinct()
+```
 
-
-4) Checking data structure: 
+5) Checking data structure: 
 
 Checking data types is a crucial step in data analysis because it ensures you're working with the data in the way it's intended in order to avoid errors later in the analysis.
+```{r eval=FALSE}
+str(data_1)
+```
+You can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc....if the data is not in the right type.
+
+6) Combine dataframes
+
+Suppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.
+&nbsp;&nbsp;&nbsp;&nbsp;- Combine by column
+00
+```{r eval=FALSE}
+culture1 <- data.frame(
+  Culture = c("wheat", "maize", "rice"),
+  Area = c(100, 150, 120)
+)
+
+culture2 <- data.frame(
+  Culture = c("wheat", "maize", "rice"),
+  Return = c(50, 60, 45)
+)
+
+culture_final1 <- cbind(culture1, culture2)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;- combine by row
+```{r eval=FALSE}
+culture3 <- data.frame(
+  Culture = c("wheat", "maize", "rice"),
+  Area = c(100, 150, 120)
+)
+
+culture4 <- data.frame(
+  Culture = c("potato", "cassava"),
+  Area = c(250, 400)
+)
+
+culture_final2 <- rbind(culture3, culture4)
+```
+
+
+```{r eval=FALSE}
+
+# 7) Data inconsistencies:
+# 
+# When faced with a data set, we are often confronted with data inconsistencies. This can take the form of spelling errors, language heterogeneity in the dataset, etc.
+# 
+# &nbsp;&nbsp;&nbsp;&nbsp;Handling spelling errors
+
+#&nbsp;&nbsp;&nbsp;&nbsp; Handling language heterogeneity
+
+```
+
+
+
+
+
+

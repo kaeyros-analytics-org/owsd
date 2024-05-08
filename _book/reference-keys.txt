@@ -19,6 +19,7 @@ data-cleaning
 descriptive-statistics
 central-tendency-indicators
 variability-indicators
+quantiles
 contingency-table
 inferential-statistics
 population-and-sample
@@ -26,7 +27,11 @@ parameter-estimations
 confidence-interval
 hypothesis
 statistical-tests
-regression
-univariate-analysis
-bivariate-analysis
-multivariate-analysis
+visualization
+bar-chart
+pie-chart
+histogram
+scatter-plot
+line-chart
+map-visualization
+wordcloud
