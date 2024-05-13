@@ -55,6 +55,10 @@
 <li><a class="active" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
 <li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
 <li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
 </ul>
 
         <div class="book-extra">
@@ -77,7 +81,7 @@
 This is the most common one, also called the average. It’s calculated by adding up all the values in your data set and then dividing by the number of values.<br>
 </li>
 </ol>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 138.3084</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
@@ -85,14 +89,14 @@ This is the most common one, also called the average. It’s calculated by addin
 This is the middle number when you arrange your data set in order, from least to greatest. If you have an even number of data points, the median is the average of the two middle numbers.<br>
 </li>
 </ol>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Mode<br>
 This is the most frequent value in your data set. You can have multiple modes, by the way, if there are a couple of values that tie for the most frequent.</li>
 </ol>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Are you married?`</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "YES"</span></span></code></pre></div>
 </div>
@@ -105,14 +109,14 @@ This is the most frequent value in your data set. You can have multiple modes, b
 <li>Variance<br>
 This is the average of the squared deviations of each data point from the mean. It tells you how much your data varies on average, but since it uses squared values, it can be sensitive to extreme values.</li>
 </ol>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 296798.9</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Standard deviation<br>
 This is the square root of the variance. Standard deviation is expressed in the same units as your original data (e.g., meters, dollars), which can be easier to interpret than variance. It also reflects how much your data deviates from the mean on average.</li>
 </ol>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#1st approch using the native function</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 544.7925</span></span>
@@ -124,14 +128,14 @@ This is the square root of the variance. Standard deviation is expressed in the 
 <li>Range<br>
 This is the simplest method. It’s just the difference between the highest and lowest values in your data set. While easy to calculate, the range can be misleading if your data has outliers.</li>
 </ol>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 12</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>Interquartile range (IQR)<br>
 This focuses on the middle half of your data. It represents the range between the first quartile (Q1) and the third quartile (Q3). Half your data falls within this IQR, giving a better idea of how spread out the bulk of the data is.</li>
 </ol>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
 </div>
@@ -141,17 +145,17 @@ This focuses on the middle half of your data. It represents the range between th
 </h2>
 <p>Quantiles are values that split sorted data or a probability distribution into equal parts. In general terms, a q-quantile divides sorted data into q parts. The most commonly used quantiles have special names:</p>
 <p>      Quartiles:</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   0%  25%  50%  75% 100% </span></span>
 <span><span class="co">#&gt;    0    0    2    4   12</span></span></code></pre></div>
 <p>      Deciles:</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>,probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% </span></span>
 <span><span class="co">#&gt;    0    0    0    0    0    2    2    3    5    6   12</span></span></code></pre></div>
 <p>      Percentiles:</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>,probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    0%    1%    2%    3%    4%    5%    6%    7%    8%    9% </span></span>
 <span><span class="co">#&gt;  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 </span></span>
@@ -181,6 +185,12 @@ This focuses on the middle half of your data. It represents the range between th
 <span class="header-section-number">7.4</span> Contingency table<a class="anchor" aria-label="anchor" href="#contingency-table"><i class="fas fa-link"></i></a>
 </h2>
 <p>A contingency table displays frequencies for combinations of two categorical variables.</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">data_1</span><span class="op">$</span><span class="va">`Are you married?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         </span></span>
+<span><span class="co">#&gt;          NO YES</span></span>
+<span><span class="co">#&gt;   Female 19  39</span></span>
+<span><span class="co">#&gt;   Male   28  21</span></span></code></pre></div>
 
 </div>
 </div>
@@ -212,7 +222,7 @@ This focuses on the middle half of your data. It represents the range between th
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-08.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

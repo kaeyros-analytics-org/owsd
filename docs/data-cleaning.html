@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Data cleaning | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Data cleaning | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Data cleaning | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="In the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. Data cleaning, a core competency of R, empowers us to clean, filter, transform, and...">
+<meta property="og:description" content="In the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. Data cleaning, a core competency of R, empowers us to clean, filter, transform, and...">
+<meta name="twitter:description" content="In the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. Data cleaning, a core competency of R, empowers us to clean, filter, transform, and...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="active" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-cleaning" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Data cleaning<a class="anchor" aria-label="anchor" href="#data-cleaning"><i class="fas fa-link"></i></a>
+</h1>
+<p>In the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights.
+Data cleaning, a core competency of R, empowers us to clean, filter, transform, and aggregate data, paving the way for meaningful analysis. This introductory paragraph delves into the world of data manipulation and data cleaning in R, highlighting its significance and exploring the key concepts involved.</p>
+<p>There are several methods used for data cleansing, including:</p>
+<div id="renaming-colums" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Renaming colums<a class="anchor" aria-label="anchor" href="#renaming-colums"><i class="fas fa-link"></i></a>
+</h2>
+<p>During data cleansing, column renaming plays a crucial role in organizing and clarifying the dataset. This step involves assigning meaningful and consistent names to columns, which facilitates their interpretation and subsequent use in analysis.</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load the package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#rename the variable "Are you married?"</span></span>
+<span><span class="va">data_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>marital_status<span class="op">=</span><span class="va">`Are you married?`</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="handling-missing-data" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Handling Missing Data:<a class="anchor" aria-label="anchor" href="#handling-missing-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Missing data, also known as missing values, is a common challenge encountered in data analysis. It refers to the absence of information for specific variables in certain observations within your dataset. To deal with missing data we have two options: impute data or remove data.</p>
+<p>      2.1) Imputation</p>
+<p>we can use imputation by mean, median or mode.</p>
+<p>        - <em>Imputation by mean</em>:</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Create a new column of number of varieties</span></span>
+<span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span> <span class="op">&lt;-</span> <span class="fu">str_sub</span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many varieties do you grow on the same plot or in the same field?`</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#verify the type of the column</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#transform the type into number</span></span>
+<span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#impute NA values by mean</span></span>
+<span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span><span class="op">)</span><span class="op">]</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">number_variety</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>        - <em>Imputation by median</em>:</p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
+<span><span class="co">#function to extract the number of kg in the column</span></span>
+<span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="co"># Extract digits using regular expression and convert to numeric</span></span>
+<span>    <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"\\d+"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#impute the column by median</span></span>
+<span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span><span class="op">]</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<p>        - <em>Imputation by mode</em>:</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span><span class="op">$</span><span class="va">`Where do you get your seeds?`</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Where do you get your seeds?`</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Where do you get your seeds?`</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>      2.2) Removing data</p>
+<p>There are 2 usuals methods for deleting data when dealing with missing data: listwise and dropping variables.</p>
+<p>        - <em>Listwise</em>:</p>
+<p>In this method, all data for an observation that has one or more missing values are deleted. The analysis is run only on observations that have a complete set of data.</p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/na.fail.html">na.omit</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<p>        - <em>Dropping variables</em>:</p>
+<p>If data is missing for a large proportion of the observations, it may be best to discard the variable entirely if it is insignificant.</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span> <span class="va">data_1</span>, select <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">`How do you call these varieties you have?`</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="handling-outliers" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Handling outliers<a class="anchor" aria-label="anchor" href="#handling-outliers"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">outlier_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/boxplot.stats.html">boxplot.stats</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span><span class="op">$</span><span class="va">out</span>  <span class="co"># outlier values.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>, main<span class="op">=</span><span class="st">"Number of children"</span>, boxwex<span class="op">=</span><span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/mtext.html">mtext</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Outliers: "</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">outlier_values</span>, collapse<span class="op">=</span><span class="st">", "</span><span class="op">)</span><span class="op">)</span>, cex<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span></span></code></pre></div>
+<p>After identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)</p>
+</div>
+<div id="removing-duplicates" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Removing duplicates:<br><a class="anchor" aria-label="anchor" href="#removing-duplicates"><i class="fas fa-link"></i></a>
+</h2>
+<p>Removing duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="checking-data-structure" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Checking data structure:<a class="anchor" aria-label="anchor" href="#checking-data-structure"><i class="fas fa-link"></i></a>
+</h2>
+<p>Checking data types is a crucial step in data analysis because it ensures you’re working with the data in the way it’s intended in order to avoid errors later in the analysis.</p>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<p>You can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc….if the data is not in the right type.</p>
+</div>
+<div id="handling-inconsistent-categorical-data" class="section level2" number="6.6">
+<h2>
+<span class="header-section-number">6.6</span> Handling Inconsistent Categorical Data<a class="anchor" aria-label="anchor" href="#handling-inconsistent-categorical-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Categorical variables may have inconsistent spellings or categories. The recode() function or manual recoding can help standardize categories.</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="va">data_1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>`How do you store your seed?` <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span><span class="va">`How do you store your seed?`</span>, <span class="st">"In bags"</span> <span class="op">=</span> <span class="st">"in bags"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="combine-dataframes" class="section level2" number="6.7">
+<h2>
+<span class="header-section-number">6.7</span> Combine dataframes<a class="anchor" aria-label="anchor" href="#combine-dataframes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Suppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.
+    - Combine by column</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">culture1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wheat"</span>, <span class="st">"maize"</span>, <span class="st">"rice"</span><span class="op">)</span>,</span>
+<span>  Area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">120</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wheat"</span>, <span class="st">"maize"</span>, <span class="st">"rice"</span><span class="op">)</span>,</span>
+<span>  Return <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">60</span>, <span class="fl">45</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture_final1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">culture1</span>, <span class="va">culture2</span><span class="op">)</span></span></code></pre></div>
+<p>    - combine by row</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">culture3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wheat"</span>, <span class="st">"maize"</span>, <span class="st">"rice"</span><span class="op">)</span>,</span>
+<span>  Area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">120</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"potato"</span>, <span class="st">"cassava"</span><span class="op">)</span>,</span>
+<span>  Area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">250</span>, <span class="fl">400</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture_final2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">culture3</span>, <span class="va">culture4</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="data-validation" class="section level2" number="6.8">
+<h2>
+<span class="header-section-number">6.8</span> Data Validation<a class="anchor" aria-label="anchor" href="#data-validation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data validation involves checking data against predefined rules or criteria. It ensures that data adheres to specific requirements or constraints.</p>
+<p>Validation checks can prevent incorrect or inconsistent data from entering your analysis.</p>
+</div>
+<div id="regular-expressions" class="section level2" number="6.9">
+<h2>
+<span class="header-section-number">6.9</span> Regular expressions<a class="anchor" aria-label="anchor" href="#regular-expressions"><i class="fas fa-link"></i></a>
+</h2>
+<p>Regular expressions (regex) are powerful tools for pattern matching and replacement in text data. The gsub() function is commonly used for global pattern substitution.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span><span class="op">$</span><span class="va">`How much does 1kg of tasba seed cost?`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">"FCFA"</span>, <span class="st">""</span>, </span>
+<span>                        <span class="va">data_1</span><span class="op">$</span><span class="va">`How much does 1kg of tasba seed cost?`</span><span class="op">)</span></span></code></pre></div>
+
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-cleaning.html#cb92-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">knit_child</span>(<span class="st">"05-data_cleaning.Rmd"</span>)</span>
+<span id="cb92-2"><a href="data-cleaning.html#cb92-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb92-3"><a href="data-cleaning.html#cb92-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb92-4"><a href="data-cleaning.html#cb92-4" tabindex="-1"></a><span class="co">#&gt; processing file: ./05-data_cleaning.Rmd</span></span>
+<span id="cb92-5"><a href="data-cleaning.html#cb92-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb92-6"><a href="data-cleaning.html#cb92-6" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-7"><a href="data-cleaning.html#cb92-7" tabindex="-1"></a>  <span class="er">|</span>                               <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb92-8"><a href="data-cleaning.html#cb92-8" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-9"><a href="data-cleaning.html#cb92-9" tabindex="-1"></a>  <span class="er">|</span>.                              <span class="sc">|</span>   <span class="dv">4</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-13</span>]</span>
+<span id="cb92-10"><a href="data-cleaning.html#cb92-10" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-11"><a href="data-cleaning.html#cb92-11" tabindex="-1"></a>  <span class="er">|</span>..                             <span class="sc">|</span>   <span class="dv">7</span>%                   </span>
+<span id="cb92-12"><a href="data-cleaning.html#cb92-12" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-13"><a href="data-cleaning.html#cb92-13" tabindex="-1"></a>  <span class="er">|</span>...                            <span class="sc">|</span>  <span class="dv">11</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-14</span>]</span>
+<span id="cb92-14"><a href="data-cleaning.html#cb92-14" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-15"><a href="data-cleaning.html#cb92-15" tabindex="-1"></a>  <span class="er">|</span>....                           <span class="sc">|</span>  <span class="dv">14</span>%                   </span>
+<span id="cb92-16"><a href="data-cleaning.html#cb92-16" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-17"><a href="data-cleaning.html#cb92-17" tabindex="-1"></a>  <span class="er">|</span>......                         <span class="sc">|</span>  <span class="dv">18</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-15</span>]</span>
+<span id="cb92-18"><a href="data-cleaning.html#cb92-18" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-19"><a href="data-cleaning.html#cb92-19" tabindex="-1"></a>  <span class="er">|</span>.......                        <span class="sc">|</span>  <span class="dv">21</span>%                   </span>
+<span id="cb92-20"><a href="data-cleaning.html#cb92-20" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-21"><a href="data-cleaning.html#cb92-21" tabindex="-1"></a>  <span class="er">|</span>........                       <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-16</span>]</span>
+<span id="cb92-22"><a href="data-cleaning.html#cb92-22" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-23"><a href="data-cleaning.html#cb92-23" tabindex="-1"></a>  <span class="er">|</span>.........                      <span class="sc">|</span>  <span class="dv">29</span>%                   </span>
+<span id="cb92-24"><a href="data-cleaning.html#cb92-24" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-25"><a href="data-cleaning.html#cb92-25" tabindex="-1"></a>  <span class="er">|</span>..........                     <span class="sc">|</span>  <span class="dv">32</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-17</span>]</span>
+<span id="cb92-26"><a href="data-cleaning.html#cb92-26" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-27"><a href="data-cleaning.html#cb92-27" tabindex="-1"></a>  <span class="er">|</span>...........                    <span class="sc">|</span>  <span class="dv">36</span>%                   </span>
+<span id="cb92-28"><a href="data-cleaning.html#cb92-28" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-29"><a href="data-cleaning.html#cb92-29" tabindex="-1"></a>  <span class="er">|</span>............                   <span class="sc">|</span>  <span class="dv">39</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-18</span>]</span>
+<span id="cb92-30"><a href="data-cleaning.html#cb92-30" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-31"><a href="data-cleaning.html#cb92-31" tabindex="-1"></a>  <span class="er">|</span>.............                  <span class="sc">|</span>  <span class="dv">43</span>%                   </span>
+<span id="cb92-32"><a href="data-cleaning.html#cb92-32" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-33"><a href="data-cleaning.html#cb92-33" tabindex="-1"></a>  <span class="er">|</span>..............                 <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-19</span>]</span>
+<span id="cb92-34"><a href="data-cleaning.html#cb92-34" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-35"><a href="data-cleaning.html#cb92-35" tabindex="-1"></a>  <span class="er">|</span>................               <span class="sc">|</span>  <span class="dv">50</span>%                   </span>
+<span id="cb92-36"><a href="data-cleaning.html#cb92-36" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-37"><a href="data-cleaning.html#cb92-37" tabindex="-1"></a>  <span class="er">|</span>.................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-20</span>]</span>
+<span id="cb92-38"><a href="data-cleaning.html#cb92-38" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-39"><a href="data-cleaning.html#cb92-39" tabindex="-1"></a>  <span class="er">|</span>..................             <span class="sc">|</span>  <span class="dv">57</span>%                   </span>
+<span id="cb92-40"><a href="data-cleaning.html#cb92-40" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-41"><a href="data-cleaning.html#cb92-41" tabindex="-1"></a>  <span class="er">|</span>...................            <span class="sc">|</span>  <span class="dv">61</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-21</span>]</span>
+<span id="cb92-42"><a href="data-cleaning.html#cb92-42" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-43"><a href="data-cleaning.html#cb92-43" tabindex="-1"></a>  <span class="er">|</span>....................           <span class="sc">|</span>  <span class="dv">64</span>%                   </span>
+<span id="cb92-44"><a href="data-cleaning.html#cb92-44" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-45"><a href="data-cleaning.html#cb92-45" tabindex="-1"></a>  <span class="er">|</span>.....................          <span class="sc">|</span>  <span class="dv">68</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-22</span>]</span>
+<span id="cb92-46"><a href="data-cleaning.html#cb92-46" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-47"><a href="data-cleaning.html#cb92-47" tabindex="-1"></a>  <span class="er">|</span>......................         <span class="sc">|</span>  <span class="dv">71</span>%                   </span>
+<span id="cb92-48"><a href="data-cleaning.html#cb92-48" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-49"><a href="data-cleaning.html#cb92-49" tabindex="-1"></a>  <span class="er">|</span>.......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-23</span>]</span>
+<span id="cb92-50"><a href="data-cleaning.html#cb92-50" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-51"><a href="data-cleaning.html#cb92-51" tabindex="-1"></a>  <span class="er">|</span>........................       <span class="sc">|</span>  <span class="dv">79</span>%                   </span>
+<span id="cb92-52"><a href="data-cleaning.html#cb92-52" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-53"><a href="data-cleaning.html#cb92-53" tabindex="-1"></a>  <span class="er">|</span>.........................      <span class="sc">|</span>  <span class="dv">82</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-24</span>]</span>
+<span id="cb92-54"><a href="data-cleaning.html#cb92-54" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-55"><a href="data-cleaning.html#cb92-55" tabindex="-1"></a>  <span class="er">|</span>...........................    <span class="sc">|</span>  <span class="dv">86</span>%                   </span>
+<span id="cb92-56"><a href="data-cleaning.html#cb92-56" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-57"><a href="data-cleaning.html#cb92-57" tabindex="-1"></a>  <span class="er">|</span>............................   <span class="sc">|</span>  <span class="dv">89</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-25</span>]</span>
+<span id="cb92-58"><a href="data-cleaning.html#cb92-58" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-59"><a href="data-cleaning.html#cb92-59" tabindex="-1"></a>  <span class="er">|</span>.............................  <span class="sc">|</span>  <span class="dv">93</span>%                   </span>
+<span id="cb92-60"><a href="data-cleaning.html#cb92-60" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-61"><a href="data-cleaning.html#cb92-61" tabindex="-1"></a>  <span class="er">|</span>.............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-26</span>]</span>
+<span id="cb92-62"><a href="data-cleaning.html#cb92-62" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb92-63"><a href="data-cleaning.html#cb92-63" tabindex="-1"></a>  <span class="er">|</span>...............................<span class="sc">|</span> <span class="dv">100</span>%                   </span></code></pre></div>
+<pre><code>#&gt; [1] "\n\n\n# Data cleaning\n\nIn the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. \nData cleaning, a core competency of R, empowers us to clean, filter, transform, and aggregate data, paving the way for meaningful analysis. This introductory paragraph delves into the world of data manipulation and data cleaning in R, highlighting its significance and exploring the key concepts involved.\n\nThere are several methods used for data cleansing, including:\n\n## Renaming colums\n\nDuring data cleansing, column renaming plays a crucial role in organizing and clarifying the dataset. This step involves assigning meaningful and consistent names to columns, which facilitates their interpretation and subsequent use in analysis.\n\n\n```r\n#load the package\nlibrary(dplyr)\n\n#rename the variable \"Are you married?\"\ndata_1 %&gt;%\n  dplyr::rename(marital_status=`Are you married?`)\n```\n\n\n## Handling Missing Data: \n\nMissing data, also known as missing values, is a common challenge encountered in data analysis. It refers to the absence of information for specific variables in certain observations within your dataset. To deal with missing data we have two options: impute data or remove data.\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2.1) Imputation\n\nwe can use imputation by mean, median or mode.\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Imputation by mean*:\n\n\n```r\n#Create a new column of number of varieties\ndata_1$number_variety &lt;- str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)\n\n#verify the type of the column\nstr(data_1$number_variety)\n\n#transform the type into number\ndata_1$number_variety &lt;- as.integer(data_1$number_variety)\n\n#impute NA values by mean\ndata_1$number_variety[is.na(data_1$number_variety)]&lt;-round(mean(data_1$number_variety, na.rm = TRUE))\n```\n\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Imputation by median*:\n\n\n```r\nlibrary(stringr)\n#function to extract the number of kg in the column\ndata_1$`What is the production in kg or ton/year?` &lt;- sapply(data_1$`What is the production in kg or ton/year?`, function(x) {\n    # Extract digits using regular expression and convert to numeric\n    str_extract(x, \"\\\\d+\") %&gt;% as.numeric()\n})\n\n#impute the column by median\ndata_1$`What is the production in kg or ton/year?`[is.na(data_1$`What is the production in kg or ton/year?`)]&lt;-median(data_1$`What is the production in kg or ton/year?`, na.rm = TRUE)\n\n```\n\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Imputation by mode*:\n\n\n```r\ndata_1$`Where do you get your seeds?`[is.na(data_1$`Where do you get your seeds?`)] &lt;- names(which.max(table(data_1$`Where do you get your seeds?`)))\n```\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2.2) Removing data\n\nThere are 2 usuals methods for deleting data when dealing with missing data: listwise and dropping variables.\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Listwise*:\n\nIn this method, all data for an observation that has one or more missing values are deleted. The analysis is run only on observations that have a complete set of data. \n\n\n```r\nna.omit(data_1)\n```\n\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Dropping variables*:\n\nIf data is missing for a large proportion of the observations, it may be best to discard the variable entirely if it is insignificant.\n\n\n```r\nsubset( data_1, select = -c(`How do you call these varieties you have?`))\n```\n\n## Handling outliers\n\nData points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.\n\n\n```r\noutlier_values &lt;- boxplot.stats(data_1$`How many children do you have?`)$out  # outlier values.\nboxplot(data_1$`How many children do you have?`, main=\"Number of children\", boxwex=0.1)\nmtext(paste(\"Outliers: \", paste(outlier_values, collapse=\", \")), cex=0.6)\n```\n\nAfter identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)\n\n## Removing duplicates: \\\nRemoving duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.\n\n\n```r\ndata_1 &lt;- data_1 %&gt;% \n  dplyr::distinct()\n```\n\n## Checking data structure: \n\nChecking data types is a crucial step in data analysis because it ensures you're working with the data in the way it's intended in order to avoid errors later in the analysis.\n\n\n```r\nstr(data_1)\n```\n\nYou can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc....if the data is not in the right type.\n\n## Handling Inconsistent Categorical Data\n\nCategorical variables may have inconsistent spellings or categories. The recode() function or manual recoding can help standardize categories.\n\n\n```r\ndata_1 &lt;- data_1 %&gt;%\n  dplyr::mutate(`How do you store your seed?` = dplyr::recode(`How do you store your seed?`, \"In bags\" = \"in bags\"))\n```\n\n\n## Combine dataframes\n\nSuppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Combine by column\n\n\n```r\nculture1 &lt;- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Area = c(100, 150, 120)\n)\n\nculture2 &lt;- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Return = c(50, 60, 45)\n)\n\nculture_final1 &lt;- cbind(culture1, culture2)\n```\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- combine by row\n\n\n```r\nculture3 &lt;- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Area = c(100, 150, 120)\n)\n\nculture4 &lt;- data.frame(\n  Culture = c(\"potato\", \"cassava\"),\n  Area = c(250, 400)\n)\n\nculture_final2 &lt;- rbind(culture3, culture4)\n```\n\n## Data Validation\n\nData validation involves checking data against predefined rules or criteria. It ensures that data adheres to specific requirements or constraints.\n\nValidation checks can prevent incorrect or inconsistent data from entering your analysis.\n\n## Regular expressions\n\nRegular expressions (regex) are powerful tools for pattern matching and replacement in text data. The gsub() function is commonly used for global pattern substitution.\n\n\n```r\ndata_1$`How much does 1kg of tasba seed cost?` &lt;- gsub(\"FCFA\", \"\", \n                        data_1$`How much does 1kg of tasba seed cost?`)\n```\n\n\n"</code></pre>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./dependencies.R"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></div>
+<div class="next"><a href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-cleaning"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="nav-link" href="#renaming-colums"><span class="header-section-number">6.1</span> Renaming colums</a></li>
+<li><a class="nav-link" href="#handling-missing-data"><span class="header-section-number">6.2</span> Handling Missing Data:</a></li>
+<li><a class="nav-link" href="#handling-outliers"><span class="header-section-number">6.3</span> Handling outliers</a></li>
+<li><a class="nav-link" href="#removing-duplicates"><span class="header-section-number">6.4</span> Removing duplicates:</a></li>
+<li><a class="nav-link" href="#checking-data-structure"><span class="header-section-number">6.5</span> Checking data structure:</a></li>
+<li><a class="nav-link" href="#handling-inconsistent-categorical-data"><span class="header-section-number">6.6</span> Handling Inconsistent Categorical Data</a></li>
+<li><a class="nav-link" href="#combine-dataframes"><span class="header-section-number">6.7</span> Combine dataframes</a></li>
+<li><a class="nav-link" href="#data-validation"><span class="header-section-number">6.8</span> Data Validation</a></li>
+<li><a class="nav-link" href="#regular-expressions"><span class="header-section-number">6.9</span> Regular expressions</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/05-data_cleaning.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/05-data_cleaning.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

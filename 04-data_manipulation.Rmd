@@ -1,4 +1,4 @@
-```{r}
+```{r include=FALSE, echo=FALSE}
 source("./dependencies.R")
 ```
 
@@ -236,7 +236,7 @@ data_1 %>%
         summarize(dataframeName, aggregate_function(columnName))
         
 Example:
-```{r}
+```{r eval=FALSE}
 data_1 %>%
   group_by(Sex) %>%
   summarize(mean=mean(`How many children do you have?`), count=n())

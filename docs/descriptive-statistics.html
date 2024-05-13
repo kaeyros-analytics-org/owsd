@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 Descriptive statistics | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Descriptive statistics | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Descriptive statistics | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="7.1 Central Tendency Indicators Central tendency indicators, also known as measures of central tendency, are statistical measures used to summarize a set of data by finding a single value that...">
+<meta property="og:description" content="7.1 Central Tendency Indicators Central tendency indicators, also known as measures of central tendency, are statistical measures used to summarize a set of data by finding a single value that...">
+<meta name="twitter:description" content="7.1 Central Tendency Indicators Central tendency indicators, also known as measures of central tendency, are statistical measures used to summarize a set of data by finding a single value that...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="active" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="descriptive-statistics" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> Descriptive statistics<a class="anchor" aria-label="anchor" href="#descriptive-statistics"><i class="fas fa-link"></i></a>
+</h1>
+<div id="central-tendency-indicators" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Central Tendency Indicators<a class="anchor" aria-label="anchor" href="#central-tendency-indicators"><i class="fas fa-link"></i></a>
+</h2>
+<p>Central tendency indicators, also known as measures of central tendency, are statistical measures used to summarize a set of data by finding a single value that represents the middle or center of that data. They basically give you an idea of where most of the data points tend to cluster around.</p>
+<p>There are three main types of central tendency indicators:</p>
+<ol style="list-style-type: decimal">
+<li>Mean<br>
+This is the most common one, also called the average. It’s calculated by adding up all the values in your data set and then dividing by the number of values.<br>
+</li>
+</ol>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 138.3084</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Median<br>
+This is the middle number when you arrange your data set in order, from least to greatest. If you have an even number of data points, the median is the average of the two middle numbers.<br>
+</li>
+</ol>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Mode<br>
+This is the most frequent value in your data set. You can have multiple modes, by the way, if there are a couple of values that tie for the most frequent.</li>
+</ol>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Are you married?`</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "YES"</span></span></code></pre></div>
+</div>
+<div id="variability-indicators" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Variability indicators<a class="anchor" aria-label="anchor" href="#variability-indicators"><i class="fas fa-link"></i></a>
+</h2>
+<p>Variability indicators, in contrast to central tendency, tell you how spread out your data is. They describe how much the data points differ from each other and from the central value (mean, median, or mode). There are a few common ways to measure variability:</p>
+<ol style="list-style-type: decimal">
+<li>Variance<br>
+This is the average of the squared deviations of each data point from the mean. It tells you how much your data varies on average, but since it uses squared values, it can be sensitive to extreme values.</li>
+</ol>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 296798.9</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Standard deviation<br>
+This is the square root of the variance. Standard deviation is expressed in the same units as your original data (e.g., meters, dollars), which can be easier to interpret than variance. It also reflects how much your data deviates from the mean on average.</li>
+</ol>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#1st approch using the native function</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 544.7925</span></span>
+<span></span>
+<span><span class="co">#2nd approch</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is the production in kg or ton/year?`</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 544.7925</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Range<br>
+This is the simplest method. It’s just the difference between the highest and lowest values in your data set. While easy to calculate, the range can be misleading if your data has outliers.</li>
+</ol>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 12</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>Interquartile range (IQR)<br>
+This focuses on the middle half of your data. It represents the range between the first quartile (Q1) and the third quartile (Q3). Half your data falls within this IQR, giving a better idea of how spread out the bulk of the data is.</li>
+</ol>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+</div>
+<div id="quantiles" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> Quantiles<a class="anchor" aria-label="anchor" href="#quantiles"><i class="fas fa-link"></i></a>
+</h2>
+<p>Quantiles are values that split sorted data or a probability distribution into equal parts. In general terms, a q-quantile divides sorted data into q parts. The most commonly used quantiles have special names:</p>
+<p>      Quartiles:</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   0%  25%  50%  75% 100% </span></span>
+<span><span class="co">#&gt;    0    0    2    4   12</span></span></code></pre></div>
+<p>      Deciles:</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>,probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% </span></span>
+<span><span class="co">#&gt;    0    0    0    0    0    2    2    3    5    6   12</span></span></code></pre></div>
+<p>      Percentiles:</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>,probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, by <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    0%    1%    2%    3%    4%    5%    6%    7%    8%    9% </span></span>
+<span><span class="co">#&gt;  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 </span></span>
+<span><span class="co">#&gt;   10%   11%   12%   13%   14%   15%   16%   17%   18%   19% </span></span>
+<span><span class="co">#&gt;  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 </span></span>
+<span><span class="co">#&gt;   20%   21%   22%   23%   24%   25%   26%   27%   28%   29% </span></span>
+<span><span class="co">#&gt;  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 </span></span>
+<span><span class="co">#&gt;   30%   31%   32%   33%   34%   35%   36%   37%   38%   39% </span></span>
+<span><span class="co">#&gt;  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 </span></span>
+<span><span class="co">#&gt;   40%   41%   42%   43%   44%   45%   46%   47%   48%   49% </span></span>
+<span><span class="co">#&gt;  0.00  0.46  1.00  1.00  1.00  1.00  1.00  1.00  1.88  2.00 </span></span>
+<span><span class="co">#&gt;   50%   51%   52%   53%   54%   55%   56%   57%   58%   59% </span></span>
+<span><span class="co">#&gt;  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00  2.00 </span></span>
+<span><span class="co">#&gt;   60%   61%   62%   63%   64%   65%   66%   67%   68%   69% </span></span>
+<span><span class="co">#&gt;  2.00  2.00  2.00  2.00  2.00  2.90  3.00  3.00  3.00  3.00 </span></span>
+<span><span class="co">#&gt;   70%   71%   72%   73%   74%   75%   76%   77%   78%   79% </span></span>
+<span><span class="co">#&gt;  3.00  3.00  3.00  3.38  4.00  4.00  4.00  4.00  4.68  5.00 </span></span>
+<span><span class="co">#&gt;   80%   81%   82%   83%   84%   85%   86%   87%   88%   89% </span></span>
+<span><span class="co">#&gt;  5.00  5.00  5.00  5.00  5.00  5.00  5.00  5.00  5.28  6.00 </span></span>
+<span><span class="co">#&gt;   90%   91%   92%   93%   94%   95%   96%   97%   98%   99% </span></span>
+<span><span class="co">#&gt;  6.00  6.00  6.00  6.58  7.64  8.70  9.76 10.00 10.00 11.88 </span></span>
+<span><span class="co">#&gt;  100% </span></span>
+<span><span class="co">#&gt; 12.00</span></span></code></pre></div>
+</div>
+<div id="contingency-table" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Contingency table<a class="anchor" aria-label="anchor" href="#contingency-table"><i class="fas fa-link"></i></a>
+</h2>
+<p>A contingency table displays frequencies for combinations of two categorical variables.</p>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span>, <span class="va">data_1</span><span class="op">$</span><span class="va">`Are you married?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt;         </span></span>
+<span><span class="co">#&gt;          NO YES</span></span>
+<span><span class="co">#&gt;   Female 19  39</span></span>
+<span><span class="co">#&gt;   Male   28  21</span></span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></div>
+<div class="next"><a href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#descriptive-statistics"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="nav-link" href="#central-tendency-indicators"><span class="header-section-number">7.1</span> Central Tendency Indicators</a></li>
+<li><a class="nav-link" href="#variability-indicators"><span class="header-section-number">7.2</span> Variability indicators</a></li>
+<li><a class="nav-link" href="#quantiles"><span class="header-section-number">7.3</span> Quantiles</a></li>
+<li><a class="nav-link" href="#contingency-table"><span class="header-section-number">7.4</span> Contingency table</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/06-descriptive_statistics.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/06-descriptive_statistics.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

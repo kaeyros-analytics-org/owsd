@@ -1,4 +1,4 @@
-```{r}
+```{r include=FALSE, echo=FALSE}
 knitr::knit_child("04-data_manipulation.Rmd")
 source("./dependencies.R")
 ```
@@ -10,16 +10,21 @@ Data cleaning, a core competency of R, empowers us to clean, filter, transform, 
 
 There are several methods used for data cleansing, including:
 
-1) Renaming colums
+## Renaming colums
 
 During data cleansing, column renaming plays a crucial role in organizing and clarifying the dataset. This step involves assigning meaningful and consistent names to columns, which facilitates their interpretation and subsequent use in analysis.
+
 ```{r eval=FALSE}
+#load the package
+library(dplyr)
+
+#rename the variable "Are you married?"
 data_1 %>%
-  rename(marital_status=`Are you married?`)
+  dplyr::rename(marital_status=`Are you married?`)
 ```
 
 
-2) Handling Missing Data: 
+## Handling Missing Data: 
 
 Missing data, also known as missing values, is a common challenge encountered in data analysis. It refers to the absence of information for specific variables in certain observations within your dataset. To deal with missing data we have two options: impute data or remove data.
 
@@ -28,6 +33,7 @@ Missing data, also known as missing values, is a common challenge encountered in
 we can use imputation by mean, median or mode.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by mean*:
+
 ```{r eval=FALSE}
 #Create a new column of number of varieties
 data_1$number_variety <- str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)
@@ -44,7 +50,9 @@ data_1$number_variety[is.na(data_1$number_variety)]<-round(mean(data_1$number_va
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by median*:
+
 ```{r}
+library(stringr)
 #function to extract the number of kg in the column
 data_1$`What is the production in kg or ton/year?` <- sapply(data_1$`What is the production in kg or ton/year?`, function(x) {
     # Extract digits using regular expression and convert to numeric
@@ -59,6 +67,7 @@ data_1$`What is the production in kg or ton/year?`[is.na(data_1$`What is the pro
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by mode*:
+
 ```{r}
 data_1$`Where do you get your seeds?`[is.na(data_1$`Where do you get your seeds?`)] <- names(which.max(table(data_1$`Where do you get your seeds?`)))
 
@@ -71,48 +80,65 @@ There are 2 usuals methods for deleting data when dealing with missing data: lis
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Listwise*:
 
 In this method, all data for an observation that has one or more missing values are deleted. The analysis is run only on observations that have a complete set of data. 
+
 ```{r eval=FALSE}
-#remove all rows who does'nt have a tasba farm
-data_listwise <- data_1
-na.omit(data_listwise)
+na.omit(data_1)
 ```
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Dropping variables*:
 
 If data is missing for a large proportion of the observations, it may be best to discard the variable entirely if it is insignificant.
+
 ```{r eval=FALSE}
 subset( data_1, select = -c(`How do you call these varieties you have?`))
 ```
 
-3) Handling outliers
+## Handling outliers
+
 Data points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.
 
 ```{r eval=FALSE}
-# data_1 <- data_1$`How many children do you have?`[!data_1$`How many children do you have?` %in% boxplot.stats(data_1$`How many children do you have?`)$out]
+outlier_values <- boxplot.stats(data_1$`How many children do you have?`)$out  # outlier values.
+boxplot(data_1$`How many children do you have?`, main="Number of children", boxwex=0.1)
+mtext(paste("Outliers: ", paste(outlier_values, collapse=", ")), cex=0.6)
 ```
 
+After identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)
 
-4) Removing duplicates: 
+## Removing duplicates: \
 Removing duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.
+
 ```{r eval=FALSE}
 data_1 <- data_1 %>% 
-  distinct()
+  dplyr::distinct()
 ```
 
-5) Checking data structure: 
+## Checking data structure: 
 
 Checking data types is a crucial step in data analysis because it ensures you're working with the data in the way it's intended in order to avoid errors later in the analysis.
+
 ```{r eval=FALSE}
 str(data_1)
 ```
+
 You can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc....if the data is not in the right type.
 
-6) Combine dataframes
+## Handling Inconsistent Categorical Data
+
+Categorical variables may have inconsistent spellings or categories. The recode() function or manual recoding can help standardize categories.
+
+```{r}
+data_1 <- data_1 %>%
+  dplyr::mutate(`How do you store your seed?` = dplyr::recode(`How do you store your seed?`, "In bags" = "in bags"))
+```
+
+
+## Combine dataframes
 
 Suppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.
 &nbsp;&nbsp;&nbsp;&nbsp;- Combine by column
-00
+
 ```{r eval=FALSE}
 culture1 <- data.frame(
   Culture = c("wheat", "maize", "rice"),
@@ -128,6 +154,7 @@ culture_final1 <- cbind(culture1, culture2)
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;- combine by row
+
 ```{r eval=FALSE}
 culture3 <- data.frame(
   Culture = c("wheat", "maize", "rice"),
@@ -142,21 +169,20 @@ culture4 <- data.frame(
 culture_final2 <- rbind(culture3, culture4)
 ```
 
+## Data Validation
+
+Data validation involves checking data against predefined rules or criteria. It ensures that data adheres to specific requirements or constraints.
+
+Validation checks can prevent incorrect or inconsistent data from entering your analysis.
+
+## Regular expressions
+
+Regular expressions (regex) are powerful tools for pattern matching and replacement in text data. The gsub() function is commonly used for global pattern substitution.
 
 ```{r eval=FALSE}
-
-# 7) Data inconsistencies:
-# 
-# When faced with a data set, we are often confronted with data inconsistencies. This can take the form of spelling errors, language heterogeneity in the dataset, etc.
-# 
-# &nbsp;&nbsp;&nbsp;&nbsp;Handling spelling errors
-
-#&nbsp;&nbsp;&nbsp;&nbsp; Handling language heterogeneity
-
+data_1$`How much does 1kg of tasba seed cost?` <- gsub("FCFA", "", 
+                        data_1$`How much does 1kg of tasba seed cost?`)
 ```
-
-
-
 
 
 

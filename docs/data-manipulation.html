@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Data manipulation | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Data manipulation | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Data manipulation | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+<meta property="og:description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+<meta name="twitter:description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="active" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-manipulation" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Data manipulation<a class="anchor" aria-label="anchor" href="#data-manipulation"><i class="fas fa-link"></i></a>
+</h1>
+<p>Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.</p>
+<div id="importation-of-data" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Importation of data<a class="anchor" aria-label="anchor" href="#importation-of-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.</p>
+<p>In this part, we will learn to load commonly used <strong>CSV</strong>, <strong>Excel</strong>, <strong>JSON</strong>, <strong>Database</strong>, and <strong>XML/HTML</strong> data files in R. Moreover, we will also look at less commonly used file formats such as <strong>SPSS</strong> and <strong>Stata</strong>.</p>
+<p>Importing data from csv to R:</p>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="va">children_anemia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/children_anemia.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from excel to R:</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop1.xls"</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from json to R:</p>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_json</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"./data/sample4.json"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#transform data into dataframe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">data_json</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from database to R:</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#establish the connection to the database</span></span>
+<span><span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"./data/mental_health.sqlite"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#list names of all the tables in the database</span></span>
+<span><span class="fu">dbListTables</span><span class="op">(</span><span class="va">conn</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Answer"   "Question" "Survey"</span></span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#retrieve data from table Question</span></span>
+<span><span class="va">data_sqlite</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Question"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_sqlite</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from spss to R:</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_spss</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from stata to R:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="va">data_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="basic-exploration-of-data" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Basic exploration of data<a class="anchor" aria-label="anchor" href="#basic-exploration-of-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data exploration helps you explore and think about the data you’re working. The goal with data exploration is to understand, and visualize data so that you can discover insights, relationships, patterns, and anomalies.
+To explore data in R we have many functions to achieve that.</p>
+<ul>
+<li>Function head(): is used to view the first few rows of your dataset.</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function tail(): is used to view the last few rows of your dataset.</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function str(): is used to provide the structure of your data frame, showing you the data types.</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function dim(): is used to know about the number of rows and columns.</li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function table(): used to build a contingency table of the counts at each combination of factor levels.</li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Female   Male </span></span>
+<span><span class="co">#&gt;     58     49</span></span></code></pre></div>
+<ul>
+<li>Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Do you  have children?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "NO"  "YES"</span></span></code></pre></div>
+<ul>
+<li>Function hist(): function to plot a basic histogram to view distribution of a variable.</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-data_manipulation_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<ul>
+<li>Function boxplot(): function to plot a boxplot, it provides a compact summary of the data’s central tendency, spread, and potential outliers.</li>
+</ul>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="04-data_manipulation_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+</div>
+<div id="data-manipulation-with-dplyr" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Data manipulation with dplyr<a class="anchor" aria-label="anchor" href="#data-manipulation-with-dplyr"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>IMPORTANT POINT:</strong>
+One of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.</p>
+<p>In order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.</p>
+<ul>
+<li>
+<p>filter():</p>
+<p>The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:</p>
+<pre><code>  filter(dataframeName,condition)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">data_1</span>, <span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>distinct():</p>
+<p>The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:</p>
+<pre><code>  distinct(dataframeName, col1, col2,.., .keep_all=TRUE)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>arrange():</p>
+<p>In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:</p>
+<pre><code>  arrange(dataframeName, columnName)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>select():</p>
+<p>The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:</p>
+<pre><code>  select(dataframeName, col1,col2,…)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Sex</span>,<span class="va">`Do you  have children?`</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>rename():</p>
+<p>The rename() function is used to change the column names. This can be done by the below syntax:</p>
+<pre><code>  rename(dataframeName, newName=oldName)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Status<span class="op">=</span> <span class="va">`Are you married?`</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>mutate():</p>
+<p>The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:</p>
+<pre><code>  mutate(dataframeName, newVariable=formula)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>transmute():</p>
+<p>The transmute() function drops the old variables and creates new variables. Here is the syntax:</p>
+<pre><code>  transmute(dataframeName, newVariable=formula)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span>sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>summarize():</p>
+<p>Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the <code>group_by()</code> function. The syntax of summarize() method is specified below:</p>
+<pre><code>  summarize(dataframeName, aggregate_function(columnName))</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">`How many children do you have?`</span><span class="op">)</span>, count<span class="op">=</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></div>
+<div class="next"><a href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-manipulation"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="nav-link" href="#importation-of-data"><span class="header-section-number">5.1</span> Importation of data</a></li>
+<li><a class="nav-link" href="#basic-exploration-of-data"><span class="header-section-number">5.2</span> Basic exploration of data</a></li>
+<li><a class="nav-link" href="#data-manipulation-with-dplyr"><span class="header-section-number">5.3</span> Data manipulation with dplyr</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/04-data_manipulation.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/04-data_manipulation.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

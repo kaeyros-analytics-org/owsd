@@ -55,6 +55,10 @@
 <li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
 <li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
 <li><a class="active" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
 </ul>
 
         <div class="book-extra">
@@ -71,13 +75,13 @@
 <span class="header-section-number">9.1</span> Bar chart<a class="anchor" aria-label="anchor" href="#bar-chart"><i class="fas fa-link"></i></a>
 </h2>
 <p>A bar chart is a representation of numerical data in pictorial form of rectangles (or bars) having uniform width and varying heights.” They are also known as bar graphs.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#construction of the dataframe</span></span>
 <span><span class="va">data_barchart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is your religion?`</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">data_barchart</span> <span class="op">&lt;-</span> <span class="va">data_barchart</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">data_barchart</span> <span class="op">&lt;-</span> <span class="va">data_barchart</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percentage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="op">(</span><span class="va">Freq</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Freq</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>,</span>
-<span>                  pct1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">percentage</span>, <span class="st">"%"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">rename</span><span class="op">(</span>Religion<span class="op">=</span><span class="va">Var1</span><span class="op">)</span></span>
+<span>                  pct1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">percentage</span>, <span class="st">"%"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Religion<span class="op">=</span><span class="va">Var1</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">#plot the bar chart</span></span>
@@ -85,21 +89,21 @@
 <span>                  type <span class="op">=</span> <span class="st">"bar"</span>,</span>
 <span>                  y <span class="op">=</span> <span class="op">~</span><span class="va">percentage</span>,</span>
 <span>                  marker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#318CE7"</span><span class="op">)</span>,</span>
-<span>                  text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">data_barchart</span><span class="op">$</span><span class="va">pct1</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>, textposition <span class="op">=</span> <span class="st">'outside'</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>                  text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">data_barchart</span><span class="op">$</span><span class="va">pct1</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>, textposition <span class="op">=</span> <span class="st">'outside'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">layout</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of persons by religion"</span></span>
 <span>    <span class="op">)</span></span></code></pre></div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-bfcc745891f02bcce3a1" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-bfcc745891f02bcce3a1">{"x":{"visdat":{"63305329542c":["function () ","plotlyVisDat"]},"cur_data":"63305329542c","attrs":{"63305329542c":{"x":{},"y":{},"marker":{"color":"#318CE7"},"text":["0.93%","28.04%","13.08%","1.87%","56.07%"],"textposition":"outside","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Number of persons by religion","xaxis":{"domain":[0,1],"automargin":true,"title":"Religion","type":"category","categoryorder":"array","categoryarray":["Adventist","Catholic","Muslim","pentecostal","Protestant"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"percentage"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Adventist","Catholic","Muslim","pentecostal","Protestant"],"y":[0.93000000000000005,28.039999999999999,13.08,1.8700000000000001,56.07],"marker":{"color":"#318CE7","line":{"color":"rgba(31,119,180,1)"}},"text":["0.93%","28.04%","13.08%","1.87%","56.07%"],"textposition":["outside","outside","outside","outside","outside"],"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-7e7a63de85469889aad5" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-7e7a63de85469889aad5">{"x":{"visdat":{"50a84a065a5f":["function () ","plotlyVisDat"]},"cur_data":"50a84a065a5f","attrs":{"50a84a065a5f":{"x":{},"y":{},"marker":{"color":"#318CE7"},"text":["0.93%","28.04%","13.08%","1.87%","56.07%"],"textposition":"outside","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Number of persons by religion","xaxis":{"domain":[0,1],"automargin":true,"title":"Religion","type":"category","categoryorder":"array","categoryarray":["Adventist","Catholic","Muslim","pentecostal","Protestant"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"percentage"},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Adventist","Catholic","Muslim","pentecostal","Protestant"],"y":[0.93000000000000005,28.039999999999999,13.08,1.8700000000000001,56.07],"marker":{"color":"#318CE7","line":{"color":"rgba(31,119,180,1)"}},"text":["0.93%","28.04%","13.08%","1.87%","56.07%"],"textposition":["outside","outside","outside","outside","outside"],"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="pie-chart" class="section level2" number="9.2">
 <h2>
 <span class="header-section-number">9.2</span> Pie chart<a class="anchor" aria-label="anchor" href="#pie-chart"><i class="fas fa-link"></i></a>
 </h2>
 <p>A pie chart is a type of graph representing data in a circular form, with each slice of the circle representing a fraction or proportionate part of the whole.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#construction of the dataframe</span></span>
 <span><span class="va">data_piechart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">data_piechart</span> <span class="op">&lt;-</span> <span class="va">data_piechart</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">data_piechart</span> <span class="op">&lt;-</span> <span class="va">data_piechart</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percentage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="op">(</span><span class="va">Freq</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Freq</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>,</span>
 <span>                  pct1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">percentage</span>, <span class="st">"%"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -113,19 +117,19 @@
 <span>                        <span class="st">"&lt;br&gt;Number of persons :"</span>, <span class="va">Freq</span>,</span>
 <span>                        <span class="st">"&lt;br&gt;Percentage :"</span>, <span class="va">pct1</span><span class="op">)</span>,</span>
 <span>          marker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#318CE7"</span>, <span class="st">"#89CFF0"</span><span class="op">)</span>,</span>
-<span>                        line <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'#FFFFFF'</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,showlegend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>                        line <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'#FFFFFF'</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,showlegend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">layout</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">""</span>,</span>
 <span>           xaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>showgrid <span class="op">=</span> <span class="cn">FALSE</span>, zeroline <span class="op">=</span> <span class="cn">FALSE</span>, showticklabels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>           yaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>showgrid <span class="op">=</span> <span class="cn">FALSE</span>, zeroline <span class="op">=</span> <span class="cn">FALSE</span>, showticklabels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="plotly html-widget html-fill-item" id="htmlwidget-7a7274a3d5856f13ce6c" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-7a7274a3d5856f13ce6c">{"x":{"visdat":{"6330566c6309":["function () ","plotlyVisDat"]},"cur_data":"6330566c6309","attrs":{"6330566c6309":{"labels":{},"values":{},"hoverinfo":"text","textinfo":"label+percent","insidetextfont":{"color":"#FFFFFF"},"text":{},"marker":{"colors":["#318CE7","#89CFF0"],"line":{"color":"#FFFFFF","width":1},"showlegend":false},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Female","Male"],"values":[58,49],"hoverinfo":["text","text"],"textinfo":"label+percent","insidetextfont":{"color":"#FFFFFF"},"text":["Sex : Female <br>Number of persons : 58 <br>Percentage : 54.21%","Sex : Male <br>Number of persons : 49 <br>Percentage : 45.79%"],"marker":{"color":"rgba(31,119,180,1)","colors":["#318CE7","#89CFF0"],"line":{"color":"#FFFFFF","width":1},"showlegend":false},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-48059beac8bf4517b748" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-48059beac8bf4517b748">{"x":{"visdat":{"50a847bb1373":["function () ","plotlyVisDat"]},"cur_data":"50a847bb1373","attrs":{"50a847bb1373":{"labels":{},"values":{},"hoverinfo":"text","textinfo":"label+percent","insidetextfont":{"color":"#FFFFFF"},"text":{},"marker":{"colors":["#318CE7","#89CFF0"],"line":{"color":"#FFFFFF","width":1},"showlegend":false},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"","xaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"yaxis":{"showgrid":false,"zeroline":false,"showticklabels":false},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Female","Male"],"values":[58,49],"hoverinfo":["text","text"],"textinfo":"label+percent","insidetextfont":{"color":"#FFFFFF"},"text":["Sex : Female <br>Number of persons : 58 <br>Percentage : 54.21%","Sex : Male <br>Number of persons : 49 <br>Percentage : 45.79%"],"marker":{"color":"rgba(31,119,180,1)","colors":["#318CE7","#89CFF0"],"line":{"color":"#FFFFFF","width":1},"showlegend":false},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="histogram" class="section level2" number="9.3">
 <h2>
 <span class="header-section-number">9.3</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
 </h2>
 <p>A histogram is a chart that plots the distribution of a numeric variable’s values as a series of bars. Each bar typically covers a range of numeric values called a bin or class; a bar’s height indicates the frequency of data points with a value within the corresponding bin.</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Change colors</span></span>
@@ -138,29 +142,36 @@
 </div>
 <div id="scatter-plot" class="section level2" number="9.4">
 <h2>
-<span class="header-section-number">9.4</span> Scatter plot<a class="anchor" aria-label="anchor" href="#scatter-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.4</span> Scatter plot<br><a class="anchor" aria-label="anchor" href="#scatter-plot"><i class="fas fa-link"></i></a>
 </h2>
+<p>A scatter plot (or scatter chart, scatter graph) uses dots to represent values for two different numeric variables. The position of each dot on the horizontal and vertical axis indicates values for an individual data point. Scatter plots are used to observe relationships between variables.</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">time_series</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop2.xls"</span>, sheet <span class="op">=</span> <span class="st">"times_series"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">time_series</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`Heigh of plant`</span>,</span>
+<span>                   y <span class="op">=</span> <span class="va">`Number of roots`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-visualization_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 </div>
 <div id="line-chart" class="section level2" number="9.5">
 <h2>
-<span class="header-section-number">9.5</span> Line chart<a class="anchor" aria-label="anchor" href="#line-chart"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.5</span> Line chart<br><a class="anchor" aria-label="anchor" href="#line-chart"><i class="fas fa-link"></i></a>
 </h2>
+<p>A line chart, also known as a line graph, is a visual representation of data that displays information as a series of data points connected by straight line segments. Line charts are commonly used to show trends or changes over time, making them particularly useful for illustrating temporal patterns or relationships in data. Line charts provide a clear and intuitive way to visualize how values evolve or fluctuate over a specific period.</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">time_series</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Month</span>, y <span class="op">=</span> <span class="va">`Heigh of plant`</span>,color <span class="op">=</span> <span class="va">Treatments</span>,group <span class="op">=</span> <span class="va">Treatments</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="08-visualization_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 </div>
 <div id="map-visualization" class="section level2" number="9.6">
 <h2>
 <span class="header-section-number">9.6</span> Map visualization<a class="anchor" aria-label="anchor" href="#map-visualization"><i class="fas fa-link"></i></a>
-</h2>
-</div>
-<div id="wordcloud" class="section level2" number="9.7">
-<h2>
-<span class="header-section-number">9.7</span> Wordcloud<a class="anchor" aria-label="anchor" href="#wordcloud"><i class="fas fa-link"></i></a>
 </h2>
 
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></div>
-<div class="empty"></div>
+<div class="next"><a href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -171,7 +182,6 @@
 <li><a class="nav-link" href="#scatter-plot"><span class="header-section-number">9.4</span> Scatter plot</a></li>
 <li><a class="nav-link" href="#line-chart"><span class="header-section-number">9.5</span> Line chart</a></li>
 <li><a class="nav-link" href="#map-visualization"><span class="header-section-number">9.6</span> Map visualization</a></li>
-<li><a class="nav-link" href="#wordcloud"><span class="header-section-number">9.7</span> Wordcloud</a></li>
 </ul>
 
       <div class="book-extra">
@@ -189,7 +199,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-08.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

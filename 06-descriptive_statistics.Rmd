@@ -90,6 +90,6 @@ quantile(data_1$`How many children do you have?`,probs = seq(0, 1, by = 0.01))
 
 A contingency table displays frequencies for combinations of two categorical variables. 
 ```{r}
-
+table(data_1$Sex, data_1$`Are you married?`)
 ```
 

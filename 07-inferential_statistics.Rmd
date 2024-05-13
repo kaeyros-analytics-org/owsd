@@ -1,3 +1,9 @@
+```{r include=FALSE, echo=FALSE}
+knitr::knit_child("05-data_cleaning.Rmd")
+source("./dependencies.R")
+```
+
+
 # Inferential statistics
 
 Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and summarizes the characteristics of a sample, inferential statistics uses statistical methods and models to make inferences or predictions about the wider population from which the sample is drawn.
@@ -58,6 +64,10 @@ The process of hypothesis testing involves the following steps:
 There are various types of statistical tests, each designed to address different research questions and hypotheses. Some of the most commonly used statistical tests include:
 
 1. T test or Student test
+```{r}
+
+```
+
 
 2. ANOVA
 

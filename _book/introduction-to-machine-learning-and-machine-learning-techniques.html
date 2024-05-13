@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Introduction to Machine Learning and Machine Learning techniques | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Introduction to Machine Learning and Machine Learning techniques | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Introduction to Machine Learning and Machine Learning techniques | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Machine learning (ML) is a field of artificial intelligence (AI) that enables computers to learn from data without being explicitly programmed. Instead of following rigid instructions, machine...">
+<meta property="og:description" content="Machine learning (ML) is a field of artificial intelligence (AI) that enables computers to learn from data without being explicitly programmed. Instead of following rigid instructions, machine...">
+<meta name="twitter:description" content="Machine learning (ML) is a field of artificial intelligence (AI) that enables computers to learn from data without being explicitly programmed. Instead of following rigid instructions, machine...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="active" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction-to-machine-learning-and-machine-learning-techniques" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques<a class="anchor" aria-label="anchor" href="#introduction-to-machine-learning-and-machine-learning-techniques"><i class="fas fa-link"></i></a>
+</h1>
+<p>Machine learning (ML) is a field of artificial intelligence (AI) that enables computers to learn from data without being explicitly programmed. Instead of following rigid instructions, machine learning algorithms adapt and improve their performance according to the data they are exposed to.<br>
+This machine-learning capability is revolutionizing many sectors, including finance, healthcare, marketing and manufacturing. It enables computers to perform complex tasks previously considered the exclusive domain of humans, such as image recognition, natural language processing and autonomous decision-making.</p>
+<div id="machine-learning-techniques" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Machine learning techniques<a class="anchor" aria-label="anchor" href="#machine-learning-techniques"><i class="fas fa-link"></i></a>
+</h2>
+<p>Machine learning relies on a variety of techniques, each with its own strengths and weaknesses. The most common techniques include:</p>
+<div id="supervised-learning" class="section level3 unnumbered">
+<h3>Supervised learning<a class="anchor" aria-label="anchor" href="#supervised-learning"><i class="fas fa-link"></i></a>
+</h3>
+<p>Imagine you’re teaching a friend how to identify flowers. You show them pictures with labels like “rose” or “daisy.” This is similar to supervised machine learning. The machine learns from data that already has the correct answers attached, like the flower labels. This way, it can recognize new flowers on its own later.<br>
+Supervised machine learning is often used to create machine learning models used for prediction and classification purposes.<br>
+Various algorithms are used in supervised machine learning processes.</p>
+<p>    1) Linear regression<br>
+Linear regression is a fundamental supervised machine learning algorithm used for modeling the relationship between a dependent variable (what you want to predict) and one or more independent variables (what you’re basing your prediction on).<br>
+The goal of linear regression is to find the best-fitting line that minimizes the differences between the observed values and the values predicted by the linear model. This is typically done by minimizing the sum of the squared differences between the observed and predicted values.</p>
+<p>    2) Logistic regression<br>
+Logistic regression is another supervised machine learning algorithm, but unlike linear regression, it’s specifically designed for classification tasks where the dependent variable can only have a limited number of categories (usually two).<br>
+Logistic regression doesn’t directly output a classification. Instead, it calculates the probability of an observation belonging to a specific category.</p>
+<p>    3) Support vector machines<br>
+A support vector machine (SVM) is a supervised machine learning algorithm that classifies data by finding an optimal line or hyperplane that maximizes the distance between each class in an N-dimensional space.
+SVMs are capable of performing both linear and nonlinear classification tasks. In cases where the classes are not linearly separable, SVMs can map the input features into a higher-dimensional space using a technique called the kernel trick.</p>
+<p>    4) Decison trees<br>
+Decision trees are a popular and intuitive supervised learning algorithm used for both classification and regression tasks in machine learning. They are a powerful tool for predictive modeling and are widely used in various domains due to their simplicity, interpretability, and flexibility.<br>
+A decision tree is a hierarchical structure consisting of nodes and branches. Each internal node represents a decision based on the value of a certain feature, and each branch represents the possible outcomes of that decision. The leaf nodes of the tree represent the final predictions or decisions.<br>
+The process of constructing a decision tree involves recursively splitting the dataset into subsets based on the values of different features, such that the resulting subsets are as pure as possible with respect to the target variable.</p>
+<p>    5) Random forest<br>
+Random Forest algorithm is a powerful tree learning technique in Machine Learning. It works by creating a number of Decision Trees during the training phase. Each tree is constructed using a random subset of the data set to measure a random subset of features in each partition. This randomness introduces variability among individual trees, reducing the risk of overfitting and improving overall prediction performance. In prediction, the algorithm aggregates the results of all trees, either by voting (for classification tasks) or by averaging (for regression tasks) This collaborative decision-making process, supported by multiple trees with their insights, provides an example stable and precise results.</p>
+<p>    6) K-Nearest Neighbors (KNN)<br>
+The K-Nearest Neighbors (KNN) algorithm is a popular machine learning technique used for classification and regression tasks. It relies on the idea that similar data points tend to have similar labels or values.<br>
+KNN classifies new data points based on their similarity to existing data points in the training set. It identifies the k nearest neighbors (data points) in the training data for a new data point and predicts the class label (for classification) or the average value (for regression) based on the majority vote (classification) or the average value (regression) of those neighbors.</p>
+</div>
+<div id="semi-supervised-learning" class="section level3 unnumbered">
+<h3>Semi-supervised learning<a class="anchor" aria-label="anchor" href="#semi-supervised-learning"><i class="fas fa-link"></i></a>
+</h3>
+<p>Semi-supervised learning uses both unlabeled and labeled data sets to train algorithms. Typically, during machine semi-learning, algorithms are first fed with a small amount of labeled data to guide their development, and then with much larger amounts of unlabeled data to complete the model.</p>
+</div>
+<div id="unsupervised-learning" class="section level3 unnumbered">
+<h3>Unsupervised learning<a class="anchor" aria-label="anchor" href="#unsupervised-learning"><i class="fas fa-link"></i></a>
+</h3>
+<p>In unsupervised learning, algorithms learn from an unlabeled data set, i.e. the data is not associated with pre-existing labels or categories. The aim is for the algorithm to discover hidden structures or patterns in the data.<br>
+Unsupervised machine learning is often used by researchers and data scientists to identify patterns within large, unlabeled data sets quickly and efficiently.<br>
+Some of the unsupervised learning algorithms are:</p>
+<p>    1) K-means:<br>
+K-means is a popular unsupervised machine learning algorithm used for partitioning a dataset into a predefined number of groups (clusters). Here’s a breakdown of how it works:</p>
+<ul>
+<li>First step: Initialization
+You specify the desired number of clusters (k).The algorithm randomly selects k data points as initial centroids, which represent the center of each cluster.<br>
+</li>
+<li>Second step: Assignment
+Each data point in the dataset is assigned to the closest centroid based on a distance metric (usually Euclidean distance).</li>
+</ul>
+<p>-Third step: Re-computation
+Once all data points are assigned to a cluster, the centroids are recalculated as the mean of the points within each cluster.</p>
+<ul>
+<li><p>Fourth step: Iteration<br>
+Steps 2 and 3 are repeated iteratively:<br>
+    -Data points are reassigned to the closest centroid based on the updated centroids.<br>
+    -Centroids are recalculated based on the newly assigned data points.</p></li>
+<li><p>Fifth step: Stopping Criterion<br>
+The iteration process continues until a stopping criterion is met. This can be when the centroids no longer significantly change between iterations (convergence).</p></li>
+</ul>
+<p>    2) Principle Component Analysis (PCA):<br>
+Principal component analysis (PCA) is a type of dimensionality reduction algorithm which is used to reduce redundancies and to compress datasets through feature extraction. This method uses a linear transformation to create a new data representation, yielding a set of “principal components.” The first principal component is the direction which maximizes the variance of the dataset. While the second principal component also finds the maximum variance in the data, it is completely uncorrelated to the first principal component, yielding a direction that is perpendicular, or orthogonal, to the first component. This process repeats based on the number of dimensions, where a next principal component is the direction orthogonal to the prior components with the most variance.</p>
+<p>    3) Hierarchical clustering:<br>
+Hierarchical clustering is an unsupervised learning technique used to group similar objects into clusters. It creates a hierarchy of clusters by merging or splitting them based on similarity measures.
+Clustering Hierarchical groups similar objects into a dendrogram. It merges similar clusters iteratively, starting with each data point as a separate cluster. This creates a tree-like structure that shows the relationships between clusters and their hierarchy.</p>
+</div>
+<div id="reinforcement-learning" class="section level3 unnumbered">
+<h3>Reinforcement learning<a class="anchor" aria-label="anchor" href="#reinforcement-learning"><i class="fas fa-link"></i></a>
+</h3>
+<p>In reinforcement learning, algorithms learn by interacting with an environment. The algorithm takes actions in the environment and receives rewards or penalties according to these actions. The aim is for the algorithm to learn to maximize its cumulative reward over time.<br>
+Reinforcement learning is often used to create algorithms that must effectively make sequences of decisions or actions to achieve their aims, such as playing a game or summarizing an entire text.</p>
+</div>
+</div>
+<div id="concepts-of-underfitting-and-overfitting" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Concepts of underfitting and overfitting<br><a class="anchor" aria-label="anchor" href="#concepts-of-underfitting-and-overfitting"><i class="fas fa-link"></i></a>
+</h2>
+<p>In this part, we’ll focus on two terms in machine learning: overfitting and underfitting. These terms define a model’s ability to capture the relationship between input and output data. Both of them are possible causes of poor model performance.<br>
+Overfitting happens when we train a machine learning model too much tuned to the training set. As a result, the model learns the training data too well, but it can’t generate good predictions for unseen data. An overfitted model produces low accuracy results for data points unseen in training, hence, leads to non-optimal decisions.<br>
+About Underfitting it occurs when the machine learning model is not well-tuned to the training set. The resulting model is not capturing the relationship between input and output well enough. Therefore, it doesn’t produce accurate predictions, even for the training dataset. Resultingly, an underfitted model generates poor results that lead to high-error decisions, like an overfitted model.</p>
+<div id="detecting-underfitting-and-overfitting" class="section level3" number="10.2.1">
+<h3>
+<span class="header-section-number">10.2.1</span> Detecting underfitting and overfitting<a class="anchor" aria-label="anchor" href="#detecting-underfitting-and-overfitting"><i class="fas fa-link"></i></a>
+</h3>
+<p>    - Detecting underfitting<br>
+Usually, detecting underfitting is more straightforward than detecting overfitting. Even without using a test set, we can decide if the model is performing poorly on the training set or not. If the model accuracy is insufficient on the training data, it has high bias and hence, underfitting.</p>
+<div style="text-align: center" class="inline-figure">
+<img src="www/underfitting.png">
+</div>
+<p>    - Detecting overfitting<br>
+As the number of epochs increases, the training accuracy typically increases. However, if the training accuracy continues to increase while the validation accuracy starts to decrease, this is an indication of overfitting.</p>
+<div style="text-align: center" class="inline-figure">
+<img src="www/overfitting.png">
+</div>
+</div>
+<div id="cures-for-underfitting-and-overfitting" class="section level3" number="10.2.2">
+<h3>
+<span class="header-section-number">10.2.2</span> Cures for underfitting and overfitting<a class="anchor" aria-label="anchor" href="#cures-for-underfitting-and-overfitting"><i class="fas fa-link"></i></a>
+</h3>
+<p>    1) Cures for underfitting<br>
+To prevent underfitting we can:</p>
+<ul>
+<li>Use a model more complex</li>
+<li>Obtain more training data</li>
+<li>Increase number of features</li>
+</ul>
+<p>    2) Cures for overfittings<br>
+To prevent overfitting we can:</p>
+<ul>
+<li>Reduce model complexity</li>
+<li>Reduce the number of input features</li>
+<li>use more training examples to train the model to generalize better.</li>
+</ul>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="visualization.html"><span class="header-section-number">9</span> Visualization</a></div>
+<div class="next"><a href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-machine-learning-and-machine-learning-techniques"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li>
+<a class="nav-link" href="#machine-learning-techniques"><span class="header-section-number">10.1</span> Machine learning techniques</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#supervised-learning">Supervised learning</a></li>
+<li><a class="nav-link" href="#semi-supervised-learning">Semi-supervised learning</a></li>
+<li><a class="nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li><a class="nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#concepts-of-underfitting-and-overfitting"><span class="header-section-number">10.2</span> Concepts of underfitting and overfitting</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#detecting-underfitting-and-overfitting"><span class="header-section-number">10.2.1</span> Detecting underfitting and overfitting</a></li>
+<li><a class="nav-link" href="#cures-for-underfitting-and-overfitting"><span class="header-section-number">10.2.2</span> Cures for underfitting and overfitting</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/09-machine_learning.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/09-machine_learning.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

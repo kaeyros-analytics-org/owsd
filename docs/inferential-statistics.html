@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Inferential statistics | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Inferential statistics | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Inferential statistics | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and...">
+<meta property="og:description" content="Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and...">
+<meta name="twitter:description" content="Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="active" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inferential-statistics" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Inferential statistics<a class="anchor" aria-label="anchor" href="#inferential-statistics"><i class="fas fa-link"></i></a>
+</h1>
+<p>Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and summarizes the characteristics of a sample, inferential statistics uses statistical methods and models to make inferences or predictions about the wider population from which the sample is drawn.</p>
+<p>The main techniques of inferential statistics include hypothesis testing, parameter estimation, analysis of variance (ANOVA), regression and forecasting methods. Here are some fundamental concepts associated with inferential statistics:</p>
+<div id="population-and-sample" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Population and sample<a class="anchor" aria-label="anchor" href="#population-and-sample"><i class="fas fa-link"></i></a>
+</h2>
+<p>In statistics, population is the entire set of items from which you draw data for a statistical study. It can be a group of individuals, a set of items, etc. It makes up the data pool for a study. Generally, population refers to the people who live in a particular area at a specific time. But in statistics, population refers to data on your study of interest. It can be a group of individuals, objects, events, organizations, etc. You use populations to draw conclusions.</p>
+<p>A sample is defined as a smaller and more manageable representation of a larger group. A subset of a larger population that contains characteristics of that population. A sample is used in statistical testing when the population size is too large for all members or observations to be included in the test.<br>
+The sample is an unbiased subset of the population that best represents the whole data.</p>
+<p>The characteristics of samples and populations are described by numbers called statistics and parameters:</p>
+<ul>
+<li>A statistic is a measure that describes the sample (e.g., sample mean).</li>
+<li>A parameter is a measure that describes the whole population (e.g., population mean).</li>
+</ul>
+<p>There are two important types of estimates you can make about the population: point estimates and interval estimates.</p>
+<p>A point estimate is a single value estimate of a parameter. For instance, a sample mean is a point estimate of a population mean.
+An interval estimate gives you a range of values where the parameter is expected to lie. A confidence interval is the most common type of interval estimate.</p>
+</div>
+<div id="parameter-estimations" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Parameter estimations<a class="anchor" aria-label="anchor" href="#parameter-estimations"><i class="fas fa-link"></i></a>
+</h2>
+<p>Parameter estimation is the process of calculating the expected value of a population parameter based on samples taken from that population.</p>
+</div>
+<div id="confidence-interval" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Confidence interval<a class="anchor" aria-label="anchor" href="#confidence-interval"><i class="fas fa-link"></i></a>
+</h2>
+<p>A confidence interval uses the variability around a statistic to come up with an interval estimate for a parameter. Confidence intervals are useful for estimating parameters because they take sampling error into account.<br>
+Each confidence interval is associated with a confidence level. A confidence level tells you the probability (in percentage) of the interval containing the parameter estimate if you repeat the study again.
+A 95% confidence interval means that if you repeat your study with a new sample in exactly the same way 100 times, you can expect your estimate to lie within the specified range of values 95 times.</p>
+</div>
+<div id="hypothesis" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis"><i class="fas fa-link"></i></a>
+</h2>
+<p>Hypothesis testing is a fundamental concept in inferential statistics that involves making decisions or drawing conclusions about populations based on sample data. In hypothesis testing, we start with two competing hypotheses: the null hypothesis (H0) and the alternative hypothesis (H1). These hypotheses are statements about the population parameter(s) of interest.</p>
+<ol style="list-style-type: decimal">
+<li>Null Hypothesis (H0):
+<ul>
+<li>The null hypothesis represents the status quo or the default assumption. It suggests that there is no significant difference or effect, or no relationship between variables in the population.</li>
+<li>The null hypothesis typically states that the population parameter(s) equals a specific value or follows a specific distribution.</li>
+<li>It is denoted by H0.</li>
+</ul>
+</li>
+<li>Alternative Hypothesis (H1):
+<ul>
+<li>The alternative hypothesis contradicts the null hypothesis and suggests that there is a significant difference, effect, or relationship in the population.</li>
+<li>The alternative hypothesis can take different forms depending on the research question and the nature of the hypothesis being tested.</li>
+<li>It is denoted by H1.</li>
+</ul>
+</li>
+</ol>
+<p>The process of hypothesis testing involves the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Formulate Hypotheses: Clearly state the null and alternative hypotheses based on the research; question or problem.</li>
+<li>Select Significance Level: Choose a significance level (α), typically set at 0.05 or 0.01, which represents the probability of rejecting the null hypothesis when it is actually true.</li>
+<li>Collect Data and Calculate Test Statistic:Collect sample data and compute a test statistic that measures the strength of evidence against the null hypothesis.</li>
+<li>Determine Critical Region: Determine the critical region or rejection region, which consists of the values of the test statistic that lead to rejection of the null hypothesis.</li>
+<li>Make Decision: Compare the calculated test statistic to the critical value(s) or use p-values to decide whether to reject the null hypothesis. If the test statistic falls in the critical region or if the p-value is less than the significance level, reject the null hypothesis in favor of the alternative hypothesis. Otherwise, fail to reject the null hypothesis.</li>
+<li>Interpret Results: Interpret the results of the hypothesis test in the context of the research question. Draw conclusions about the population based on the sample data and the outcome of the hypothesis test.</li>
+</ol>
+</div>
+<div id="statistical-tests" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Statistical tests<a class="anchor" aria-label="anchor" href="#statistical-tests"><i class="fas fa-link"></i></a>
+</h2>
+<p>There are various types of statistical tests, each designed to address different research questions and hypotheses. Some of the most commonly used statistical tests include:</p>
+<ol style="list-style-type: decimal">
+<li><p>T test or Student test</p></li>
+<li><p>ANOVA</p></li>
+<li><p>Chi-Square test</p></li>
+<li><p>Pearson Correlation Coefficient</p></li>
+<li><p>Fischer test</p></li>
+</ol>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></div>
+<div class="next"><a href="visualization.html"><span class="header-section-number">9</span> Visualization</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inferential-statistics"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="nav-link" href="#population-and-sample"><span class="header-section-number">8.1</span> Population and sample</a></li>
+<li><a class="nav-link" href="#parameter-estimations"><span class="header-section-number">8.2</span> Parameter estimations</a></li>
+<li><a class="nav-link" href="#confidence-interval"><span class="header-section-number">8.3</span> Confidence interval</a></li>
+<li><a class="nav-link" href="#hypothesis"><span class="header-section-number">8.4</span> Hypothesis</a></li>
+<li><a class="nav-link" href="#statistical-tests"><span class="header-section-number">8.5</span> Statistical tests</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/07-inferential_statistics.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/07-inferential_statistics.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

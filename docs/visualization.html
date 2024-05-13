@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Visualization | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Visualization | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Visualization | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="9.1 Bar chart A bar chart is a representation of numerical data in pictorial form of rectangles (or bars) having uniform width and varying heights.” They are also known as bar graphs....">
+<meta property="og:description" content="9.1 Bar chart A bar chart is a representation of numerical data in pictorial form of rectangles (or bars) having uniform width and varying heights.” They are also known as bar graphs....">
+<meta name="twitter:description" content="9.1 Bar chart A bar chart is a representation of numerical data in pictorial form of rectangles (or bars) having uniform width and varying heights.” They are also known as bar graphs....">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">7</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></li>
+<li><a class="active" href="visualization.html"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">11</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">13</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualization" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Visualization<a class="anchor" aria-label="anchor" href="#visualization"><i class="fas fa-link"></i></a>
+</h1>
+<div id="bar-chart" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Bar chart<a class="anchor" aria-label="anchor" href="#bar-chart"><i class="fas fa-link"></i></a>
+</h2>
+<p>A bar chart is a representation of numerical data in pictorial form of rectangles (or bars) having uniform width and varying heights.” They are also known as bar graphs.</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#construction of the dataframe</span></span>
+<span><span class="va">data_barchart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`What is your religion?`</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data_barchart</span> <span class="op">&lt;-</span> <span class="va">data_barchart</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percentage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="op">(</span><span class="va">Freq</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Freq</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>,</span>
+<span>                  pct1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">percentage</span>, <span class="st">"%"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Religion<span class="op">=</span><span class="va">Var1</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">#plot the bar chart</span></span>
+<span><span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/plot_ly.html">plot_ly</a></span><span class="op">(</span><span class="va">data_barchart</span>, x <span class="op">=</span> <span class="op">~</span><span class="va">Religion</span>,</span>
+<span>                  type <span class="op">=</span> <span class="st">"bar"</span>,</span>
+<span>                  y <span class="op">=</span> <span class="op">~</span><span class="va">percentage</span>,</span>
+<span>                  marker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#318CE7"</span><span class="op">)</span>,</span>
+<span>                  text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">data_barchart</span><span class="op">$</span><span class="va">pct1</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span>, textposition <span class="op">=</span> <span class="st">'outside'</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">layout</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Number of persons by religion"</span></span>
+<span>    <span class="op">)</span></span></code></pre></div>
+</div>
+<div id="pie-chart" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Pie chart<a class="anchor" aria-label="anchor" href="#pie-chart"><i class="fas fa-link"></i></a>
+</h2>
+<p>A pie chart is a type of graph representing data in a circular form, with each slice of the circle representing a fraction or proportionate part of the whole.</p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#construction of the dataframe</span></span>
+<span><span class="va">data_piechart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data_piechart</span> <span class="op">&lt;-</span> <span class="va">data_piechart</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percentage <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="op">(</span><span class="va">Freq</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Freq</span><span class="op">)</span><span class="op">)</span>,<span class="fl">2</span><span class="op">)</span>,</span>
+<span>                  pct1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">percentage</span>, <span class="st">"%"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#plot the pie chart</span></span>
+<span><span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/plot_ly.html">plot_ly</a></span><span class="op">(</span><span class="va">data_piechart</span>, labels<span class="op">=</span> <span class="op">~</span><span class="va">Var1</span>,</span>
+<span>          values<span class="op">=</span> <span class="op">~</span><span class="va">Freq</span>, type<span class="op">=</span><span class="st">"pie"</span>,</span>
+<span>          hoverinfo <span class="op">=</span> <span class="st">'text'</span>,</span>
+<span>          textinfo <span class="op">=</span> <span class="st">'label+percent'</span>,</span>
+<span>          insidetextfont <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'#FFFFFF'</span><span class="op">)</span>,</span>
+<span>          text <span class="op">=</span> <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Sex :"</span>,<span class="va">Var1</span>,</span>
+<span>                        <span class="st">"&lt;br&gt;Number of persons :"</span>, <span class="va">Freq</span>,</span>
+<span>                        <span class="st">"&lt;br&gt;Percentage :"</span>, <span class="va">pct1</span><span class="op">)</span>,</span>
+<span>          marker <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#318CE7"</span>, <span class="st">"#89CFF0"</span><span class="op">)</span>,</span>
+<span>                        line <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">'#FFFFFF'</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,showlegend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">layout</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">""</span>,</span>
+<span>           xaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>showgrid <span class="op">=</span> <span class="cn">FALSE</span>, zeroline <span class="op">=</span> <span class="cn">FALSE</span>, showticklabels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>           yaxis <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>showgrid <span class="op">=</span> <span class="cn">FALSE</span>, zeroline <span class="op">=</span> <span class="cn">FALSE</span>, showticklabels <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="histogram" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Histogram<a class="anchor" aria-label="anchor" href="#histogram"><i class="fas fa-link"></i></a>
+</h2>
+<p>A histogram is a chart that plots the distribution of a numeric variable’s values as a series of bars. Each bar typically covers a range of numeric values called a bin or class; a bar’s height indicates the frequency of data points with a value within the corresponding bin.</p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Change colors</span></span>
+<span><span class="va">p</span><span class="op">&lt;-</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data_1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">`How many children do you have?`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>color<span class="op">=</span><span class="st">"black"</span>, fill<span class="op">=</span><span class="st">"white"</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre></div>
+</div>
+<div id="scatter-plot" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Scatter plot<br><a class="anchor" aria-label="anchor" href="#scatter-plot"><i class="fas fa-link"></i></a>
+</h2>
+<p>A scatter plot (or scatter chart, scatter graph) uses dots to represent values for two different numeric variables. The position of each dot on the horizontal and vertical axis indicates values for an individual data point. Scatter plots are used to observe relationships between variables.</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">time_series</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop2.xls"</span>, sheet <span class="op">=</span> <span class="st">"times_series"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">time_series</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">`Heigh of plant`</span>,</span>
+<span>                   y <span class="op">=</span> <span class="va">`Number of roots`</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="line-chart" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Line chart<br><a class="anchor" aria-label="anchor" href="#line-chart"><i class="fas fa-link"></i></a>
+</h2>
+<p>A line chart, also known as a line graph, is a visual representation of data that displays information as a series of data points connected by straight line segments. Line charts are commonly used to show trends or changes over time, making them particularly useful for illustrating temporal patterns or relationships in data. Line charts provide a clear and intuitive way to visualize how values evolve or fluctuate over a specific period.</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">time_series</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Month</span>, y <span class="op">=</span> <span class="va">`Heigh of plant`</span>,color <span class="op">=</span> <span class="va">Treatments</span>,group <span class="op">=</span> <span class="va">Treatments</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="map-visualization" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Map visualization<a class="anchor" aria-label="anchor" href="#map-visualization"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load required packages</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/">leaflet</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">cameroon_geojson</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="st">"./data/cm.json"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load the data</span></span>
+<span><span class="va">population</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"./data/positives_case_covid.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Joindre les données de population à la carte du Cameroun</span></span>
+<span><span class="va">cameroon_geojson</span><span class="op">$</span><span class="va">population</span> <span class="op">&lt;-</span> <span class="va">population</span><span class="op">$</span><span class="va">`Positive Cases`</span></span>
+<span></span>
+<span><span class="co"># Créer la carte Leaflet</span></span>
+<span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html">leaflet</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cameroon_geojson</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html">addPolygons</a></span><span class="op">(</span>fillColor <span class="op">=</span> <span class="op">~</span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/colorNumeric.html">colorQuantile</a></span><span class="op">(</span><span class="st">"Set2"</span>, <span class="va">population</span><span class="op">)</span><span class="op">(</span><span class="va">population</span><span class="op">)</span>,</span>
+<span>              stroke <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>              fillOpacity <span class="op">=</span> <span class="fl">0.7</span>,</span>
+<span>              label <span class="op">=</span> <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">" : "</span>, <span class="st">"Positive Cases:"</span>, <span class="va">population</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="inferential-statistics.html"><span class="header-section-number">8</span> Inferential statistics</a></div>
+<div class="next"><a href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">10</span> Introduction to Machine Learning and Machine Learning techniques</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#visualization"><span class="header-section-number">9</span> Visualization</a></li>
+<li><a class="nav-link" href="#bar-chart"><span class="header-section-number">9.1</span> Bar chart</a></li>
+<li><a class="nav-link" href="#pie-chart"><span class="header-section-number">9.2</span> Pie chart</a></li>
+<li><a class="nav-link" href="#histogram"><span class="header-section-number">9.3</span> Histogram</a></li>
+<li><a class="nav-link" href="#scatter-plot"><span class="header-section-number">9.4</span> Scatter plot</a></li>
+<li><a class="nav-link" href="#line-chart"><span class="header-section-number">9.5</span> Line chart</a></li>
+<li><a class="nav-link" href="#map-visualization"><span class="header-section-number">9.6</span> Map visualization</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/08-visualization.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/08-visualization.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
