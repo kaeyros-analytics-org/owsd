@@ -1,7 +1,7 @@
 --- 
 title: "OWSD WORKSHOP"
 author: "Thierry Monthe"
-date: "2024-05-13"
+date: "2024-05-14"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

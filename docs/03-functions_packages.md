@@ -231,8 +231,6 @@ To load more than one package at a time:
 
 ```r
 library(caret, ggplot2)
-#> Warning: le package 'caret' a été compilé avec la version R
-#> 4.3.3
 #> Le chargement a nécessité le package : ggplot2
 #> Le chargement a nécessité le package : lattice
 ```

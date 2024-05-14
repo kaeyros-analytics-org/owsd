@@ -144,7 +144,7 @@ unique(data_1$`Do you  have children?`)
 hist(data_1$`How many children do you have?`)
 ```
 
-<img src="04-data_manipulation_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+![](04-data_manipulation_files/figure-epub3/unnamed-chunk-16-1.png)<!-- -->
 
 
 + Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.
@@ -153,7 +153,7 @@ hist(data_1$`How many children do you have?`)
 boxplot(data_1$`How many children do you have?`)
 ```
 
-<img src="04-data_manipulation_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+![](04-data_manipulation_files/figure-epub3/unnamed-chunk-17-1.png)<!-- -->
 
 
 ## Data manipulation with dplyr
