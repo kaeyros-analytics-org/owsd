@@ -98,7 +98,7 @@ subset( data_1, select = -c(`How do you call these varieties you have?`))
 
 Data points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.
 
-```{r eval=FALSE}
+```{r }
 outlier_values <- boxplot.stats(data_1$`How many children do you have?`)$out  # outlier values.
 boxplot(data_1$`How many children do you have?`, main="Number of children", boxwex=0.1)
 mtext(paste("Outliers: ", paste(outlier_values, collapse=", ")), cex=0.6)

@@ -1,15 +1,15 @@
 {
     "dialog-state": {
-        "query": "welcome",
+        "query": "level",
         "path": "",
         "regex": false,
         "caseSensitive": false,
         "wholeWord": false,
         "filePatterns": [],
-        "useGitGrep": false,
+        "useGitGrep": true,
         "excludeGitIgnore": true,
         "excludeFilePatterns": [],
-        "resultsCount": 2,
+        "resultsCount": 363,
         "errorCount": 0,
         "replaceErrors": "",
         "projectRelative": true

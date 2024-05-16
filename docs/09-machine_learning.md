@@ -53,12 +53,10 @@ K-means is a popular unsupervised machine learning algorithm used for partitioni
 - First step: Initialization
 You specify the desired number of clusters (k).The algorithm randomly selects k data points as initial centroids, which represent the center of each cluster.\
 - Second step: Assignment
-Each data point in the dataset is assigned to the closest centroid based on a distance metric (usually Euclidean distance).
-
+Each data point in the dataset is assigned to the closest centroid based on a distance metric (usually Euclidean distance).\
 -Third step: Re-computation
-Once all data points are assigned to a cluster, the centroids are recalculated as the mean of the points within each cluster.
-
-- Fourth step: Iteration\
+Once all data points are assigned to a cluster, the centroids are recalculated as the mean of the points within each cluster.\
+- Fourth step: Iteration
 Steps 2 and 3 are repeated iteratively:\
 &nbsp;&nbsp;&nbsp;&nbsp;-Data points are reassigned to the closest centroid based on the updated centroids.\
 &nbsp;&nbsp;&nbsp;&nbsp;-Centroids are recalculated based on the newly assigned data points.

@@ -1,3 +1,5 @@
+
+
 # Model training and hyperparameter tuning
 
 ## Concept of train set, test set, validation set and cross validation
@@ -12,5 +14,95 @@
 Model training is the process of teaching a machine learning algorithm to learn patterns and relationships in data by adjusting its parameters based on the provided training dataset.\
 To train the model we will use the package **caret**.
 
+
+```r
+#import libraries
+library(tidymodels)
+library(caTools)
+library(caret)
+
+#load the data
+#breast_cancer <- read.csv("data/Breast_cancer_data.csv")
+
+#transform the target variable to factor
+breast_cancer$diagnosis <- as.factor(breast_cancer$diagnosis)
+
+# fixing the observations in training set and test set
+set.seed(123)
+# splitting the data set into ratio 0.80:0.20
+split <- caTools::sample.split(breast_cancer$diagnosis, SplitRatio = 0.80)
+
+# creating training dataset
+trainingSet <- subset(breast_cancer, split == TRUE)
+
+# creating test data set
+testSet <- subset(breast_cancer, split == FALSE)
+
+#train the KNN model
+default_knn_mod = train(
+  diagnosis ~ .,
+  data = trainingSet,
+  method = "knn",
+  trControl = trainControl(method = "cv", number = 5)
+)
+```
+
+
 ## Hyperparameter tuning
+Hyperparameter tuning is the process of selecting the optimal set of hyperparameters for a machine learning model.
+
+
+```r
+#tuning hyperparameters of the KNN model
+tune_knn_mod = train(
+  diagnosis ~ .,
+  data = trainingSet,
+  method = "knn",
+  trControl = trainControl(method = "cv", number = 5),
+  preProcess = c("center", "scale"),
+  tuneGrid = expand.grid(k = seq(1, 101, by = 2))
+)
+```
+
+
+## Model evaluation\
+Model evaluation is the process of assessing the performance and effectiveness of a machine learning model on unseen data. It involves various techniques and metrics to measure how well the model generalizes to new observations.
+
+
+```r
+#predictions on the test set for the first model
+model_pred <- predict(default_knn_mod, newdata = testSet)
+
+#confusion matrix for the fist model
+cm <- table(model_pred,testSet$diagnosis)
+cm
+#>           
+#> model_pred  0  1
+#>          0 26  1
+#>          1 16 70
+
+#predictions on the test set for the second model
+model_pred_tune <- predict(tune_knn_mod, newdata = testSet)
+
+confusion_matrix <- table(model_pred_tune,testSet$diagnosis)
+confusion_matrix
+#>                
+#> model_pred_tune  0  1
+#>               0 31  0
+#>               1 11 71
+
+#Calculate the accuracy
+calc_acc <- function(data) {
+  data <- as.data.frame(data)
+  max_accuracy_index <- which.max(data$Accuracy)
+  row_with_max_accuracy <- data[max_accuracy_index, ]
+  return(row_with_max_accuracy$Accuracy)
+}
+
+print(paste("The accuracy of the simple model is:", calc_acc(default_knn_mod$results)))
+#> [1] "The accuracy of the simple model is: 0.899044433827042"
+print(paste("The accuracy of the tuned model is:", calc_acc(tune_knn_mod$results)))
+#> [1] "The accuracy of the tuned model is: 0.936359292881032"
+```
+
 

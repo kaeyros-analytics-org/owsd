@@ -45,9 +45,14 @@ machine-learning-techniques
 detecting-underfitting-and-overfitting
 cures-for-underfitting-and-overfitting
 data-preparation
+feature-encoding
+data-reduction
 handling-imbalanced-dataset
 model-training-and-hyperparameter-tuning
 concept-of-train-set-test-set-validation-set-and-cross-validation
 model-training
 hyperparameter-tuning
 model-deployment
+model-serialization
+model-deployment-criteria
+model-deployment-methods

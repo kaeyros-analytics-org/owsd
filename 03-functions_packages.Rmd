@@ -141,9 +141,7 @@ Example 4: Function without an Argument
 ```{r}
 # Generate a random number between 0 and 1
 generate_random_number <- function() {
-  
   random_number <- runif(1)
-  
   return(random_number)
 }
 ```
@@ -168,21 +166,26 @@ Built-in Function are the functions that are already existing in R language and 
 There are several predefined functions, such as mathematical functions (`abs()`,`sqrt()`,`exp()`,...), statistical functions (`mean()`, `median()`, `cor()`,...), data manipulation functions (`aggregate()`,`subset()`,`order()`,...) and file input/output functions (`read.csv()`,`write.csv()`,`readRDS()`,...).
 
 ## Packages
+
 Packages in R Programming language are a set of R functions, compiled code, and sample data. These are stored under a directory called “library” within the R environment. By default, R installs a group of packages during installation. Once we start the R console, only the default packages are available by default. Other packages that are already installed need to be loaded explicitly to be utilized by the R program that’s getting to use them. 
 
 ### Repositories {-}
+
 A repository is a place where packages are located and stored so you can install R packages from it. Organizations and Developers have a local repository, typically they are online and accessible to everyone. Some of the most popular repositories for R packages are: 
 
-+ CRAN: Comprehensive R Archive Network(CRAN) is the official repository, it is a network of FTP and web servers maintained by the R community around the world. The R community coordinates it, and for a package to be published in CRAN, the Package needs to pass several tests to ensure that the package is following CRAN policies.
++ CRAN:\
+Comprehensive R Archive Network(CRAN) is the official repository, it is a network of FTP and web servers maintained by the R community around the world. The R community coordinates it, and for a package to be published in CRAN, the Package needs to pass several tests to ensure that the package is following CRAN policies.
 
         install.packages("package_name")
 
-+ Bioconductor: Bioconductor is a topic-specific repository, intended for open source software for bioinformatics. Similar to CRAN, it has its own submission and review processes, and its community is very active having several conferences and meetings per year in order to maintain quality.
++ Bioconductor:\
+Bioconductor is a topic-specific repository, intended for open source software for bioinformatics. Similar to CRAN, it has its own submission and review processes, and its community is very active having several conferences and meetings per year in order to maintain quality.
 To download with this repository you have to install fist the **BiocManager** package and then run:
 
       BiocManager::install("package_name")
         
-+ Github: Github is the most popular repository for open-source projects. It’s popular as it comes from the unlimited space for open source, the integration with git, a version control software, and its ease to share and collaborate with others.
++ Github:\
+Github is the most popular repository for open-source projects. It’s popular as it comes from the unlimited space for open source, the integration with git, a version control software, and its ease to share and collaborate with others.
 To install an R packages from GitHub first, you need to install devtools by running the following code: 
 
         install.packages("devtools")
@@ -206,7 +209,7 @@ require(stats)
 ```
         
 To load more than one package at a time:
-```{r}
+```{r warning=FALSE, message=FALSE}
 library(caret, ggplot2)
 ```
 

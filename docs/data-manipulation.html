@@ -14,7 +14,13 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -77,14 +83,31 @@
 <p>Importing data from csv to R:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load data</span></span>
-<span><span class="va">children_anemia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/children_anemia.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">breast_cancer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/Breast_cancer_data.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from excel to R:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#load data</span></span>
-<span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop1.xls"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop1.xls"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 42</span></span>
+<span><span class="co">#&gt;   Sex    Age       `Are you married?` Do you  have childre…¹</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;                 </span></span>
+<span><span class="co">#&gt; 1 Male   25_40 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 2 Male   15_25 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 3 Male   25_40 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 4 Male   15_25 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 5 Female 15_25 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 6 Male   25_40 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; # ℹ abbreviated name: ¹​`Do you  have children?`</span></span>
+<span><span class="co">#&gt; # ℹ 38 more variables:</span></span>
+<span><span class="co">#&gt; #   `How many children do you have?` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `What is your religion?` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `Do have a tasba farm?` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `What's the size of your farm?` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `How long have you been growing tasba?` &lt;chr&gt;, …</span></span></code></pre></div>
 <p>Importing data from json to R:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load package</span></span>
@@ -108,19 +131,48 @@
 <span><span class="co">#&gt; [1] "Answer"   "Question" "Survey"</span></span></code></pre></div>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#retrieve data from table Question</span></span>
-<span><span class="va">data_sqlite</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Question"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_sqlite</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">data_sqlite</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Survey"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_sqlite</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   SurveyID                   Description</span></span>
+<span><span class="co">#&gt; 1     2014 mental health survey for 2014</span></span>
+<span><span class="co">#&gt; 2     2016 mental health survey for 2016</span></span>
+<span><span class="co">#&gt; 3     2017 mental health survey for 2017</span></span>
+<span><span class="co">#&gt; 4     2018 mental health survey for 2018</span></span>
+<span><span class="co">#&gt; 5     2019 mental health survey for 2019</span></span></code></pre></div>
 <p>Importing data from spss to R:</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#load data</span></span>
-<span><span class="va">data_spss</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">data_spss</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_spss</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 14</span></span>
+<span><span class="co">#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO</span></span>
+<span><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1      42      1     0    59    NA    NA    NA    32    25</span></span>
+<span><span class="co">#&gt; 2      37      0     0    58     2     2    NA    25    19</span></span>
+<span><span class="co">#&gt; 3     141      0     0    83    NA     2     2    31    32</span></span>
+<span><span class="co">#&gt; 4     143      0     0    85     2     3    NA    18    25</span></span>
+<span><span class="co">#&gt; 5     128      1     0    75    14     8    21    20    19</span></span>
+<span><span class="co">#&gt; 6      12      1     0    50    17     9    27    28    26</span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: MOB &lt;dbl&gt;, SS &lt;dbl&gt;, CESD &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   SelfEsteem &lt;dbl&gt;, Satisfaction &lt;dbl&gt;</span></span></code></pre></div>
 <p>Importing data from stata to R:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load data</span></span>
-<span><span class="va">data_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">data_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_stata</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 10</span></span>
+<span><span class="co">#&gt;    educ cigpric white   age income  cigs restaurn lincome</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  16      60.5     1    46  20000     0        0    9.90</span></span>
+<span><span class="co">#&gt; 2  16      57.9     1    40  30000     0        0   10.3 </span></span>
+<span><span class="co">#&gt; 3  12      57.7     1    58  30000     3        0   10.3 </span></span>
+<span><span class="co">#&gt; 4  13.5    57.9     1    30  20000     0        0    9.90</span></span>
+<span><span class="co">#&gt; 5  10      58.3     1    17  20000     0        0    9.90</span></span>
+<span><span class="co">#&gt; 6   6      59.3     1    86   6500     0        0    8.78</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: agesq &lt;dbl&gt;, lcigpric &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 <div id="basic-exploration-of-data" class="section level2" number="5.2">
 <h2>
@@ -132,7 +184,7 @@ To explore data in R we have many functions to achieve that.</p>
 <li>Function head(): is used to view the first few rows of your dataset.</li>
 </ul>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Function tail(): is used to view the last few rows of your dataset.</li>
 </ul>
@@ -147,7 +199,8 @@ To explore data in R we have many functions to achieve that.</p>
 <li>Function dim(): is used to know about the number of rows and columns.</li>
 </ul>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 107  42</span></span></code></pre></div>
 <ul>
 <li>Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.</li>
 </ul>
@@ -171,7 +224,9 @@ To explore data in R we have many functions to achieve that.</p>
 <li>Function hist(): function to plot a basic histogram to view distribution of a variable.</li>
 </ul>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">'Number of childrens'</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">'Number of childrens'</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="04-data_manipulation_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
 <ul>
 <li>Function boxplot(): function to plot a boxplot, it provides a compact summary of the data’s central tendency, spread, and potential outliers.</li>
@@ -305,7 +360,7 @@ One of the more useful ways to use dplyr is with the pipe operator. The pipe ope
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

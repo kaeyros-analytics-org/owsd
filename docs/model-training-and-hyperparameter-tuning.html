@@ -14,7 +14,13 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -84,13 +90,117 @@
 </h2>
 <p>Model training is the process of teaching a machine learning algorithm to learn patterns and relationships in data by adjusting its parameters based on the provided training dataset.<br>
 To train the model we will use the package <strong>caret</strong>.</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#import libraries</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">caTools</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load the data</span></span>
+<span><span class="co">#breast_cancer &lt;- read.csv("data/Breast_cancer_data.csv")</span></span>
+<span></span>
+<span><span class="co">#transform the target variable to factor</span></span>
+<span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fixing the observations in training set and test set</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="co"># splitting the data set into ratio 0.80:0.20</span></span>
+<span><span class="va">split</span> <span class="op">&lt;-</span> <span class="fu">caTools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/caTools/man/sample.split.html">sample.split</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span>, SplitRatio <span class="op">=</span> <span class="fl">0.80</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># creating training dataset</span></span>
+<span><span class="va">trainingSet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">breast_cancer</span>, <span class="va">split</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># creating test data set</span></span>
+<span><span class="va">testSet</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">breast_cancer</span>, <span class="va">split</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#train the KNN model</span></span>
+<span><span class="va">default_knn_mod</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/train.html">train</a></span><span class="op">(</span></span>
+<span>  <span class="va">diagnosis</span> <span class="op">~</span> <span class="va">.</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">trainingSet</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"knn"</span>,</span>
+<span>  trControl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/trainControl.html">trainControl</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"cv"</span>, number <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="hyperparameter-tuning" class="section level2" number="12.3">
 <h2>
 <span class="header-section-number">12.3</span> Hyperparameter tuning<a class="anchor" aria-label="anchor" href="#hyperparameter-tuning"><i class="fas fa-link"></i></a>
 </h2>
+<p>Hyperparameter tuning is the process of selecting the optimal set of hyperparameters for a machine learning model.</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#tuning hyperparameters of the KNN model</span></span>
+<span><span class="va">tune_knn_mod</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/train.html">train</a></span><span class="op">(</span></span>
+<span>  <span class="va">diagnosis</span> <span class="op">~</span> <span class="va">.</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">trainingSet</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"knn"</span>,</span>
+<span>  trControl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/trainControl.html">trainControl</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"cv"</span>, number <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  preProcess <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"scale"</span><span class="op">)</span>,</span>
+<span>  tuneGrid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">101</span>, by <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="model-evaluation" class="section level2" number="12.4">
+<h2>
+<span class="header-section-number">12.4</span> Model evaluation<br><a class="anchor" aria-label="anchor" href="#model-evaluation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Model evaluation is the process of assessing the performance and effectiveness of a machine learning model on unseen data. It involves various techniques and metrics to measure how well the model generalizes to new observations.</p>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#predictions on the test set for the first model</span></span>
+<span><span class="va">model_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">default_knn_mod</span>, newdata <span class="op">=</span> <span class="va">testSet</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#confusion matrix for the fist model</span></span>
+<span><span class="va">cm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">model_pred</span>,<span class="va">testSet</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span>
+<span><span class="va">cm</span></span>
+<span><span class="co">#&gt;           </span></span>
+<span><span class="co">#&gt; model_pred  0  1</span></span>
+<span><span class="co">#&gt;          0 26  1</span></span>
+<span><span class="co">#&gt;          1 16 70</span></span>
+<span></span>
+<span><span class="co">#predictions on the test set for the second model</span></span>
+<span><span class="va">model_pred_tune</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tune_knn_mod</span>, newdata <span class="op">=</span> <span class="va">testSet</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">confusion_matrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">model_pred_tune</span>,<span class="va">testSet</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span>
+<span><span class="va">confusion_matrix</span></span>
+<span><span class="co">#&gt;                </span></span>
+<span><span class="co">#&gt; model_pred_tune  0  1</span></span>
+<span><span class="co">#&gt;               0 31  0</span></span>
+<span><span class="co">#&gt;               1 11 71</span></span>
+<span></span>
+<span><span class="co">#Calculate the accuracy</span></span>
+<span><span class="va">calc_acc</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span>  <span class="va">max_accuracy_index</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">Accuracy</span><span class="op">)</span></span>
+<span>  <span class="va">row_with_max_accuracy</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">[</span><span class="va">max_accuracy_index</span>, <span class="op">]</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">row_with_max_accuracy</span><span class="op">$</span><span class="va">Accuracy</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"The accuracy of the simple model is:"</span>, <span class="fu">calc_acc</span><span class="op">(</span><span class="va">default_knn_mod</span><span class="op">$</span><span class="va">results</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "The accuracy of the simple model is: 0.899044433827042"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"The accuracy of the tuned model is:"</span>, <span class="fu">calc_acc</span><span class="op">(</span><span class="va">tune_knn_mod</span><span class="op">$</span><span class="va">results</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "The accuracy of the tuned model is: 0.936359292881032"</span></span></code></pre></div>
 
-
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="model-training-and-hyperparameter-tuning.html#cb123-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">knit_child</span>(<span class="st">"11-modeling.Rmd"</span>)</span>
+<span id="cb123-2"><a href="model-training-and-hyperparameter-tuning.html#cb123-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb123-3"><a href="model-training-and-hyperparameter-tuning.html#cb123-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb123-4"><a href="model-training-and-hyperparameter-tuning.html#cb123-4" tabindex="-1"></a><span class="co">#&gt; processing file: ./11-modeling.Rmd</span></span>
+<span id="cb123-5"><a href="model-training-and-hyperparameter-tuning.html#cb123-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb123-6"><a href="model-training-and-hyperparameter-tuning.html#cb123-6" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-7"><a href="model-training-and-hyperparameter-tuning.html#cb123-7" tabindex="-1"></a>  <span class="er">|</span>                                <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb123-8"><a href="model-training-and-hyperparameter-tuning.html#cb123-8" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-9"><a href="model-training-and-hyperparameter-tuning.html#cb123-9" tabindex="-1"></a>  <span class="er">|</span>....                            <span class="sc">|</span>  <span class="dv">12</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-4</span>]</span>
+<span id="cb123-10"><a href="model-training-and-hyperparameter-tuning.html#cb123-10" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-11"><a href="model-training-and-hyperparameter-tuning.html#cb123-11" tabindex="-1"></a>  <span class="er">|</span>........                        <span class="sc">|</span>  <span class="dv">25</span>%                  </span>
+<span id="cb123-12"><a href="model-training-and-hyperparameter-tuning.html#cb123-12" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-13"><a href="model-training-and-hyperparameter-tuning.html#cb123-13" tabindex="-1"></a>  <span class="er">|</span>............                    <span class="sc">|</span>  <span class="dv">38</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-5</span>]</span>
+<span id="cb123-14"><a href="model-training-and-hyperparameter-tuning.html#cb123-14" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-15"><a href="model-training-and-hyperparameter-tuning.html#cb123-15" tabindex="-1"></a>  <span class="er">|</span>................                <span class="sc">|</span>  <span class="dv">50</span>%                  </span>
+<span id="cb123-16"><a href="model-training-and-hyperparameter-tuning.html#cb123-16" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-17"><a href="model-training-and-hyperparameter-tuning.html#cb123-17" tabindex="-1"></a>  <span class="er">|</span>....................            <span class="sc">|</span>  <span class="dv">62</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-6</span>]</span>
+<span id="cb123-18"><a href="model-training-and-hyperparameter-tuning.html#cb123-18" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-19"><a href="model-training-and-hyperparameter-tuning.html#cb123-19" tabindex="-1"></a>  <span class="er">|</span>........................        <span class="sc">|</span>  <span class="dv">75</span>%                  </span>
+<span id="cb123-20"><a href="model-training-and-hyperparameter-tuning.html#cb123-20" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-21"><a href="model-training-and-hyperparameter-tuning.html#cb123-21" tabindex="-1"></a>  <span class="er">|</span>............................    <span class="sc">|</span>  <span class="dv">88</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-7</span>]</span>
+<span id="cb123-22"><a href="model-training-and-hyperparameter-tuning.html#cb123-22" tabindex="-1"></a>  <span class="sc">|</span>                                      </span>
+<span id="cb123-23"><a href="model-training-and-hyperparameter-tuning.html#cb123-23" tabindex="-1"></a>  <span class="er">|</span>................................<span class="sc">|</span> <span class="dv">100</span>%                  </span></code></pre></div>
+<pre><code>#&gt; [1] "\n\n\n# Model training and hyperparameter tuning\n\n## Concept of train set, test set, validation set and cross validation\n\n- The training set is the dataset that we employ to train our model. It is this dataset that our model uses to learn any underlying patterns or relationships that will enable making predictions later on.\n- The test set is used to approximate the models's true performance in the reality. It is the final step in evaluating our model's performance on unseen data.\n- The validation set uses a subset of the training data to provide an unbiased evaluation of a model. The validation data set contrasts with training and test sets in that it is an intermediate phase used for choosing the best model and optimizing it. It is in this phase that hyperparameter tuning occurs.\n- Cross-validation is a statistical method used to estimate the performance (or accuracy) of machine learning models. In cross-validation, you make a fixed number of folds (or partitions) of the data, run the modelling process on each fold, and then average the overall error estimate.\n\n## Model training\n\nModel training is the process of teaching a machine learning algorithm to learn patterns and relationships in data by adjusting its parameters based on the provided training dataset.\\\nTo train the model we will use the package **caret**.\n\n\n```r\n#import libraries\nlibrary(tidymodels)\nlibrary(caTools)\nlibrary(caret)\n\n#load the data\n#breast_cancer &lt;- read.csv(\"data/Breast_cancer_data.csv\")\n\n#transform the target variable to factor\nbreast_cancer$diagnosis &lt;- as.factor(breast_cancer$diagnosis)\n\n# fixing the observations in training set and test set\nset.seed(123)\n# splitting the data set into ratio 0.80:0.20\nsplit &lt;- caTools::sample.split(breast_cancer$diagnosis, SplitRatio = 0.80)\n\n# creating training dataset\ntrainingSet &lt;- subset(breast_cancer, split == TRUE)\n\n# creating test data set\ntestSet &lt;- subset(breast_cancer, split == FALSE)\n\n#train the KNN model\ndefault_knn_mod = train(\n  diagnosis ~ .,\n  data = trainingSet,\n  method = \"knn\",\n  trControl = trainControl(method = \"cv\", number = 5)\n)\n```\n\n\n## Hyperparameter tuning\nHyperparameter tuning is the process of selecting the optimal set of hyperparameters for a machine learning model.\n\n\n```r\n#tuning hyperparameters of the KNN model\ntune_knn_mod = train(\n  diagnosis ~ .,\n  data = trainingSet,\n  method = \"knn\",\n  trControl = trainControl(method = \"cv\", number = 5),\n  preProcess = c(\"center\", \"scale\"),\n  tuneGrid = expand.grid(k = seq(1, 101, by = 2))\n)\n```\n\n\n## Model evaluation\\\nModel evaluation is the process of assessing the performance and effectiveness of a machine learning model on unseen data. It involves various techniques and metrics to measure how well the model generalizes to new observations.\n\n\n```r\n#predictions on the test set for the first model\nmodel_pred &lt;- predict(default_knn_mod, newdata = testSet)\n\n#confusion matrix for the fist model\ncm &lt;- table(model_pred,testSet$diagnosis)\ncm\n#&gt;           \n#&gt; model_pred  0  1\n#&gt;          0 26  1\n#&gt;          1 16 70\n\n#predictions on the test set for the second model\nmodel_pred_tune &lt;- predict(tune_knn_mod, newdata = testSet)\n\nconfusion_matrix &lt;- table(model_pred_tune,testSet$diagnosis)\nconfusion_matrix\n#&gt;                \n#&gt; model_pred_tune  0  1\n#&gt;               0 31  0\n#&gt;               1 11 71\n\n#Calculate the accuracy\ncalc_acc &lt;- function(data) {\n  data &lt;- as.data.frame(data)\n  max_accuracy_index &lt;- which.max(data$Accuracy)\n  row_with_max_accuracy &lt;- data[max_accuracy_index, ]\n  return(row_with_max_accuracy$Accuracy)\n}\n\nprint(paste(\"The accuracy of the simple model is:\", calc_acc(default_knn_mod$results)))\n#&gt; [1] \"The accuracy of the simple model is: 0.899044433827042\"\nprint(paste(\"The accuracy of the tuned model is:\", calc_acc(tune_knn_mod$results)))\n#&gt; [1] \"The accuracy of the tuned model is: 0.936359292881032\"\n```\n\n"</code></pre>
 </div>
 </div>
   <div class="chapter-nav">
@@ -103,6 +213,7 @@ To train the model we will use the package <strong>caret</strong>.</p>
 <li><a class="nav-link" href="#concept-of-train-set-test-set-validation-set-and-cross-validation"><span class="header-section-number">12.1</span> Concept of train set, test set, validation set and cross validation</a></li>
 <li><a class="nav-link" href="#model-training"><span class="header-section-number">12.2</span> Model training</a></li>
 <li><a class="nav-link" href="#hyperparameter-tuning"><span class="header-section-number">12.3</span> Hyperparameter tuning</a></li>
+<li><a class="nav-link" href="#model-evaluation"><span class="header-section-number">12.4</span> Model evaluation</a></li>
 </ul>
 
       <div class="book-extra">
@@ -120,7 +231,7 @@ To train the model we will use the package <strong>caret</strong>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

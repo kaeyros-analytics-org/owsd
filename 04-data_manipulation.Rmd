@@ -14,7 +14,7 @@ In this part, we will learn to load commonly used **CSV**, **Excel**, **JSON**, 
 Importing data from csv to R:
 ```{r}
 #load data
-children_anemia <- read.csv("./data/children_anemia.csv")
+breast_cancer <- read.csv("./data/Breast_cancer_data.csv")
 ```
 
 Importing data from excel to R:
@@ -24,6 +24,7 @@ library(readxl)
 
 #load data
 data_1 <- readxl::read_excel("./data/data_for_workshop1.xls")
+head(data_1)
 ```
 
 
@@ -51,9 +52,9 @@ conn <- dbConnect(RSQLite::SQLite(), "./data/mental_health.sqlite")
 #list names of all the tables in the database
 dbListTables(conn)
 ```
-```{r eval=FALSE}
+```{r}
 #retrieve data from table Question
-data_sqlite <- dbGetQuery(conn, "SELECT * FROM Question")
+data_sqlite <- dbGetQuery(conn, "SELECT * FROM Survey")
 head(data_sqlite)
 ```
 
@@ -65,12 +66,14 @@ library(haven)
 
 #load data
 data_spss <- haven::read_sav("./data/mental_health.sav")
+head(data_spss)
 ```
 
 Importing data from stata to R:
 ```{r}
 #load data
 data_stata <- haven::read_dta("./data/SMOKE.DTA")
+head(data_stata)
 ```
 
 
@@ -82,7 +85,7 @@ To explore data in R we have many functions to achieve that.
 
 + Function head(): is used to view the first few rows of your dataset.
 ```{r eval = FALSE}
-head(data_1)
+head(data_1,3)
 ```
 
 
@@ -99,7 +102,7 @@ str(data_1)
 
 
 + Function dim(): is used to know about the number of rows and columns.
-```{r eval = FALSE}
+```{r }
 dim(data_1)
 ```
 
@@ -123,11 +126,14 @@ unique(data_1$`Do you  have children?`)
 
 + Function hist(): function to plot a basic histogram to view distribution of a variable.
 ```{r}
-hist(data_1$`How many children do you have?`)
+hist(data_1$`How many children do you have?`,
+     xlab = 'Number of childrens',
+     main = 'Number of childrens')
 ```
 
 
 + Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.
+
 ```{r}
 boxplot(data_1$`How many children do you have?`)
 ```

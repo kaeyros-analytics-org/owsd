@@ -13,7 +13,7 @@ Importing data from csv to R:
 
 ```r
 #load data
-children_anemia <- read.csv("./data/children_anemia.csv")
+breast_cancer <- read.csv("./data/Breast_cancer_data.csv")
 ```
 
 Importing data from excel to R:
@@ -24,6 +24,23 @@ library(readxl)
 
 #load data
 data_1 <- readxl::read_excel("./data/data_for_workshop1.xls")
+head(data_1)
+#> # A tibble: 6 × 42
+#>   Sex    Age       `Are you married?` Do you  have childre…¹
+#>   <chr>  <chr>     <chr>              <chr>                 
+#> 1 Male   25_40 ye… NO                 NO                    
+#> 2 Male   15_25 ye… NO                 NO                    
+#> 3 Male   25_40 ye… NO                 NO                    
+#> 4 Male   15_25 ye… NO                 NO                    
+#> 5 Female 15_25 ye… NO                 NO                    
+#> 6 Male   25_40 ye… NO                 NO                    
+#> # ℹ abbreviated name: ¹​`Do you  have children?`
+#> # ℹ 38 more variables:
+#> #   `How many children do you have?` <dbl>,
+#> #   `What is your religion?` <chr>,
+#> #   `Do have a tasba farm?` <chr>,
+#> #   `What's the size of your farm?` <chr>,
+#> #   `How long have you been growing tasba?` <chr>, …
 ```
 
 
@@ -57,8 +74,14 @@ dbListTables(conn)
 
 ```r
 #retrieve data from table Question
-data_sqlite <- dbGetQuery(conn, "SELECT * FROM Question")
+data_sqlite <- dbGetQuery(conn, "SELECT * FROM Survey")
 head(data_sqlite)
+#>   SurveyID                   Description
+#> 1     2014 mental health survey for 2014
+#> 2     2016 mental health survey for 2016
+#> 3     2017 mental health survey for 2017
+#> 4     2018 mental health survey for 2018
+#> 5     2019 mental health survey for 2019
 ```
 
 
@@ -70,6 +93,18 @@ library(haven)
 
 #load data
 data_spss <- haven::read_sav("./data/mental_health.sav")
+head(data_spss)
+#> # A tibble: 6 × 14
+#>   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO
+#>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1      42      1     0    59    NA    NA    NA    32    25
+#> 2      37      0     0    58     2     2    NA    25    19
+#> 3     141      0     0    83    NA     2     2    31    32
+#> 4     143      0     0    85     2     3    NA    18    25
+#> 5     128      1     0    75    14     8    21    20    19
+#> 6      12      1     0    50    17     9    27    28    26
+#> # ℹ 5 more variables: MOB <dbl>, SS <dbl>, CESD <dbl>,
+#> #   SelfEsteem <dbl>, Satisfaction <dbl>
 ```
 
 Importing data from stata to R:
@@ -77,6 +112,17 @@ Importing data from stata to R:
 ```r
 #load data
 data_stata <- haven::read_dta("./data/SMOKE.DTA")
+head(data_stata)
+#> # A tibble: 6 × 10
+#>    educ cigpric white   age income  cigs restaurn lincome
+#>   <dbl>   <dbl> <dbl> <dbl>  <dbl> <dbl>    <dbl>   <dbl>
+#> 1  16      60.5     1    46  20000     0        0    9.90
+#> 2  16      57.9     1    40  30000     0        0   10.3 
+#> 3  12      57.7     1    58  30000     3        0   10.3 
+#> 4  13.5    57.9     1    30  20000     0        0    9.90
+#> 5  10      58.3     1    17  20000     0        0    9.90
+#> 6   6      59.3     1    86   6500     0        0    8.78
+#> # ℹ 2 more variables: agesq <dbl>, lcigpric <dbl>
 ```
 
 
@@ -89,7 +135,7 @@ To explore data in R we have many functions to achieve that.
 + Function head(): is used to view the first few rows of your dataset.
 
 ```r
-head(data_1)
+head(data_1,3)
 ```
 
 
@@ -111,6 +157,7 @@ str(data_1)
 
 ```r
 dim(data_1)
+#> [1] 107  42
 ```
 
 
@@ -141,13 +188,16 @@ unique(data_1$`Do you  have children?`)
 + Function hist(): function to plot a basic histogram to view distribution of a variable.
 
 ```r
-hist(data_1$`How many children do you have?`)
+hist(data_1$`How many children do you have?`,
+     xlab = 'Number of childrens',
+     main = 'Number of childrens')
 ```
 
 <img src="04-data_manipulation_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 
 + Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.
+
 
 ```r
 boxplot(data_1$`How many children do you have?`)

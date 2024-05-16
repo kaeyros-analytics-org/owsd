@@ -14,7 +14,13 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -73,10 +79,46 @@
 <span class="header-section-number">11.1</span> Data cleaning<br><a class="anchor" aria-label="anchor" href="#data-cleaning-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data cleaning is an essential pre-processing step in machine learning that focuses on identifying and rectifying errors, inconsistencies, and inaccuracies in raw data. This process involves tasks such as handling missing values, removing duplicates, correcting data format inconsistencies, and dealing with outliers. Data cleaning ensures that the dataset is of high quality and integrity, which is crucial for building accurate and reliable machine learning models. By thoroughly cleaning the data, practitioners can enhance the quality of their analyses, improve model performance, and foster more meaningful insights from the data.</p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load the data</span></span>
+<span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/heart_attack_prediction_dataset.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#verify missing values</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span>
+<span></span>
+<span><span class="co">#remove irrelevant columns</span></span>
+<span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">heart_attack</span>, select <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Patient.ID</span>, <span class="va">Country</span>, <span class="va">Continent</span>,<span class="va">Hemisphere</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#check duplicates observations</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; FALSE </span></span>
+<span><span class="co">#&gt;  8763</span></span></code></pre></div>
 </div>
-<div id="feature-scaling" class="section level2" number="11.2">
+<div id="feature-creation" class="section level2" number="11.2">
 <h2>
-<span class="header-section-number">11.2</span> Feature scaling<br><a class="anchor" aria-label="anchor" href="#feature-scaling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Feature creation<br><a class="anchor" aria-label="anchor" href="#feature-creation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Feature creation, also known as feature engineering, is a critical aspect of machine learning where new features are derived or constructed from existing ones to enhance model performance and capture more complex relationships in the data. This process involves transforming raw input data into a more informative representation that better captures the underlying patterns and structures. Feature creation techniques may include mathematical transformations like log transforms, creating interaction terms between existing features, binning numerical features into categorical ones or encoding categorical variables. Effective feature creation can significantly impact the predictive power of machine learning models, enabling them to better generalize to unseen data and achieve higher levels of accuracy and robustness.</p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#feature creation</span></span>
+<span><span class="va">heart_attack</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'systolic_pressure'</span>, <span class="st">'diastolic_pressure'</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split_fixed</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">Blood.Pressure</span>, <span class="st">'/'</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#convert the two columns in numeric</span></span>
+<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span><span class="op">)</span></span>
+<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Creation of the new variable</span></span>
+<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">Blood_pressure_difference</span> <span class="op">&lt;-</span> <span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span> <span class="op">-</span> <span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span></span>
+<span></span>
+<span><span class="co">#remove the olds variable</span></span>
+<span><span class="va">remove_columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Blood.Pressure"</span>, <span class="st">"systolic_pressure"</span>,<span class="st">"diastolic_pressure"</span><span class="op">)</span></span>
+<span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="va">heart_attack</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">remove_columns</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+</div>
+<div id="feature-scaling" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Feature scaling<br><a class="anchor" aria-label="anchor" href="#feature-scaling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Feature scaling, is a technique used to transform numerical features in a dataset into a common scale. The goal is to bring the features to a similar magnitude, making them comparable and preventing any particular feature from dominating the learning algorithm due to its larger scale. Feature scaling is an essential preprocessing step in machine learning.
 The most common methods for feature scaling are:</p>
@@ -84,40 +126,67 @@ The most common methods for feature scaling are:</p>
 <li><p>Standardization: This method transforms the data to have zero mean and unit variance. It subtracts the mean and divides by the standard deviation of each feature. Standardization preserves the shape of the original distribution and is useful when the data does not have a normal distribution.</p></li>
 <li><p>Normalization: Normalization scales the data to a fixed range, typically between 0 and 1. It is achieved by subtracting the minimum value and dividing by the range (maximum value minus minimum value) of each feature. Normalization is suitable for data that has a bounded range and follows a uniform distribution.</p></li>
 </ul>
-</div>
-<div id="feature-creation" class="section level2" number="11.3">
-<h2>
-<span class="header-section-number">11.3</span> Feature creation<br><a class="anchor" aria-label="anchor" href="#feature-creation"><i class="fas fa-link"></i></a>
-</h2>
-<p>Feature creation, also known as feature engineering, is a critical aspect of machine learning where new features are derived or constructed from existing ones to enhance model performance and capture more complex relationships in the data. This process involves transforming raw input data into a more informative representation that better captures the underlying patterns and structures. Feature creation techniques may include mathematical transformations like log transforms, creating interaction terms between existing features, binning numerical features into categorical ones or encoding categorical variables. Effective feature creation can significantly impact the predictive power of machine learning models, enabling them to better generalize to unseen data and achieve higher levels of accuracy and robustness.</p>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load the data</span></span>
+<span><span class="va">breast_cancer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/Breast_cancer_data.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="feature-encoding" class="section level2" number="11.4">
 <h2>
-<span class="header-section-number">11.4</span> Feature encoding<br><a class="anchor" aria-label="anchor" href="#feature-encoding"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4</span> Feature encoding<a class="anchor" aria-label="anchor" href="#feature-encoding"><i class="fas fa-link"></i></a>
 </h2>
 <p>Feature encoding is a crucial step in machine learning where categorical variables are converted into numerical representations that algorithms can understand. Since many machine learning algorithms require numerical input, feature encoding transforms categorical data into a format that preserves the information contained in the original variables. 
 Common techniques for feature encoding include one-hot encoding(it creates new (binary) columns, indicating the presence of each possible value from the original data), label encoding which assigns a unique numerical value to each category or ordinal encoding to ensure that ordinal nature of the variables is sustained.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="data-reduction" class="section level2" number="11.5">
 <h2>
-<span class="header-section-number">11.5</span> Data reduction<br><a class="anchor" aria-label="anchor" href="#data-reduction"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.5</span> Data reduction<a class="anchor" aria-label="anchor" href="#data-reduction"><i class="fas fa-link"></i></a>
 </h2>
 <p>In machine learning, dimensionality reduction tackles the challenge of high-dimensional data. Imagine a vast landscape with many features representing different directions. Dimensionality reduction techniques condense the data into a lower-dimensional space while preserving the most important information. This not only simplifies analysis and visualization but also improves the performance of machine learning algorithms by reducing computational costs and the risk of overfitting. Dimensionnality techniques include feature selection and feature extraction.</p>
 <ol style="list-style-type: decimal">
 <li>Feature selection</li>
 </ol>
-<ul>
-<li>Correlation analysis</li>
-<li>Recursive Feature Elimination</li>
-<li>Statistical tests</li>
-</ul>
+<p>   - Correlation analysis:<br>
+It identifies the degree of linear relationship between pairs of features, enabling the removal of highly correlated features to reduce redundancy and multicollinearity in the dataset.</p>
+<p>   - Recursive Feature Elimination:<br>
+Feature selection refers to techniques that select a subset of the most relevant features for a dataset. Fewer features can allow machine learning algorithms to run more efficiently (less space or time complexity) and be more effective.</p>
+<p>   - Statistical tests:<br>
+It utilizes statistical measures (e.g., t-tests, ANOVA) to assess the significance of individual features in relation to the target variable, facilitating the selection of features that significantly contribute to the predictive power of the model.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Feature extraction</li>
 </ol>
-<ul>
-<li>Principal Component Analysis (PCA)</li>
-<li>Linear Discriminant Analysis (LDA)</li>
-</ul>
+<p>   - Principal Component Analysis (PCA):<br>
+It reduces the dimensionality of the dataset by transforming correlated features into a smaller set of uncorrelated variables called principal components, capturing most of the variance in the data.</p>
+<p>   - Linear Discriminant Analysis (LDA):<br>
+LDA finds new features (discriminant functions) that best separate different classes in your data. This helps focus the model on the key characteristics that differentiate the classes.</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2">ggcorrplot</a></span><span class="op">)</span></span>
+<span><span class="co">#Correlation matrix</span></span>
+<span><span class="va">p.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html">cor_pmat</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">p.mat</span></span>
+<span><span class="co">#&gt;                  mean_radius mean_texture mean_perimeter</span></span>
+<span><span class="co">#&gt; mean_radius     0.000000e+00 2.360374e-15   0.000000e+00</span></span>
+<span><span class="co">#&gt; mean_texture    2.360374e-15 0.000000e+00   7.041961e-16</span></span>
+<span><span class="co">#&gt; mean_perimeter  0.000000e+00 7.041961e-16   0.000000e+00</span></span>
+<span><span class="co">#&gt; mean_area       0.000000e+00 4.124850e-15   0.000000e+00</span></span>
+<span><span class="co">#&gt; mean_smoothness 4.312577e-05 5.776966e-01   6.108608e-07</span></span>
+<span><span class="co">#&gt;                    mean_area mean_smoothness</span></span>
+<span><span class="co">#&gt; mean_radius     0.000000e+00    4.312577e-05</span></span>
+<span><span class="co">#&gt; mean_texture    4.124850e-15    5.776966e-01</span></span>
+<span><span class="co">#&gt; mean_perimeter  0.000000e+00    6.108608e-07</span></span>
+<span><span class="co">#&gt; mean_area       0.000000e+00    2.165664e-05</span></span>
+<span><span class="co">#&gt; mean_smoothness 2.165664e-05    0.000000e+00</span></span>
+<span><span class="va">corr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html">ggcorrplot</a></span><span class="op">(</span><span class="va">corr</span>,</span>
+<span>           type <span class="op">=</span> <span class="st">"lower"</span>,</span>
+<span>           lab <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>           digits <span class="op">=</span> <span class="fl">3</span>,p.mat <span class="op">=</span> <span class="va">p.mat</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="10-data_preparation_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;"></div>
+<p>The mean_area and mean_perimeter variables are highly correlated, so we’ll only need to keep one.</p>
 </div>
 <div id="handling-imbalanced-dataset" class="section level2" number="11.6">
 <h2>
@@ -143,8 +212,8 @@ A very simple explanation is that it randomly selects a minority data point and 
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data-preparation"><span class="header-section-number">11</span> Data preparation</a></li>
 <li><a class="nav-link" href="#data-cleaning-1"><span class="header-section-number">11.1</span> Data cleaning</a></li>
-<li><a class="nav-link" href="#feature-scaling"><span class="header-section-number">11.2</span> Feature scaling</a></li>
-<li><a class="nav-link" href="#feature-creation"><span class="header-section-number">11.3</span> Feature creation</a></li>
+<li><a class="nav-link" href="#feature-creation"><span class="header-section-number">11.2</span> Feature creation</a></li>
+<li><a class="nav-link" href="#feature-scaling"><span class="header-section-number">11.3</span> Feature scaling</a></li>
 <li><a class="nav-link" href="#feature-encoding"><span class="header-section-number">11.4</span> Feature encoding</a></li>
 <li><a class="nav-link" href="#data-reduction"><span class="header-section-number">11.5</span> Data reduction</a></li>
 <li><a class="nav-link" href="#handling-imbalanced-dataset"><span class="header-section-number">11.6</span> Handling imbalanced dataset</a></li>
@@ -165,7 +234,7 @@ A very simple explanation is that it randomly selects a minority data point and 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

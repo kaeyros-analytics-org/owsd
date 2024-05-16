@@ -14,14 +14,20 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
 <link rel="stylesheet" href="style.css">
-<meta name="description" content="A book created with bookdown.">
-<meta property="og:description" content="A book created with bookdown.">
-<meta name="twitter:description" content="A book created with bookdown.">
+<meta name="description" content="Model deployment in machine learning is the process of integrating your model into an existing production environment where it can take in an input and return an output. The objective is to enable...">
+<meta property="og:description" content="Model deployment in machine learning is the process of integrating your model into an existing production environment where it can take in an input and return an output. The objective is to enable...">
+<meta name="twitter:description" content="Model deployment in machine learning is the process of integrating your model into an existing production environment where it can take in an input and return an output. The objective is to enable...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -67,19 +73,72 @@
 <h1>
 <span class="header-section-number">13</span> Model deployment<a class="anchor" aria-label="anchor" href="#model-deployment"><i class="fas fa-link"></i></a>
 </h1>
+<p>Model deployment in machine learning is the process of integrating your model into an existing production environment where it can take in an input and return an output. The objective is to enable others to access and utilize the predictive capabilities of your trained machine learning model.</p>
+<div id="model-serialization" class="section level2" number="13.1">
+<h2>
+<span class="header-section-number">13.1</span> Model serialization<a class="anchor" aria-label="anchor" href="#model-serialization"><i class="fas fa-link"></i></a>
+</h2>
+<p>After achieving satisfactory performance with your model, it’s essential to serialize and store it for future utilization. Serialization transforms the model into a binary format suitable for storage on disk.</p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#save the model</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">tune_knn_mod</span>,<span class="st">"./knn_model.rds"</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Use serialized model for predictions:</strong></p>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load the model</span></span>
+<span><span class="va">knn_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"./knn_model.rds"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#use the model for predictions</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">knn_model</span>, <span class="va">testSet</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   [1] 1 0 0 0 0 1 0 0 0 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 1</span></span>
+<span><span class="co">#&gt;  [28] 1 1 1 1 1 0 0 0 1 1 1 1 0 0 0 1 1 1 1 1 1 1 1 1 0 0 1</span></span>
+<span><span class="co">#&gt;  [55] 0 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1</span></span>
+<span><span class="co">#&gt;  [82] 1 0 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 1 1 0 1</span></span>
+<span><span class="co">#&gt; [109] 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; Levels: 0 1</span></span></code></pre></div>
+</div>
+<div id="model-deployment-criteria" class="section level2" number="13.2">
+<h2>
+<span class="header-section-number">13.2</span> Model Deployment Criteria<a class="anchor" aria-label="anchor" href="#model-deployment-criteria"><i class="fas fa-link"></i></a>
+</h2>
+<p>Before you deploy a model, there are a couple of criteria that your machine learning model needs to achieve before it’s ready for deployment:</p>
+<ol style="list-style-type: decimal">
+<li>Portability: A portable model is one that can run efficiently on various hardware configurations and operating systems, with minimal adjustments required.</li>
+<li>Scalability: A scalable model is one that can handle increasing demands and data volumes without compromising performance.</li>
+</ol>
+</div>
+<div id="model-deployment-methods" class="section level2" number="13.3">
+<h2>
+<span class="header-section-number">13.3</span> Model Deployment Methods<a class="anchor" aria-label="anchor" href="#model-deployment-methods"><i class="fas fa-link"></i></a>
+</h2>
+<p>There exist three general methods for deploying your machine learning model:</p>
+<ol style="list-style-type: decimal">
+<li>One-off:<br>
+Sometimes a model is only needed once or periodically. In this case, the model can simply be trained ad-hoc when it’s needed and pushed to production until it deteriorates enough to require fixing.</li>
+<li>Batch:<br>
+Batch training involves updating a machine learning model using subsets of data at a time, ensuring scalability and up-to-date performance without requiring real-time predictions.</li>
+<li>Real time:<br>
+Model deployment in real-time refers to the process of integrating a trained machine learning model into a production environment where it can make predictions or classifications on new data instantaneously as it arrives.</li>
+</ol>
+<p>Once a model is deployed, it’s common to monitor its performance and consider retraining it with updated training data. Monitoring and maintaining the deployment through continuous delivery ensures that your model provides accurate and reliable predictions in real-world scenarios.</p>
 
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">12</span> Model training and hyperparameter tuning</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#model-deployment"><span class="header-section-number">13</span> Model deployment</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#model-deployment"><span class="header-section-number">13</span> Model deployment</a></li>
+<li><a class="nav-link" href="#model-serialization"><span class="header-section-number">13.1</span> Model serialization</a></li>
+<li><a class="nav-link" href="#model-deployment-criteria"><span class="header-section-number">13.2</span> Model Deployment Criteria</a></li>
+<li><a class="nav-link" href="#model-deployment-methods"><span class="header-section-number">13.3</span> Model Deployment Methods</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/13-model_deployment.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/13-model_deployment.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/12-model_deployment.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/12-model_deployment.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -91,7 +150,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-13.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

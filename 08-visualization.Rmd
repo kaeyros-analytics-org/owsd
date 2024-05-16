@@ -8,7 +8,7 @@ source("./dependencies.R")
 ## Bar chart
 A bar chart is a representation of numerical data in pictorial form of rectangles (or bars) having uniform width and varying heights." They are also known as bar graphs.
 
-```{r eval=FALSE}
+```{r}
 #construction of the dataframe
 data_barchart <- as.data.frame(table(data_1$`What is your religion?`))
 data_barchart <- data_barchart %>%
@@ -32,7 +32,7 @@ plotly::plot_ly(data_barchart, x = ~Religion,
 ## Pie chart
 A pie chart is a type of graph representing data in a circular form, with each slice of the circle representing a fraction or proportionate part of the whole.
 
-```{r eval=FALSE}
+```{r}
 #construction of the dataframe
 data_piechart <- as.data.frame(table(data_1$Sex))
 data_piechart <- data_piechart %>%
@@ -58,19 +58,22 @@ plotly::plot_ly(data_piechart, labels= ~Var1,
 
 ## Histogram
 A histogram is a chart that plots the distribution of a numeric variable’s values as a series of bars. Each bar typically covers a range of numeric values called a bin or class; a bar’s height indicates the frequency of data points with a value within the corresponding bin.
-```{r eval=FALSE}
+```{r warning=FALSE, message=FALSE}
 library(ggplot2)
 
 # Change colors
-p<-ggplot(data_1, aes(x=`How many children do you have?`)) + 
-  geom_histogram(color="black", fill="white")
+p<-ggplot(breast_cancer, aes(x=mean_texture)) + 
+  geom_histogram(color="black", fill="white") +
+  labs(title="Histogram of mean texture",x="mean texture",
+       y = "Count")+
+  theme(plot.title = element_text(hjust = 0.5))
 p
 ```
 
 
 ## Scatter plot\
 A scatter plot (or scatter chart, scatter graph) uses dots to represent values for two different numeric variables. The position of each dot on the horizontal and vertical axis indicates values for an individual data point. Scatter plots are used to observe relationships between variables.
-```{r eval=FALSE}
+```{r}
 time_series <- readxl::read_excel("./data/data_for_workshop2.xls", sheet = "times_series")
 ggplot(time_series, aes(x = `Heigh of plant`,
                    y = `Number of roots`)) +
@@ -80,30 +83,30 @@ geom_point()
 
 ## Line chart\
 A line chart, also known as a line graph, is a visual representation of data that displays information as a series of data points connected by straight line segments. Line charts are commonly used to show trends or changes over time, making them particularly useful for illustrating temporal patterns or relationships in data. Line charts provide a clear and intuitive way to visualize how values evolve or fluctuate over a specific period. 
-```{r eval=FALSE}
+```{r}
 ggplot(time_series, aes(x = Month, y = `Heigh of plant`,color = Treatments,group = Treatments)) +
   geom_line()
 ```
 
 
 ## Map visualization
-```{r eval=FALSE}
+```{r warning=FALSE, message=FALSE}
 #load required packages
 library(leaflet)
 library(sf)
 library(readr)
 
 
-cameroon_geojson <- sf::st_read("./data/cm.json")
+cameroon_json <- sf::st_read("./data/cm.json")
 
 #load the data
 population <- read_csv("./data/positives_case_covid.csv")
 
-# Joindre les données de population à la carte du Cameroun
-cameroon_geojson$population <- population$`Positive Cases`
+# join the dataset cameroon_json to the dataframe of positive cases covid
+cameroon_json$population <- population$`Positive Cases`
 
-# Créer la carte Leaflet
-leaflet(data = cameroon_geojson) %>%
+# map visualization
+leaflet(data = cameroon_json) %>%
   addTiles() %>%
   addPolygons(fillColor = ~colorQuantile("Set2", population)(population),
               stroke = FALSE,

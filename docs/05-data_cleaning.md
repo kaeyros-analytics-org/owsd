@@ -106,6 +106,8 @@ boxplot(data_1$`How many children do you have?`, main="Number of children", boxw
 mtext(paste("Outliers: ", paste(outlier_values, collapse=", ")), cex=0.6)
 ```
 
+<img src="05-data_cleaning_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
 After identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)
 
 ## Removing duplicates: \
