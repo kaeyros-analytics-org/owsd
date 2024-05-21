@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Data manipulation | OWSD WORKSHOP</title>
+<meta name="author" content="Thierry Monthe">
+<meta name="generator" content="bookdown 0.38 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Data manipulation | OWSD WORKSHOP">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Data manipulation | OWSD WORKSHOP">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.4/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.2.1/leaflet.js"></script><link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet">
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script><link href="libs/ionicons-2.0.1/ionicons.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+<meta property="og:description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+<meta name="twitter:description" content="Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by...">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">OWSD WORKSHOP</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome adress</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">2</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="basics-of-the-r-language.html"><span class="header-section-number">3</span> Basics of the R language</a></li>
+<li><a class="" href="functions-and-packages.html"><span class="header-section-number">4</span> Functions and packages</a></li>
+<li><a class="" href="data-manipulation.html"><span class="header-section-number">5</span> Data manipulation</a></li>
+<li><a class="" href="data-cleaning.html"><span class="header-section-number">6</span> Data cleaning</a></li>
+<li><a class="" href="data-manipulation-1.html"><span class="header-section-number">7</span> Data manipulation</a></li>
+<li><a class="" href="data-manipulation-2.html"><span class="header-section-number">8</span> Data manipulation</a></li>
+<li><a class="" href="data-manipulation-3.html"><span class="header-section-number">9</span> Data manipulation</a></li>
+<li><a class="active" href="data-manipulation-4.html"><span class="header-section-number">10</span> Data manipulation</a></li>
+<li><a class="" href="descriptive-statistics.html"><span class="header-section-number">11</span> Descriptive statistics</a></li>
+<li><a class="" href="inferential-statistics.html"><span class="header-section-number">12</span> Inferential statistics</a></li>
+<li><a class="" href="data-manipulation-5.html"><span class="header-section-number">13</span> Data manipulation</a></li>
+<li><a class="" href="visualization.html"><span class="header-section-number">14</span> Visualization</a></li>
+<li><a class="" href="introduction-to-machine-learning-and-machine-learning-techniques.html"><span class="header-section-number">15</span> Introduction to Machine Learning and Machine Learning techniques</a></li>
+<li><a class="" href="data-preparation.html"><span class="header-section-number">16</span> Data preparation</a></li>
+<li><a class="" href="model-training-and-hyperparameter-tuning.html"><span class="header-section-number">17</span> Model training and hyperparameter tuning</a></li>
+<li><a class="" href="model-deployment.html"><span class="header-section-number">18</span> Model deployment</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-manipulation-4" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Data manipulation<a class="anchor" aria-label="anchor" href="#data-manipulation-4"><i class="fas fa-link"></i></a>
+</h1>
+<p>Data manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.</p>
+<div id="importation-of-data-4" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Importation of data<a class="anchor" aria-label="anchor" href="#importation-of-data-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.</p>
+<p>In this part, we will learn to load commonly used <strong>CSV</strong>, <strong>Excel</strong>, <strong>JSON</strong>, <strong>Database</strong>, and <strong>XML/HTML</strong> data files in R. Moreover, we will also look at less commonly used file formats such as <strong>SPSS</strong> and <strong>Stata</strong>.</p>
+<p>Importing data from csv to R:</p>
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="va">breast_cancer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/Breast_cancer_data.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from excel to R:</p>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_1</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"./data/data_for_workshop1.xls"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 42</span></span>
+<span><span class="co">#&gt;   Sex    Age       `Are you married?` Do you  have childre…¹</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;                 </span></span>
+<span><span class="co">#&gt; 1 Male   25_40 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 2 Male   15_25 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 3 Male   25_40 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 4 Male   15_25 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 5 Female 15_25 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; 6 Male   25_40 ye… NO                 NO                    </span></span>
+<span><span class="co">#&gt; # ℹ abbreviated name: ¹​`Do you  have children?`</span></span>
+<span><span class="co">#&gt; # ℹ 38 more variables:</span></span>
+<span><span class="co">#&gt; #   `How many children do you have?` &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   `What is your religion?` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `Do have a tasba farm?` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `What's the size of your farm?` &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   `How long have you been growing tasba?` &lt;chr&gt;, …</span></span></code></pre></div>
+<p>Importing data from json to R:</p>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_json</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"./data/sample4.json"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#transform data into dataframe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">data_json</span><span class="op">)</span></span></code></pre></div>
+<p>Importing data from database to R:</p>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#establish the connection to the database</span></span>
+<span><span class="va">conn</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"./data/mental_health.sqlite"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#list names of all the tables in the database</span></span>
+<span><span class="fu">dbListTables</span><span class="op">(</span><span class="va">conn</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Answer"   "Question" "Survey"</span></span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#retrieve data from table Question</span></span>
+<span><span class="va">data_sqlite</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Survey"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_sqlite</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   SurveyID                   Description</span></span>
+<span><span class="co">#&gt; 1     2014 mental health survey for 2014</span></span>
+<span><span class="co">#&gt; 2     2016 mental health survey for 2016</span></span>
+<span><span class="co">#&gt; 3     2017 mental health survey for 2017</span></span>
+<span><span class="co">#&gt; 4     2018 mental health survey for 2018</span></span>
+<span><span class="co">#&gt; 5     2019 mental health survey for 2019</span></span></code></pre></div>
+<p>Importing data from spss to R:</p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#load data</span></span>
+<span><span class="va">data_spss</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_spss</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 14</span></span>
+<span><span class="co">#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO</span></span>
+<span><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1      42      1     0    59    NA    NA    NA    32    25</span></span>
+<span><span class="co">#&gt; 2      37      0     0    58     2     2    NA    25    19</span></span>
+<span><span class="co">#&gt; 3     141      0     0    83    NA     2     2    31    32</span></span>
+<span><span class="co">#&gt; 4     143      0     0    85     2     3    NA    18    25</span></span>
+<span><span class="co">#&gt; 5     128      1     0    75    14     8    21    20    19</span></span>
+<span><span class="co">#&gt; 6      12      1     0    50    17     9    27    28    26</span></span>
+<span><span class="co">#&gt; # ℹ 5 more variables: MOB &lt;dbl&gt;, SS &lt;dbl&gt;, CESD &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   SelfEsteem &lt;dbl&gt;, Satisfaction &lt;dbl&gt;</span></span></code></pre></div>
+<p>Importing data from stata to R:</p>
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="va">data_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_stata</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 10</span></span>
+<span><span class="co">#&gt;    educ cigpric white   age income  cigs restaurn lincome</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1  16      60.5     1    46  20000     0        0    9.90</span></span>
+<span><span class="co">#&gt; 2  16      57.9     1    40  30000     0        0   10.3 </span></span>
+<span><span class="co">#&gt; 3  12      57.7     1    58  30000     3        0   10.3 </span></span>
+<span><span class="co">#&gt; 4  13.5    57.9     1    30  20000     0        0    9.90</span></span>
+<span><span class="co">#&gt; 5  10      58.3     1    17  20000     0        0    9.90</span></span>
+<span><span class="co">#&gt; 6   6      59.3     1    86   6500     0        0    8.78</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: agesq &lt;dbl&gt;, lcigpric &lt;dbl&gt;</span></span></code></pre></div>
+</div>
+<div id="basic-exploration-of-data-4" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Basic exploration of data<a class="anchor" aria-label="anchor" href="#basic-exploration-of-data-4"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data exploration helps you explore and think about the data you’re working. The goal with data exploration is to understand, and visualize data so that you can discover insights, relationships, patterns, and anomalies.
+To explore data in R we have many functions to achieve that.</p>
+<ul>
+<li>Function head(): is used to view the first few rows of your dataset.</li>
+</ul>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_1</span>,<span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function tail(): is used to view the last few rows of your dataset.</li>
+</ul>
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function str(): is used to provide the structure of your data frame, showing you the data types.</li>
+</ul>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function dim(): is used to know about the number of rows and columns.</li>
+</ul>
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 107  42</span></span></code></pre></div>
+<ul>
+<li>Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.</li>
+</ul>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Function table(): used to build a contingency table of the counts at each combination of factor levels.</li>
+</ul>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">Sex</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Female   Male </span></span>
+<span><span class="co">#&gt;     58     49</span></span></code></pre></div>
+<ul>
+<li>Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.</li>
+</ul>
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`Do you  have children?`</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "NO"  "YES"</span></span></code></pre></div>
+<ul>
+<li>Function hist(): function to plot a basic histogram to view distribution of a variable.</li>
+</ul>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">'Number of childrens'</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">'Number of childrens'</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-data_cleaning_files/figure-html/unnamed-chunk-184-1.png" width="672"></div>
+<ul>
+<li>Function boxplot(): function to plot a boxplot, it provides a compact summary of the data’s central tendency, spread, and potential outliers.</li>
+</ul>
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">data_1</span><span class="op">$</span><span class="va">`How many children do you have?`</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-data_cleaning_files/figure-html/unnamed-chunk-185-1.png" width="672"></div>
+</div>
+<div id="data-manipulation-with-dplyr-4" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Data manipulation with dplyr<a class="anchor" aria-label="anchor" href="#data-manipulation-with-dplyr-4"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>IMPORTANT POINT:</strong>
+One of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.</p>
+<p>In order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.</p>
+<ul>
+<li>
+<p>filter():</p>
+<p>The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:</p>
+<pre><code>  filter(dataframeName,condition)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">data_1</span>, <span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>distinct():</p>
+<p>The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:</p>
+<pre><code>  distinct(dataframeName, col1, col2,.., .keep_all=TRUE)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>arrange():</p>
+<p>In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:</p>
+<pre><code>  arrange(dataframeName, columnName)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>select():</p>
+<p>The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:</p>
+<pre><code>  select(dataframeName, col1,col2,…)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Sex</span>,<span class="va">`Do you  have children?`</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>rename():</p>
+<p>The rename() function is used to change the column names. This can be done by the below syntax:</p>
+<pre><code>  rename(dataframeName, newName=oldName)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Status<span class="op">=</span> <span class="va">`Are you married?`</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>mutate():</p>
+<p>The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:</p>
+<pre><code>  mutate(dataframeName, newVariable=formula)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>transmute():</p>
+<p>The transmute() function drops the old variables and creates new variables. Here is the syntax:</p>
+<pre><code>  transmute(dataframeName, newVariable=formula)</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html">transmute</a></span><span class="op">(</span>sex<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sex</span><span class="op">==</span><span class="st">"Female"</span>, <span class="st">"F"</span>, <span class="st">"M"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>
+<p>summarize():</p>
+<p>Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the <code>group_by()</code> function. The syntax of summarize() method is specified below:</p>
+<pre><code>  summarize(dataframeName, aggregate_function(columnName))</code></pre>
+</li>
+</ul>
+<p>Example:</p>
+<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_1</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">Sex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">summarize</span><span class="op">(</span>mean<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">`How many children do you have?`</span><span class="op">)</span>, count<span class="op">=</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="combine-dataframes" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Combine dataframes<a class="anchor" aria-label="anchor" href="#combine-dataframes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Suppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.
+    - Combine by column</p>
+<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">culture1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wheat"</span>, <span class="st">"maize"</span>, <span class="st">"rice"</span><span class="op">)</span>,</span>
+<span>  Area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">120</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wheat"</span>, <span class="st">"maize"</span>, <span class="st">"rice"</span><span class="op">)</span>,</span>
+<span>  Return <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">60</span>, <span class="fl">45</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture_final1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">culture1</span>, <span class="va">culture2</span><span class="op">)</span></span></code></pre></div>
+<p>    - combine by row</p>
+<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">culture3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"wheat"</span>, <span class="st">"maize"</span>, <span class="st">"rice"</span><span class="op">)</span>,</span>
+<span>  Area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">150</span>, <span class="fl">120</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Culture <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"potato"</span>, <span class="st">"cassava"</span><span class="op">)</span>,</span>
+<span>  Area <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">250</span>, <span class="fl">400</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">culture_final2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">culture3</span>, <span class="va">culture4</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="data-validation" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Data Validation<a class="anchor" aria-label="anchor" href="#data-validation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Data validation involves checking data against predefined rules or criteria. It ensures that data adheres to specific requirements or constraints.</p>
+<p>Validation checks can prevent incorrect or inconsistent data from entering your analysis.</p>
+</div>
+<div id="regular-expressions" class="section level2" number="10.6">
+<h2>
+<span class="header-section-number">10.6</span> Regular expressions<a class="anchor" aria-label="anchor" href="#regular-expressions"><i class="fas fa-link"></i></a>
+</h2>
+<p>Regular expressions (regex) are powerful tools for pattern matching and replacement in text data. The gsub() function is commonly used for global pattern substitution.</p>
+
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="data-manipulation-4.html#cb209-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">knit_child</span>(<span class="st">"05-data_cleaning.Rmd"</span>)</span>
+<span id="cb209-2"><a href="data-manipulation-4.html#cb209-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-3"><a href="data-manipulation-4.html#cb209-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-4"><a href="data-manipulation-4.html#cb209-4" tabindex="-1"></a><span class="co">#&gt; processing file: ./05-data_cleaning.Rmd</span></span>
+<span id="cb209-5"><a href="data-manipulation-4.html#cb209-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-6"><a href="data-manipulation-4.html#cb209-6" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-7"><a href="data-manipulation-4.html#cb209-7" tabindex="-1"></a>  <span class="er">|</span>                               <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb209-8"><a href="data-manipulation-4.html#cb209-8" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-9"><a href="data-manipulation-4.html#cb209-9" tabindex="-1"></a>  <span class="er">|</span>.                              <span class="sc">|</span>   <span class="dv">4</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-13</span>]</span>
+<span id="cb209-10"><a href="data-manipulation-4.html#cb209-10" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-11"><a href="data-manipulation-4.html#cb209-11" tabindex="-1"></a>  <span class="er">|</span>..                             <span class="sc">|</span>   <span class="dv">7</span>%                   </span>
+<span id="cb209-12"><a href="data-manipulation-4.html#cb209-12" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-13"><a href="data-manipulation-4.html#cb209-13" tabindex="-1"></a>  <span class="er">|</span>...                            <span class="sc">|</span>  <span class="dv">11</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-14</span>]</span>
+<span id="cb209-14"><a href="data-manipulation-4.html#cb209-14" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-14' has</span></span>
+<span id="cb209-15"><a href="data-manipulation-4.html#cb209-15" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-16"><a href="data-manipulation-4.html#cb209-16" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-17"><a href="data-manipulation-4.html#cb209-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-18"><a href="data-manipulation-4.html#cb209-18" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-19"><a href="data-manipulation-4.html#cb209-19" tabindex="-1"></a>  <span class="er">|</span>....                           <span class="sc">|</span>  <span class="dv">14</span>%                   </span>
+<span id="cb209-20"><a href="data-manipulation-4.html#cb209-20" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-21"><a href="data-manipulation-4.html#cb209-21" tabindex="-1"></a>  <span class="er">|</span>......                         <span class="sc">|</span>  <span class="dv">18</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-15</span>]</span>
+<span id="cb209-22"><a href="data-manipulation-4.html#cb209-22" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-15' has</span></span>
+<span id="cb209-23"><a href="data-manipulation-4.html#cb209-23" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-24"><a href="data-manipulation-4.html#cb209-24" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-25"><a href="data-manipulation-4.html#cb209-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-26"><a href="data-manipulation-4.html#cb209-26" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-27"><a href="data-manipulation-4.html#cb209-27" tabindex="-1"></a>  <span class="er">|</span>.......                        <span class="sc">|</span>  <span class="dv">21</span>%                   </span>
+<span id="cb209-28"><a href="data-manipulation-4.html#cb209-28" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-29"><a href="data-manipulation-4.html#cb209-29" tabindex="-1"></a>  <span class="er">|</span>........                       <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-16</span>]</span>
+<span id="cb209-30"><a href="data-manipulation-4.html#cb209-30" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-16' has</span></span>
+<span id="cb209-31"><a href="data-manipulation-4.html#cb209-31" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-32"><a href="data-manipulation-4.html#cb209-32" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-33"><a href="data-manipulation-4.html#cb209-33" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-34"><a href="data-manipulation-4.html#cb209-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-35"><a href="data-manipulation-4.html#cb209-35" tabindex="-1"></a><span class="co">#&gt; processing file: ./04-data_manipulation.Rmd</span></span>
+<span id="cb209-36"><a href="data-manipulation-4.html#cb209-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-37"><a href="data-manipulation-4.html#cb209-37" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-38"><a href="data-manipulation-4.html#cb209-38" tabindex="-1"></a>  <span class="er">|</span>                               <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb209-39"><a href="data-manipulation-4.html#cb209-39" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-40"><a href="data-manipulation-4.html#cb209-40" tabindex="-1"></a>  <span class="er">|</span>.                              <span class="sc">|</span>   <span class="dv">2</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-30</span>]</span>
+<span id="cb209-41"><a href="data-manipulation-4.html#cb209-41" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-42"><a href="data-manipulation-4.html#cb209-42" tabindex="-1"></a>  <span class="er">|</span>.                              <span class="sc">|</span>   <span class="dv">4</span>%                   </span>
+<span id="cb209-43"><a href="data-manipulation-4.html#cb209-43" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-44"><a href="data-manipulation-4.html#cb209-44" tabindex="-1"></a>  <span class="er">|</span>..                             <span class="sc">|</span>   <span class="dv">6</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-31</span>]</span>
+<span id="cb209-45"><a href="data-manipulation-4.html#cb209-45" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-46"><a href="data-manipulation-4.html#cb209-46" tabindex="-1"></a>  <span class="er">|</span>...                            <span class="sc">|</span>   <span class="dv">8</span>%                   </span>
+<span id="cb209-47"><a href="data-manipulation-4.html#cb209-47" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-48"><a href="data-manipulation-4.html#cb209-48" tabindex="-1"></a>  <span class="er">|</span>...                            <span class="sc">|</span>  <span class="dv">10</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-32</span>]</span>
+<span id="cb209-49"><a href="data-manipulation-4.html#cb209-49" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-50"><a href="data-manipulation-4.html#cb209-50" tabindex="-1"></a>  <span class="er">|</span>....                           <span class="sc">|</span>  <span class="dv">12</span>%                   </span>
+<span id="cb209-51"><a href="data-manipulation-4.html#cb209-51" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-52"><a href="data-manipulation-4.html#cb209-52" tabindex="-1"></a>  <span class="er">|</span>.....                          <span class="sc">|</span>  <span class="dv">15</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-33</span>]</span>
+<span id="cb209-53"><a href="data-manipulation-4.html#cb209-53" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-54"><a href="data-manipulation-4.html#cb209-54" tabindex="-1"></a>  <span class="er">|</span>.....                          <span class="sc">|</span>  <span class="dv">17</span>%                   </span>
+<span id="cb209-55"><a href="data-manipulation-4.html#cb209-55" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-56"><a href="data-manipulation-4.html#cb209-56" tabindex="-1"></a>  <span class="er">|</span>......                         <span class="sc">|</span>  <span class="dv">19</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-34</span>]</span>
+<span id="cb209-57"><a href="data-manipulation-4.html#cb209-57" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-58"><a href="data-manipulation-4.html#cb209-58" tabindex="-1"></a>  <span class="er">|</span>......                         <span class="sc">|</span>  <span class="dv">21</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-35</span>]</span>
+<span id="cb209-59"><a href="data-manipulation-4.html#cb209-59" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-60"><a href="data-manipulation-4.html#cb209-60" tabindex="-1"></a>  <span class="er">|</span>.......                        <span class="sc">|</span>  <span class="dv">23</span>%                   </span>
+<span id="cb209-61"><a href="data-manipulation-4.html#cb209-61" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-62"><a href="data-manipulation-4.html#cb209-62" tabindex="-1"></a>  <span class="er">|</span>........                       <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-36</span>]</span>
+<span id="cb209-63"><a href="data-manipulation-4.html#cb209-63" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-64"><a href="data-manipulation-4.html#cb209-64" tabindex="-1"></a>  <span class="er">|</span>........                       <span class="sc">|</span>  <span class="dv">27</span>%                   </span>
+<span id="cb209-65"><a href="data-manipulation-4.html#cb209-65" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-66"><a href="data-manipulation-4.html#cb209-66" tabindex="-1"></a>  <span class="er">|</span>.........                      <span class="sc">|</span>  <span class="dv">29</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-37</span>]</span>
+<span id="cb209-67"><a href="data-manipulation-4.html#cb209-67" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-68"><a href="data-manipulation-4.html#cb209-68" tabindex="-1"></a>  <span class="er">|</span>..........                     <span class="sc">|</span>  <span class="dv">31</span>%                   </span>
+<span id="cb209-69"><a href="data-manipulation-4.html#cb209-69" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-70"><a href="data-manipulation-4.html#cb209-70" tabindex="-1"></a>  <span class="er">|</span>..........                     <span class="sc">|</span>  <span class="dv">33</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-38</span>]</span>
+<span id="cb209-71"><a href="data-manipulation-4.html#cb209-71" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-72"><a href="data-manipulation-4.html#cb209-72" tabindex="-1"></a>  <span class="er">|</span>...........                    <span class="sc">|</span>  <span class="dv">35</span>%                   </span>
+<span id="cb209-73"><a href="data-manipulation-4.html#cb209-73" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-74"><a href="data-manipulation-4.html#cb209-74" tabindex="-1"></a>  <span class="er">|</span>............                   <span class="sc">|</span>  <span class="dv">38</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-39</span>]</span>
+<span id="cb209-75"><a href="data-manipulation-4.html#cb209-75" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-76"><a href="data-manipulation-4.html#cb209-76" tabindex="-1"></a>  <span class="er">|</span>............                   <span class="sc">|</span>  <span class="dv">40</span>%                   </span>
+<span id="cb209-77"><a href="data-manipulation-4.html#cb209-77" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-78"><a href="data-manipulation-4.html#cb209-78" tabindex="-1"></a>  <span class="er">|</span>.............                  <span class="sc">|</span>  <span class="dv">42</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-40</span>]</span>
+<span id="cb209-79"><a href="data-manipulation-4.html#cb209-79" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-80"><a href="data-manipulation-4.html#cb209-80" tabindex="-1"></a>  <span class="er">|</span>..............                 <span class="sc">|</span>  <span class="dv">44</span>%                   </span>
+<span id="cb209-81"><a href="data-manipulation-4.html#cb209-81" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-82"><a href="data-manipulation-4.html#cb209-82" tabindex="-1"></a>  <span class="er">|</span>..............                 <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-41</span>]</span>
+<span id="cb209-83"><a href="data-manipulation-4.html#cb209-83" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-84"><a href="data-manipulation-4.html#cb209-84" tabindex="-1"></a>  <span class="er">|</span>...............                <span class="sc">|</span>  <span class="dv">48</span>%                   </span>
+<span id="cb209-85"><a href="data-manipulation-4.html#cb209-85" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-86"><a href="data-manipulation-4.html#cb209-86" tabindex="-1"></a>  <span class="er">|</span>................               <span class="sc">|</span>  <span class="dv">50</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-42</span>]</span>
+<span id="cb209-87"><a href="data-manipulation-4.html#cb209-87" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-88"><a href="data-manipulation-4.html#cb209-88" tabindex="-1"></a>  <span class="er">|</span>................               <span class="sc">|</span>  <span class="dv">52</span>%                   </span>
+<span id="cb209-89"><a href="data-manipulation-4.html#cb209-89" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-90"><a href="data-manipulation-4.html#cb209-90" tabindex="-1"></a>  <span class="er">|</span>.................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-43</span>]</span>
+<span id="cb209-91"><a href="data-manipulation-4.html#cb209-91" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-92"><a href="data-manipulation-4.html#cb209-92" tabindex="-1"></a>  <span class="er">|</span>.................              <span class="sc">|</span>  <span class="dv">56</span>%                   </span>
+<span id="cb209-93"><a href="data-manipulation-4.html#cb209-93" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-94"><a href="data-manipulation-4.html#cb209-94" tabindex="-1"></a>  <span class="er">|</span>..................             <span class="sc">|</span>  <span class="dv">58</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-44</span>]</span>
+<span id="cb209-95"><a href="data-manipulation-4.html#cb209-95" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-96"><a href="data-manipulation-4.html#cb209-96" tabindex="-1"></a>  <span class="er">|</span>...................            <span class="sc">|</span>  <span class="dv">60</span>%                   </span>
+<span id="cb209-97"><a href="data-manipulation-4.html#cb209-97" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-98"><a href="data-manipulation-4.html#cb209-98" tabindex="-1"></a>  <span class="er">|</span>...................            <span class="sc">|</span>  <span class="dv">62</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-45</span>]</span>
+<span id="cb209-99"><a href="data-manipulation-4.html#cb209-99" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-100"><a href="data-manipulation-4.html#cb209-100" tabindex="-1"></a>  <span class="er">|</span>....................           <span class="sc">|</span>  <span class="dv">65</span>%                   </span>
+<span id="cb209-101"><a href="data-manipulation-4.html#cb209-101" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-102"><a href="data-manipulation-4.html#cb209-102" tabindex="-1"></a>  <span class="er">|</span>.....................          <span class="sc">|</span>  <span class="dv">67</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-46</span>]</span>
+<span id="cb209-103"><a href="data-manipulation-4.html#cb209-103" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-104"><a href="data-manipulation-4.html#cb209-104" tabindex="-1"></a>  <span class="er">|</span>.....................          <span class="sc">|</span>  <span class="dv">69</span>%                   </span>
+<span id="cb209-105"><a href="data-manipulation-4.html#cb209-105" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-106"><a href="data-manipulation-4.html#cb209-106" tabindex="-1"></a>  <span class="er">|</span>......................         <span class="sc">|</span>  <span class="dv">71</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-47</span>]</span>
+<span id="cb209-107"><a href="data-manipulation-4.html#cb209-107" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-108"><a href="data-manipulation-4.html#cb209-108" tabindex="-1"></a>  <span class="er">|</span>.......................        <span class="sc">|</span>  <span class="dv">73</span>%                   </span>
+<span id="cb209-109"><a href="data-manipulation-4.html#cb209-109" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-110"><a href="data-manipulation-4.html#cb209-110" tabindex="-1"></a>  <span class="er">|</span>.......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-48</span>]</span>
+<span id="cb209-111"><a href="data-manipulation-4.html#cb209-111" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-112"><a href="data-manipulation-4.html#cb209-112" tabindex="-1"></a>  <span class="er">|</span>........................       <span class="sc">|</span>  <span class="dv">77</span>%                   </span>
+<span id="cb209-113"><a href="data-manipulation-4.html#cb209-113" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-114"><a href="data-manipulation-4.html#cb209-114" tabindex="-1"></a>  <span class="er">|</span>.........................      <span class="sc">|</span>  <span class="dv">79</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-49</span>]</span>
+<span id="cb209-115"><a href="data-manipulation-4.html#cb209-115" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-116"><a href="data-manipulation-4.html#cb209-116" tabindex="-1"></a>  <span class="er">|</span>.........................      <span class="sc">|</span>  <span class="dv">81</span>%                   </span>
+<span id="cb209-117"><a href="data-manipulation-4.html#cb209-117" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-118"><a href="data-manipulation-4.html#cb209-118" tabindex="-1"></a>  <span class="er">|</span>..........................     <span class="sc">|</span>  <span class="dv">83</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-50</span>]</span>
+<span id="cb209-119"><a href="data-manipulation-4.html#cb209-119" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-120"><a href="data-manipulation-4.html#cb209-120" tabindex="-1"></a>  <span class="er">|</span>..........................     <span class="sc">|</span>  <span class="dv">85</span>%                   </span>
+<span id="cb209-121"><a href="data-manipulation-4.html#cb209-121" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-122"><a href="data-manipulation-4.html#cb209-122" tabindex="-1"></a>  <span class="er">|</span>...........................    <span class="sc">|</span>  <span class="dv">88</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-51</span>]</span>
+<span id="cb209-123"><a href="data-manipulation-4.html#cb209-123" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-124"><a href="data-manipulation-4.html#cb209-124" tabindex="-1"></a>  <span class="er">|</span>............................   <span class="sc">|</span>  <span class="dv">90</span>%                   </span>
+<span id="cb209-125"><a href="data-manipulation-4.html#cb209-125" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-126"><a href="data-manipulation-4.html#cb209-126" tabindex="-1"></a>  <span class="er">|</span>............................   <span class="sc">|</span>  <span class="dv">92</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-52</span>]</span>
+<span id="cb209-127"><a href="data-manipulation-4.html#cb209-127" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-128"><a href="data-manipulation-4.html#cb209-128" tabindex="-1"></a>  <span class="er">|</span>.............................  <span class="sc">|</span>  <span class="dv">94</span>%                   </span>
+<span id="cb209-129"><a href="data-manipulation-4.html#cb209-129" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-130"><a href="data-manipulation-4.html#cb209-130" tabindex="-1"></a>  <span class="er">|</span>.............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-53</span>]</span>
+<span id="cb209-131"><a href="data-manipulation-4.html#cb209-131" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-132"><a href="data-manipulation-4.html#cb209-132" tabindex="-1"></a>  <span class="er">|</span>.............................. <span class="sc">|</span>  <span class="dv">98</span>%                   </span>
+<span id="cb209-133"><a href="data-manipulation-4.html#cb209-133" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-134"><a href="data-manipulation-4.html#cb209-134" tabindex="-1"></a>  <span class="er">|</span>...............................<span class="sc">|</span> <span class="dv">100</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-54</span>]</span>
+<span id="cb209-135"><a href="data-manipulation-4.html#cb209-135" tabindex="-1"></a>                                                                                         </span>
+<span id="cb209-136"><a href="data-manipulation-4.html#cb209-136" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-137"><a href="data-manipulation-4.html#cb209-137" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-138"><a href="data-manipulation-4.html#cb209-138" tabindex="-1"></a>  <span class="er">|</span>.........                      <span class="sc">|</span>  <span class="dv">29</span>%                   </span>
+<span id="cb209-139"><a href="data-manipulation-4.html#cb209-139" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-140"><a href="data-manipulation-4.html#cb209-140" tabindex="-1"></a>  <span class="er">|</span>..........                     <span class="sc">|</span>  <span class="dv">32</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-17</span>]</span>
+<span id="cb209-141"><a href="data-manipulation-4.html#cb209-141" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-17' has</span></span>
+<span id="cb209-142"><a href="data-manipulation-4.html#cb209-142" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-143"><a href="data-manipulation-4.html#cb209-143" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-144"><a href="data-manipulation-4.html#cb209-144" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-145"><a href="data-manipulation-4.html#cb209-145" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-146"><a href="data-manipulation-4.html#cb209-146" tabindex="-1"></a><span class="co">#&gt; processing file: ./04-data_manipulation.Rmd</span></span>
+<span id="cb209-147"><a href="data-manipulation-4.html#cb209-147" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-148"><a href="data-manipulation-4.html#cb209-148" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-149"><a href="data-manipulation-4.html#cb209-149" tabindex="-1"></a>  <span class="er">|</span>                              <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb209-150"><a href="data-manipulation-4.html#cb209-150" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-151"><a href="data-manipulation-4.html#cb209-151" tabindex="-1"></a>  <span class="er">|</span>.                             <span class="sc">|</span>   <span class="dv">2</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-79</span>] </span>
+<span id="cb209-152"><a href="data-manipulation-4.html#cb209-152" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-153"><a href="data-manipulation-4.html#cb209-153" tabindex="-1"></a>  <span class="er">|</span>.                             <span class="sc">|</span>   <span class="dv">4</span>%                    </span>
+<span id="cb209-154"><a href="data-manipulation-4.html#cb209-154" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-155"><a href="data-manipulation-4.html#cb209-155" tabindex="-1"></a>  <span class="er">|</span>..                            <span class="sc">|</span>   <span class="dv">6</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-80</span>] </span>
+<span id="cb209-156"><a href="data-manipulation-4.html#cb209-156" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-157"><a href="data-manipulation-4.html#cb209-157" tabindex="-1"></a>  <span class="er">|</span>..                            <span class="sc">|</span>   <span class="dv">8</span>%                    </span>
+<span id="cb209-158"><a href="data-manipulation-4.html#cb209-158" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-159"><a href="data-manipulation-4.html#cb209-159" tabindex="-1"></a>  <span class="er">|</span>...                           <span class="sc">|</span>  <span class="dv">10</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-81</span>] </span>
+<span id="cb209-160"><a href="data-manipulation-4.html#cb209-160" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-161"><a href="data-manipulation-4.html#cb209-161" tabindex="-1"></a>  <span class="er">|</span>....                          <span class="sc">|</span>  <span class="dv">12</span>%                    </span>
+<span id="cb209-162"><a href="data-manipulation-4.html#cb209-162" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-163"><a href="data-manipulation-4.html#cb209-163" tabindex="-1"></a>  <span class="er">|</span>....                          <span class="sc">|</span>  <span class="dv">15</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-82</span>] </span>
+<span id="cb209-164"><a href="data-manipulation-4.html#cb209-164" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-165"><a href="data-manipulation-4.html#cb209-165" tabindex="-1"></a>  <span class="er">|</span>.....                         <span class="sc">|</span>  <span class="dv">17</span>%                    </span>
+<span id="cb209-166"><a href="data-manipulation-4.html#cb209-166" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-167"><a href="data-manipulation-4.html#cb209-167" tabindex="-1"></a>  <span class="er">|</span>......                        <span class="sc">|</span>  <span class="dv">19</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-83</span>] </span>
+<span id="cb209-168"><a href="data-manipulation-4.html#cb209-168" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-169"><a href="data-manipulation-4.html#cb209-169" tabindex="-1"></a>  <span class="er">|</span>......                        <span class="sc">|</span>  <span class="dv">21</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-84</span>] </span>
+<span id="cb209-170"><a href="data-manipulation-4.html#cb209-170" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-171"><a href="data-manipulation-4.html#cb209-171" tabindex="-1"></a>  <span class="er">|</span>.......                       <span class="sc">|</span>  <span class="dv">23</span>%                    </span>
+<span id="cb209-172"><a href="data-manipulation-4.html#cb209-172" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-173"><a href="data-manipulation-4.html#cb209-173" tabindex="-1"></a>  <span class="er">|</span>........                      <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-85</span>] </span>
+<span id="cb209-174"><a href="data-manipulation-4.html#cb209-174" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-175"><a href="data-manipulation-4.html#cb209-175" tabindex="-1"></a>  <span class="er">|</span>........                      <span class="sc">|</span>  <span class="dv">27</span>%                    </span>
+<span id="cb209-176"><a href="data-manipulation-4.html#cb209-176" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-177"><a href="data-manipulation-4.html#cb209-177" tabindex="-1"></a>  <span class="er">|</span>.........                     <span class="sc">|</span>  <span class="dv">29</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-86</span>] </span>
+<span id="cb209-178"><a href="data-manipulation-4.html#cb209-178" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-179"><a href="data-manipulation-4.html#cb209-179" tabindex="-1"></a>  <span class="er">|</span>.........                     <span class="sc">|</span>  <span class="dv">31</span>%                    </span>
+<span id="cb209-180"><a href="data-manipulation-4.html#cb209-180" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-181"><a href="data-manipulation-4.html#cb209-181" tabindex="-1"></a>  <span class="er">|</span>..........                    <span class="sc">|</span>  <span class="dv">33</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-87</span>] </span>
+<span id="cb209-182"><a href="data-manipulation-4.html#cb209-182" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-183"><a href="data-manipulation-4.html#cb209-183" tabindex="-1"></a>  <span class="er">|</span>...........                   <span class="sc">|</span>  <span class="dv">35</span>%                    </span>
+<span id="cb209-184"><a href="data-manipulation-4.html#cb209-184" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-185"><a href="data-manipulation-4.html#cb209-185" tabindex="-1"></a>  <span class="er">|</span>...........                   <span class="sc">|</span>  <span class="dv">38</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-88</span>] </span>
+<span id="cb209-186"><a href="data-manipulation-4.html#cb209-186" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-187"><a href="data-manipulation-4.html#cb209-187" tabindex="-1"></a>  <span class="er">|</span>............                  <span class="sc">|</span>  <span class="dv">40</span>%                    </span>
+<span id="cb209-188"><a href="data-manipulation-4.html#cb209-188" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-189"><a href="data-manipulation-4.html#cb209-189" tabindex="-1"></a>  <span class="er">|</span>............                  <span class="sc">|</span>  <span class="dv">42</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-89</span>] </span>
+<span id="cb209-190"><a href="data-manipulation-4.html#cb209-190" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-191"><a href="data-manipulation-4.html#cb209-191" tabindex="-1"></a>  <span class="er">|</span>.............                 <span class="sc">|</span>  <span class="dv">44</span>%                    </span>
+<span id="cb209-192"><a href="data-manipulation-4.html#cb209-192" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-193"><a href="data-manipulation-4.html#cb209-193" tabindex="-1"></a>  <span class="er">|</span>..............                <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-90</span>] </span>
+<span id="cb209-194"><a href="data-manipulation-4.html#cb209-194" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-195"><a href="data-manipulation-4.html#cb209-195" tabindex="-1"></a>  <span class="er">|</span>..............                <span class="sc">|</span>  <span class="dv">48</span>%                    </span>
+<span id="cb209-196"><a href="data-manipulation-4.html#cb209-196" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-197"><a href="data-manipulation-4.html#cb209-197" tabindex="-1"></a>  <span class="er">|</span>...............               <span class="sc">|</span>  <span class="dv">50</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-91</span>] </span>
+<span id="cb209-198"><a href="data-manipulation-4.html#cb209-198" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-199"><a href="data-manipulation-4.html#cb209-199" tabindex="-1"></a>  <span class="er">|</span>................              <span class="sc">|</span>  <span class="dv">52</span>%                    </span>
+<span id="cb209-200"><a href="data-manipulation-4.html#cb209-200" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-201"><a href="data-manipulation-4.html#cb209-201" tabindex="-1"></a>  <span class="er">|</span>................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-92</span>] </span>
+<span id="cb209-202"><a href="data-manipulation-4.html#cb209-202" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-203"><a href="data-manipulation-4.html#cb209-203" tabindex="-1"></a>  <span class="er">|</span>.................             <span class="sc">|</span>  <span class="dv">56</span>%                    </span>
+<span id="cb209-204"><a href="data-manipulation-4.html#cb209-204" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-205"><a href="data-manipulation-4.html#cb209-205" tabindex="-1"></a>  <span class="er">|</span>..................            <span class="sc">|</span>  <span class="dv">58</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-93</span>] </span>
+<span id="cb209-206"><a href="data-manipulation-4.html#cb209-206" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-207"><a href="data-manipulation-4.html#cb209-207" tabindex="-1"></a>  <span class="er">|</span>..................            <span class="sc">|</span>  <span class="dv">60</span>%                    </span>
+<span id="cb209-208"><a href="data-manipulation-4.html#cb209-208" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-209"><a href="data-manipulation-4.html#cb209-209" tabindex="-1"></a>  <span class="er">|</span>...................           <span class="sc">|</span>  <span class="dv">62</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-94</span>] </span>
+<span id="cb209-210"><a href="data-manipulation-4.html#cb209-210" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-211"><a href="data-manipulation-4.html#cb209-211" tabindex="-1"></a>  <span class="er">|</span>...................           <span class="sc">|</span>  <span class="dv">65</span>%                    </span>
+<span id="cb209-212"><a href="data-manipulation-4.html#cb209-212" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-213"><a href="data-manipulation-4.html#cb209-213" tabindex="-1"></a>  <span class="er">|</span>....................          <span class="sc">|</span>  <span class="dv">67</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-95</span>] </span>
+<span id="cb209-214"><a href="data-manipulation-4.html#cb209-214" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-215"><a href="data-manipulation-4.html#cb209-215" tabindex="-1"></a>  <span class="er">|</span>.....................         <span class="sc">|</span>  <span class="dv">69</span>%                    </span>
+<span id="cb209-216"><a href="data-manipulation-4.html#cb209-216" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-217"><a href="data-manipulation-4.html#cb209-217" tabindex="-1"></a>  <span class="er">|</span>.....................         <span class="sc">|</span>  <span class="dv">71</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-96</span>] </span>
+<span id="cb209-218"><a href="data-manipulation-4.html#cb209-218" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-219"><a href="data-manipulation-4.html#cb209-219" tabindex="-1"></a>  <span class="er">|</span>......................        <span class="sc">|</span>  <span class="dv">73</span>%                    </span>
+<span id="cb209-220"><a href="data-manipulation-4.html#cb209-220" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-221"><a href="data-manipulation-4.html#cb209-221" tabindex="-1"></a>  <span class="er">|</span>......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-97</span>] </span>
+<span id="cb209-222"><a href="data-manipulation-4.html#cb209-222" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-223"><a href="data-manipulation-4.html#cb209-223" tabindex="-1"></a>  <span class="er">|</span>.......................       <span class="sc">|</span>  <span class="dv">77</span>%                    </span>
+<span id="cb209-224"><a href="data-manipulation-4.html#cb209-224" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-225"><a href="data-manipulation-4.html#cb209-225" tabindex="-1"></a>  <span class="er">|</span>........................      <span class="sc">|</span>  <span class="dv">79</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-98</span>] </span>
+<span id="cb209-226"><a href="data-manipulation-4.html#cb209-226" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-227"><a href="data-manipulation-4.html#cb209-227" tabindex="-1"></a>  <span class="er">|</span>........................      <span class="sc">|</span>  <span class="dv">81</span>%                    </span>
+<span id="cb209-228"><a href="data-manipulation-4.html#cb209-228" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-229"><a href="data-manipulation-4.html#cb209-229" tabindex="-1"></a>  <span class="er">|</span>.........................     <span class="sc">|</span>  <span class="dv">83</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-99</span>] </span>
+<span id="cb209-230"><a href="data-manipulation-4.html#cb209-230" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-231"><a href="data-manipulation-4.html#cb209-231" tabindex="-1"></a>  <span class="er">|</span>..........................    <span class="sc">|</span>  <span class="dv">85</span>%                    </span>
+<span id="cb209-232"><a href="data-manipulation-4.html#cb209-232" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-233"><a href="data-manipulation-4.html#cb209-233" tabindex="-1"></a>  <span class="er">|</span>..........................    <span class="sc">|</span>  <span class="dv">88</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-100</span>]</span>
+<span id="cb209-234"><a href="data-manipulation-4.html#cb209-234" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-235"><a href="data-manipulation-4.html#cb209-235" tabindex="-1"></a>  <span class="er">|</span>...........................   <span class="sc">|</span>  <span class="dv">90</span>%                    </span>
+<span id="cb209-236"><a href="data-manipulation-4.html#cb209-236" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-237"><a href="data-manipulation-4.html#cb209-237" tabindex="-1"></a>  <span class="er">|</span>............................  <span class="sc">|</span>  <span class="dv">92</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-101</span>]</span>
+<span id="cb209-238"><a href="data-manipulation-4.html#cb209-238" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-239"><a href="data-manipulation-4.html#cb209-239" tabindex="-1"></a>  <span class="er">|</span>............................  <span class="sc">|</span>  <span class="dv">94</span>%                    </span>
+<span id="cb209-240"><a href="data-manipulation-4.html#cb209-240" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-241"><a href="data-manipulation-4.html#cb209-241" tabindex="-1"></a>  <span class="er">|</span>............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-102</span>]</span>
+<span id="cb209-242"><a href="data-manipulation-4.html#cb209-242" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-243"><a href="data-manipulation-4.html#cb209-243" tabindex="-1"></a>  <span class="er">|</span>............................. <span class="sc">|</span>  <span class="dv">98</span>%                    </span>
+<span id="cb209-244"><a href="data-manipulation-4.html#cb209-244" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-245"><a href="data-manipulation-4.html#cb209-245" tabindex="-1"></a>  <span class="er">|</span>..............................<span class="sc">|</span> <span class="dv">100</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-103</span>]</span>
+<span id="cb209-246"><a href="data-manipulation-4.html#cb209-246" tabindex="-1"></a>                                                                                          </span>
+<span id="cb209-247"><a href="data-manipulation-4.html#cb209-247" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-248"><a href="data-manipulation-4.html#cb209-248" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-249"><a href="data-manipulation-4.html#cb209-249" tabindex="-1"></a>  <span class="er">|</span>...........                    <span class="sc">|</span>  <span class="dv">36</span>%                   </span>
+<span id="cb209-250"><a href="data-manipulation-4.html#cb209-250" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-251"><a href="data-manipulation-4.html#cb209-251" tabindex="-1"></a>  <span class="er">|</span>............                   <span class="sc">|</span>  <span class="dv">39</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-18</span>]</span>
+<span id="cb209-252"><a href="data-manipulation-4.html#cb209-252" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-18' has</span></span>
+<span id="cb209-253"><a href="data-manipulation-4.html#cb209-253" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-254"><a href="data-manipulation-4.html#cb209-254" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-255"><a href="data-manipulation-4.html#cb209-255" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-256"><a href="data-manipulation-4.html#cb209-256" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-257"><a href="data-manipulation-4.html#cb209-257" tabindex="-1"></a>  <span class="er">|</span>.............                  <span class="sc">|</span>  <span class="dv">43</span>%                   </span>
+<span id="cb209-258"><a href="data-manipulation-4.html#cb209-258" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-259"><a href="data-manipulation-4.html#cb209-259" tabindex="-1"></a>  <span class="er">|</span>..............                 <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-19</span>]</span>
+<span id="cb209-260"><a href="data-manipulation-4.html#cb209-260" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-19' has</span></span>
+<span id="cb209-261"><a href="data-manipulation-4.html#cb209-261" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-262"><a href="data-manipulation-4.html#cb209-262" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-263"><a href="data-manipulation-4.html#cb209-263" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-264"><a href="data-manipulation-4.html#cb209-264" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-265"><a href="data-manipulation-4.html#cb209-265" tabindex="-1"></a>  <span class="er">|</span>................               <span class="sc">|</span>  <span class="dv">50</span>%                   </span>
+<span id="cb209-266"><a href="data-manipulation-4.html#cb209-266" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-267"><a href="data-manipulation-4.html#cb209-267" tabindex="-1"></a>  <span class="er">|</span>.................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-20</span>]</span>
+<span id="cb209-268"><a href="data-manipulation-4.html#cb209-268" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-20' has</span></span>
+<span id="cb209-269"><a href="data-manipulation-4.html#cb209-269" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-270"><a href="data-manipulation-4.html#cb209-270" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-271"><a href="data-manipulation-4.html#cb209-271" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-272"><a href="data-manipulation-4.html#cb209-272" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-273"><a href="data-manipulation-4.html#cb209-273" tabindex="-1"></a><span class="co">#&gt; processing file: ./04-data_manipulation.Rmd</span></span>
+<span id="cb209-274"><a href="data-manipulation-4.html#cb209-274" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-275"><a href="data-manipulation-4.html#cb209-275" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-276"><a href="data-manipulation-4.html#cb209-276" tabindex="-1"></a>  <span class="er">|</span>                              <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb209-277"><a href="data-manipulation-4.html#cb209-277" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-278"><a href="data-manipulation-4.html#cb209-278" tabindex="-1"></a>  <span class="er">|</span>.                             <span class="sc">|</span>   <span class="dv">2</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-130</span>]</span>
+<span id="cb209-279"><a href="data-manipulation-4.html#cb209-279" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-280"><a href="data-manipulation-4.html#cb209-280" tabindex="-1"></a>  <span class="er">|</span>.                             <span class="sc">|</span>   <span class="dv">4</span>%                    </span>
+<span id="cb209-281"><a href="data-manipulation-4.html#cb209-281" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-282"><a href="data-manipulation-4.html#cb209-282" tabindex="-1"></a>  <span class="er">|</span>..                            <span class="sc">|</span>   <span class="dv">6</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-131</span>]</span>
+<span id="cb209-283"><a href="data-manipulation-4.html#cb209-283" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-284"><a href="data-manipulation-4.html#cb209-284" tabindex="-1"></a>  <span class="er">|</span>..                            <span class="sc">|</span>   <span class="dv">8</span>%                    </span>
+<span id="cb209-285"><a href="data-manipulation-4.html#cb209-285" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-286"><a href="data-manipulation-4.html#cb209-286" tabindex="-1"></a>  <span class="er">|</span>...                           <span class="sc">|</span>  <span class="dv">10</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-132</span>]</span>
+<span id="cb209-287"><a href="data-manipulation-4.html#cb209-287" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-288"><a href="data-manipulation-4.html#cb209-288" tabindex="-1"></a>  <span class="er">|</span>....                          <span class="sc">|</span>  <span class="dv">12</span>%                    </span>
+<span id="cb209-289"><a href="data-manipulation-4.html#cb209-289" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-290"><a href="data-manipulation-4.html#cb209-290" tabindex="-1"></a>  <span class="er">|</span>....                          <span class="sc">|</span>  <span class="dv">15</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-133</span>]</span>
+<span id="cb209-291"><a href="data-manipulation-4.html#cb209-291" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-292"><a href="data-manipulation-4.html#cb209-292" tabindex="-1"></a>  <span class="er">|</span>.....                         <span class="sc">|</span>  <span class="dv">17</span>%                    </span>
+<span id="cb209-293"><a href="data-manipulation-4.html#cb209-293" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-294"><a href="data-manipulation-4.html#cb209-294" tabindex="-1"></a>  <span class="er">|</span>......                        <span class="sc">|</span>  <span class="dv">19</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-134</span>]</span>
+<span id="cb209-295"><a href="data-manipulation-4.html#cb209-295" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-296"><a href="data-manipulation-4.html#cb209-296" tabindex="-1"></a>  <span class="er">|</span>......                        <span class="sc">|</span>  <span class="dv">21</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-135</span>]</span>
+<span id="cb209-297"><a href="data-manipulation-4.html#cb209-297" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-298"><a href="data-manipulation-4.html#cb209-298" tabindex="-1"></a>  <span class="er">|</span>.......                       <span class="sc">|</span>  <span class="dv">23</span>%                    </span>
+<span id="cb209-299"><a href="data-manipulation-4.html#cb209-299" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-300"><a href="data-manipulation-4.html#cb209-300" tabindex="-1"></a>  <span class="er">|</span>........                      <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-136</span>]</span>
+<span id="cb209-301"><a href="data-manipulation-4.html#cb209-301" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-302"><a href="data-manipulation-4.html#cb209-302" tabindex="-1"></a>  <span class="er">|</span>........                      <span class="sc">|</span>  <span class="dv">27</span>%                    </span>
+<span id="cb209-303"><a href="data-manipulation-4.html#cb209-303" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-304"><a href="data-manipulation-4.html#cb209-304" tabindex="-1"></a>  <span class="er">|</span>.........                     <span class="sc">|</span>  <span class="dv">29</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-137</span>]</span>
+<span id="cb209-305"><a href="data-manipulation-4.html#cb209-305" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-306"><a href="data-manipulation-4.html#cb209-306" tabindex="-1"></a>  <span class="er">|</span>.........                     <span class="sc">|</span>  <span class="dv">31</span>%                    </span>
+<span id="cb209-307"><a href="data-manipulation-4.html#cb209-307" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-308"><a href="data-manipulation-4.html#cb209-308" tabindex="-1"></a>  <span class="er">|</span>..........                    <span class="sc">|</span>  <span class="dv">33</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-138</span>]</span>
+<span id="cb209-309"><a href="data-manipulation-4.html#cb209-309" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-310"><a href="data-manipulation-4.html#cb209-310" tabindex="-1"></a>  <span class="er">|</span>...........                   <span class="sc">|</span>  <span class="dv">35</span>%                    </span>
+<span id="cb209-311"><a href="data-manipulation-4.html#cb209-311" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-312"><a href="data-manipulation-4.html#cb209-312" tabindex="-1"></a>  <span class="er">|</span>...........                   <span class="sc">|</span>  <span class="dv">38</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-139</span>]</span>
+<span id="cb209-313"><a href="data-manipulation-4.html#cb209-313" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-314"><a href="data-manipulation-4.html#cb209-314" tabindex="-1"></a>  <span class="er">|</span>............                  <span class="sc">|</span>  <span class="dv">40</span>%                    </span>
+<span id="cb209-315"><a href="data-manipulation-4.html#cb209-315" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-316"><a href="data-manipulation-4.html#cb209-316" tabindex="-1"></a>  <span class="er">|</span>............                  <span class="sc">|</span>  <span class="dv">42</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-140</span>]</span>
+<span id="cb209-317"><a href="data-manipulation-4.html#cb209-317" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-318"><a href="data-manipulation-4.html#cb209-318" tabindex="-1"></a>  <span class="er">|</span>.............                 <span class="sc">|</span>  <span class="dv">44</span>%                    </span>
+<span id="cb209-319"><a href="data-manipulation-4.html#cb209-319" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-320"><a href="data-manipulation-4.html#cb209-320" tabindex="-1"></a>  <span class="er">|</span>..............                <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-141</span>]</span>
+<span id="cb209-321"><a href="data-manipulation-4.html#cb209-321" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-322"><a href="data-manipulation-4.html#cb209-322" tabindex="-1"></a>  <span class="er">|</span>..............                <span class="sc">|</span>  <span class="dv">48</span>%                    </span>
+<span id="cb209-323"><a href="data-manipulation-4.html#cb209-323" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-324"><a href="data-manipulation-4.html#cb209-324" tabindex="-1"></a>  <span class="er">|</span>...............               <span class="sc">|</span>  <span class="dv">50</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-142</span>]</span>
+<span id="cb209-325"><a href="data-manipulation-4.html#cb209-325" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-326"><a href="data-manipulation-4.html#cb209-326" tabindex="-1"></a>  <span class="er">|</span>................              <span class="sc">|</span>  <span class="dv">52</span>%                    </span>
+<span id="cb209-327"><a href="data-manipulation-4.html#cb209-327" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-328"><a href="data-manipulation-4.html#cb209-328" tabindex="-1"></a>  <span class="er">|</span>................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-143</span>]</span>
+<span id="cb209-329"><a href="data-manipulation-4.html#cb209-329" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-330"><a href="data-manipulation-4.html#cb209-330" tabindex="-1"></a>  <span class="er">|</span>.................             <span class="sc">|</span>  <span class="dv">56</span>%                    </span>
+<span id="cb209-331"><a href="data-manipulation-4.html#cb209-331" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-332"><a href="data-manipulation-4.html#cb209-332" tabindex="-1"></a>  <span class="er">|</span>..................            <span class="sc">|</span>  <span class="dv">58</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-144</span>]</span>
+<span id="cb209-333"><a href="data-manipulation-4.html#cb209-333" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-334"><a href="data-manipulation-4.html#cb209-334" tabindex="-1"></a>  <span class="er">|</span>..................            <span class="sc">|</span>  <span class="dv">60</span>%                    </span>
+<span id="cb209-335"><a href="data-manipulation-4.html#cb209-335" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-336"><a href="data-manipulation-4.html#cb209-336" tabindex="-1"></a>  <span class="er">|</span>...................           <span class="sc">|</span>  <span class="dv">62</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-145</span>]</span>
+<span id="cb209-337"><a href="data-manipulation-4.html#cb209-337" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-338"><a href="data-manipulation-4.html#cb209-338" tabindex="-1"></a>  <span class="er">|</span>...................           <span class="sc">|</span>  <span class="dv">65</span>%                    </span>
+<span id="cb209-339"><a href="data-manipulation-4.html#cb209-339" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-340"><a href="data-manipulation-4.html#cb209-340" tabindex="-1"></a>  <span class="er">|</span>....................          <span class="sc">|</span>  <span class="dv">67</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-146</span>]</span>
+<span id="cb209-341"><a href="data-manipulation-4.html#cb209-341" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-342"><a href="data-manipulation-4.html#cb209-342" tabindex="-1"></a>  <span class="er">|</span>.....................         <span class="sc">|</span>  <span class="dv">69</span>%                    </span>
+<span id="cb209-343"><a href="data-manipulation-4.html#cb209-343" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-344"><a href="data-manipulation-4.html#cb209-344" tabindex="-1"></a>  <span class="er">|</span>.....................         <span class="sc">|</span>  <span class="dv">71</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-147</span>]</span>
+<span id="cb209-345"><a href="data-manipulation-4.html#cb209-345" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-346"><a href="data-manipulation-4.html#cb209-346" tabindex="-1"></a>  <span class="er">|</span>......................        <span class="sc">|</span>  <span class="dv">73</span>%                    </span>
+<span id="cb209-347"><a href="data-manipulation-4.html#cb209-347" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-348"><a href="data-manipulation-4.html#cb209-348" tabindex="-1"></a>  <span class="er">|</span>......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-148</span>]</span>
+<span id="cb209-349"><a href="data-manipulation-4.html#cb209-349" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-350"><a href="data-manipulation-4.html#cb209-350" tabindex="-1"></a>  <span class="er">|</span>.......................       <span class="sc">|</span>  <span class="dv">77</span>%                    </span>
+<span id="cb209-351"><a href="data-manipulation-4.html#cb209-351" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-352"><a href="data-manipulation-4.html#cb209-352" tabindex="-1"></a>  <span class="er">|</span>........................      <span class="sc">|</span>  <span class="dv">79</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-149</span>]</span>
+<span id="cb209-353"><a href="data-manipulation-4.html#cb209-353" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-354"><a href="data-manipulation-4.html#cb209-354" tabindex="-1"></a>  <span class="er">|</span>........................      <span class="sc">|</span>  <span class="dv">81</span>%                    </span>
+<span id="cb209-355"><a href="data-manipulation-4.html#cb209-355" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-356"><a href="data-manipulation-4.html#cb209-356" tabindex="-1"></a>  <span class="er">|</span>.........................     <span class="sc">|</span>  <span class="dv">83</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-150</span>]</span>
+<span id="cb209-357"><a href="data-manipulation-4.html#cb209-357" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-358"><a href="data-manipulation-4.html#cb209-358" tabindex="-1"></a>  <span class="er">|</span>..........................    <span class="sc">|</span>  <span class="dv">85</span>%                    </span>
+<span id="cb209-359"><a href="data-manipulation-4.html#cb209-359" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-360"><a href="data-manipulation-4.html#cb209-360" tabindex="-1"></a>  <span class="er">|</span>..........................    <span class="sc">|</span>  <span class="dv">88</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-151</span>]</span>
+<span id="cb209-361"><a href="data-manipulation-4.html#cb209-361" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-362"><a href="data-manipulation-4.html#cb209-362" tabindex="-1"></a>  <span class="er">|</span>...........................   <span class="sc">|</span>  <span class="dv">90</span>%                    </span>
+<span id="cb209-363"><a href="data-manipulation-4.html#cb209-363" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-364"><a href="data-manipulation-4.html#cb209-364" tabindex="-1"></a>  <span class="er">|</span>............................  <span class="sc">|</span>  <span class="dv">92</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-152</span>]</span>
+<span id="cb209-365"><a href="data-manipulation-4.html#cb209-365" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-366"><a href="data-manipulation-4.html#cb209-366" tabindex="-1"></a>  <span class="er">|</span>............................  <span class="sc">|</span>  <span class="dv">94</span>%                    </span>
+<span id="cb209-367"><a href="data-manipulation-4.html#cb209-367" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-368"><a href="data-manipulation-4.html#cb209-368" tabindex="-1"></a>  <span class="er">|</span>............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-153</span>]</span>
+<span id="cb209-369"><a href="data-manipulation-4.html#cb209-369" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-370"><a href="data-manipulation-4.html#cb209-370" tabindex="-1"></a>  <span class="er">|</span>............................. <span class="sc">|</span>  <span class="dv">98</span>%                    </span>
+<span id="cb209-371"><a href="data-manipulation-4.html#cb209-371" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-372"><a href="data-manipulation-4.html#cb209-372" tabindex="-1"></a>  <span class="er">|</span>..............................<span class="sc">|</span> <span class="dv">100</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-154</span>]</span>
+<span id="cb209-373"><a href="data-manipulation-4.html#cb209-373" tabindex="-1"></a>                                                                                          </span>
+<span id="cb209-374"><a href="data-manipulation-4.html#cb209-374" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-375"><a href="data-manipulation-4.html#cb209-375" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-376"><a href="data-manipulation-4.html#cb209-376" tabindex="-1"></a>  <span class="er">|</span>..................             <span class="sc">|</span>  <span class="dv">57</span>%                   </span>
+<span id="cb209-377"><a href="data-manipulation-4.html#cb209-377" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-378"><a href="data-manipulation-4.html#cb209-378" tabindex="-1"></a>  <span class="er">|</span>...................            <span class="sc">|</span>  <span class="dv">61</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-21</span>]</span>
+<span id="cb209-379"><a href="data-manipulation-4.html#cb209-379" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-21' has</span></span>
+<span id="cb209-380"><a href="data-manipulation-4.html#cb209-380" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-381"><a href="data-manipulation-4.html#cb209-381" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-382"><a href="data-manipulation-4.html#cb209-382" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-383"><a href="data-manipulation-4.html#cb209-383" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-384"><a href="data-manipulation-4.html#cb209-384" tabindex="-1"></a>  <span class="er">|</span>....................           <span class="sc">|</span>  <span class="dv">64</span>%                   </span>
+<span id="cb209-385"><a href="data-manipulation-4.html#cb209-385" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-386"><a href="data-manipulation-4.html#cb209-386" tabindex="-1"></a>  <span class="er">|</span>.....................          <span class="sc">|</span>  <span class="dv">68</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-22</span>]</span>
+<span id="cb209-387"><a href="data-manipulation-4.html#cb209-387" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-22' has</span></span>
+<span id="cb209-388"><a href="data-manipulation-4.html#cb209-388" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-389"><a href="data-manipulation-4.html#cb209-389" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-390"><a href="data-manipulation-4.html#cb209-390" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-391"><a href="data-manipulation-4.html#cb209-391" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-392"><a href="data-manipulation-4.html#cb209-392" tabindex="-1"></a>  <span class="er">|</span>......................         <span class="sc">|</span>  <span class="dv">71</span>%                   </span>
+<span id="cb209-393"><a href="data-manipulation-4.html#cb209-393" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-394"><a href="data-manipulation-4.html#cb209-394" tabindex="-1"></a>  <span class="er">|</span>.......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-23</span>]</span>
+<span id="cb209-395"><a href="data-manipulation-4.html#cb209-395" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-23' has</span></span>
+<span id="cb209-396"><a href="data-manipulation-4.html#cb209-396" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-397"><a href="data-manipulation-4.html#cb209-397" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-398"><a href="data-manipulation-4.html#cb209-398" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-399"><a href="data-manipulation-4.html#cb209-399" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-400"><a href="data-manipulation-4.html#cb209-400" tabindex="-1"></a><span class="co">#&gt; processing file: ./04-data_manipulation.Rmd</span></span>
+<span id="cb209-401"><a href="data-manipulation-4.html#cb209-401" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-402"><a href="data-manipulation-4.html#cb209-402" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-403"><a href="data-manipulation-4.html#cb209-403" tabindex="-1"></a>  <span class="er">|</span>                              <span class="er">|</span>   <span class="dv">0</span>%</span>
+<span id="cb209-404"><a href="data-manipulation-4.html#cb209-404" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-405"><a href="data-manipulation-4.html#cb209-405" tabindex="-1"></a>  <span class="er">|</span>.                             <span class="sc">|</span>   <span class="dv">2</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-181</span>]</span>
+<span id="cb209-406"><a href="data-manipulation-4.html#cb209-406" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-407"><a href="data-manipulation-4.html#cb209-407" tabindex="-1"></a>  <span class="er">|</span>.                             <span class="sc">|</span>   <span class="dv">4</span>%                    </span>
+<span id="cb209-408"><a href="data-manipulation-4.html#cb209-408" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-409"><a href="data-manipulation-4.html#cb209-409" tabindex="-1"></a>  <span class="er">|</span>..                            <span class="sc">|</span>   <span class="dv">6</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-182</span>]</span>
+<span id="cb209-410"><a href="data-manipulation-4.html#cb209-410" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-411"><a href="data-manipulation-4.html#cb209-411" tabindex="-1"></a>  <span class="er">|</span>..                            <span class="sc">|</span>   <span class="dv">8</span>%                    </span>
+<span id="cb209-412"><a href="data-manipulation-4.html#cb209-412" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-413"><a href="data-manipulation-4.html#cb209-413" tabindex="-1"></a>  <span class="er">|</span>...                           <span class="sc">|</span>  <span class="dv">10</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-183</span>]</span>
+<span id="cb209-414"><a href="data-manipulation-4.html#cb209-414" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-415"><a href="data-manipulation-4.html#cb209-415" tabindex="-1"></a>  <span class="er">|</span>....                          <span class="sc">|</span>  <span class="dv">12</span>%                    </span>
+<span id="cb209-416"><a href="data-manipulation-4.html#cb209-416" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-417"><a href="data-manipulation-4.html#cb209-417" tabindex="-1"></a>  <span class="er">|</span>....                          <span class="sc">|</span>  <span class="dv">15</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-184</span>]</span>
+<span id="cb209-418"><a href="data-manipulation-4.html#cb209-418" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-419"><a href="data-manipulation-4.html#cb209-419" tabindex="-1"></a>  <span class="er">|</span>.....                         <span class="sc">|</span>  <span class="dv">17</span>%                    </span>
+<span id="cb209-420"><a href="data-manipulation-4.html#cb209-420" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-421"><a href="data-manipulation-4.html#cb209-421" tabindex="-1"></a>  <span class="er">|</span>......                        <span class="sc">|</span>  <span class="dv">19</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-185</span>]</span>
+<span id="cb209-422"><a href="data-manipulation-4.html#cb209-422" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-423"><a href="data-manipulation-4.html#cb209-423" tabindex="-1"></a>  <span class="er">|</span>......                        <span class="sc">|</span>  <span class="dv">21</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-186</span>]</span>
+<span id="cb209-424"><a href="data-manipulation-4.html#cb209-424" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-425"><a href="data-manipulation-4.html#cb209-425" tabindex="-1"></a>  <span class="er">|</span>.......                       <span class="sc">|</span>  <span class="dv">23</span>%                    </span>
+<span id="cb209-426"><a href="data-manipulation-4.html#cb209-426" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-427"><a href="data-manipulation-4.html#cb209-427" tabindex="-1"></a>  <span class="er">|</span>........                      <span class="sc">|</span>  <span class="dv">25</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-187</span>]</span>
+<span id="cb209-428"><a href="data-manipulation-4.html#cb209-428" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-429"><a href="data-manipulation-4.html#cb209-429" tabindex="-1"></a>  <span class="er">|</span>........                      <span class="sc">|</span>  <span class="dv">27</span>%                    </span>
+<span id="cb209-430"><a href="data-manipulation-4.html#cb209-430" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-431"><a href="data-manipulation-4.html#cb209-431" tabindex="-1"></a>  <span class="er">|</span>.........                     <span class="sc">|</span>  <span class="dv">29</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-188</span>]</span>
+<span id="cb209-432"><a href="data-manipulation-4.html#cb209-432" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-433"><a href="data-manipulation-4.html#cb209-433" tabindex="-1"></a>  <span class="er">|</span>.........                     <span class="sc">|</span>  <span class="dv">31</span>%                    </span>
+<span id="cb209-434"><a href="data-manipulation-4.html#cb209-434" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-435"><a href="data-manipulation-4.html#cb209-435" tabindex="-1"></a>  <span class="er">|</span>..........                    <span class="sc">|</span>  <span class="dv">33</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-189</span>]</span>
+<span id="cb209-436"><a href="data-manipulation-4.html#cb209-436" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-437"><a href="data-manipulation-4.html#cb209-437" tabindex="-1"></a>  <span class="er">|</span>...........                   <span class="sc">|</span>  <span class="dv">35</span>%                    </span>
+<span id="cb209-438"><a href="data-manipulation-4.html#cb209-438" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-439"><a href="data-manipulation-4.html#cb209-439" tabindex="-1"></a>  <span class="er">|</span>...........                   <span class="sc">|</span>  <span class="dv">38</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-190</span>]</span>
+<span id="cb209-440"><a href="data-manipulation-4.html#cb209-440" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-441"><a href="data-manipulation-4.html#cb209-441" tabindex="-1"></a>  <span class="er">|</span>............                  <span class="sc">|</span>  <span class="dv">40</span>%                    </span>
+<span id="cb209-442"><a href="data-manipulation-4.html#cb209-442" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-443"><a href="data-manipulation-4.html#cb209-443" tabindex="-1"></a>  <span class="er">|</span>............                  <span class="sc">|</span>  <span class="dv">42</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-191</span>]</span>
+<span id="cb209-444"><a href="data-manipulation-4.html#cb209-444" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-445"><a href="data-manipulation-4.html#cb209-445" tabindex="-1"></a>  <span class="er">|</span>.............                 <span class="sc">|</span>  <span class="dv">44</span>%                    </span>
+<span id="cb209-446"><a href="data-manipulation-4.html#cb209-446" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-447"><a href="data-manipulation-4.html#cb209-447" tabindex="-1"></a>  <span class="er">|</span>..............                <span class="sc">|</span>  <span class="dv">46</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-192</span>]</span>
+<span id="cb209-448"><a href="data-manipulation-4.html#cb209-448" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-449"><a href="data-manipulation-4.html#cb209-449" tabindex="-1"></a>  <span class="er">|</span>..............                <span class="sc">|</span>  <span class="dv">48</span>%                    </span>
+<span id="cb209-450"><a href="data-manipulation-4.html#cb209-450" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-451"><a href="data-manipulation-4.html#cb209-451" tabindex="-1"></a>  <span class="er">|</span>...............               <span class="sc">|</span>  <span class="dv">50</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-193</span>]</span>
+<span id="cb209-452"><a href="data-manipulation-4.html#cb209-452" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-453"><a href="data-manipulation-4.html#cb209-453" tabindex="-1"></a>  <span class="er">|</span>................              <span class="sc">|</span>  <span class="dv">52</span>%                    </span>
+<span id="cb209-454"><a href="data-manipulation-4.html#cb209-454" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-455"><a href="data-manipulation-4.html#cb209-455" tabindex="-1"></a>  <span class="er">|</span>................              <span class="sc">|</span>  <span class="dv">54</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-194</span>]</span>
+<span id="cb209-456"><a href="data-manipulation-4.html#cb209-456" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-457"><a href="data-manipulation-4.html#cb209-457" tabindex="-1"></a>  <span class="er">|</span>.................             <span class="sc">|</span>  <span class="dv">56</span>%                    </span>
+<span id="cb209-458"><a href="data-manipulation-4.html#cb209-458" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-459"><a href="data-manipulation-4.html#cb209-459" tabindex="-1"></a>  <span class="er">|</span>..................            <span class="sc">|</span>  <span class="dv">58</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-195</span>]</span>
+<span id="cb209-460"><a href="data-manipulation-4.html#cb209-460" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-461"><a href="data-manipulation-4.html#cb209-461" tabindex="-1"></a>  <span class="er">|</span>..................            <span class="sc">|</span>  <span class="dv">60</span>%                    </span>
+<span id="cb209-462"><a href="data-manipulation-4.html#cb209-462" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-463"><a href="data-manipulation-4.html#cb209-463" tabindex="-1"></a>  <span class="er">|</span>...................           <span class="sc">|</span>  <span class="dv">62</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-196</span>]</span>
+<span id="cb209-464"><a href="data-manipulation-4.html#cb209-464" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-465"><a href="data-manipulation-4.html#cb209-465" tabindex="-1"></a>  <span class="er">|</span>...................           <span class="sc">|</span>  <span class="dv">65</span>%                    </span>
+<span id="cb209-466"><a href="data-manipulation-4.html#cb209-466" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-467"><a href="data-manipulation-4.html#cb209-467" tabindex="-1"></a>  <span class="er">|</span>....................          <span class="sc">|</span>  <span class="dv">67</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-197</span>]</span>
+<span id="cb209-468"><a href="data-manipulation-4.html#cb209-468" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-469"><a href="data-manipulation-4.html#cb209-469" tabindex="-1"></a>  <span class="er">|</span>.....................         <span class="sc">|</span>  <span class="dv">69</span>%                    </span>
+<span id="cb209-470"><a href="data-manipulation-4.html#cb209-470" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-471"><a href="data-manipulation-4.html#cb209-471" tabindex="-1"></a>  <span class="er">|</span>.....................         <span class="sc">|</span>  <span class="dv">71</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-198</span>]</span>
+<span id="cb209-472"><a href="data-manipulation-4.html#cb209-472" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-473"><a href="data-manipulation-4.html#cb209-473" tabindex="-1"></a>  <span class="er">|</span>......................        <span class="sc">|</span>  <span class="dv">73</span>%                    </span>
+<span id="cb209-474"><a href="data-manipulation-4.html#cb209-474" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-475"><a href="data-manipulation-4.html#cb209-475" tabindex="-1"></a>  <span class="er">|</span>......................        <span class="sc">|</span>  <span class="dv">75</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-199</span>]</span>
+<span id="cb209-476"><a href="data-manipulation-4.html#cb209-476" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-477"><a href="data-manipulation-4.html#cb209-477" tabindex="-1"></a>  <span class="er">|</span>.......................       <span class="sc">|</span>  <span class="dv">77</span>%                    </span>
+<span id="cb209-478"><a href="data-manipulation-4.html#cb209-478" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-479"><a href="data-manipulation-4.html#cb209-479" tabindex="-1"></a>  <span class="er">|</span>........................      <span class="sc">|</span>  <span class="dv">79</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-200</span>]</span>
+<span id="cb209-480"><a href="data-manipulation-4.html#cb209-480" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-481"><a href="data-manipulation-4.html#cb209-481" tabindex="-1"></a>  <span class="er">|</span>........................      <span class="sc">|</span>  <span class="dv">81</span>%                    </span>
+<span id="cb209-482"><a href="data-manipulation-4.html#cb209-482" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-483"><a href="data-manipulation-4.html#cb209-483" tabindex="-1"></a>  <span class="er">|</span>.........................     <span class="sc">|</span>  <span class="dv">83</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-201</span>]</span>
+<span id="cb209-484"><a href="data-manipulation-4.html#cb209-484" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-485"><a href="data-manipulation-4.html#cb209-485" tabindex="-1"></a>  <span class="er">|</span>..........................    <span class="sc">|</span>  <span class="dv">85</span>%                    </span>
+<span id="cb209-486"><a href="data-manipulation-4.html#cb209-486" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-487"><a href="data-manipulation-4.html#cb209-487" tabindex="-1"></a>  <span class="er">|</span>..........................    <span class="sc">|</span>  <span class="dv">88</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-202</span>]</span>
+<span id="cb209-488"><a href="data-manipulation-4.html#cb209-488" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-489"><a href="data-manipulation-4.html#cb209-489" tabindex="-1"></a>  <span class="er">|</span>...........................   <span class="sc">|</span>  <span class="dv">90</span>%                    </span>
+<span id="cb209-490"><a href="data-manipulation-4.html#cb209-490" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-491"><a href="data-manipulation-4.html#cb209-491" tabindex="-1"></a>  <span class="er">|</span>............................  <span class="sc">|</span>  <span class="dv">92</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-203</span>]</span>
+<span id="cb209-492"><a href="data-manipulation-4.html#cb209-492" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-493"><a href="data-manipulation-4.html#cb209-493" tabindex="-1"></a>  <span class="er">|</span>............................  <span class="sc">|</span>  <span class="dv">94</span>%                    </span>
+<span id="cb209-494"><a href="data-manipulation-4.html#cb209-494" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-495"><a href="data-manipulation-4.html#cb209-495" tabindex="-1"></a>  <span class="er">|</span>............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-204</span>]</span>
+<span id="cb209-496"><a href="data-manipulation-4.html#cb209-496" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-497"><a href="data-manipulation-4.html#cb209-497" tabindex="-1"></a>  <span class="er">|</span>............................. <span class="sc">|</span>  <span class="dv">98</span>%                    </span>
+<span id="cb209-498"><a href="data-manipulation-4.html#cb209-498" tabindex="-1"></a>  <span class="sc">|</span>                                    </span>
+<span id="cb209-499"><a href="data-manipulation-4.html#cb209-499" tabindex="-1"></a>  <span class="er">|</span>..............................<span class="sc">|</span> <span class="dv">100</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-205</span>]</span>
+<span id="cb209-500"><a href="data-manipulation-4.html#cb209-500" tabindex="-1"></a>                                                                                          </span>
+<span id="cb209-501"><a href="data-manipulation-4.html#cb209-501" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-502"><a href="data-manipulation-4.html#cb209-502" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-503"><a href="data-manipulation-4.html#cb209-503" tabindex="-1"></a>  <span class="er">|</span>........................       <span class="sc">|</span>  <span class="dv">79</span>%                   </span>
+<span id="cb209-504"><a href="data-manipulation-4.html#cb209-504" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-505"><a href="data-manipulation-4.html#cb209-505" tabindex="-1"></a>  <span class="er">|</span>.........................      <span class="sc">|</span>  <span class="dv">82</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-24</span>]</span>
+<span id="cb209-506"><a href="data-manipulation-4.html#cb209-506" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-507"><a href="data-manipulation-4.html#cb209-507" tabindex="-1"></a>  <span class="er">|</span>...........................    <span class="sc">|</span>  <span class="dv">86</span>%                   </span>
+<span id="cb209-508"><a href="data-manipulation-4.html#cb209-508" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-509"><a href="data-manipulation-4.html#cb209-509" tabindex="-1"></a>  <span class="er">|</span>............................   <span class="sc">|</span>  <span class="dv">89</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-25</span>]</span>
+<span id="cb209-510"><a href="data-manipulation-4.html#cb209-510" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-511"><a href="data-manipulation-4.html#cb209-511" tabindex="-1"></a>  <span class="er">|</span>.............................  <span class="sc">|</span>  <span class="dv">93</span>%                   </span>
+<span id="cb209-512"><a href="data-manipulation-4.html#cb209-512" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-513"><a href="data-manipulation-4.html#cb209-513" tabindex="-1"></a>  <span class="er">|</span>.............................. <span class="sc">|</span>  <span class="dv">96</span>% [unnamed<span class="sc">-</span>chunk<span class="dv">-26</span>]</span>
+<span id="cb209-514"><a href="data-manipulation-4.html#cb209-514" tabindex="-1"></a><span class="co">#&gt; Warning in call_block(x): The chunk 'unnamed-chunk-26' has</span></span>
+<span id="cb209-515"><a href="data-manipulation-4.html#cb209-515" tabindex="-1"></a><span class="co">#&gt; the 'child' option, and this code chunk must be empty. Its</span></span>
+<span id="cb209-516"><a href="data-manipulation-4.html#cb209-516" tabindex="-1"></a><span class="co">#&gt; code will be ignored.</span></span>
+<span id="cb209-517"><a href="data-manipulation-4.html#cb209-517" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb209-518"><a href="data-manipulation-4.html#cb209-518" tabindex="-1"></a>  <span class="sc">|</span>                                     </span>
+<span id="cb209-519"><a href="data-manipulation-4.html#cb209-519" tabindex="-1"></a>  <span class="er">|</span>...............................<span class="sc">|</span> <span class="dv">100</span>%                   </span></code></pre></div>
+<pre><code>#&gt; [1] "\n\n\n# Data cleaning\n\nIn the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. \nData cleaning, a core competency of R, empowers us to clean, filter, transform, and aggregate data, paving the way for meaningful analysis. This introductory paragraph delves into the world of data manipulation and data cleaning in R, highlighting its significance and exploring the key concepts involved.\n\nThere are several methods used for data cleansing, including:\n\n## Renaming colums\n\nDuring data cleansing, column renaming plays a crucial role in organizing and clarifying the dataset. This step involves assigning meaningful and consistent names to columns, which facilitates their interpretation and subsequent use in analysis.\n\n\n\n\n## Handling Missing Data: \n\nMissing data, also known as missing values, is a common challenge encountered in data analysis. It refers to the absence of information for specific variables in certain observations within your dataset. To deal with missing data we have two options: impute data or remove data.\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2.1) Imputation\n\nwe can use imputation by mean, median or mode.\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Imputation by mean*:\n\n\n\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Imputation by median*:\n\n\n\n\n# Data manipulation\n\nData manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.\n\n## Importation of data\nData import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.\n\nIn this part, we will learn to load commonly used **CSV**, **Excel**, **JSON**, **Database**, and **XML/HTML** data files in R. Moreover, we will also look at less commonly used file formats such as **SPSS** and **Stata**. \n\nImporting data from csv to R:\n\n```r\n#load data\nbreast_cancer &lt;- read.csv(\"./data/Breast_cancer_data.csv\")\n```\n\nImporting data from excel to R:\n\n```r\n#load package\nlibrary(readxl)\n\n#load data\ndata_1 &lt;- readxl::read_excel(\"./data/data_for_workshop1.xls\")\nhead(data_1)\n#&gt; # A tibble: 6 × 42\n#&gt;   Sex    Age       `Are you married?` Do you  have childre…¹\n#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;                 \n#&gt; 1 Male   25_40 ye… NO                 NO                    \n#&gt; 2 Male   15_25 ye… NO                 NO                    \n#&gt; 3 Male   25_40 ye… NO                 NO                    \n#&gt; 4 Male   15_25 ye… NO                 NO                    \n#&gt; 5 Female 15_25 ye… NO                 NO                    \n#&gt; 6 Male   25_40 ye… NO                 NO                    \n#&gt; # ℹ abbreviated name: ¹​`Do you  have children?`\n#&gt; # ℹ 38 more variables:\n#&gt; #   `How many children do you have?` &lt;dbl&gt;,\n#&gt; #   `What is your religion?` &lt;chr&gt;,\n#&gt; #   `Do have a tasba farm?` &lt;chr&gt;,\n#&gt; #   `What's the size of your farm?` &lt;chr&gt;,\n#&gt; #   `How long have you been growing tasba?` &lt;chr&gt;, …\n```\n\n\nImporting data from json to R:\n\n```r\n#load package\nlibrary(jsonlite)\n\n#load data\ndata_json &lt;- jsonlite::fromJSON(\"./data/sample4.json\")\n\n#transform data into dataframe\nas.data.frame(data_json)\n```\n\n\nImporting data from database to R:\n\n```r\n#load package\nlibrary(RSQLite)\n\n#establish the connection to the database\nconn &lt;- dbConnect(RSQLite::SQLite(), \"./data/mental_health.sqlite\")\n\n#list names of all the tables in the database\ndbListTables(conn)\n#&gt; [1] \"Answer\"   \"Question\" \"Survey\"\n```\n\n```r\n#retrieve data from table Question\ndata_sqlite &lt;- dbGetQuery(conn, \"SELECT * FROM Survey\")\nhead(data_sqlite)\n#&gt;   SurveyID                   Description\n#&gt; 1     2014 mental health survey for 2014\n#&gt; 2     2016 mental health survey for 2016\n#&gt; 3     2017 mental health survey for 2017\n#&gt; 4     2018 mental health survey for 2018\n#&gt; 5     2019 mental health survey for 2019\n```\n\n\nImporting data from spss to R:\n\n```r\n#load package\nlibrary(haven)\n\n#load data\ndata_spss &lt;- haven::read_sav(\"./data/mental_health.sav\")\nhead(data_spss)\n#&gt; # A tibble: 6 × 14\n#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO\n#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1      42      1     0    59    NA    NA    NA    32    25\n#&gt; 2      37      0     0    58     2     2    NA    25    19\n#&gt; 3     141      0     0    83    NA     2     2    31    32\n#&gt; 4     143      0     0    85     2     3    NA    18    25\n#&gt; 5     128      1     0    75    14     8    21    20    19\n#&gt; 6      12      1     0    50    17     9    27    28    26\n#&gt; # ℹ 5 more variables: MOB &lt;dbl&gt;, SS &lt;dbl&gt;, CESD &lt;dbl&gt;,\n#&gt; #   SelfEsteem &lt;dbl&gt;, Satisfaction &lt;dbl&gt;\n```\n\nImporting data from stata to R:\n\n```r\n#load data\ndata_stata &lt;- haven::read_dta(\"./data/SMOKE.DTA\")\nhead(data_stata)\n#&gt; # A tibble: 6 × 10\n#&gt;    educ cigpric white   age income  cigs restaurn lincome\n#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1  16      60.5     1    46  20000     0        0    9.90\n#&gt; 2  16      57.9     1    40  30000     0        0   10.3 \n#&gt; 3  12      57.7     1    58  30000     3        0   10.3 \n#&gt; 4  13.5    57.9     1    30  20000     0        0    9.90\n#&gt; 5  10      58.3     1    17  20000     0        0    9.90\n#&gt; 6   6      59.3     1    86   6500     0        0    8.78\n#&gt; # ℹ 2 more variables: agesq &lt;dbl&gt;, lcigpric &lt;dbl&gt;\n```\n\n\n\n## Basic exploration of data\n\nData exploration helps you explore and think about the data you're working. The goal with data exploration is to understand,  and visualize data so that you can discover insights, relationships, patterns, and anomalies.\nTo explore data in R we have many functions to achieve that.\n\n+ Function head(): is used to view the first few rows of your dataset.\n\n```r\nhead(data_1,3)\n```\n\n\n+ Function tail(): is used to view the last few rows of your dataset.\n\n```r\ntail(data_1)\n```\n\n\n+ Function str(): is used to provide the structure of your data frame, showing you the data types.\n\n```r\nstr(data_1)\n```\n\n\n+ Function dim(): is used to know about the number of rows and columns.\n\n```r\ndim(data_1)\n#&gt; [1] 107  42\n```\n\n\n+ Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.\n\n```r\nsummary(data_1)\n```\n\n\n+ Function table(): used to build a contingency table of the counts at each combination of factor levels.\n\n```r\ntable(data_1$Sex)\n#&gt; \n#&gt; Female   Male \n#&gt;     58     49\n```\n\n\n+ Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.\n\n```r\nunique(data_1$`Do you  have children?`)\n#&gt; [1] \"NO\"  \"YES\"\n```\n\n+ Function hist(): function to plot a basic histogram to view distribution of a variable.\n\n```r\nhist(data_1$`How many children do you have?`,\n     xlab = 'Number of childrens',\n     main = 'Number of childrens')\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-45-1.png\" width=\"672\" /&gt;\n\n\n+ Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.\n\n\n```r\nboxplot(data_1$`How many children do you have?`)\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-46-1.png\" width=\"672\" /&gt;\n\n\n## Data manipulation with dplyr\n\n**IMPORTANT POINT:**\nOne of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.\n\nIn order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.\n\n+ filter(): \n\n  The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:\n\n        filter(dataframeName,condition)\n        \nExample:\n\n```r\ndplyr::filter(data_1, Sex==\"Female\")\n```\n\n+ distinct(): \n\n  The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:\n  \n        distinct(dataframeName, col1, col2,.., .keep_all=TRUE)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::distinct()\n```\n\n\n+ arrange():\n\n  In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:\n  \n        arrange(dataframeName, columnName)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::arrange(Sex)\n```\n\n\n+ select():\n\n  The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:\n        \n        select(dataframeName, col1,col2,…)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::select(Sex,`Do you  have children?`)\n```\n\n\n+ rename():\n\n  The rename() function is used to change the column names. This can be done by the below syntax:\n  \n        rename(dataframeName, newName=oldName)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::rename(Status= `Are you married?`)\n```\n\n\n+ mutate():\n\n  The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:\n  \n        mutate(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::mutate(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ transmute():\n\n  The transmute() function drops the old variables and creates new variables. Here is the syntax:\n  \n        transmute(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::transmute(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ summarize():\n\n  Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the `group_by()` function. The syntax of summarize() method is specified below:\n  \n        summarize(dataframeName, aggregate_function(columnName))\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  group_by(Sex) %&gt;%\n  summarize(mean=mean(`How many children do you have?`), count=n())\n```\n\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Imputation by mode*:\n\n\n\n\n# Data manipulation\n\nData manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.\n\n## Importation of data\nData import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.\n\nIn this part, we will learn to load commonly used **CSV**, **Excel**, **JSON**, **Database**, and **XML/HTML** data files in R. Moreover, we will also look at less commonly used file formats such as **SPSS** and **Stata**. \n\nImporting data from csv to R:\n\n```r\n#load data\nbreast_cancer &lt;- read.csv(\"./data/Breast_cancer_data.csv\")\n```\n\nImporting data from excel to R:\n\n```r\n#load package\nlibrary(readxl)\n\n#load data\ndata_1 &lt;- readxl::read_excel(\"./data/data_for_workshop1.xls\")\nhead(data_1)\n#&gt; # A tibble: 6 × 42\n#&gt;   Sex    Age       `Are you married?` Do you  have childre…¹\n#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;                 \n#&gt; 1 Male   25_40 ye… NO                 NO                    \n#&gt; 2 Male   15_25 ye… NO                 NO                    \n#&gt; 3 Male   25_40 ye… NO                 NO                    \n#&gt; 4 Male   15_25 ye… NO                 NO                    \n#&gt; 5 Female 15_25 ye… NO                 NO                    \n#&gt; 6 Male   25_40 ye… NO                 NO                    \n#&gt; # ℹ abbreviated name: ¹​`Do you  have children?`\n#&gt; # ℹ 38 more variables:\n#&gt; #   `How many children do you have?` &lt;dbl&gt;,\n#&gt; #   `What is your religion?` &lt;chr&gt;,\n#&gt; #   `Do have a tasba farm?` &lt;chr&gt;,\n#&gt; #   `What's the size of your farm?` &lt;chr&gt;,\n#&gt; #   `How long have you been growing tasba?` &lt;chr&gt;, …\n```\n\n\nImporting data from json to R:\n\n```r\n#load package\nlibrary(jsonlite)\n\n#load data\ndata_json &lt;- jsonlite::fromJSON(\"./data/sample4.json\")\n\n#transform data into dataframe\nas.data.frame(data_json)\n```\n\n\nImporting data from database to R:\n\n```r\n#load package\nlibrary(RSQLite)\n\n#establish the connection to the database\nconn &lt;- dbConnect(RSQLite::SQLite(), \"./data/mental_health.sqlite\")\n\n#list names of all the tables in the database\ndbListTables(conn)\n#&gt; [1] \"Answer\"   \"Question\" \"Survey\"\n```\n\n```r\n#retrieve data from table Question\ndata_sqlite &lt;- dbGetQuery(conn, \"SELECT * FROM Survey\")\nhead(data_sqlite)\n#&gt;   SurveyID                   Description\n#&gt; 1     2014 mental health survey for 2014\n#&gt; 2     2016 mental health survey for 2016\n#&gt; 3     2017 mental health survey for 2017\n#&gt; 4     2018 mental health survey for 2018\n#&gt; 5     2019 mental health survey for 2019\n```\n\n\nImporting data from spss to R:\n\n```r\n#load package\nlibrary(haven)\n\n#load data\ndata_spss &lt;- haven::read_sav(\"./data/mental_health.sav\")\nhead(data_spss)\n#&gt; # A tibble: 6 × 14\n#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO\n#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1      42      1     0    59    NA    NA    NA    32    25\n#&gt; 2      37      0     0    58     2     2    NA    25    19\n#&gt; 3     141      0     0    83    NA     2     2    31    32\n#&gt; 4     143      0     0    85     2     3    NA    18    25\n#&gt; 5     128      1     0    75    14     8    21    20    19\n#&gt; 6      12      1     0    50    17     9    27    28    26\n#&gt; # ℹ 5 more variables: MOB &lt;dbl&gt;, SS &lt;dbl&gt;, CESD &lt;dbl&gt;,\n#&gt; #   SelfEsteem &lt;dbl&gt;, Satisfaction &lt;dbl&gt;\n```\n\nImporting data from stata to R:\n\n```r\n#load data\ndata_stata &lt;- haven::read_dta(\"./data/SMOKE.DTA\")\nhead(data_stata)\n#&gt; # A tibble: 6 × 10\n#&gt;    educ cigpric white   age income  cigs restaurn lincome\n#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1  16      60.5     1    46  20000     0        0    9.90\n#&gt; 2  16      57.9     1    40  30000     0        0   10.3 \n#&gt; 3  12      57.7     1    58  30000     3        0   10.3 \n#&gt; 4  13.5    57.9     1    30  20000     0        0    9.90\n#&gt; 5  10      58.3     1    17  20000     0        0    9.90\n#&gt; 6   6      59.3     1    86   6500     0        0    8.78\n#&gt; # ℹ 2 more variables: agesq &lt;dbl&gt;, lcigpric &lt;dbl&gt;\n```\n\n\n\n## Basic exploration of data\n\nData exploration helps you explore and think about the data you're working. The goal with data exploration is to understand,  and visualize data so that you can discover insights, relationships, patterns, and anomalies.\nTo explore data in R we have many functions to achieve that.\n\n+ Function head(): is used to view the first few rows of your dataset.\n\n```r\nhead(data_1,3)\n```\n\n\n+ Function tail(): is used to view the last few rows of your dataset.\n\n```r\ntail(data_1)\n```\n\n\n+ Function str(): is used to provide the structure of your data frame, showing you the data types.\n\n```r\nstr(data_1)\n```\n\n\n+ Function dim(): is used to know about the number of rows and columns.\n\n```r\ndim(data_1)\n#&gt; [1] 107  42\n```\n\n\n+ Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.\n\n```r\nsummary(data_1)\n```\n\n\n+ Function table(): used to build a contingency table of the counts at each combination of factor levels.\n\n```r\ntable(data_1$Sex)\n#&gt; \n#&gt; Female   Male \n#&gt;     58     49\n```\n\n\n+ Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.\n\n```r\nunique(data_1$`Do you  have children?`)\n#&gt; [1] \"NO\"  \"YES\"\n```\n\n+ Function hist(): function to plot a basic histogram to view distribution of a variable.\n\n```r\nhist(data_1$`How many children do you have?`,\n     xlab = 'Number of childrens',\n     main = 'Number of childrens')\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-94-1.png\" width=\"672\" /&gt;\n\n\n+ Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.\n\n\n```r\nboxplot(data_1$`How many children do you have?`)\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-95-1.png\" width=\"672\" /&gt;\n\n\n## Data manipulation with dplyr\n\n**IMPORTANT POINT:**\nOne of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.\n\nIn order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.\n\n+ filter(): \n\n  The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:\n\n        filter(dataframeName,condition)\n        \nExample:\n\n```r\ndplyr::filter(data_1, Sex==\"Female\")\n```\n\n+ distinct(): \n\n  The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:\n  \n        distinct(dataframeName, col1, col2,.., .keep_all=TRUE)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::distinct()\n```\n\n\n+ arrange():\n\n  In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:\n  \n        arrange(dataframeName, columnName)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::arrange(Sex)\n```\n\n\n+ select():\n\n  The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:\n        \n        select(dataframeName, col1,col2,…)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::select(Sex,`Do you  have children?`)\n```\n\n\n+ rename():\n\n  The rename() function is used to change the column names. This can be done by the below syntax:\n  \n        rename(dataframeName, newName=oldName)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::rename(Status= `Are you married?`)\n```\n\n\n+ mutate():\n\n  The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:\n  \n        mutate(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::mutate(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ transmute():\n\n  The transmute() function drops the old variables and creates new variables. Here is the syntax:\n  \n        transmute(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::transmute(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ summarize():\n\n  Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the `group_by()` function. The syntax of summarize() method is specified below:\n  \n        summarize(dataframeName, aggregate_function(columnName))\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  group_by(Sex) %&gt;%\n  summarize(mean=mean(`How many children do you have?`), count=n())\n```\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2.2) Removing data\n\nThere are 2 usuals methods for deleting data when dealing with missing data: listwise and dropping variables.\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Listwise*:\n\nIn this method, all data for an observation that has one or more missing values are deleted. The analysis is run only on observations that have a complete set of data. \n\n\n\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- *Dropping variables*:\n\nIf data is missing for a large proportion of the observations, it may be best to discard the variable entirely if it is insignificant.\n\n\n\n## Handling outliers\n\nData points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.\n\n\n\n\n# Data manipulation\n\nData manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.\n\n## Importation of data\nData import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.\n\nIn this part, we will learn to load commonly used **CSV**, **Excel**, **JSON**, **Database**, and **XML/HTML** data files in R. Moreover, we will also look at less commonly used file formats such as **SPSS** and **Stata**. \n\nImporting data from csv to R:\n\n```r\n#load data\nbreast_cancer &lt;- read.csv(\"./data/Breast_cancer_data.csv\")\n```\n\nImporting data from excel to R:\n\n```r\n#load package\nlibrary(readxl)\n\n#load data\ndata_1 &lt;- readxl::read_excel(\"./data/data_for_workshop1.xls\")\nhead(data_1)\n#&gt; # A tibble: 6 × 42\n#&gt;   Sex    Age       `Are you married?` Do you  have childre…¹\n#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;                 \n#&gt; 1 Male   25_40 ye… NO                 NO                    \n#&gt; 2 Male   15_25 ye… NO                 NO                    \n#&gt; 3 Male   25_40 ye… NO                 NO                    \n#&gt; 4 Male   15_25 ye… NO                 NO                    \n#&gt; 5 Female 15_25 ye… NO                 NO                    \n#&gt; 6 Male   25_40 ye… NO                 NO                    \n#&gt; # ℹ abbreviated name: ¹​`Do you  have children?`\n#&gt; # ℹ 38 more variables:\n#&gt; #   `How many children do you have?` &lt;dbl&gt;,\n#&gt; #   `What is your religion?` &lt;chr&gt;,\n#&gt; #   `Do have a tasba farm?` &lt;chr&gt;,\n#&gt; #   `What's the size of your farm?` &lt;chr&gt;,\n#&gt; #   `How long have you been growing tasba?` &lt;chr&gt;, …\n```\n\n\nImporting data from json to R:\n\n```r\n#load package\nlibrary(jsonlite)\n\n#load data\ndata_json &lt;- jsonlite::fromJSON(\"./data/sample4.json\")\n\n#transform data into dataframe\nas.data.frame(data_json)\n```\n\n\nImporting data from database to R:\n\n```r\n#load package\nlibrary(RSQLite)\n\n#establish the connection to the database\nconn &lt;- dbConnect(RSQLite::SQLite(), \"./data/mental_health.sqlite\")\n\n#list names of all the tables in the database\ndbListTables(conn)\n#&gt; [1] \"Answer\"   \"Question\" \"Survey\"\n```\n\n```r\n#retrieve data from table Question\ndata_sqlite &lt;- dbGetQuery(conn, \"SELECT * FROM Survey\")\nhead(data_sqlite)\n#&gt;   SurveyID                   Description\n#&gt; 1     2014 mental health survey for 2014\n#&gt; 2     2016 mental health survey for 2016\n#&gt; 3     2017 mental health survey for 2017\n#&gt; 4     2018 mental health survey for 2018\n#&gt; 5     2019 mental health survey for 2019\n```\n\n\nImporting data from spss to R:\n\n```r\n#load package\nlibrary(haven)\n\n#load data\ndata_spss &lt;- haven::read_sav(\"./data/mental_health.sav\")\nhead(data_spss)\n#&gt; # A tibble: 6 × 14\n#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO\n#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1      42      1     0    59    NA    NA    NA    32    25\n#&gt; 2      37      0     0    58     2     2    NA    25    19\n#&gt; 3     141      0     0    83    NA     2     2    31    32\n#&gt; 4     143      0     0    85     2     3    NA    18    25\n#&gt; 5     128      1     0    75    14     8    21    20    19\n#&gt; 6      12      1     0    50    17     9    27    28    26\n#&gt; # ℹ 5 more variables: MOB &lt;dbl&gt;, SS &lt;dbl&gt;, CESD &lt;dbl&gt;,\n#&gt; #   SelfEsteem &lt;dbl&gt;, Satisfaction &lt;dbl&gt;\n```\n\nImporting data from stata to R:\n\n```r\n#load data\ndata_stata &lt;- haven::read_dta(\"./data/SMOKE.DTA\")\nhead(data_stata)\n#&gt; # A tibble: 6 × 10\n#&gt;    educ cigpric white   age income  cigs restaurn lincome\n#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1  16      60.5     1    46  20000     0        0    9.90\n#&gt; 2  16      57.9     1    40  30000     0        0   10.3 \n#&gt; 3  12      57.7     1    58  30000     3        0   10.3 \n#&gt; 4  13.5    57.9     1    30  20000     0        0    9.90\n#&gt; 5  10      58.3     1    17  20000     0        0    9.90\n#&gt; 6   6      59.3     1    86   6500     0        0    8.78\n#&gt; # ℹ 2 more variables: agesq &lt;dbl&gt;, lcigpric &lt;dbl&gt;\n```\n\n\n\n## Basic exploration of data\n\nData exploration helps you explore and think about the data you're working. The goal with data exploration is to understand,  and visualize data so that you can discover insights, relationships, patterns, and anomalies.\nTo explore data in R we have many functions to achieve that.\n\n+ Function head(): is used to view the first few rows of your dataset.\n\n```r\nhead(data_1,3)\n```\n\n\n+ Function tail(): is used to view the last few rows of your dataset.\n\n```r\ntail(data_1)\n```\n\n\n+ Function str(): is used to provide the structure of your data frame, showing you the data types.\n\n```r\nstr(data_1)\n```\n\n\n+ Function dim(): is used to know about the number of rows and columns.\n\n```r\ndim(data_1)\n#&gt; [1] 107  42\n```\n\n\n+ Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.\n\n```r\nsummary(data_1)\n```\n\n\n+ Function table(): used to build a contingency table of the counts at each combination of factor levels.\n\n```r\ntable(data_1$Sex)\n#&gt; \n#&gt; Female   Male \n#&gt;     58     49\n```\n\n\n+ Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.\n\n```r\nunique(data_1$`Do you  have children?`)\n#&gt; [1] \"NO\"  \"YES\"\n```\n\n+ Function hist(): function to plot a basic histogram to view distribution of a variable.\n\n```r\nhist(data_1$`How many children do you have?`,\n     xlab = 'Number of childrens',\n     main = 'Number of childrens')\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-145-1.png\" width=\"672\" /&gt;\n\n\n+ Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.\n\n\n```r\nboxplot(data_1$`How many children do you have?`)\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-146-1.png\" width=\"672\" /&gt;\n\n\n## Data manipulation with dplyr\n\n**IMPORTANT POINT:**\nOne of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.\n\nIn order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.\n\n+ filter(): \n\n  The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:\n\n        filter(dataframeName,condition)\n        \nExample:\n\n```r\ndplyr::filter(data_1, Sex==\"Female\")\n```\n\n+ distinct(): \n\n  The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:\n  \n        distinct(dataframeName, col1, col2,.., .keep_all=TRUE)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::distinct()\n```\n\n\n+ arrange():\n\n  In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:\n  \n        arrange(dataframeName, columnName)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::arrange(Sex)\n```\n\n\n+ select():\n\n  The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:\n        \n        select(dataframeName, col1,col2,…)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::select(Sex,`Do you  have children?`)\n```\n\n\n+ rename():\n\n  The rename() function is used to change the column names. This can be done by the below syntax:\n  \n        rename(dataframeName, newName=oldName)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::rename(Status= `Are you married?`)\n```\n\n\n+ mutate():\n\n  The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:\n  \n        mutate(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::mutate(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ transmute():\n\n  The transmute() function drops the old variables and creates new variables. Here is the syntax:\n  \n        transmute(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::transmute(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ summarize():\n\n  Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the `group_by()` function. The syntax of summarize() method is specified below:\n  \n        summarize(dataframeName, aggregate_function(columnName))\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  group_by(Sex) %&gt;%\n  summarize(mean=mean(`How many children do you have?`), count=n())\n```\n\nAfter identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)\n\n## Removing duplicates: \\\nRemoving duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.\n\n\n\n## Checking data structure: \n\nChecking data types is a crucial step in data analysis because it ensures you're working with the data in the way it's intended in order to avoid errors later in the analysis.\n\n\n\nYou can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc....if the data is not in the right type.\n\n## Handling Inconsistent Categorical Data\n\nCategorical variables may have inconsistent spellings or categories. The recode() function or manual recoding can help standardize categories.\n\n\n\n\n# Data manipulation\n\nData manipulation involves modifying data to make it easier to read and to be more organized. We manipulate data for analysis and visualization. At times, the data collection process done by machines involves a lot of errors and inaccuracies in reading. Data manipulation is also used to remove these inaccuracies and make data more accurate and precise.\n\n## Importation of data\nData import is an essential step in the data analysis process. It involves retrieving data from various sources, such as local files, databases, APIs or real-time feeds. This step acquires the data needed for analysis and decision-making, and is often the starting point for analytical work.\n\nIn this part, we will learn to load commonly used **CSV**, **Excel**, **JSON**, **Database**, and **XML/HTML** data files in R. Moreover, we will also look at less commonly used file formats such as **SPSS** and **Stata**. \n\nImporting data from csv to R:\n\n```r\n#load data\nbreast_cancer &lt;- read.csv(\"./data/Breast_cancer_data.csv\")\n```\n\nImporting data from excel to R:\n\n```r\n#load package\nlibrary(readxl)\n\n#load data\ndata_1 &lt;- readxl::read_excel(\"./data/data_for_workshop1.xls\")\nhead(data_1)\n#&gt; # A tibble: 6 × 42\n#&gt;   Sex    Age       `Are you married?` Do you  have childre…¹\n#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;                 \n#&gt; 1 Male   25_40 ye… NO                 NO                    \n#&gt; 2 Male   15_25 ye… NO                 NO                    \n#&gt; 3 Male   25_40 ye… NO                 NO                    \n#&gt; 4 Male   15_25 ye… NO                 NO                    \n#&gt; 5 Female 15_25 ye… NO                 NO                    \n#&gt; 6 Male   25_40 ye… NO                 NO                    \n#&gt; # ℹ abbreviated name: ¹​`Do you  have children?`\n#&gt; # ℹ 38 more variables:\n#&gt; #   `How many children do you have?` &lt;dbl&gt;,\n#&gt; #   `What is your religion?` &lt;chr&gt;,\n#&gt; #   `Do have a tasba farm?` &lt;chr&gt;,\n#&gt; #   `What's the size of your farm?` &lt;chr&gt;,\n#&gt; #   `How long have you been growing tasba?` &lt;chr&gt;, …\n```\n\n\nImporting data from json to R:\n\n```r\n#load package\nlibrary(jsonlite)\n\n#load data\ndata_json &lt;- jsonlite::fromJSON(\"./data/sample4.json\")\n\n#transform data into dataframe\nas.data.frame(data_json)\n```\n\n\nImporting data from database to R:\n\n```r\n#load package\nlibrary(RSQLite)\n\n#establish the connection to the database\nconn &lt;- dbConnect(RSQLite::SQLite(), \"./data/mental_health.sqlite\")\n\n#list names of all the tables in the database\ndbListTables(conn)\n#&gt; [1] \"Answer\"   \"Question\" \"Survey\"\n```\n\n```r\n#retrieve data from table Question\ndata_sqlite &lt;- dbGetQuery(conn, \"SELECT * FROM Survey\")\nhead(data_sqlite)\n#&gt;   SurveyID                   Description\n#&gt; 1     2014 mental health survey for 2014\n#&gt; 2     2016 mental health survey for 2016\n#&gt; 3     2017 mental health survey for 2017\n#&gt; 4     2018 mental health survey for 2018\n#&gt; 5     2019 mental health survey for 2019\n```\n\n\nImporting data from spss to R:\n\n```r\n#load package\nlibrary(haven)\n\n#load data\ndata_spss &lt;- haven::read_sav(\"./data/mental_health.sav\")\nhead(data_spss)\n#&gt; # A tibble: 6 × 14\n#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO\n#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n#&gt; 1      42      1     0    59    NA    NA    NA    32    25\n#&gt; 2      37      0     0    58     2     2    NA    25    19\n#&gt; 3     141      0     0    83    NA     2     2    31    32\n#&gt; 4     143      0     0    85     2     3    NA    18    25\n#&gt; 5     128      1     0    75    14     8    21    20    19\n#&gt; 6      12      1     0    50    17     9    27    28    26\n#&gt; # ℹ 5 more variables: MOB &lt;dbl&gt;, SS &lt;dbl&gt;, CESD &lt;dbl&gt;,\n#&gt; #   SelfEsteem &lt;dbl&gt;, Satisfaction &lt;dbl&gt;\n```\n\nImporting data from stata to R:\n\n```r\n#load data\ndata_stata &lt;- haven::read_dta(\"./data/SMOKE.DTA\")\nhead(data_stata)\n#&gt; # A tibble: 6 × 10\n#&gt;    educ cigpric white   age income  cigs restaurn lincome\n#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n#&gt; 1  16      60.5     1    46  20000     0        0    9.90\n#&gt; 2  16      57.9     1    40  30000     0        0   10.3 \n#&gt; 3  12      57.7     1    58  30000     3        0   10.3 \n#&gt; 4  13.5    57.9     1    30  20000     0        0    9.90\n#&gt; 5  10      58.3     1    17  20000     0        0    9.90\n#&gt; 6   6      59.3     1    86   6500     0        0    8.78\n#&gt; # ℹ 2 more variables: agesq &lt;dbl&gt;, lcigpric &lt;dbl&gt;\n```\n\n\n\n## Basic exploration of data\n\nData exploration helps you explore and think about the data you're working. The goal with data exploration is to understand,  and visualize data so that you can discover insights, relationships, patterns, and anomalies.\nTo explore data in R we have many functions to achieve that.\n\n+ Function head(): is used to view the first few rows of your dataset.\n\n```r\nhead(data_1,3)\n```\n\n\n+ Function tail(): is used to view the last few rows of your dataset.\n\n```r\ntail(data_1)\n```\n\n\n+ Function str(): is used to provide the structure of your data frame, showing you the data types.\n\n```r\nstr(data_1)\n```\n\n\n+ Function dim(): is used to know about the number of rows and columns.\n\n```r\ndim(data_1)\n#&gt; [1] 107  42\n```\n\n\n+ Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.\n\n```r\nsummary(data_1)\n```\n\n\n+ Function table(): used to build a contingency table of the counts at each combination of factor levels.\n\n```r\ntable(data_1$Sex)\n#&gt; \n#&gt; Female   Male \n#&gt;     58     49\n```\n\n\n+ Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.\n\n```r\nunique(data_1$`Do you  have children?`)\n#&gt; [1] \"NO\"  \"YES\"\n```\n\n+ Function hist(): function to plot a basic histogram to view distribution of a variable.\n\n```r\nhist(data_1$`How many children do you have?`,\n     xlab = 'Number of childrens',\n     main = 'Number of childrens')\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-196-1.png\" width=\"672\" /&gt;\n\n\n+ Function boxplot(): function to plot a boxplot, it provides a compact summary of the data's central tendency, spread, and potential outliers.\n\n\n```r\nboxplot(data_1$`How many children do you have?`)\n```\n\n\n&lt;img src=\"06-descriptive_statistics_files/figure-html/unnamed-chunk-197-1.png\" width=\"672\" /&gt;\n\n\n## Data manipulation with dplyr\n\n**IMPORTANT POINT:**\nOne of the more useful ways to use dplyr is with the pipe operator. The pipe operator looks like this: %&gt;% ,and it is common practice to use the pipe operator to “pipe” dplyr commands together. It is a way to chain multiple operations together in a concise and precise way. The %&gt;% operator takes the output of the expression on its left and passes it as the first argument to the function on its right.\n\nIn order to manipulate and clean the data, R provides a library called dplyr which consists of many built-in methods to manipulate the data. So to use the data manipulation function, first need to import the dplyr package using library(dplyr) line of code. Below is the list of fundamental data manipulation verbs that you will use to do most of your data manipulations.\n\n+ filter(): \n\n  The filter() function is used to produce the subset of the data that satisfies the condition specified in the filter() method. In the condition, we can use conditional operators, logical operators, NA values, range operators etc. to filter out data. Syntax of filter() function is given below:\n\n        filter(dataframeName,condition)\n        \nExample:\n\n```r\ndplyr::filter(data_1, Sex==\"Female\")\n```\n\n+ distinct(): \n\n  The distinct() method removes duplicate rows from data frame or based on the specified columns. The syntax of distinct() method is given below:\n  \n        distinct(dataframeName, col1, col2,.., .keep_all=TRUE)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::distinct()\n```\n\n\n+ arrange():\n\n  In R, the arrange() method is used to order the rows based on a specified column. The syntax of arrange() method is specified below:\n  \n        arrange(dataframeName, columnName)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::arrange(Sex)\n```\n\n\n+ select():\n\n  The select() method is used to extract the required columns as a table by specifying the required column names in select() method. The syntax of select() method is mentioned below:\n        \n        select(dataframeName, col1,col2,…)\n        \nExample:\n\n```r\ndata_1 %&gt;% \n  dplyr::select(Sex,`Do you  have children?`)\n```\n\n\n+ rename():\n\n  The rename() function is used to change the column names. This can be done by the below syntax:\n  \n        rename(dataframeName, newName=oldName)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::rename(Status= `Are you married?`)\n```\n\n\n+ mutate():\n\n  The mutate() function creates new variables without dropping the old ones. The syntax of mutate() is specified below:\n  \n        mutate(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::mutate(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ transmute():\n\n  The transmute() function drops the old variables and creates new variables. Here is the syntax:\n  \n        transmute(dataframeName, newVariable=formula)\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  dplyr::transmute(sex=ifelse(Sex==\"Female\", \"F\", \"M\"))\n```\n\n\n+ summarize():\n\n  Using the summarize method we can summarize the data in the data frame by using aggregate functions like sum(), mean(), etc. Usually this function is used with the `group_by()` function. The syntax of summarize() method is specified below:\n  \n        summarize(dataframeName, aggregate_function(columnName))\n        \nExample:\n\n```r\ndata_1 %&gt;%\n  group_by(Sex) %&gt;%\n  summarize(mean=mean(`How many children do you have?`), count=n())\n```\n\n\n## Combine dataframes\n\nSuppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- Combine by column\n\n\n```r\nculture1 &lt;- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Area = c(100, 150, 120)\n)\n\nculture2 &lt;- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Return = c(50, 60, 45)\n)\n\nculture_final1 &lt;- cbind(culture1, culture2)\n```\n\n&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;- combine by row\n\n\n```r\nculture3 &lt;- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Area = c(100, 150, 120)\n)\n\nculture4 &lt;- data.frame(\n  Culture = c(\"potato\", \"cassava\"),\n  Area = c(250, 400)\n)\n\nculture_final2 &lt;- rbind(culture3, culture4)\n```\n\n## Data Validation\n\nData validation involves checking data against predefined rules or criteria. It ensures that data adheres to specific requirements or constraints.\n\nValidation checks can prevent incorrect or inconsistent data from entering your analysis.\n\n## Regular expressions\n\nRegular expressions (regex) are powerful tools for pattern matching and replacement in text data. The gsub() function is commonly used for global pattern substitution.\n\n\n\n\n"</code></pre>
+<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"./dependencies.R"</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-manipulation-3.html"><span class="header-section-number">9</span> Data manipulation</a></div>
+<div class="next"><a href="descriptive-statistics.html"><span class="header-section-number">11</span> Descriptive statistics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-manipulation-4"><span class="header-section-number">10</span> Data manipulation</a></li>
+<li><a class="nav-link" href="#importation-of-data-4"><span class="header-section-number">10.1</span> Importation of data</a></li>
+<li><a class="nav-link" href="#basic-exploration-of-data-4"><span class="header-section-number">10.2</span> Basic exploration of data</a></li>
+<li><a class="nav-link" href="#data-manipulation-with-dplyr-4"><span class="header-section-number">10.3</span> Data manipulation with dplyr</a></li>
+<li><a class="nav-link" href="#combine-dataframes"><span class="header-section-number">10.4</span> Combine dataframes</a></li>
+<li><a class="nav-link" href="#data-validation"><span class="header-section-number">10.5</span> Data Validation</a></li>
+<li><a class="nav-link" href="#regular-expressions"><span class="header-section-number">10.6</span> Regular expressions</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/05-data_cleaning.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/05-data_cleaning.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-17.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

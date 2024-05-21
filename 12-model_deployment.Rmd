@@ -1,4 +1,4 @@
-```{r}
+```{r include=FALSE, echo=FALSE}
 knitr::knit_child("11-modeling.Rmd")
 ```
 

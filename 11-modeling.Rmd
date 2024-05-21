@@ -1,6 +1,7 @@
 ```{r include=FALSE, echo=FALSE}
 knitr::knit_child("04-data_manipulation.Rmd")
 source("./dependencies.R")
+#breast_cancer <- read.csv("data/Breast_cancer_data.csv")
 ```
 
 # Model training and hyperparameter tuning

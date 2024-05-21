@@ -1,4 +1,4 @@
-```{r}
+```{r include=FALSE, echo=FALSE}
 knitr::knit_child("05-data_cleaning.Rmd")
 source("./dependencies.R")
 ```

@@ -100,17 +100,45 @@ library(readr)
 cameroon_json <- sf::st_read("./data/cm.json")
 
 #load the data
-population <- read_csv("./data/positives_case_covid.csv")
+#population <- read_csv("./data/positives_case_covid.csv")
+population <- readxl::read_excel("data/map_visualization.xlsx")
+cameroon_json <- cameroon_json %>% 
+  dplyr::rename(region = name)
 
 # join the dataset cameroon_json to the dataframe of positive cases covid
-cameroon_json$population <- population$`Positive Cases`
+data_map <- merge(cameroon_json,population,by="region")
+
+#create a new column to categorise the data
+data_map$cat <- dplyr::if_else(data_map$`positive cases`>10000,"red","blue")
+
+#add awesome icons
+icons <- awesomeIcons(icon = "ios-close",
+                          iconColor = "black",
+                          library = "ion",
+                          markerColor = data_map$cat)
 
 # map visualization
-leaflet(data = cameroon_json) %>%
-  addTiles() %>%
-  addPolygons(fillColor = ~colorQuantile("Set2", population)(population),
-              stroke = FALSE,
-              fillOpacity = 0.7,
-              label = ~paste(name, " : ", "Positive Cases:", population))
+polygon_popup <- paste0("<strong>",data_map$region,"</strong>", "<br>",
+                            "<strong>Number of persons infected: </strong>", data_map$`positive cases`, "<br>",
+                            "<strong>Population: </strong>", data_map$population
+                      )%>% 
+      lapply(htmltools::HTML)
+
+fig_map <- leaflet(data = data_map) %>% 
+      addTiles() %>% 
+      addPolygons(
+        weight=2,
+        color = "black",
+        fillColor = ~colorFactor(palette=c("blue","red"),domain=data_map$cat)(data_map$cat)) %>% 
+      addAwesomeMarkers(
+        lng = ~ as.numeric(longitude), lat = ~ as.numeric(latitude),
+        popup = polygon_popup, label = polygon_popup,
+        icon =  icons,
+        labelOptions = labelOptions(noHide = F,
+                                    style = list(
+                                      "color" = "#00308F",
+                                      "font-size" = "12px"))
+        ) 
+fig_map
 ```
 

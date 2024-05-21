@@ -34,8 +34,9 @@ we can use imputation by mean, median or mode.
 
 
 ```r
+library(stringr)
 #Create a new column of number of varieties
-data_1$number_variety <- str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)
+data_1$number_variety <- stringr::str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)
 
 #verify the type of the column
 str(data_1$number_variety)
@@ -52,7 +53,6 @@ data_1$number_variety[is.na(data_1$number_variety)]<-round(mean(data_1$number_va
 
 
 ```r
-library(stringr)
 #function to extract the number of kg in the column
 data_1$`What is the production in kg or ton/year?` <- sapply(data_1$`What is the production in kg or ton/year?`, function(x) {
     # Extract digits using regular expression and convert to numeric

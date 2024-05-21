@@ -149,6 +149,5 @@ print(chisq.test(chi_data))
 #> data:  chi_data
 #> X-squared = 0.070494, df = 1, p-value = 0.7906
 ```
-P-
-value >0.05 so we can conclude that the risk of heart attack is not statistically significant between men and women. 
+P-value >0.05 so we can conclude that the risk of heart attack is not statistically significant between men and women. 
 

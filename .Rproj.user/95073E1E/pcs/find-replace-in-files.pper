@@ -1,6 +1,6 @@
 {
     "dialog-state": {
-        "query": "level",
+        "query": "knitr::knit_child(\"11-modeling.Rmd\")",
         "path": "",
         "regex": false,
         "caseSensitive": false,
@@ -9,7 +9,7 @@
         "useGitGrep": true,
         "excludeGitIgnore": true,
         "excludeFilePatterns": [],
-        "resultsCount": 363,
+        "resultsCount": 1,
         "errorCount": 0,
         "replaceErrors": "",
         "projectRelative": true
