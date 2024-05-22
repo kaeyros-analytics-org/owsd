@@ -44,7 +44,7 @@ plotly::plot_ly(data_piechart, labels= ~Var1,
           values= ~Freq, type="pie",
           hoverinfo = 'text',
           textinfo = 'label+percent',
-          insidetextfont = list(color = '#FFFFFF'),
+          insidetextfont = list(color = '#000'),
           text = ~paste("Sex :",Var1,
                         "<br>Number of persons :", Freq,
                         "<br>Percentage :", pct1),
@@ -98,13 +98,10 @@ ggplot(time_series, aes(x = Month, y = `Heigh of plant`,color = Treatments,group
 #load required packages
 library(leaflet)
 library(sf)
-library(readr)
-
 
 cameroon_json <- sf::st_read("./data/cm.json")
 
 #load the data
-#population <- read_csv("./data/positives_case_covid.csv")
 population <- readxl::read_excel("data/map_visualization.xlsx")
 cameroon_json <- cameroon_json %>% 
   dplyr::rename(region = name)
@@ -113,14 +110,13 @@ cameroon_json <- cameroon_json %>%
 data_map <- merge(cameroon_json,population,by="region")
 
 #create a new column to categorise the data
-#data_map$cat <- dplyr::if_else(data_map$`positive cases`>10000,"red","blue")
 data_map$cat <- dplyr::if_else(data_map$`positive cases`>10000,">10 000 cases","<10 000 cases")
 
 #add awesome icons
 icons <- awesomeIcons(icon = "ios-close",
                           iconColor = "black",
                           library = "ion",
-                          markerColor = dplyr::if_else(data_map$`positive cases`>10000,"red","blue"))
+                          markerColor = dplyr::if_else(data_map$`positive condition =                                       cases`>10000,"red","blue"))
 
 # map visualization
 polygon_popup <- paste0("<strong>",data_map$region,"</strong>", "<br>",

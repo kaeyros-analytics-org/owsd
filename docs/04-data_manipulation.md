@@ -51,10 +51,10 @@ Importing data from json to R:
 library(jsonlite)
 
 #load data
-data_json <- jsonlite::fromJSON("./data/sample4.json")
+json_data <- jsonlite::fromJSON("./data/sample4.json")
 
 #transform data into dataframe
-as.data.frame(data_json)
+as.data.frame(json_data)
 ```
 
 
@@ -74,8 +74,8 @@ dbListTables(conn)
 
 ```r
 #retrieve data from table Question
-data_sqlite <- dbGetQuery(conn, "SELECT * FROM Survey")
-head(data_sqlite)
+sqlite_data <- dbGetQuery(conn, "SELECT * FROM Survey")
+head(sqlite_data)
 #>   SurveyID                   Description
 #> 1     2014 mental health survey for 2014
 #> 2     2016 mental health survey for 2016
@@ -92,8 +92,8 @@ Importing data from spss to R:
 library(haven)
 
 #load data
-data_spss <- haven::read_sav("./data/mental_health.sav")
-head(data_spss)
+spss_data <- haven::read_sav("./data/mental_health.sav")
+head(spss_data)
 #> # A tibble: 6 × 14
 #>   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO
 #>     <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
@@ -111,8 +111,8 @@ Importing data from stata to R:
 
 ```r
 #load data
-data_stata <- haven::read_dta("./data/SMOKE.DTA")
-head(data_stata)
+stata_data <- haven::read_dta("./data/SMOKE.DTA")
+head(stata_data)
 #> # A tibble: 6 × 10
 #>    educ cigpric white   age income  cigs restaurn lincome
 #>   <dbl>   <dbl> <dbl> <dbl>  <dbl> <dbl>    <dbl>   <dbl>

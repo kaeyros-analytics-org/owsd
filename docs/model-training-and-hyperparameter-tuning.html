@@ -94,12 +94,8 @@
 To train the model we will use the package <strong>caret</strong>.</p>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#import libraries</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidymodels.tidymodels.org">tidymodels</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">caTools</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#load the data</span></span>
-<span><span class="co">#breast_cancer &lt;- read.csv("data/Breast_cancer_data.csv")</span></span>
 <span></span>
 <span><span class="co">#transform the target variable to factor</span></span>
 <span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span>

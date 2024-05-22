@@ -116,10 +116,10 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#load data</span></span>
-<span><span class="va">data_json</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"./data/sample4.json"</span><span class="op">)</span></span>
+<span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="fu">jsonlite</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="st">"./data/sample4.json"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#transform data into dataframe</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">data_json</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">json_data</span><span class="op">)</span></span></code></pre></div>
 <p>Importing data from database to R:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load package</span></span>
@@ -133,8 +133,8 @@
 <span><span class="co">#&gt; [1] "Answer"   "Question" "Survey"</span></span></code></pre></div>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#retrieve data from table Question</span></span>
-<span><span class="va">data_sqlite</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Survey"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_sqlite</span><span class="op">)</span></span>
+<span><span class="va">sqlite_data</span> <span class="op">&lt;-</span> <span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="st">"SELECT * FROM Survey"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sqlite_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   SurveyID                   Description</span></span>
 <span><span class="co">#&gt; 1     2014 mental health survey for 2014</span></span>
 <span><span class="co">#&gt; 2     2016 mental health survey for 2016</span></span>
@@ -147,8 +147,8 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#load data</span></span>
-<span><span class="va">data_spss</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_spss</span><span class="op">)</span></span>
+<span><span class="va">spss_data</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_spss.html">read_sav</a></span><span class="op">(</span><span class="st">"./data/mental_health.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">spss_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 14</span></span>
 <span><span class="co">#&gt;   `CASE#` GENDER  HOME   AGE    EB    PH    CS    ER   TRO</span></span>
 <span><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -163,8 +163,8 @@
 <p>Importing data from stata to R:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load data</span></span>
-<span><span class="va">data_stata</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_stata</span><span class="op">)</span></span>
+<span><span class="va">stata_data</span> <span class="op">&lt;-</span> <span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"./data/SMOKE.DTA"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">stata_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 10</span></span>
 <span><span class="co">#&gt;    educ cigpric white   age income  cigs restaurn lincome</span></span>
 <span><span class="co">#&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;</span></span>

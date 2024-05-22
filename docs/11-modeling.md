@@ -17,12 +17,8 @@ To train the model we will use the package **caret**.
 
 ```r
 #import libraries
-library(tidymodels)
 library(caTools)
 library(caret)
-
-#load the data
-#breast_cancer <- read.csv("data/Breast_cancer_data.csv")
 
 #transform the target variable to factor
 breast_cancer$diagnosis <- as.factor(breast_cancer$diagnosis)

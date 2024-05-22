@@ -63,6 +63,7 @@ Unsupervised machine learning is often used by researchers and data scientists t
 Some of the unsupervised learning algorithms are:
 
 &nbsp;&nbsp;&nbsp;&nbsp;1) K-means:\
+
 K-means is a popular unsupervised machine learning algorithm used for partitioning a dataset into a predefined number of groups (clusters). 
 
 <p align="center">
@@ -71,6 +72,7 @@ K-means is a popular unsupervised machine learning algorithm used for partitioni
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;2) Principle Component Analysis (PCA):\
+
 Principal component analysis (PCA) is a type of dimensionality reduction algorithm which is used to reduce redundancies and to compress datasets through feature extraction. This method uses a linear transformation to create a new data representation, yielding a set of "principal components." The first principal component is the direction which maximizes the variance of the dataset. While the second principal component also finds the maximum variance in the data, it is completely uncorrelated to the first principal component, yielding a direction that is perpendicular, or orthogonal, to the first component. This process repeats based on the number of dimensions, where a next principal component is the direction orthogonal to the prior components with the most variance.
 
 <p align="center">
@@ -78,6 +80,7 @@ Principal component analysis (PCA) is a type of dimensionality reduction algorit
 </p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;3) Hierarchical clustering:\
+
 Hierarchical clustering is an unsupervised learning technique used to group similar objects into clusters. It creates a hierarchy of clusters by merging or splitting them based on similarity measures.
 Clustering Hierarchical groups similar objects into a dendrogram. It merges similar clusters iteratively, starting with each data point as a separate cluster. This creates a tree-like structure that shows the relationships between clusters and their hierarchy.
 
@@ -91,6 +94,7 @@ In reinforcement learning, algorithms learn by interacting with an environment. 
 Reinforcement learning is often used to create algorithms that must effectively make sequences of decisions or actions to achieve their aims, such as playing a game or summarizing an entire text. 
 
 ## Concepts of underfitting and overfitting\
+
 In this part, we’ll focus on two terms in machine learning: overfitting and underfitting. These terms define a model’s ability to capture the relationship between input and output data. Both of them are possible causes of poor model performance.\
 Overfitting happens when we train a machine learning model too much tuned to the training set. As a result, the model learns the training data too well, but it can’t generate good predictions for unseen data. An overfitted model produces low accuracy results for data points unseen in training, hence, leads to non-optimal decisions.\
 About Underfitting it occurs when the machine learning model is not well-tuned to the training set. The resulting model is not capturing the relationship between input and output well enough. Therefore, it doesn’t produce accurate predictions, even for the training dataset. Resultingly, an underfitted model generates poor results that lead to high-error decisions, like an overfitted model.
@@ -118,6 +122,7 @@ To prevent underfitting we can:
 - Increase number of features
 
 &nbsp;&nbsp;&nbsp;&nbsp;2) Cures for overfittings\
+
 To prevent overfitting we can:
 
 - Reduce model complexity

@@ -165,11 +165,27 @@ table(stroke_oversample$stroke)
 A very simple explanation is that it randomly selects a minority data point and looks at its nearest k minority class neighbours. It then randomly selects one of these neighbours, draws a line between them and creates a new data point randomly along that line. This will be repeated until the minority class has reached a predetermined ratio to the majority class.
 
 ```r
-# library(devtools)
-# install_version("DMwR", version = "0.4.1",  repos = "http://cran.us.r-project.org")
+library(DMwR)
+#> Le chargement a nécessité le package : grid
+#> Registered S3 method overwritten by 'quantmod':
+#>   method            from
+#>   as.zoo.data.frame zoo
 
-# stroke_smote <- SMOTE(stroke ~ ., stroke_data, perc.over = 5500,perc.under=0)
-# table(stroke_smote$stroke)
+data(iris)
+data <- iris[, c(1, 2, 5)]
+data$Species <- factor(ifelse(data$Species == "setosa","rare","common")) 
+## checking the class distribution of this artificial data set
+table(data$Species)
+#> 
+#> common   rare 
+#>    100     50
+
+## now using SMOTE to create a more "balanced problem"
+data_smote <- SMOTE(Species ~ ., data, perc.over = 600,perc.under=100)
+table(data_smote$Species)
+#> 
+#> common   rare 
+#>    300    350
 ```
 
 
