@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 11 Data preparation | OWSD WORKSHOP</title>
-<meta name="author" content="Thierry Monthe">
+<meta name="author" content="Thierry Monthé">
 <meta name="generator" content="bookdown 0.38 with bs4_book()">
 <meta property="og:title" content="Chapter 11 Data preparation | OWSD WORKSHOP">
 <meta property="og:type" content="book">
@@ -81,7 +81,7 @@
 <span class="header-section-number">11.1</span> Data cleaning<br><a class="anchor" aria-label="anchor" href="#data-cleaning-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data cleaning is an essential pre-processing step in machine learning that focuses on identifying and rectifying errors, inconsistencies, and inaccuracies in raw data. This process involves tasks such as handling missing values, removing duplicates, correcting data format inconsistencies, and dealing with outliers. Data cleaning ensures that the dataset is of high quality and integrity, which is crucial for building accurate and reliable machine learning models. By thoroughly cleaning the data, practitioners can enhance the quality of their analyses, improve model performance, and foster more meaningful insights from the data.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load the data</span></span>
 <span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/heart_attack_prediction_dataset.csv"</span><span class="op">)</span></span>
 <span></span>
@@ -103,20 +103,16 @@
 <span class="header-section-number">11.2</span> Feature creation<br><a class="anchor" aria-label="anchor" href="#feature-creation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Feature creation, also known as feature engineering, is a critical aspect of machine learning where new features are derived or constructed from existing ones to enhance model performance and capture more complex relationships in the data. This process involves transforming raw input data into a more informative representation that better captures the underlying patterns and structures. Feature creation techniques may include mathematical transformations like log transforms, creating interaction terms between existing features, binning numerical features into categorical ones or encoding categorical variables. Effective feature creation can significantly impact the predictive power of machine learning models, enabling them to better generalize to unseen data and achieve higher levels of accuracy and robustness.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#feature creation</span></span>
 <span><span class="va">heart_attack</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'systolic_pressure'</span>, <span class="st">'diastolic_pressure'</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_split.html">str_split_fixed</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">Blood.Pressure</span>, <span class="st">'/'</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#convert the two columns in numeric</span></span>
-<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span><span class="op">)</span></span>
-<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#Creation of the new variable</span></span>
-<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">Blood_pressure_difference</span> <span class="op">&lt;-</span> <span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span> <span class="op">-</span> <span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span></span>
+<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`systolic_pressure`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">systolic_pressure</span><span class="op">)</span></span>
+<span><span class="va">heart_attack</span><span class="op">$</span><span class="va">`diastolic_pressure`</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">$</span><span class="va">diastolic_pressure</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#remove the olds variable</span></span>
-<span><span class="va">remove_columns</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Blood.Pressure"</span>, <span class="st">"systolic_pressure"</span>,<span class="st">"diastolic_pressure"</span><span class="op">)</span></span>
-<span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="va">heart_attack</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">heart_attack</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">remove_columns</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
+<span><span class="va">heart_attack</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">heart_attack</span>, <span class="op">-</span><span class="va">Blood.Pressure</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="feature-scaling" class="section level2" number="11.3">
 <h2>
@@ -128,7 +124,7 @@ The most common methods for feature scaling are:</p>
 <li><p>Standardization: This method transforms the data to have zero mean and unit variance. It subtracts the mean and divides by the standard deviation of each feature. Standardization preserves the shape of the original distribution and is useful when the data does not have a normal distribution.</p></li>
 <li><p>Normalization: Normalization scales the data to a fixed range, typically between 0 and 1. It is achieved by subtracting the minimum value and dividing by the range (maximum value minus minimum value) of each feature. Normalization is suitable for data that has a bounded range and follows a uniform distribution.</p></li>
 </ul>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load the data</span></span>
 <span><span class="va">breast_cancer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/Breast_cancer_data.csv"</span><span class="op">)</span></span>
 <span></span>
@@ -140,8 +136,10 @@ The most common methods for feature scaling are:</p>
 </h2>
 <p>Feature encoding is a crucial step in machine learning where categorical variables are converted into numerical representations that algorithms can understand. Since many machine learning algorithms require numerical input, feature encoding transforms categorical data into a format that preserves the information contained in the original variables. 
 Common techniques for feature encoding include one-hot encoding(it creates new (binary) columns, indicating the presence of each possible value from the original data), label encoding which assigns a unique numerical value to each category or ordinal encoding to ensure that ordinal nature of the variables is sustained.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">$</span><span class="va">diagnosis</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...</span></span></code></pre></div>
 </div>
 <div id="data-reduction" class="section level2" number="11.5">
 <h2>
@@ -153,8 +151,19 @@ Common techniques for feature encoding include one-hot encoding(it creates new (
 </ol>
 <p>   - Correlation analysis:<br>
 It identifies the degree of linear relationship between pairs of features, enabling the removal of highly correlated features to reduce redundancy and multicollinearity in the dataset.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2">ggcorrplot</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/taiyun/corrplot">corrplot</a></span><span class="op">)</span></span>
+<span><span class="co">#Correlation matrix</span></span>
+<span><span class="va">corr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/corrplot/man/corrplot.html">corrplot</a></span><span class="op">(</span><span class="va">corr</span>, method <span class="op">=</span> <span class="st">'number'</span>, type <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="10-data_preparation_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;"></div>
 <p>   - Recursive Feature Elimination:<br>
-Feature selection refers to techniques that select a subset of the most relevant features for a dataset. Fewer features can allow machine learning algorithms to run more efficiently (less space or time complexity) and be more effective.</p>
+Feature selection refers to techniques that select a subset of the most relevant features for a dataset. It starts with a full set of features and iteratively eliminates the least important ones based on their impact on model performance. This process continues until the optimal subset of features is obtained.</p>
+<div align="center" class="inline-figure">
+<img src="www/recursive_feature.png" alt="fishy" class="bg-primary" width="400px" height="300px">
+</div>
 <p>   - Statistical tests:<br>
 It utilizes statistical measures (e.g., t-tests, ANOVA) to assess the significance of individual features in relation to the target variable, facilitating the selection of features that significantly contribute to the predictive power of the model.</p>
 <ol start="2" style="list-style-type: decimal">
@@ -162,33 +171,11 @@ It utilizes statistical measures (e.g., t-tests, ANOVA) to assess the significan
 </ol>
 <p>   - Principal Component Analysis (PCA):<br>
 It reduces the dimensionality of the dataset by transforming correlated features into a smaller set of uncorrelated variables called principal components, capturing most of the variance in the data.</p>
-<p>   - Linear Discriminant Analysis (LDA):<br>
-LDA finds new features (discriminant functions) that best separate different classes in your data. This helps focus the model on the key characteristics that differentiate the classes.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.sthda.com/english/wiki/ggcorrplot-visualization-of-a-correlation-matrix-using-ggplot2">ggcorrplot</a></span><span class="op">)</span></span>
-<span><span class="co">#Correlation matrix</span></span>
-<span><span class="va">p.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html">cor_pmat</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">p.mat</span></span>
-<span><span class="co">#&gt;                  mean_radius mean_texture mean_perimeter</span></span>
-<span><span class="co">#&gt; mean_radius     0.000000e+00 2.360374e-15   0.000000e+00</span></span>
-<span><span class="co">#&gt; mean_texture    2.360374e-15 0.000000e+00   7.041961e-16</span></span>
-<span><span class="co">#&gt; mean_perimeter  0.000000e+00 7.041961e-16   0.000000e+00</span></span>
-<span><span class="co">#&gt; mean_area       0.000000e+00 4.124850e-15   0.000000e+00</span></span>
-<span><span class="co">#&gt; mean_smoothness 4.312577e-05 5.776966e-01   6.108608e-07</span></span>
-<span><span class="co">#&gt;                    mean_area mean_smoothness</span></span>
-<span><span class="co">#&gt; mean_radius     0.000000e+00    4.312577e-05</span></span>
-<span><span class="co">#&gt; mean_texture    4.124850e-15    5.776966e-01</span></span>
-<span><span class="co">#&gt; mean_perimeter  0.000000e+00    6.108608e-07</span></span>
-<span><span class="co">#&gt; mean_area       0.000000e+00    2.165664e-05</span></span>
-<span><span class="co">#&gt; mean_smoothness 2.165664e-05    0.000000e+00</span></span>
-<span><span class="va">corr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">breast_cancer</span><span class="op">[</span>,<span class="op">-</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html">ggcorrplot</a></span><span class="op">(</span><span class="va">corr</span>,</span>
-<span>           type <span class="op">=</span> <span class="st">"lower"</span>,</span>
-<span>           lab <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>           digits <span class="op">=</span> <span class="fl">3</span>,p.mat <span class="op">=</span> <span class="va">p.mat</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="10-data_preparation_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;"></div>
-<p>The mean_area and mean_perimeter variables are highly correlated, so we’ll only need to keep one.</p>
+   - Linear Discriminant Analysis (LDA):<br>
+LDA finds new features (discriminant functions) that best separate different classes in your data. This helps focus the model on the key characteristics that differentiate the classes.
+<div align="center" class="inline-figure">
+<img src="www/lda.jpg" alt="fishy" class="bg-primary" width="400px" height="300px">
+</div>
 </div>
 <div id="handling-imbalanced-dataset" class="section level2" number="11.6">
 <h2>
@@ -197,13 +184,60 @@ LDA finds new features (discriminant functions) that best separate different cla
 <p>Imbalanced datasets occur when one class significantly outnumbers the other(s), leading to biased model training and poor generalization performance.
 We can handle imbalanced dataset by applying undersampling, oversampling or the method SMOTE.</p>
 <ol style="list-style-type: decimal">
-<li><p>undersampling:<br>
-The process of undersampling counts the number of minority samples in the dataset, then randomly selects the same number from the majority sample.</p></li>
-<li><p>oversampling:<br>
-This method repeatedly duplicates randomly selected minority classes until there are an equal number of majority and minority samples.</p></li>
-<li><p>SMOTE(Synthetic Minority Oversampling Technique):<br>
-A very simple explanation is that it randomly selects a minority data point and looks at its nearest k minority class neighbours. It then randomly selects one of these neighbours, draws a line between them and creates a new data point randomly along that line. This will be repeated until the minority class has reached a predetermined ratio to the majority class.</p></li>
+<li>undersampling:<br>
+The process of undersampling counts the number of minority samples in the dataset, then randomly selects the same number from the majority sample.</li>
 </ol>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load the package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ROSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: le package 'ROSE' a été compilé avec la version R</span></span>
+<span><span class="co">#&gt; 4.3.3</span></span>
+<span><span class="co">#&gt; Loaded ROSE 0.0-4</span></span>
+<span></span>
+<span><span class="co">#load the data</span></span>
+<span><span class="va">stroke_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"./data/stroke.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#verify imbalance on the target variable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">stroke_data</span><span class="op">$</span><span class="va">stroke</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     0     1 </span></span>
+<span><span class="co">#&gt; 42617   783</span></span>
+<span></span>
+<span><span class="co"># balanced data set with both over and under sampling</span></span>
+<span><span class="va">stroke_undersample</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ROSE/man/ovun.sample.html">ovun.sample</a></span><span class="op">(</span><span class="va">stroke</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">stroke_data</span>,</span>
+<span>                                  N<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">stroke_data</span><span class="op">)</span>, p<span class="op">=</span><span class="fl">0.5</span>, </span>
+<span>                                  seed<span class="op">=</span><span class="fl">1</span>, method<span class="op">=</span><span class="st">"both"</span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span>
+<span></span>
+<span><span class="co">#reverify the distribution of the target variable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">stroke_undersample</span><span class="op">$</span><span class="va">stroke</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     0     1 </span></span>
+<span><span class="co">#&gt; 21710 21690</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>oversampling:<br>
+This method repeatedly duplicates randomly selected minority classes until there are an equal number of majority and minority samples.</li>
+</ol>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># balanced data set with over-sampling</span></span>
+<span><span class="va">stroke_oversample</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ROSE/man/ovun.sample.html">ovun.sample</a></span><span class="op">(</span><span class="va">stroke</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">stroke_data</span>, </span>
+<span>                                  p<span class="op">=</span><span class="fl">0.5</span>, seed<span class="op">=</span><span class="fl">1</span>, </span>
+<span>                                  method<span class="op">=</span><span class="st">"over"</span><span class="op">)</span><span class="op">$</span><span class="va">data</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">stroke_oversample</span><span class="op">$</span><span class="va">stroke</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     0     1 </span></span>
+<span><span class="co">#&gt; 41295 41370</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>SMOTE(Synthetic Minority Oversampling Technique):<br>
+A very simple explanation is that it randomly selects a minority data point and looks at its nearest k minority class neighbours. It then randomly selects one of these neighbours, draws a line between them and creates a new data point randomly along that line. This will be repeated until the minority class has reached a predetermined ratio to the majority class.</li>
+</ol>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># library(devtools)</span></span>
+<span><span class="co"># install_version("DMwR", version = "0.4.1",  repos = "http://cran.us.r-project.org")</span></span>
+<span></span>
+<span><span class="co"># stroke_smote &lt;- SMOTE(stroke ~ ., stroke_data, perc.over = 5500,perc.under=0)</span></span>
+<span><span class="co"># table(stroke_smote$stroke)</span></span></code></pre></div>
+
 </div>
 </div>
   <div class="chapter-nav">
@@ -236,7 +270,7 @@ A very simple explanation is that it randomly selects a minority data point and 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthe. It was last built on 2024-05-21.</p>
+    <p>"<strong>OWSD WORKSHOP</strong>" was written by Thierry Monthé. It was last built on 2024-05-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

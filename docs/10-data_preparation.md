@@ -1,3 +1,6 @@
+
+
+
 # Data preparation
 Data preparation is a crucial step in the machine learning pipeline that involves cleaning, transforming, and pre-processing raw data to make it suitable for training and evaluation. This process ensures that the data is in a format that machine learning algorithms can effectively learn from, ultimately improving the performance and generalization ability of the models. By carefully preparing the data before feeding it into machine learning algorithms, practitioners can mitigate potential issues such as overfitting, improve model accuracy, and facilitate meaningful insights from the data.
 
@@ -30,15 +33,11 @@ Feature creation, also known as feature engineering, is a critical aspect of mac
 heart_attack[c('systolic_pressure', 'diastolic_pressure')] <- stringr::str_split_fixed(heart_attack$Blood.Pressure, '/', 2)
 
 #convert the two columns in numeric
-heart_attack$`systolic_pressure` <- as.numeric(heart_attack$`systolic_pressure`)
-heart_attack$`diastolic_pressure` <- as.numeric(heart_attack$`diastolic_pressure`)
-
-#Creation of the new variable
-heart_attack$Blood_pressure_difference <- heart_attack$`systolic_pressure` - heart_attack$`diastolic_pressure`
+heart_attack$`systolic_pressure` <- as.numeric(heart_attack$systolic_pressure)
+heart_attack$`diastolic_pressure` <- as.numeric(heart_attack$diastolic_pressure)
 
 #remove the olds variable
-remove_columns <- c("Blood.Pressure", "systolic_pressure","diastolic_pressure")
-heart_attack <- heart_attack[, which(names(heart_attack) %in% remove_columns)]
+heart_attack <- select(heart_attack, -Blood.Pressure)
 ```
 
 
@@ -65,6 +64,8 @@ Common techniques for feature encoding include one-hot encoding(it creates new (
 
 ```r
 breast_cancer$diagnosis <- as.factor(breast_cancer$diagnosis)
+str(breast_cancer$diagnosis)
+#>  Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
 ## Data reduction
@@ -76,8 +77,24 @@ In machine learning, dimensionality reduction tackles the challenge of high-dime
 &nbsp;&nbsp;&nbsp;- Correlation analysis:\
 It identifies the degree of linear relationship between pairs of features, enabling the removal of highly correlated features to reduce redundancy and multicollinearity in the dataset.
 
+
+```r
+library(ggcorrplot)
+library(corrplot)
+#Correlation matrix
+corr <- cor(breast_cancer[,-6])
+
+corrplot(corr, method = 'number', type = "upper")
+```
+
+<img src="10-data_preparation_files/figure-html/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" />
+
 &nbsp;&nbsp;&nbsp;- Recursive Feature Elimination:\
-Feature selection refers to techniques that select a subset of the most relevant features for a dataset. Fewer features can allow machine learning algorithms to run more efficiently (less space or time complexity) and be more effective.
+Feature selection refers to techniques that select a subset of the most relevant features for a dataset. It starts with a full set of features and iteratively eliminates the least important ones based on their impact on model performance. This process continues until the optimal subset of features is obtained.
+
+<p align="center">
+  <img src="./www/recursive_feature.png" alt="fishy" class="bg-primary" width="400px" height="300px">
+</p>
 
 &nbsp;&nbsp;&nbsp;- Statistical tests:\
 It utilizes statistical measures (e.g., t-tests, ANOVA) to assess the significance of individual features in relation to the target variable, facilitating the selection of features that significantly contribute to the predictive power of the model.
@@ -89,37 +106,9 @@ It reduces the dimensionality of the dataset by transforming correlated features
 
 &nbsp;&nbsp;&nbsp;- Linear Discriminant Analysis (LDA):\
 LDA finds new features (discriminant functions) that best separate different classes in your data. This helps focus the model on the key characteristics that differentiate the classes.
-
-
-```r
-library(ggcorrplot)
-#Correlation matrix
-p.mat <- cor_pmat(breast_cancer[,-6])
-p.mat
-#>                  mean_radius mean_texture mean_perimeter
-#> mean_radius     0.000000e+00 2.360374e-15   0.000000e+00
-#> mean_texture    2.360374e-15 0.000000e+00   7.041961e-16
-#> mean_perimeter  0.000000e+00 7.041961e-16   0.000000e+00
-#> mean_area       0.000000e+00 4.124850e-15   0.000000e+00
-#> mean_smoothness 4.312577e-05 5.776966e-01   6.108608e-07
-#>                    mean_area mean_smoothness
-#> mean_radius     0.000000e+00    4.312577e-05
-#> mean_texture    4.124850e-15    5.776966e-01
-#> mean_perimeter  0.000000e+00    6.108608e-07
-#> mean_area       0.000000e+00    2.165664e-05
-#> mean_smoothness 2.165664e-05    0.000000e+00
-corr <- cor(breast_cancer[,-6])
-
-ggcorrplot(corr,
-           type = "lower",
-           lab = TRUE,
-           digits = 3,p.mat = p.mat)
-```
-
-<img src="10-data_preparation_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" />
-
-The mean_area and mean_perimeter variables are highly correlated, so we'll only need to keep one.
-
+<p align="center">
+  <img src="./www/lda.jpg" alt="fishy" class="bg-primary" width="400px" height="300px">
+</p>
 
 ## Handling imbalanced dataset
 Imbalanced datasets occur when one class significantly outnumbers the other(s), leading to biased model training and poor generalization performance. 
@@ -128,9 +117,59 @@ We can handle imbalanced dataset by applying undersampling, oversampling or the 
 1. undersampling:\
 The process of undersampling counts the number of minority samples in the dataset, then randomly selects the same number from the majority sample.
 
+```r
+#load the package
+library(ROSE)
+#> Warning: le package 'ROSE' a été compilé avec la version R
+#> 4.3.3
+#> Loaded ROSE 0.0-4
+
+#load the data
+stroke_data <- read.csv("./data/stroke.csv")
+
+#verify imbalance on the target variable
+table(stroke_data$stroke)
+#> 
+#>     0     1 
+#> 42617   783
+
+# balanced data set with both over and under sampling
+stroke_undersample <- ovun.sample(stroke~., data=stroke_data,
+                                  N=nrow(stroke_data), p=0.5, 
+                                  seed=1, method="both")$data
+
+#reverify the distribution of the target variable
+table(stroke_undersample$stroke)
+#> 
+#>     0     1 
+#> 21710 21690
+```
+
+
 2. oversampling:\
 This method repeatedly duplicates randomly selected minority classes until there are an equal number of majority and minority samples.
 
+
+```r
+# balanced data set with over-sampling
+stroke_oversample <- ovun.sample(stroke~., data=stroke_data, 
+                                  p=0.5, seed=1, 
+                                  method="over")$data
+
+table(stroke_oversample$stroke)
+#> 
+#>     0     1 
+#> 41295 41370
+```
 3. SMOTE(Synthetic Minority Oversampling Technique):\
 A very simple explanation is that it randomly selects a minority data point and looks at its nearest k minority class neighbours. It then randomly selects one of these neighbours, draws a line between them and creates a new data point randomly along that line. This will be repeated until the minority class has reached a predetermined ratio to the majority class.
+
+```r
+# library(devtools)
+# install_version("DMwR", version = "0.4.1",  repos = "http://cran.us.r-project.org")
+
+# stroke_smote <- SMOTE(stroke ~ ., stroke_data, perc.over = 5500,perc.under=0)
+# table(stroke_smote$stroke)
+```
+
 

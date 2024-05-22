@@ -45,7 +45,10 @@ default_knn_mod = train(
   method = "knn",
   trControl = trainControl(method = "cv", number = 5)
 )
+plot(default_knn_mod)
 ```
+
+<img src="11-modeling_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 
 ## Hyperparameter tuning
@@ -60,9 +63,12 @@ tune_knn_mod = train(
   method = "knn",
   trControl = trainControl(method = "cv", number = 5),
   preProcess = c("center", "scale"),
-  tuneGrid = expand.grid(k = seq(1, 101, by = 2))
+  tuneGrid = expand.grid(k = seq(1, 40, by = 2))
 )
+plot(tune_knn_mod)
 ```
+
+<img src="11-modeling_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 
 ## Model evaluation\

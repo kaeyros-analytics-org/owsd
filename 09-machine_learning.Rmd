@@ -16,26 +16,41 @@ Various algorithms are used in supervised machine learning processes.
 Linear regression is a fundamental supervised machine learning algorithm used for modeling the relationship between a dependent variable (what you want to predict) and one or more independent variables (what you're basing your prediction on).\
 The goal of linear regression is to find the best-fitting line that minimizes the differences between the observed values and the values predicted by the linear model. This is typically done by minimizing the sum of the squared differences between the observed and predicted values.
 
+<p style="text-align: center"><img src="./www/linear-regression.png"></p>
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;2) Logistic regression\
 Logistic regression is another supervised machine learning algorithm, but unlike linear regression, it's specifically designed for classification tasks where the dependent variable can only have a limited number of categories (usually two). \
 Logistic regression doesn't directly output a classification. Instead, it calculates the probability of an observation belonging to a specific category.
+
+<p style="text-align: center"><img src="./www/LogReg_1.png"></p>
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;3) Support vector machines\
 A support vector machine (SVM) is a supervised machine learning algorithm that classifies data by finding an optimal line or hyperplane that maximizes the distance between each class in an N-dimensional space.
 SVMs are capable of performing both linear and nonlinear classification tasks. In cases where the classes are not linearly separable, SVMs can map the input features into a higher-dimensional space using a technique called the kernel trick.
 
+<p style="text-align: center"><img src="./www/svm.png"></p>
+
 &nbsp;&nbsp;&nbsp;&nbsp;4) Decison trees\
 Decision trees are a popular and intuitive supervised learning algorithm used for both classification and regression tasks in machine learning. They are a powerful tool for predictive modeling and are widely used in various domains due to their simplicity, interpretability, and flexibility.\
 A decision tree is a hierarchical structure consisting of nodes and branches. Each internal node represents a decision based on the value of a certain feature, and each branch represents the possible outcomes of that decision. The leaf nodes of the tree represent the final predictions or decisions.\
-The process of constructing a decision tree involves recursively splitting the dataset into subsets based on the values of different features, such that the resulting subsets are as pure as possible with respect to the target variable.
+
+<p style="text-align: center"><img src="./www/decision_tree1.jpg" height="300px"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;5) Random forest\
+
 Random Forest algorithm is a powerful tree learning technique in Machine Learning. It works by creating a number of Decision Trees during the training phase. Each tree is constructed using a random subset of the data set to measure a random subset of features in each partition. This randomness introduces variability among individual trees, reducing the risk of overfitting and improving overall prediction performance. In prediction, the algorithm aggregates the results of all trees, either by voting (for classification tasks) or by averaging (for regression tasks) This collaborative decision-making process, supported by multiple trees with their insights, provides an example stable and precise results.
+
+<p style="text-align: center"><img src="./www/random_forest1.avif"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;6) K-Nearest Neighbors (KNN)\
 The K-Nearest Neighbors (KNN) algorithm is a popular machine learning technique used for classification and regression tasks. It relies on the idea that similar data points tend to have similar labels or values.\
 KNN classifies new data points based on their similarity to existing data points in the training set. It identifies the k nearest neighbors (data points) in the training data for a new data point and predicts the class label (for classification) or the average value (for regression) based on the majority vote (classification) or the average value (regression) of those neighbors.
 
+<p align="center">
+  <img src="./www/knn2.png" alt="fishy" class="bg-primary" width="400px" height="300px">
+</p>
 
 ### Semi-supervised learning {-}
 
@@ -48,29 +63,27 @@ Unsupervised machine learning is often used by researchers and data scientists t
 Some of the unsupervised learning algorithms are:
 
 &nbsp;&nbsp;&nbsp;&nbsp;1) K-means:\
-K-means is a popular unsupervised machine learning algorithm used for partitioning a dataset into a predefined number of groups (clusters). Here's a breakdown of how it works:
+K-means is a popular unsupervised machine learning algorithm used for partitioning a dataset into a predefined number of groups (clusters). 
 
-- First step: Initialization
-You specify the desired number of clusters (k).The algorithm randomly selects k data points as initial centroids, which represent the center of each cluster.\
-- Second step: Assignment
-Each data point in the dataset is assigned to the closest centroid based on a distance metric (usually Euclidean distance).\
--Third step: Re-computation
-Once all data points are assigned to a cluster, the centroids are recalculated as the mean of the points within each cluster.\
-- Fourth step: Iteration
-Steps 2 and 3 are repeated iteratively:\
-&nbsp;&nbsp;&nbsp;&nbsp;-Data points are reassigned to the closest centroid based on the updated centroids.\
-&nbsp;&nbsp;&nbsp;&nbsp;-Centroids are recalculated based on the newly assigned data points.
-
-- Fifth step: Stopping Criterion\
-The iteration process continues until a stopping criterion is met. This can be when the centroids no longer significantly change between iterations (convergence).
+<p align="center">
+  <img src="./www/k_means.png" alt="fishy" class="bg-primary" width="500px" height="300px">
+</p>
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;2) Principle Component Analysis (PCA):\
 Principal component analysis (PCA) is a type of dimensionality reduction algorithm which is used to reduce redundancies and to compress datasets through feature extraction. This method uses a linear transformation to create a new data representation, yielding a set of "principal components." The first principal component is the direction which maximizes the variance of the dataset. While the second principal component also finds the maximum variance in the data, it is completely uncorrelated to the first principal component, yielding a direction that is perpendicular, or orthogonal, to the first component. This process repeats based on the number of dimensions, where a next principal component is the direction orthogonal to the prior components with the most variance.
 
+<p align="center">
+  <img src="./www/pca.png" alt="fishy" class="bg-primary" width="500px" height="300px">
+</p>
+
 &nbsp;&nbsp;&nbsp;&nbsp;3) Hierarchical clustering:\
 Hierarchical clustering is an unsupervised learning technique used to group similar objects into clusters. It creates a hierarchy of clusters by merging or splitting them based on similarity measures.
 Clustering Hierarchical groups similar objects into a dendrogram. It merges similar clusters iteratively, starting with each data point as a separate cluster. This creates a tree-like structure that shows the relationships between clusters and their hierarchy.
+
+<p align="center">
+  <img src="./www/hierarachical_clustering.png" alt="fishy" class="bg-primary" width="400px" height=300px>
+</p>
 
 ### Reinforcement learning {-}
 

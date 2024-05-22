@@ -1,6 +1,6 @@
 --- 
 title: "OWSD WORKSHOP"
-author: "Thierry Monthe"
+author: "Thierry Monthé"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book

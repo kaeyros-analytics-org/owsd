@@ -5,7 +5,7 @@
 
 Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and summarizes the characteristics of a sample, inferential statistics uses statistical methods and models to make inferences or predictions about the wider population from which the sample is drawn.
 
-The main techniques of inferential statistics include hypothesis testing, parameter estimation, analysis of variance (ANOVA), regression and forecasting methods. Here are some fundamental concepts associated with inferential statistics:
+Here are some fundamental concepts associated with inferential statistics:
 
 ## Population and sample
 

@@ -114,13 +114,13 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={OWSD WORKSHOP},
-  pdfauthor={Thierry Monthe},
+  pdfauthor={Thierry Monthé},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{OWSD WORKSHOP}
-\author{Thierry Monthe}
-\date{2024-05-13}
+\author{Thierry Monthé}
+\date{2024-05-22}
 
 \begin{document}
 \maketitle
@@ -130,13 +130,47 @@
 \tableofcontents
 }
 \hypertarget{welcome-adress}{%
-\chapter{Welcome adress}\label{welcome-adress}}
+\chapter{Welcome Adress}\label{welcome-adress}}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Interdum velit laoreet id donec. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Condimentum lacinia quis vel eros donec ac. Egestas erat imperdiet sed euismod nisi porta lorem. Montes nascetur ridiculus mus mauris vitae ultricies. Hendrerit dolor magna eget est lorem ipsum. Dictum fusce ut placerat orci nulla. Integer eget aliquet nibh praesent tristique magna sit amet purus. Aliquam purus sit amet luctus venenatis lectus magna fringilla. Pulvinar mattis nunc sed blandit libero volutpat sed cras. At elementum eu facilisis sed odio morbi quis. In egestas erat imperdiet sed euismod nisi porta lorem. Ac placerat vestibulum lectus mauris ultrices eros. Placerat in egestas erat imperdiet. Curabitur gravida arcu ac tortor dignissim. Libero enim sed faucibus turpis in eu mi bibendum. Vulputate dignissim suspendisse in est ante in nibh.
+Hello everyone and welcome to the ``Data Analysis and Machine Learning using R'' workshop! I'm delighted to welcome you to this interactive session where we'll explore the fascinating world of data analysis and machine learning using the R programming language.
 
-At quis risus sed vulputate odio ut enim blandit. Quis blandit turpis cursus in hac habitasse platea. Et tortor consequat id porta nibh venenatis cras sed. Aliquet bibendum enim facilisis gravida. Proin nibh nisl condimentum id venenatis a condimentum. Vivamus at augue eget arcu dictum varius duis. Ut eu sem integer vitae justo eget magna. Tristique magna sit amet purus gravida quis blandit turpis cursus. Enim lobortis scelerisque fermentum dui faucibus in ornare. Adipiscing enim eu turpis egestas pretium aenean.
+\hypertarget{workshop-goals}{%
+\section*{Workshop goals}\label{workshop-goals}}
+\addcontentsline{toc}{section}{Workshop goals}
 
-Diam in arcu cursus euismod. Mauris augue neque gravida in fermentum. Amet cursus sit amet dictum sit amet. Velit euismod in pellentesque massa placerat duis ultricies. Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Enim eu turpis egestas pretium. Vulputate enim nulla aliquet porttitor lacus luctus accumsan. Tortor id aliquet lectus proin nibh nisl. Ac felis donec et odio pellentesque diam volutpat commodo sed. Ut diam quam nulla porttitor massa id. Quam quisque id diam vel quam elementum pulvinar etiam. Fames ac turpis egestas maecenas pharetra. Vulputate odio ut enim blandit volutpat maecenas volutpat. Consequat mauris nunc congue nisi. Pellentesque adipiscing commodo elit at. Tortor vitae purus faucibus ornare. Semper eget duis at tellus at urna. Ornare quam viverra orci sagittis eu volutpat odio. Elementum facilisis leo vel fringilla est ullamcorper eget nulla.
+In this workshop, you'll discover the fundamental concepts of data analysis and machine learning using R. You will learn how to :
+
+\begin{itemize}
+\tightlist
+\item
+  Import, clean and explore data
+\item
+  Perform descriptive and statistical analyses
+\item
+  Visualize data in a clear and informative way
+\item
+  Build predictive machine learning models
+\item
+  Evaluate and interpret model results
+\end{itemize}
+
+\hypertarget{who-is-this-workshop-for}{%
+\section*{Who is this workshop for?}\label{who-is-this-workshop-for}}
+\addcontentsline{toc}{section}{Who is this workshop for?}
+
+This workshop is designed for beginners and intermediate users of R who wish to deepen their knowledge of data analysis and machine learning. Whether you're a student, researcher, data professional or simply curious to explore this field, this workshop will give you the skills and tools you need to analyze data and create powerful predictive models.
+
+\hypertarget{course-materials}{%
+\section*{Course materials}\label{course-materials}}
+\addcontentsline{toc}{section}{Course materials}
+
+Course material will be provided to participants, including datasets, code examples and practical exercises.
+
+\hypertarget{commitment-and-participation}{%
+\section*{Commitment and participation}\label{commitment-and-participation}}
+\addcontentsline{toc}{section}{Commitment and participation}
+
+Your commitment and active participation are essential to get the most out of this workshop. Feel free to ask questions, share your thoughts and collaborate with your peers to solve problems and explore concepts together.
 
 \hypertarget{introduction-to-r-and-rstudio}{%
 \chapter{Introduction to R and RStudio}\label{introduction-to-r-and-rstudio}}
@@ -845,9 +879,7 @@ Example 4: Function without an Argument
 \begin{Highlighting}[]
 \CommentTok{\# Generate a random number between 0 and 1}
 \NormalTok{generate\_random\_number }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
-  
 \NormalTok{  random\_number }\OtherTok{\textless{}{-}} \FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{)}
-  
   \FunctionTok{return}\NormalTok{(random\_number)}
 \NormalTok{\}}
 \end{Highlighting}
@@ -893,20 +925,23 @@ A repository is a place where packages are located and stored so you can install
 
 \begin{itemize}
 \item
-  CRAN: Comprehensive R Archive Network(CRAN) is the official repository, it is a network of FTP and web servers maintained by the R community around the world. The R community coordinates it, and for a package to be published in CRAN, the Package needs to pass several tests to ensure that the package is following CRAN policies.
+  CRAN:\\
+  Comprehensive R Archive Network(CRAN) is the official repository, it is a network of FTP and web servers maintained by the R community around the world. The R community coordinates it, and for a package to be published in CRAN, the Package needs to pass several tests to ensure that the package is following CRAN policies.
 
 \begin{verbatim}
   install.packages("package_name")
 \end{verbatim}
 \item
-  Bioconductor: Bioconductor is a topic-specific repository, intended for open source software for bioinformatics. Similar to CRAN, it has its own submission and review processes, and its community is very active having several conferences and meetings per year in order to maintain quality.
+  Bioconductor:\\
+  Bioconductor is a topic-specific repository, intended for open source software for bioinformatics. Similar to CRAN, it has its own submission and review processes, and its community is very active having several conferences and meetings per year in order to maintain quality.
   To download with this repository you have to install fist the \textbf{BiocManager} package and then run:
 
 \begin{verbatim}
 BiocManager::install("package_name")
 \end{verbatim}
 \item
-  Github: Github is the most popular repository for open-source projects. It's popular as it comes from the unlimited space for open source, the integration with git, a version control software, and its ease to share and collaborate with others.
+  Github:\\
+  Github is the most popular repository for open-source projects. It's popular as it comes from the unlimited space for open source, the integration with git, a version control software, and its ease to share and collaborate with others.
   To install an R packages from GitHub first, you need to install devtools by running the following code:
 
 \begin{verbatim}
@@ -942,10 +977,6 @@ To load more than one package at a time:
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(caret, ggplot2)}
-\CommentTok{\#\textgreater{} Warning: le package \textquotesingle{}caret\textquotesingle{} a été compilé avec la version R}
-\CommentTok{\#\textgreater{} 4.3.3}
-\CommentTok{\#\textgreater{} Le chargement a nécessité le package : ggplot2}
-\CommentTok{\#\textgreater{} Le chargement a nécessité le package : lattice}
 \end{Highlighting}
 \end{Shaded}
 
@@ -966,7 +997,7 @@ Importing data from csv to R:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#load data}
-\NormalTok{children\_anemia }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"./data/children\_anemia.csv"}\NormalTok{)}
+\NormalTok{breast\_cancer }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"./data/Breast\_cancer\_data.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -978,7 +1009,24 @@ Importing data from excel to R:
 \FunctionTok{library}\NormalTok{(readxl)}
 
 \CommentTok{\#load data}
-\NormalTok{data\_1 }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"./data/data\_for\_workshop1.xls"}\NormalTok{)}
+\NormalTok{tasba\_data }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"./data/data\_for\_workshop1.xls"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(tasba\_data)}
+\CommentTok{\#\textgreater{} \# A tibble: 6 x 42}
+\CommentTok{\#\textgreater{}   Sex    Age       \textasciigrave{}Are you married?\textasciigrave{} Do you  have childre\textasciitilde{}1}
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}  \textless{}chr\textgreater{}     \textless{}chr\textgreater{}              \textless{}chr\textgreater{}                 }
+\CommentTok{\#\textgreater{} 1 Male   25\_40 ye\textasciitilde{} NO                 NO                    }
+\CommentTok{\#\textgreater{} 2 Male   15\_25 ye\textasciitilde{} NO                 NO                    }
+\CommentTok{\#\textgreater{} 3 Male   25\_40 ye\textasciitilde{} NO                 NO                    }
+\CommentTok{\#\textgreater{} 4 Male   15\_25 ye\textasciitilde{} NO                 NO                    }
+\CommentTok{\#\textgreater{} 5 Female 15\_25 ye\textasciitilde{} NO                 NO                    }
+\CommentTok{\#\textgreater{} 6 Male   25\_40 ye\textasciitilde{} NO                 NO                    }
+\CommentTok{\#\textgreater{} \# i abbreviated name: 1: \textasciigrave{}Do you  have children?\textasciigrave{}}
+\CommentTok{\#\textgreater{} \# i 38 more variables:}
+\CommentTok{\#\textgreater{} \#   \textasciigrave{}How many children do you have?\textasciigrave{} \textless{}dbl\textgreater{},}
+\CommentTok{\#\textgreater{} \#   \textasciigrave{}What is your religion?\textasciigrave{} \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   \textasciigrave{}Do have a tasba farm?\textasciigrave{} \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   \textasciigrave{}What\textquotesingle{}s the size of your farm?\textasciigrave{} \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   \textasciigrave{}How long have you been growing tasba?\textasciigrave{} \textless{}chr\textgreater{}, ...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1016,8 +1064,14 @@ Importing data from database to R:
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#retrieve data from table Question}
-\NormalTok{data\_sqlite }\OtherTok{\textless{}{-}} \FunctionTok{dbGetQuery}\NormalTok{(conn, }\StringTok{"SELECT * FROM Question"}\NormalTok{)}
+\NormalTok{data\_sqlite }\OtherTok{\textless{}{-}} \FunctionTok{dbGetQuery}\NormalTok{(conn, }\StringTok{"SELECT * FROM Survey"}\NormalTok{)}
 \FunctionTok{head}\NormalTok{(data\_sqlite)}
+\CommentTok{\#\textgreater{}   SurveyID                   Description}
+\CommentTok{\#\textgreater{} 1     2014 mental health survey for 2014}
+\CommentTok{\#\textgreater{} 2     2016 mental health survey for 2016}
+\CommentTok{\#\textgreater{} 3     2017 mental health survey for 2017}
+\CommentTok{\#\textgreater{} 4     2018 mental health survey for 2018}
+\CommentTok{\#\textgreater{} 5     2019 mental health survey for 2019}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1030,6 +1084,18 @@ Importing data from spss to R:
 
 \CommentTok{\#load data}
 \NormalTok{data\_spss }\OtherTok{\textless{}{-}}\NormalTok{ haven}\SpecialCharTok{::}\FunctionTok{read\_sav}\NormalTok{(}\StringTok{"./data/mental\_health.sav"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(data\_spss)}
+\CommentTok{\#\textgreater{} \# A tibble: 6 x 14}
+\CommentTok{\#\textgreater{}   \textasciigrave{}CASE\#\textasciigrave{} GENDER  HOME   AGE    EB    PH    CS    ER   TRO}
+\CommentTok{\#\textgreater{}     \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1      42      1     0    59    NA    NA    NA    32    25}
+\CommentTok{\#\textgreater{} 2      37      0     0    58     2     2    NA    25    19}
+\CommentTok{\#\textgreater{} 3     141      0     0    83    NA     2     2    31    32}
+\CommentTok{\#\textgreater{} 4     143      0     0    85     2     3    NA    18    25}
+\CommentTok{\#\textgreater{} 5     128      1     0    75    14     8    21    20    19}
+\CommentTok{\#\textgreater{} 6      12      1     0    50    17     9    27    28    26}
+\CommentTok{\#\textgreater{} \# i 5 more variables: MOB \textless{}dbl\textgreater{}, SS \textless{}dbl\textgreater{}, CESD \textless{}dbl\textgreater{},}
+\CommentTok{\#\textgreater{} \#   SelfEsteem \textless{}dbl\textgreater{}, Satisfaction \textless{}dbl\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1039,6 +1105,17 @@ Importing data from stata to R:
 \begin{Highlighting}[]
 \CommentTok{\#load data}
 \NormalTok{data\_stata }\OtherTok{\textless{}{-}}\NormalTok{ haven}\SpecialCharTok{::}\FunctionTok{read\_dta}\NormalTok{(}\StringTok{"./data/SMOKE.DTA"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(data\_stata)}
+\CommentTok{\#\textgreater{} \# A tibble: 6 x 10}
+\CommentTok{\#\textgreater{}    educ cigpric white   age income  cigs restaurn lincome}
+\CommentTok{\#\textgreater{}   \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}    \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1  16      60.5     1    46  20000     0        0    9.90}
+\CommentTok{\#\textgreater{} 2  16      57.9     1    40  30000     0        0   10.3 }
+\CommentTok{\#\textgreater{} 3  12      57.7     1    58  30000     3        0   10.3 }
+\CommentTok{\#\textgreater{} 4  13.5    57.9     1    30  20000     0        0    9.90}
+\CommentTok{\#\textgreater{} 5  10      58.3     1    17  20000     0        0    9.90}
+\CommentTok{\#\textgreater{} 6   6      59.3     1    86   6500     0        0    8.78}
+\CommentTok{\#\textgreater{} \# i 2 more variables: agesq \textless{}dbl\textgreater{}, lcigpric \textless{}dbl\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1056,7 +1133,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(data\_1)}
+\FunctionTok{head}\NormalTok{(tasba\_data,}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1068,7 +1145,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{tail}\NormalTok{(data\_1)}
+\FunctionTok{tail}\NormalTok{(tasba\_data)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1080,7 +1157,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{str}\NormalTok{(data\_1)}
+\FunctionTok{str}\NormalTok{(tasba\_data)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1092,7 +1169,8 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{dim}\NormalTok{(data\_1)}
+\FunctionTok{dim}\NormalTok{(tasba\_data)}
+\CommentTok{\#\textgreater{} [1] 107  42}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1104,7 +1182,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(data\_1)}
+\FunctionTok{summary}\NormalTok{(tasba\_data)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1116,7 +1194,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{table}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{Sex)}
+\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{Sex)}
 \CommentTok{\#\textgreater{} }
 \CommentTok{\#\textgreater{} Female   Male }
 \CommentTok{\#\textgreater{}     58     49}
@@ -1131,7 +1209,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{unique}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Do you  have children?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{unique}\NormalTok{(tasba\_data}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Do you  have children?}\StringTok{\textasciigrave{}}\NormalTok{)}
 \CommentTok{\#\textgreater{} [1] "NO"  "YES"}
 \end{Highlighting}
 \end{Shaded}
@@ -1144,7 +1222,9 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{hist}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(tasba\_data}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{\textquotesingle{}Number of childrens\textquotesingle{}}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{\textquotesingle{}Number of childrens\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1158,7 +1238,7 @@ To explore data in R we have many functions to achieve that.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{boxplot}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{boxplot}\NormalTok{(tasba\_data}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1187,7 +1267,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(data\_1, Sex}\SpecialCharTok{==}\StringTok{"Female"}\NormalTok{)}
+\NormalTok{dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(tasba\_data, Sex}\SpecialCharTok{==}\StringTok{"Female"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1206,7 +1286,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%} 
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{distinct}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -1226,7 +1306,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%} 
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{arrange}\NormalTok{(Sex)}
 \end{Highlighting}
 \end{Shaded}
@@ -1246,7 +1326,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%} 
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(Sex,}\StringTok{\textasciigrave{}}\AttributeTok{Do you  have children?}\StringTok{\textasciigrave{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1266,7 +1346,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{Status=} \StringTok{\textasciigrave{}}\AttributeTok{Are you married?}\StringTok{\textasciigrave{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1286,7 +1366,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{sex=}\FunctionTok{ifelse}\NormalTok{(Sex}\SpecialCharTok{==}\StringTok{"Female"}\NormalTok{, }\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1306,7 +1386,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{transmute}\NormalTok{(}\AttributeTok{sex=}\FunctionTok{ifelse}\NormalTok{(Sex}\SpecialCharTok{==}\StringTok{"Female"}\NormalTok{, }\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1326,7 +1406,7 @@ Example:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{group\_by}\NormalTok{(Sex) }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{), }\AttributeTok{count=}\FunctionTok{n}\NormalTok{())}
 \end{Highlighting}
@@ -1350,9 +1430,47 @@ During data cleansing, column renaming plays a crucial role in organizing and cl
 \CommentTok{\#load the package}
 \FunctionTok{library}\NormalTok{(dplyr)}
 
-\CommentTok{\#rename the variable "Are you married?"}
-\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{marital\_status=}\StringTok{\textasciigrave{}}\AttributeTok{Are you married?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\NormalTok{tasba\_data }\OtherTok{\textless{}{-}}\NormalTok{ tasba\_data }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{marital\_status =}\StringTok{\textasciigrave{}}\AttributeTok{Are you married?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{has\_children =}\StringTok{\textasciigrave{}}\AttributeTok{Do you  have children?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{nb\_children =}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{religion =}\StringTok{\textasciigrave{}}\AttributeTok{What is your religion?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{has\_tasba\_farm =} \StringTok{\textasciigrave{}}\AttributeTok{Do have a tasba farm?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{size\_farm =} \StringTok{\textasciigrave{}}\AttributeTok{What\textquotesingle{}s the size of your farm?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{years\_growing\_tasba =} \StringTok{\textasciigrave{}}\AttributeTok{How long have you been growing tasba?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{direct\_sowing =} \StringTok{\textasciigrave{}}\AttributeTok{Do you do direct sowing?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{culture\_type =} \StringTok{\textasciigrave{}}\AttributeTok{What type of culture do you do?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{plants\_grown\_with\_tasba =} \StringTok{\textasciigrave{}}\AttributeTok{If you do polyculture, with what plants do you grow Tasba with?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{period\_sowing\_tasba =} \StringTok{\textasciigrave{}}\AttributeTok{When or what time of the year do you sow Tasba?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{seeds\_provider =} \StringTok{\textasciigrave{}}\AttributeTok{Where do you get your seeds?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{varieties =} \StringTok{\textasciigrave{}}\AttributeTok{What varieties do you grow?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{varieties\_reproductive =} \StringTok{\textasciigrave{}}\AttributeTok{Are your varieties reproductive?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{nb\_varieties\_same\_field =} \StringTok{\textasciigrave{}}\AttributeTok{How many varieties do you grow on the same plot or in the same field?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{campains\_per\_year =} \StringTok{\textasciigrave{}}\AttributeTok{How many campains do you per year?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{tasba\_growth\_duration =} \StringTok{\textasciigrave{}}\AttributeTok{How long is the growth cycle in the field?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{cost\_bowl\_tasba =} \StringTok{\textasciigrave{}}\AttributeTok{How much does a bowl of tasba cost (cost of buying or selling)}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{cost\_kg\_seed =} \StringTok{\textasciigrave{}}\AttributeTok{How much does 1kg of tasba seed cost?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{store\_seed =} \StringTok{\textasciigrave{}}\AttributeTok{How do you store your seed?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{hybrid\_varieties =} \StringTok{\textasciigrave{}}\AttributeTok{Do there exist hybride varities?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{name\_varieties =} \StringTok{\textasciigrave{}}\AttributeTok{How do you call these varieties you have?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{production\_kg =} \StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{cultural\_system =} \StringTok{\textasciigrave{}}\AttributeTok{What is the cultural system that you use in the field?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{off\_season\_cultivation =} \StringTok{\textasciigrave{}}\AttributeTok{Do you do off{-}season cultivation?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{has\_watering\_system =} \StringTok{\textasciigrave{}}\AttributeTok{Do you have watering system?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{symptoms\_noticed =} \StringTok{\textasciigrave{}}\AttributeTok{what symptoms have you noticed?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{insect\_type =} \StringTok{\textasciigrave{}}\AttributeTok{What type of insect do you observe on plant during growth?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{treatment =} \StringTok{\textasciigrave{}}\AttributeTok{How do you treat them?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{phytosanitary\_products\_usage =} \StringTok{\textasciigrave{}}\AttributeTok{Do you use phytosanitary products? (Products used to fight against pests attacking plants)}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{phytosanitary\_products\_names =} \StringTok{\textasciigrave{}}\AttributeTok{Please give the name of the phytosanitary products you use}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{start\_treatment =} \StringTok{\textasciigrave{}}\AttributeTok{To avoid diseases: at what age do you start treating plants?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{fertilizer\_type =} \StringTok{\textasciigrave{}}\AttributeTok{What type of fertilizer do you apply in the field?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{effective\_pest\_treatment =} \StringTok{\textasciigrave{}}\AttributeTok{Have you found satisfactory treatment for the plant? ( Against pest action)}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{tasba\_leaf\_consumption =} \StringTok{\textasciigrave{}}\AttributeTok{How do you eat the leaves of tasba?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{reason\_consumption =} \StringTok{\textasciigrave{}}\AttributeTok{Why do you consume it?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{tasba\_tea\_consumption =} \StringTok{\textasciigrave{}}\AttributeTok{If you use like a tea; how do you drink it?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{treatment\_human\_disease =} \StringTok{\textasciigrave{}}\AttributeTok{Do you use the leaves of Tasba to treat human diseases?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{tasba\_treatment\_type\_diseases =} \StringTok{\textasciigrave{}}\AttributeTok{What type of disease can be treated by the leaves of tasba?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{gic\_work =} \StringTok{\textasciigrave{}}\AttributeTok{Do you work in GIC to grow Tasba?}\StringTok{\textasciigrave{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1369,17 +1487,19 @@ we can use imputation by mean, median or mode.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stringr)}
 \CommentTok{\#Create a new column of number of varieties}
-\NormalTok{data\_1}\SpecialCharTok{$}\NormalTok{number\_variety }\OtherTok{\textless{}{-}} \FunctionTok{str\_sub}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many varieties do you grow on the same plot or in the same field?}\StringTok{\textasciigrave{}}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field }\OtherTok{\textless{}{-}}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_sub}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
 
 \CommentTok{\#verify the type of the column}
-\FunctionTok{str}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{number\_variety)}
+\FunctionTok{str}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field)}
+\CommentTok{\#\textgreater{}  chr [1:107] NA NA NA NA NA "1" "1" "1" NA NA "1" "1" ...}
 
 \CommentTok{\#transform the type into number}
-\NormalTok{data\_1}\SpecialCharTok{$}\NormalTok{number\_variety }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{number\_variety)}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field)}
 
 \CommentTok{\#impute NA values by mean}
-\NormalTok{data\_1}\SpecialCharTok{$}\NormalTok{number\_variety[}\FunctionTok{is.na}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{number\_variety)]}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{number\_variety, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field[}\FunctionTok{is.na}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field)]}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_varieties\_same\_field, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1387,15 +1507,14 @@ we can use imputation by mean, median or mode.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(stringr)}
 \CommentTok{\#function to extract the number of kg in the column}
-\NormalTok{data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{, }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg, }\ControlFlowTok{function}\NormalTok{(x) \{}
     \CommentTok{\# Extract digits using regular expression and convert to numeric}
     \FunctionTok{str\_extract}\NormalTok{(x, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{d+"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.numeric}\NormalTok{()}
 \NormalTok{\})}
 
 \CommentTok{\#impute the column by median}
-\NormalTok{data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{[}\FunctionTok{is.na}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{)]}\OtherTok{\textless{}{-}}\FunctionTok{median}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg[}\FunctionTok{is.na}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg)] }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1403,7 +1522,7 @@ we can use imputation by mean, median or mode.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Where do you get your seeds?}\StringTok{\textasciigrave{}}\NormalTok{[}\FunctionTok{is.na}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Where do you get your seeds?}\StringTok{\textasciigrave{}}\NormalTok{)] }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{table}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Where do you get your seeds?}\StringTok{\textasciigrave{}}\NormalTok{)))}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{seeds\_provider[}\FunctionTok{is.na}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{seeds\_provider)] }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{seeds\_provider)))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1417,7 +1536,7 @@ In this method, all data for an observation that has one or more missing values 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{na.omit}\NormalTok{(data\_1)}
+\FunctionTok{na.omit}\NormalTok{(tasba\_data)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1427,7 +1546,7 @@ If data is missing for a large proportion of the observations, it may be best to
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{subset}\NormalTok{( data\_1, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{How do you call these varieties you have?}\StringTok{\textasciigrave{}}\NormalTok{))}
+\FunctionTok{subset}\NormalTok{( tasba\_data, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(name\_varieties))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1438,11 +1557,13 @@ Data points far from the dataset's other points are considered outliers. The pre
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{outlier\_values }\OtherTok{\textless{}{-}} \FunctionTok{boxplot.stats}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}\SpecialCharTok{$}\NormalTok{out  }\CommentTok{\# outlier values.}
-\FunctionTok{boxplot}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{main=}\StringTok{"Number of children"}\NormalTok{, }\AttributeTok{boxwex=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{outlier\_values }\OtherTok{\textless{}{-}} \FunctionTok{boxplot.stats}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children)}\SpecialCharTok{$}\NormalTok{out}
+\FunctionTok{boxplot}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children, }\AttributeTok{main=}\StringTok{"Number of children"}\NormalTok{, }\AttributeTok{boxwex=}\FloatTok{0.1}\NormalTok{)}
 \FunctionTok{mtext}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Outliers: "}\NormalTok{, }\FunctionTok{paste}\NormalTok{(outlier\_values, }\AttributeTok{collapse=}\StringTok{", "}\NormalTok{)), }\AttributeTok{cex=}\FloatTok{0.6}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{05-data_cleaning_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 After identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)
 
@@ -1452,10 +1573,39 @@ After identify outliers you can handle it by either impute those outliers by a v
 
 Removing duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.
 
+~~~~Remove duplicates consider all rows:
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\OtherTok{\textless{}{-}}\NormalTok{ data\_1 }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{tasba\_data }\OtherTok{\textless{}{-}}\NormalTok{ tasba\_data }\SpecialCharTok{\%\textgreater{}\%} 
 \NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{distinct}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+~~~~ Remove duplicates on selected columns:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tasba\_data }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{distinct}\NormalTok{(Sex, Age, }\AttributeTok{.keep\_all =} \ConstantTok{TRUE}\NormalTok{)}
+\CommentTok{\#\textgreater{} \# A tibble: 9 x 42}
+\CommentTok{\#\textgreater{}   Sex    Age         marital\_status has\_children nb\_children}
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{}  \textless{}chr\textgreater{}       \textless{}chr\textgreater{}          \textless{}chr\textgreater{}              \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1 Male   25\_40 years NO             NO                     0}
+\CommentTok{\#\textgreater{} 2 Male   15\_25 years NO             NO                     0}
+\CommentTok{\#\textgreater{} 3 Female 15\_25 years NO             NO                     0}
+\CommentTok{\#\textgreater{} 4 Female 40\_50 years YES            YES                    3}
+\CommentTok{\#\textgreater{} 5 Male   40\_50 years YES            YES                    5}
+\CommentTok{\#\textgreater{} 6 Female 25\_40 years YES            YES                    5}
+\CommentTok{\#\textgreater{} 7 Female 50 years a\textasciitilde{} YES            YES                   10}
+\CommentTok{\#\textgreater{} 8 Male   50 years a\textasciitilde{} YES            YES                   12}
+\CommentTok{\#\textgreater{} 9 Male   25\_40 FCFA  YES            YES                    1}
+\CommentTok{\#\textgreater{} \# i 37 more variables: religion \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   has\_tasba\_farm \textless{}chr\textgreater{}, size\_farm \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   years\_growing\_tasba \textless{}chr\textgreater{}, direct\_sowing \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   culture\_type \textless{}chr\textgreater{}, plants\_grown\_with\_tasba \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   period\_sowing\_tasba \textless{}chr\textgreater{}, seeds\_provider \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   varieties \textless{}chr\textgreater{}, varieties\_reproductive \textless{}chr\textgreater{},}
+\CommentTok{\#\textgreater{} \#   nb\_varieties\_same\_field \textless{}dbl\textgreater{}, ...}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1466,11 +1616,18 @@ Checking data types is a crucial step in data analysis because it ensures you're
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{str}\NormalTok{(data\_1)}
+\FunctionTok{str}\NormalTok{(tasba\_data)}
 \end{Highlighting}
 \end{Shaded}
 
 You can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc\ldots.if the data is not in the right type.
+Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{Sex }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{Sex)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{handling-inconsistent-categorical-data}{%
 \section{Handling Inconsistent Categorical Data}\label{handling-inconsistent-categorical-data}}
@@ -1479,8 +1636,8 @@ Categorical variables may have inconsistent spellings or categories. The recode(
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1 }\OtherTok{\textless{}{-}}\NormalTok{ data\_1 }\SpecialCharTok{\%\textgreater{}\%}
-\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{How do you store your seed?}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{recode}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{How do you store your seed?}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{"In bags"} \OtherTok{=} \StringTok{"in bags"}\NormalTok{))}
+\NormalTok{tasba\_data }\OtherTok{\textless{}{-}}\NormalTok{ tasba\_data }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{store\_seed =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{recode}\NormalTok{(store\_seed, }\StringTok{"In bags"} \OtherTok{=} \StringTok{"in bags"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1538,86 +1695,8 @@ Regular expressions (regex) are powerful tools for pattern matching and replacem
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How much does 1kg of tasba seed cost?}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"FCFA"}\NormalTok{, }\StringTok{""}\NormalTok{, }
-\NormalTok{                        data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How much does 1kg of tasba seed cost?}\StringTok{\textasciigrave{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{knit\_child}\NormalTok{(}\StringTok{"05{-}data\_cleaning.Rmd"}\NormalTok{)}
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} }
-\CommentTok{\#\textgreater{} processing file: ./05{-}data\_cleaning.Rmd}
-\CommentTok{\#\textgreater{} }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}                               \ErrorTok{|}   \DecValTok{0}\NormalTok{\%}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.                              }\SpecialCharTok{|}   \DecValTok{4}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}13}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{..                             }\SpecialCharTok{|}   \DecValTok{7}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{...                            }\SpecialCharTok{|}  \DecValTok{11}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}14}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{....                           }\SpecialCharTok{|}  \DecValTok{14}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{......                         }\SpecialCharTok{|}  \DecValTok{18}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}15}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.......                        }\SpecialCharTok{|}  \DecValTok{21}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{........                       }\SpecialCharTok{|}  \DecValTok{25}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}16}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.........                      }\SpecialCharTok{|}  \DecValTok{29}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{..........                     }\SpecialCharTok{|}  \DecValTok{32}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}17}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{...........                    }\SpecialCharTok{|}  \DecValTok{36}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{............                   }\SpecialCharTok{|}  \DecValTok{39}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}18}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.............                  }\SpecialCharTok{|}  \DecValTok{43}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{..............                 }\SpecialCharTok{|}  \DecValTok{46}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}19}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{................               }\SpecialCharTok{|}  \DecValTok{50}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.................              }\SpecialCharTok{|}  \DecValTok{54}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}20}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{..................             }\SpecialCharTok{|}  \DecValTok{57}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{...................            }\SpecialCharTok{|}  \DecValTok{61}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}21}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{....................           }\SpecialCharTok{|}  \DecValTok{64}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.....................          }\SpecialCharTok{|}  \DecValTok{68}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}22}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{......................         }\SpecialCharTok{|}  \DecValTok{71}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.......................        }\SpecialCharTok{|}  \DecValTok{75}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}23}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{........................       }\SpecialCharTok{|}  \DecValTok{79}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.........................      }\SpecialCharTok{|}  \DecValTok{82}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}24}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{...........................    }\SpecialCharTok{|}  \DecValTok{86}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{............................   }\SpecialCharTok{|}  \DecValTok{89}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}25}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.............................  }\SpecialCharTok{|}  \DecValTok{93}\NormalTok{\%                   }
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{.............................. }\SpecialCharTok{|}  \DecValTok{96}\NormalTok{\% [unnamed}\SpecialCharTok{{-}}\NormalTok{chunk}\DecValTok{{-}26}\NormalTok{]}
-  \SpecialCharTok{|}                                     
-  \ErrorTok{|}\NormalTok{...............................}\SpecialCharTok{|} \DecValTok{100}\NormalTok{\%                   }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-#> [1] "\n\n\n# Data cleaning\n\nIn the domain of data science, R reigns supreme as a tool for transforming raw data into actionable insights. \nData cleaning, a core competency of R, empowers us to clean, filter, transform, and aggregate data, paving the way for meaningful analysis. This introductory paragraph delves into the world of data manipulation and data cleaning in R, highlighting its significance and exploring the key concepts involved.\n\nThere are several methods used for data cleansing, including:\n\n## Renaming colums\n\nDuring data cleansing, column renaming plays a crucial role in organizing and clarifying the dataset. This step involves assigning meaningful and consistent names to columns, which facilitates their interpretation and subsequent use in analysis.\n\n\n```r\n#load the package\nlibrary(dplyr)\n\n#rename the variable \"Are you married?\"\ndata_1 %>%\n  dplyr::rename(marital_status=`Are you married?`)\n```\n\n\n## Handling Missing Data: \n\nMissing data, also known as missing values, is a common challenge encountered in data analysis. It refers to the absence of information for specific variables in certain observations within your dataset. To deal with missing data we have two options: impute data or remove data.\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1) Imputation\n\nwe can use imputation by mean, median or mode.\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by mean*:\n\n\n```r\n#Create a new column of number of varieties\ndata_1$number_variety <- str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)\n\n#verify the type of the column\nstr(data_1$number_variety)\n\n#transform the type into number\ndata_1$number_variety <- as.integer(data_1$number_variety)\n\n#impute NA values by mean\ndata_1$number_variety[is.na(data_1$number_variety)]<-round(mean(data_1$number_variety, na.rm = TRUE))\n```\n\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by median*:\n\n\n```r\nlibrary(stringr)\n#function to extract the number of kg in the column\ndata_1$`What is the production in kg or ton/year?` <- sapply(data_1$`What is the production in kg or ton/year?`, function(x) {\n    # Extract digits using regular expression and convert to numeric\n    str_extract(x, \"\\\\d+\") %>% as.numeric()\n})\n\n#impute the column by median\ndata_1$`What is the production in kg or ton/year?`[is.na(data_1$`What is the production in kg or ton/year?`)]<-median(data_1$`What is the production in kg or ton/year?`, na.rm = TRUE)\n\n```\n\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Imputation by mode*:\n\n\n```r\ndata_1$`Where do you get your seeds?`[is.na(data_1$`Where do you get your seeds?`)] <- names(which.max(table(data_1$`Where do you get your seeds?`)))\n```\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2) Removing data\n\nThere are 2 usuals methods for deleting data when dealing with missing data: listwise and dropping variables.\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Listwise*:\n\nIn this method, all data for an observation that has one or more missing values are deleted. The analysis is run only on observations that have a complete set of data. \n\n\n```r\nna.omit(data_1)\n```\n\n\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- *Dropping variables*:\n\nIf data is missing for a large proportion of the observations, it may be best to discard the variable entirely if it is insignificant.\n\n\n```r\nsubset( data_1, select = -c(`How do you call these varieties you have?`))\n```\n\n## Handling outliers\n\nData points far from the dataset’s other points are considered outliers. The presence of outliers can pose significant problems in statistical analysis and machine learning. They can bias model parameter estimates, lead to erroneous conclusions and affect algorithm performance.\n\n\n```r\noutlier_values <- boxplot.stats(data_1$`How many children do you have?`)$out  # outlier values.\nboxplot(data_1$`How many children do you have?`, main=\"Number of children\", boxwex=0.1)\nmtext(paste(\"Outliers: \", paste(outlier_values, collapse=\", \")), cex=0.6)\n```\n\nAfter identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)\n\n## Removing duplicates: \\\nRemoving duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.\n\n\n```r\ndata_1 <- data_1 %>% \n  dplyr::distinct()\n```\n\n## Checking data structure: \n\nChecking data types is a crucial step in data analysis because it ensures you're working with the data in the way it's intended in order to avoid errors later in the analysis.\n\n\n```r\nstr(data_1)\n```\n\nYou can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc....if the data is not in the right type.\n\n## Handling Inconsistent Categorical Data\n\nCategorical variables may have inconsistent spellings or categories. The recode() function or manual recoding can help standardize categories.\n\n\n```r\ndata_1 <- data_1 %>%\n  dplyr::mutate(`How do you store your seed?` = dplyr::recode(`How do you store your seed?`, \"In bags\" = \"in bags\"))\n```\n\n\n## Combine dataframes\n\nSuppose the dataset combines data from different sources, we can combine differents datasets into one. When combining data from multiple sources, ensure that all data fields align correctly.\n&nbsp;&nbsp;&nbsp;&nbsp;- Combine by column\n\n\n```r\nculture1 <- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Area = c(100, 150, 120)\n)\n\nculture2 <- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Return = c(50, 60, 45)\n)\n\nculture_final1 <- cbind(culture1, culture2)\n```\n\n&nbsp;&nbsp;&nbsp;&nbsp;- combine by row\n\n\n```r\nculture3 <- data.frame(\n  Culture = c(\"wheat\", \"maize\", \"rice\"),\n  Area = c(100, 150, 120)\n)\n\nculture4 <- data.frame(\n  Culture = c(\"potato\", \"cassava\"),\n  Area = c(250, 400)\n)\n\nculture_final2 <- rbind(culture3, culture4)\n```\n\n## Data Validation\n\nData validation involves checking data against predefined rules or criteria. It ensures that data adheres to specific requirements or constraints.\n\nValidation checks can prevent incorrect or inconsistent data from entering your analysis.\n\n## Regular expressions\n\nRegular expressions (regex) are powerful tools for pattern matching and replacement in text data. The gsub() function is commonly used for global pattern substitution.\n\n\n```r\ndata_1$`How much does 1kg of tasba seed cost?` <- gsub(\"FCFA\", \"\", \n                        data_1$`How much does 1kg of tasba seed cost?`)\n```\n\n\n"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{source}\NormalTok{(}\StringTok{"./dependencies.R"}\NormalTok{)}
+\NormalTok{tasba\_data}\SpecialCharTok{$}\NormalTok{cost\_kg\_seed }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"FCFA"}\NormalTok{, }\StringTok{""}\NormalTok{,}
+\NormalTok{                        tasba\_data}\SpecialCharTok{$}\NormalTok{cost\_kg\_seed)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1641,7 +1720,7 @@ There are three main types of central tendency indicators:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{mean}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg)}
 \CommentTok{\#\textgreater{} [1] 138.3084}
 \end{Highlighting}
 \end{Shaded}
@@ -1657,7 +1736,7 @@ There are three main types of central tendency indicators:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{median}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{median}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg)}
 \CommentTok{\#\textgreater{} [1] 8}
 \end{Highlighting}
 \end{Shaded}
@@ -1673,7 +1752,7 @@ There are three main types of central tendency indicators:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{names}\NormalTok{(}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{table}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Are you married?}\StringTok{\textasciigrave{}}\NormalTok{)))}
+\FunctionTok{names}\NormalTok{(}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{marital\_status)))}
 \CommentTok{\#\textgreater{} [1] "YES"}
 \end{Highlighting}
 \end{Shaded}
@@ -1693,7 +1772,7 @@ Variability indicators, in contrast to central tendency, tell you how spread out
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{var}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{var}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg)}
 \CommentTok{\#\textgreater{} [1] 296798.9}
 \end{Highlighting}
 \end{Shaded}
@@ -1710,11 +1789,11 @@ Variability indicators, in contrast to central tendency, tell you how spread out
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#1st approch using the native function}
-\FunctionTok{sd}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{sd}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg)}
 \CommentTok{\#\textgreater{} [1] 544.7925}
 
 \CommentTok{\#2nd approch}
-\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{var}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is the production in kg or ton/year?}\StringTok{\textasciigrave{}}\NormalTok{))}
+\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{var}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{production\_kg))}
 \CommentTok{\#\textgreater{} [1] 544.7925}
 \end{Highlighting}
 \end{Shaded}
@@ -1730,7 +1809,7 @@ Variability indicators, in contrast to central tendency, tell you how spread out
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{max}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{{-}} \FunctionTok{min}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{max}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children) }\SpecialCharTok{{-}} \FunctionTok{min}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children)}
 \CommentTok{\#\textgreater{} [1] 12}
 \end{Highlighting}
 \end{Shaded}
@@ -1746,7 +1825,7 @@ Variability indicators, in contrast to central tendency, tell you how spread out
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{IQR}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{IQR}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children)}
 \CommentTok{\#\textgreater{} [1] 4}
 \end{Highlighting}
 \end{Shaded}
@@ -1760,7 +1839,7 @@ Quantiles are values that split sorted data or a probability distribution into e
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{quantile}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\FunctionTok{quantile}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children)}
 \CommentTok{\#\textgreater{}   0\%  25\%  50\%  75\% 100\% }
 \CommentTok{\#\textgreater{}    0    0    2    4   12}
 \end{Highlighting}
@@ -1770,7 +1849,7 @@ Quantiles are values that split sorted data or a probability distribution into e
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{quantile}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{,}\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{))}
+\FunctionTok{quantile}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children,}\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{))}
 \CommentTok{\#\textgreater{}   0\%  10\%  20\%  30\%  40\%  50\%  60\%  70\%  80\%  90\% 100\% }
 \CommentTok{\#\textgreater{}    0    0    0    0    0    2    2    3    5    6   12}
 \end{Highlighting}
@@ -1780,7 +1859,7 @@ Quantiles are values that split sorted data or a probability distribution into e
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{quantile}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{,}\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.01}\NormalTok{))}
+\FunctionTok{quantile}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{nb\_children,}\AttributeTok{probs =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.01}\NormalTok{))}
 \CommentTok{\#\textgreater{}    0\%    1\%    2\%    3\%    4\%    5\%    6\%    7\%    8\%    9\% }
 \CommentTok{\#\textgreater{}  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 }
 \CommentTok{\#\textgreater{}   10\%   11\%   12\%   13\%   14\%   15\%   16\%   17\%   18\%   19\% }
@@ -1813,11 +1892,19 @@ A contingency table displays frequencies for combinations of two categorical var
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{table}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{Sex, data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Are you married?}\StringTok{\textasciigrave{}}\NormalTok{)}
+\CommentTok{\#contingency table with counts }
+\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{Sex, tasba\_data}\SpecialCharTok{$}\NormalTok{marital\_status)}
 \CommentTok{\#\textgreater{}         }
 \CommentTok{\#\textgreater{}          NO YES}
 \CommentTok{\#\textgreater{}   Female 19  39}
 \CommentTok{\#\textgreater{}   Male   28  21}
+
+\CommentTok{\#contingency table with percentages}
+\FunctionTok{round}\NormalTok{(}\FunctionTok{prop.table}\NormalTok{(}\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{Sex, tasba\_data}\SpecialCharTok{$}\NormalTok{marital\_status))}\SpecialCharTok{*}\DecValTok{100}\NormalTok{,}\DecValTok{2}\NormalTok{) }
+\CommentTok{\#\textgreater{}         }
+\CommentTok{\#\textgreater{}             NO   YES}
+\CommentTok{\#\textgreater{}   Female 17.76 36.45}
+\CommentTok{\#\textgreater{}   Male   26.17 19.63}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1826,7 +1913,7 @@ A contingency table displays frequencies for combinations of two categorical var
 
 Inferential statistics is a branch of statistics that aims to draw conclusions about a population from a sample of that population. Unlike descriptive statistics, which simply describes and summarizes the characteristics of a sample, inferential statistics uses statistical methods and models to make inferences or predictions about the wider population from which the sample is drawn.
 
-The main techniques of inferential statistics include hypothesis testing, parameter estimation, analysis of variance (ANOVA), regression and forecasting methods. Here are some fundamental concepts associated with inferential statistics:
+Here are some fundamental concepts associated with inferential statistics:
 
 \hypertarget{population-and-sample}{%
 \section{Population and sample}\label{population-and-sample}}
@@ -1923,17 +2010,119 @@ There are various types of statistical tests, each designed to address different
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   T test or Student test
+\end{enumerate}
+
+The Student's t-test is a statistical hypothesis test used to determine if there is a significant difference between the means of two groups.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{corn\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/data\_for\_workshop2.xls"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"corn\_data"}\NormalTok{)}
+
+\CommentTok{\# convert qualitative variables in factors}
+\NormalTok{corn\_data }\OtherTok{\textless{}{-}}\NormalTok{ corn\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate\_if}\NormalTok{(is.character, as.factor)}
+
+\CommentTok{\# subset for the treatments "cont" and "rh"}
+\NormalTok{cont\_data }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(corn\_data, Treatments }\SpecialCharTok{==} \StringTok{"Cont"}\NormalTok{)}
+\NormalTok{rh\_data }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(corn\_data, Treatments }\SpecialCharTok{==} \StringTok{"RH"}\NormalTok{)}
+
+\CommentTok{\# Test de Student pour comparer les moyennes du nombre d\textquotesingle{}épis entre les traitements "Cont" et "RH"}
+\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}}\NormalTok{ t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(cont\_data}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Nb of ears}\StringTok{\textasciigrave{}}\NormalTok{, rh\_data}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Nb of ears}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{, }\AttributeTok{mu =} \DecValTok{0}\NormalTok{, }\AttributeTok{conf.level =} \FloatTok{0.95}\NormalTok{)}
+
+\CommentTok{\# Affichage des résultats du test de Student}
+\FunctionTok{print}\NormalTok{(t\_test\_result)}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}  Welch Two Sample t{-}test}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} data:  cont\_data$\textasciigrave{}Nb of ears\textasciigrave{} and rh\_data$\textasciigrave{}Nb of ears\textasciigrave{}}
+\CommentTok{\#\textgreater{} t = {-}3.0566, df = 54.847, p{-}value = 0.003455}
+\CommentTok{\#\textgreater{} alternative hypothesis: true difference in means is not equal to 0}
+\CommentTok{\#\textgreater{} 95 percent confidence interval:}
+\CommentTok{\#\textgreater{}  {-}36.424992  {-}7.575008}
+\CommentTok{\#\textgreater{} sample estimates:}
+\CommentTok{\#\textgreater{} mean of x mean of y }
+\CommentTok{\#\textgreater{}  14.73333  36.73333}
+\end{Highlighting}
+\end{Shaded}
+
+The p-value is \textless0.05 so we accept the alternative hypothesis: there is a significant difference in the average number of ears between the cont treatment and rh treatment groups
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
   ANOVA
+\end{enumerate}
+
+ANOVA (Analysis of variance) is a statistical method used to analyze the differences between the means of two or more groups or treatments.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#}
+\NormalTok{data\_anova }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(corn\_data, (Condition}\SpecialCharTok{==}\StringTok{"rotation"} \SpecialCharTok{|}\NormalTok{ Condition}\SpecialCharTok{==}\StringTok{"non{-}rotation"}\NormalTok{))}
+
+\NormalTok{anova\_test }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(data\_anova}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Nb of ears}\StringTok{\textasciigrave{}}\SpecialCharTok{\textasciitilde{}}\NormalTok{data\_anova}\SpecialCharTok{$}\NormalTok{Condition }\SpecialCharTok{+}\NormalTok{ data\_anova}\SpecialCharTok{$}\NormalTok{Treatments)}
+\FunctionTok{summary}\NormalTok{(anova\_test)}
+\CommentTok{\#\textgreater{}                        Df Sum Sq Mean Sq F value   Pr(\textgreater{}F)}
+\CommentTok{\#\textgreater{} data\_anova$Condition    1     14      14   0.030    0.863}
+\CommentTok{\#\textgreater{} data\_anova$Treatments   3  12609    4203   8.719 2.93e{-}05}
+\CommentTok{\#\textgreater{} Residuals             115  55438     482                 }
+\CommentTok{\#\textgreater{}                          }
+\CommentTok{\#\textgreater{} data\_anova$Condition     }
+\CommentTok{\#\textgreater{} data\_anova$Treatments ***}
+\CommentTok{\#\textgreater{} Residuals                }
+\CommentTok{\#\textgreater{} {-}{-}{-}}
+\CommentTok{\#\textgreater{} Signif. codes:  }
+\CommentTok{\#\textgreater{} 0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\end{Highlighting}
+\end{Shaded}
+
+This strong evidence suggests that the ``Treatments'' factor has a statistically significant effect on ``No.~of ears''. There is less than a 0.01\% chance of observing this result by chance, which means that the differences observed in ``No.~of ears'' are probably due to the different treatments applied.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
 \item
   Chi-Square test
-\item
-  Pearson Correlation Coefficient
-\item
-  Fischer test
 \end{enumerate}
+
+The chi-square test is a statistical test used to determine if there is a significant association between two categorical variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#load the data}
+\NormalTok{heart\_attack1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/heart\_attack\_prediction\_dataset.csv"}\NormalTok{)}
+
+\CommentTok{\#transform the variable into factors}
+\NormalTok{heart\_attack1}\SpecialCharTok{$}\NormalTok{Heart.Attack.Risk }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(heart\_attack1}\SpecialCharTok{$}\NormalTok{Heart.Attack.Risk, }
+                  \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+                  \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{))}
+
+\CommentTok{\#construct the contingency table for the test between heart attack risk ans sex}
+\NormalTok{chi\_data }\OtherTok{=} \FunctionTok{table}\NormalTok{(heart\_attack1}\SpecialCharTok{$}\NormalTok{Heart.Attack.Risk,heart\_attack1}\SpecialCharTok{$}\NormalTok{Sex) }
+\NormalTok{chi\_data}
+\CommentTok{\#\textgreater{}      }
+\CommentTok{\#\textgreater{}       Female Male}
+\CommentTok{\#\textgreater{}   No    1708 3916}
+\CommentTok{\#\textgreater{}   Yes    944 2195}
+                 
+\CommentTok{\#test of chi2}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{chisq.test}\NormalTok{(chi\_data))}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{}  Pearson\textquotesingle{}s Chi{-}squared test with Yates\textquotesingle{} continuity}
+\CommentTok{\#\textgreater{}  correction}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} data:  chi\_data}
+\CommentTok{\#\textgreater{} X{-}squared = 0.070494, df = 1, p{-}value = 0.7906}
+\end{Highlighting}
+\end{Shaded}
+
+P-value \textgreater0.05 so we can conclude that the risk of heart attack is not statistically significant between men and women.
 
 \hypertarget{visualization}{%
 \chapter{Visualization}\label{visualization}}
@@ -1946,7 +2135,7 @@ A bar chart is a representation of numerical data in pictorial form of rectangle
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#construction of the dataframe}
-\NormalTok{data\_barchart }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{table}\NormalTok{(data\_1}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is your religion?}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{data\_barchart }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{What is your religion?}\StringTok{\textasciigrave{}}\NormalTok{))}
 \NormalTok{data\_barchart }\OtherTok{\textless{}{-}}\NormalTok{ data\_barchart }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{percentage =} \FunctionTok{round}\NormalTok{(}\DecValTok{100}\SpecialCharTok{*}\NormalTok{(Freq}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(Freq)),}\DecValTok{2}\NormalTok{),}
                   \AttributeTok{pct1 =} \FunctionTok{paste0}\NormalTok{(percentage, }\StringTok{"\%"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
@@ -1964,6 +2153,8 @@ A bar chart is a representation of numerical data in pictorial form of rectangle
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{08-visualization_files/figure-latex/unnamed-chunk-2-1.pdf}
+
 \hypertarget{pie-chart}{%
 \section{Pie chart}\label{pie-chart}}
 
@@ -1972,7 +2163,7 @@ A pie chart is a type of graph representing data in a circular form, with each s
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#construction of the dataframe}
-\NormalTok{data\_piechart }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{table}\NormalTok{(data\_1}\SpecialCharTok{$}\NormalTok{Sex))}
+\NormalTok{data\_piechart }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{table}\NormalTok{(tasba\_data}\SpecialCharTok{$}\NormalTok{Sex))}
 \NormalTok{data\_piechart }\OtherTok{\textless{}{-}}\NormalTok{ data\_piechart }\SpecialCharTok{\%\textgreater{}\%}
 \NormalTok{    dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{percentage =} \FunctionTok{round}\NormalTok{(}\DecValTok{100}\SpecialCharTok{*}\NormalTok{(Freq}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(Freq)),}\DecValTok{2}\NormalTok{),}
                   \AttributeTok{pct1 =} \FunctionTok{paste0}\NormalTok{(percentage, }\StringTok{"\%"}\NormalTok{))}
@@ -1994,6 +2185,8 @@ A pie chart is a type of graph representing data in a circular form, with each s
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{08-visualization_files/figure-latex/unnamed-chunk-3-1.pdf}
+
 \hypertarget{histogram}{%
 \section{Histogram}\label{histogram}}
 
@@ -2004,11 +2197,16 @@ A histogram is a chart that plots the distribution of a numeric variable's value
 \FunctionTok{library}\NormalTok{(ggplot2)}
 
 \CommentTok{\# Change colors}
-\NormalTok{p}\OtherTok{\textless{}{-}}\FunctionTok{ggplot}\NormalTok{(data\_1, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\StringTok{\textasciigrave{}}\AttributeTok{How many children do you have?}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+} 
-  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{color=}\StringTok{"black"}\NormalTok{, }\AttributeTok{fill=}\StringTok{"white"}\NormalTok{)}
+\NormalTok{p}\OtherTok{\textless{}{-}}\FunctionTok{ggplot}\NormalTok{(breast\_cancer, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{mean\_texture)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{color=}\StringTok{"black"}\NormalTok{, }\AttributeTok{fill=}\StringTok{"white"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title=}\StringTok{"Histogram of mean texture"}\NormalTok{,}\AttributeTok{x=}\StringTok{"mean texture"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{))}
 \NormalTok{p}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{08-visualization_files/figure-latex/unnamed-chunk-4-1.pdf}
 
 \hypertarget{scatter-plot}{%
 \section{\texorpdfstring{Scatter plot\\
@@ -2018,12 +2216,17 @@ A scatter plot (or scatter chart, scatter graph) uses dots to represent values f
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\#load the data}
 \NormalTok{time\_series }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"./data/data\_for\_workshop2.xls"}\NormalTok{, }\AttributeTok{sheet =} \StringTok{"times\_series"}\NormalTok{)}
+
+\CommentTok{\#plot the figure}
 \FunctionTok{ggplot}\NormalTok{(time\_series, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Heigh of plant}\StringTok{\textasciigrave{}}\NormalTok{,}
-                   \AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{Number of roots}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
-\FunctionTok{geom\_point}\NormalTok{()}
+                   \AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{Number of roots}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{color=}\NormalTok{Treatments)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{08-visualization_files/figure-latex/unnamed-chunk-5-1.pdf}
 
 \hypertarget{line-chart}{%
 \section{\texorpdfstring{Line chart\\
@@ -2038,6 +2241,8 @@ A line chart, also known as a line graph, is a visual representation of data tha
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{08-visualization_files/figure-latex/unnamed-chunk-6-1.pdf}
+
 \hypertarget{map-visualization}{%
 \section{Map visualization}\label{map-visualization}}
 
@@ -2049,23 +2254,65 @@ A line chart, also known as a line graph, is a visual representation of data tha
 \FunctionTok{library}\NormalTok{(readr)}
 
 
-\NormalTok{cameroon\_geojson }\OtherTok{\textless{}{-}}\NormalTok{ sf}\SpecialCharTok{::}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"./data/cm.json"}\NormalTok{)}
+\NormalTok{cameroon\_json }\OtherTok{\textless{}{-}}\NormalTok{ sf}\SpecialCharTok{::}\FunctionTok{st\_read}\NormalTok{(}\StringTok{"./data/cm.json"}\NormalTok{)}
+\CommentTok{\#\textgreater{} Reading layer \textasciigrave{}cm\textquotesingle{} from data source }
+\CommentTok{\#\textgreater{}   \textasciigrave{}C:\textbackslash{}Users\textbackslash{}LENOVO\textbackslash{}Desktop\textbackslash{}Projets\textbackslash{}bookdown\textbackslash{}data\textbackslash{}cm.json\textquotesingle{} }
+\CommentTok{\#\textgreater{}   using driver \textasciigrave{}GeoJSON\textquotesingle{}}
+\CommentTok{\#\textgreater{} Simple feature collection with 10 features and 3 fields}
+\CommentTok{\#\textgreater{} Geometry type: MULTIPOLYGON}
+\CommentTok{\#\textgreater{} Dimension:     XY}
+\CommentTok{\#\textgreater{} Bounding box:  xmin: 8.505056 ymin: 1.654551 xmax: 16.20772 ymax: 13.08114}
+\CommentTok{\#\textgreater{} Geodetic CRS:  WGS 84}
 
 \CommentTok{\#load the data}
-\NormalTok{population }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"./data/positives\_case\_covid.csv"}\NormalTok{)}
+\CommentTok{\#population \textless{}{-} read\_csv("./data/positives\_case\_covid.csv")}
+\NormalTok{population }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_excel}\NormalTok{(}\StringTok{"data/map\_visualization.xlsx"}\NormalTok{)}
+\NormalTok{cameroon\_json }\OtherTok{\textless{}{-}}\NormalTok{ cameroon\_json }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{region =}\NormalTok{ name)}
 
-\CommentTok{\# Joindre les données de population à la carte du Cameroun}
-\NormalTok{cameroon\_geojson}\SpecialCharTok{$}\NormalTok{population }\OtherTok{\textless{}{-}}\NormalTok{ population}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Positive Cases}\StringTok{\textasciigrave{}}
+\CommentTok{\# join the dataset cameroon\_json to the dataframe of positive cases covid}
+\NormalTok{data\_map }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(cameroon\_json,population,}\AttributeTok{by=}\StringTok{"region"}\NormalTok{)}
 
-\CommentTok{\# Créer la carte Leaflet}
-\FunctionTok{leaflet}\NormalTok{(}\AttributeTok{data =}\NormalTok{ cameroon\_geojson) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{addTiles}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{addPolygons}\NormalTok{(}\AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{colorQuantile}\NormalTok{(}\StringTok{"Set2"}\NormalTok{, population)(population),}
-              \AttributeTok{stroke =} \ConstantTok{FALSE}\NormalTok{,}
-              \AttributeTok{fillOpacity =} \FloatTok{0.7}\NormalTok{,}
-              \AttributeTok{label =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{paste}\NormalTok{(name, }\StringTok{" : "}\NormalTok{, }\StringTok{"Positive Cases:"}\NormalTok{, population))}
+\CommentTok{\#create a new column to categorise the data}
+\CommentTok{\#data\_map$cat \textless{}{-} dplyr::if\_else(data\_map$\textasciigrave{}positive cases\textasciigrave{}\textgreater{}10000,"red","blue")}
+\NormalTok{data\_map}\SpecialCharTok{$}\NormalTok{cat }\OtherTok{\textless{}{-}}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{if\_else}\NormalTok{(data\_map}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{positive cases}\StringTok{\textasciigrave{}}\SpecialCharTok{\textgreater{}}\DecValTok{10000}\NormalTok{,}\StringTok{"\textgreater{}10 000 cases"}\NormalTok{,}\StringTok{"\textless{}10 000 cases"}\NormalTok{)}
+
+\CommentTok{\#add awesome icons}
+\NormalTok{icons }\OtherTok{\textless{}{-}} \FunctionTok{awesomeIcons}\NormalTok{(}\AttributeTok{icon =} \StringTok{"ios{-}close"}\NormalTok{,}
+                          \AttributeTok{iconColor =} \StringTok{"black"}\NormalTok{,}
+                          \AttributeTok{library =} \StringTok{"ion"}\NormalTok{,}
+                          \AttributeTok{markerColor =}\NormalTok{ dplyr}\SpecialCharTok{::}\FunctionTok{if\_else}\NormalTok{(data\_map}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{positive cases}\StringTok{\textasciigrave{}}\SpecialCharTok{\textgreater{}}\DecValTok{10000}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{))}
+
+\CommentTok{\# map visualization}
+\NormalTok{polygon\_popup }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"\textless{}strong\textgreater{}"}\NormalTok{,data\_map}\SpecialCharTok{$}\NormalTok{region,}\StringTok{"\textless{}/strong\textgreater{}"}\NormalTok{, }\StringTok{"\textless{}br\textgreater{}"}\NormalTok{,}
+                            \StringTok{"\textless{}strong\textgreater{}Number of persons infected: \textless{}/strong\textgreater{}"}\NormalTok{, }\FunctionTok{prettyNum}\NormalTok{( data\_map}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{positive cases}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{),}\StringTok{"\textless{}br\textgreater{}"}\NormalTok{,}
+                            \StringTok{"\textless{}strong\textgreater{}Population: \textless{}/strong\textgreater{}"}\NormalTok{, }\FunctionTok{prettyNum}\NormalTok{(data\_map}\SpecialCharTok{$}\NormalTok{population, }\AttributeTok{big.mark =} \StringTok{","}\NormalTok{)}
+\NormalTok{                      )}\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{lapply}\NormalTok{(htmltools}\SpecialCharTok{::}\NormalTok{HTML)}
+
+\NormalTok{fig\_map }\OtherTok{\textless{}{-}} \FunctionTok{leaflet}\NormalTok{(}\AttributeTok{data =}\NormalTok{ data\_map) }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{addTiles}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{addPolygons}\NormalTok{(}
+        \AttributeTok{weight=}\DecValTok{2}\NormalTok{,}
+        \AttributeTok{color =} \StringTok{"black"}\NormalTok{,}
+        \AttributeTok{fillColor =} \SpecialCharTok{\textasciitilde{}}\FunctionTok{colorFactor}\NormalTok{(}\AttributeTok{palette=}\FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{,}\StringTok{"red"}\NormalTok{),}\AttributeTok{domain=}\NormalTok{data\_map}\SpecialCharTok{$}\NormalTok{cat)(data\_map}\SpecialCharTok{$}\NormalTok{cat)) }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{addAwesomeMarkers}\NormalTok{(}
+        \AttributeTok{lng =} \SpecialCharTok{\textasciitilde{}} \FunctionTok{as.numeric}\NormalTok{(longitude), }\AttributeTok{lat =} \SpecialCharTok{\textasciitilde{}} \FunctionTok{as.numeric}\NormalTok{(latitude),}
+        \AttributeTok{popup =}\NormalTok{ polygon\_popup, }\AttributeTok{label =}\NormalTok{ polygon\_popup,}
+        \AttributeTok{icon =}\NormalTok{  icons,}
+        \AttributeTok{labelOptions =} \FunctionTok{labelOptions}\NormalTok{(}\AttributeTok{noHide =}\NormalTok{ F,}
+                                    \AttributeTok{style =} \FunctionTok{list}\NormalTok{(}
+                                      \StringTok{"color"} \OtherTok{=} \StringTok{"\#00308F"}\NormalTok{,}
+                                      \StringTok{"font{-}size"} \OtherTok{=} \StringTok{"12px"}\NormalTok{))}
+\NormalTok{        ) }\SpecialCharTok{\%\textgreater{}\%}
+      \FunctionTok{addLegend}\NormalTok{(}\AttributeTok{position =} \StringTok{"bottomright"}\NormalTok{,}
+            \AttributeTok{pal=}\FunctionTok{colorFactor}\NormalTok{(}\AttributeTok{palette=}\FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{domain=}\NormalTok{data\_map}\SpecialCharTok{$}\NormalTok{cat),}
+            \AttributeTok{values=}\SpecialCharTok{\textasciitilde{}}\NormalTok{cat, }\AttributeTok{title=}\StringTok{"Number of persons infected"}\NormalTok{)}
+\NormalTok{fig\_map}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{08-visualization_files/figure-latex/unnamed-chunk-7-1.pdf}
 
 \hypertarget{introduction-to-machine-learning-and-machine-learning-techniques}{%
 \chapter{Introduction to Machine Learning and Machine Learning techniques}\label{introduction-to-machine-learning-and-machine-learning-techniques}}
@@ -2101,9 +2348,9 @@ SVMs are capable of performing both linear and nonlinear classification tasks. I
 ~~~~4) Decison trees\\
 Decision trees are a popular and intuitive supervised learning algorithm used for both classification and regression tasks in machine learning. They are a powerful tool for predictive modeling and are widely used in various domains due to their simplicity, interpretability, and flexibility.\\
 A decision tree is a hierarchical structure consisting of nodes and branches. Each internal node represents a decision based on the value of a certain feature, and each branch represents the possible outcomes of that decision. The leaf nodes of the tree represent the final predictions or decisions.\\
-The process of constructing a decision tree involves recursively splitting the dataset into subsets based on the values of different features, such that the resulting subsets are as pure as possible with respect to the target variable.
 
 ~~~~5) Random forest\\
+
 Random Forest algorithm is a powerful tree learning technique in Machine Learning. It works by creating a number of Decision Trees during the training phase. Each tree is constructed using a random subset of the data set to measure a random subset of features in each partition. This randomness introduces variability among individual trees, reducing the risk of overfitting and improving overall prediction performance. In prediction, the algorithm aggregates the results of all trees, either by voting (for classification tasks) or by averaging (for regression tasks) This collaborative decision-making process, supported by multiple trees with their insights, provides an example stable and precise results.
 
 ~~~~6) K-Nearest Neighbors (KNN)\\
@@ -2125,31 +2372,7 @@ Unsupervised machine learning is often used by researchers and data scientists t
 Some of the unsupervised learning algorithms are:
 
 ~~~~1) K-means:\\
-K-means is a popular unsupervised machine learning algorithm used for partitioning a dataset into a predefined number of groups (clusters). Here's a breakdown of how it works:
-
-\begin{itemize}
-\tightlist
-\item
-  First step: Initialization
-  You specify the desired number of clusters (k).The algorithm randomly selects k data points as initial centroids, which represent the center of each cluster.\\
-\item
-  Second step: Assignment
-  Each data point in the dataset is assigned to the closest centroid based on a distance metric (usually Euclidean distance).
-\end{itemize}
-
--Third step: Re-computation
-Once all data points are assigned to a cluster, the centroids are recalculated as the mean of the points within each cluster.
-
-\begin{itemize}
-\item
-  Fourth step: Iteration\\
-  Steps 2 and 3 are repeated iteratively:\\
-  \hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}-Data points are reassigned to the closest centroid based on the updated centroids.\\
-  \hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}\hspace*{0.333em}-Centroids are recalculated based on the newly assigned data points.
-\item
-  Fifth step: Stopping Criterion\\
-  The iteration process continues until a stopping criterion is met. This can be when the centroids no longer significantly change between iterations (convergence).
-\end{itemize}
+K-means is a popular unsupervised machine learning algorithm used for partitioning a dataset into a predefined number of groups (clusters).
 
 ~~~~2) Principle Component Analysis (PCA):\\
 Principal component analysis (PCA) is a type of dimensionality reduction algorithm which is used to reduce redundancies and to compress datasets through feature extraction. This method uses a linear transformation to create a new data representation, yielding a set of ``principal components.'' The first principal component is the direction which maximizes the variance of the dataset. While the second principal component also finds the maximum variance in the data, it is completely uncorrelated to the first principal component, yielding a direction that is perpendicular, or orthogonal, to the first component. This process repeats based on the number of dimensions, where a next principal component is the direction orthogonal to the prior components with the most variance.
@@ -2222,6 +2445,46 @@ Data preparation is a crucial step in the machine learning pipeline that involve
 
 Data cleaning is an essential pre-processing step in machine learning that focuses on identifying and rectifying errors, inconsistencies, and inaccuracies in raw data. This process involves tasks such as handling missing values, removing duplicates, correcting data format inconsistencies, and dealing with outliers. Data cleaning ensures that the dataset is of high quality and integrity, which is crucial for building accurate and reliable machine learning models. By thoroughly cleaning the data, practitioners can enhance the quality of their analyses, improve model performance, and foster more meaningful insights from the data.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#load the data}
+\NormalTok{heart\_attack }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"./data/heart\_attack\_prediction\_dataset.csv"}\NormalTok{)}
+
+\CommentTok{\#verify missing values}
+\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(heart\_attack))}
+\CommentTok{\#\textgreater{} [1] 0}
+
+\CommentTok{\#remove irrelevant columns}
+\NormalTok{heart\_attack }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(heart\_attack, }\AttributeTok{select =} \SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(Patient.ID, Country, Continent,Hemisphere))}
+
+\CommentTok{\#check duplicates observations}
+\FunctionTok{table}\NormalTok{(}\FunctionTok{duplicated}\NormalTok{(heart\_attack))}
+\CommentTok{\#\textgreater{} }
+\CommentTok{\#\textgreater{} FALSE }
+\CommentTok{\#\textgreater{}  8763}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{feature-creation}{%
+\section{\texorpdfstring{Feature creation\\
+}{Feature creation }}\label{feature-creation}}
+
+Feature creation, also known as feature engineering, is a critical aspect of machine learning where new features are derived or constructed from existing ones to enhance model performance and capture more complex relationships in the data. This process involves transforming raw input data into a more informative representation that better captures the underlying patterns and structures. Feature creation techniques may include mathematical transformations like log transforms, creating interaction terms between existing features, binning numerical features into categorical ones or encoding categorical variables. Effective feature creation can significantly impact the predictive power of machine learning models, enabling them to better generalize to unseen data and achieve higher levels of accuracy and robustness.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#feature creation}
+\NormalTok{heart\_attack[}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}systolic\_pressure\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}diastolic\_pressure\textquotesingle{}}\NormalTok{)] }\OtherTok{\textless{}{-}}\NormalTok{ stringr}\SpecialCharTok{::}\FunctionTok{str\_split\_fixed}\NormalTok{(heart\_attack}\SpecialCharTok{$}\NormalTok{Blood.Pressure, }\StringTok{\textquotesingle{}/\textquotesingle{}}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\#convert the two columns in numeric}
+\NormalTok{heart\_attack}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{systolic\_pressure}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(heart\_attack}\SpecialCharTok{$}\NormalTok{systolic\_pressure)}
+\NormalTok{heart\_attack}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{diastolic\_pressure}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(heart\_attack}\SpecialCharTok{$}\NormalTok{diastolic\_pressure)}
+
+\CommentTok{\#remove the olds variable}
+\NormalTok{heart\_attack }\OtherTok{\textless{}{-}} \FunctionTok{select}\NormalTok{(heart\_attack, }\SpecialCharTok{{-}}\NormalTok{Blood.Pressure)}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{feature-scaling}{%
 \section{\texorpdfstring{Feature scaling\\
 }{Feature scaling }}\label{feature-scaling}}
@@ -2236,22 +2499,31 @@ The most common methods for feature scaling are:
   Normalization: Normalization scales the data to a fixed range, typically between 0 and 1. It is achieved by subtracting the minimum value and dividing by the range (maximum value minus minimum value) of each feature. Normalization is suitable for data that has a bounded range and follows a uniform distribution.
 \end{itemize}
 
-\hypertarget{feature-creation}{%
-\section{\texorpdfstring{Feature creation\\
-}{Feature creation }}\label{feature-creation}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#load the data}
+\NormalTok{breast\_cancer }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/Breast\_cancer\_data.csv"}\NormalTok{)}
 
-Feature creation, also known as feature engineering, is a critical aspect of machine learning where new features are derived or constructed from existing ones to enhance model performance and capture more complex relationships in the data. This process involves transforming raw input data into a more informative representation that better captures the underlying patterns and structures. Feature creation techniques may include mathematical transformations like log transforms, creating interaction terms between existing features, binning numerical features into categorical ones or encoding categorical variables. Effective feature creation can significantly impact the predictive power of machine learning models, enabling them to better generalize to unseen data and achieve higher levels of accuracy and robustness.
+\NormalTok{breast\_cancer[,}\SpecialCharTok{{-}}\DecValTok{6}\NormalTok{] }\OtherTok{\textless{}{-}} \FunctionTok{scale}\NormalTok{(breast\_cancer[,}\SpecialCharTok{{-}}\DecValTok{6}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{feature-encoding}{%
-\section{\texorpdfstring{Feature encoding\\
-}{Feature encoding }}\label{feature-encoding}}
+\section{Feature encoding}\label{feature-encoding}}
 
 Feature encoding is a crucial step in machine learning where categorical variables are converted into numerical representations that algorithms can understand. Since many machine learning algorithms require numerical input, feature encoding transforms categorical data into a format that preserves the information contained in the original variables.~
 Common techniques for feature encoding include one-hot encoding(it creates new (binary) columns, indicating the presence of each possible value from the original data), label encoding which assigns a unique numerical value to each category or ordinal encoding to ensure that ordinal nature of the variables is sustained.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{breast\_cancer}\SpecialCharTok{$}\NormalTok{diagnosis }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(breast\_cancer}\SpecialCharTok{$}\NormalTok{diagnosis)}
+\FunctionTok{str}\NormalTok{(breast\_cancer}\SpecialCharTok{$}\NormalTok{diagnosis)}
+\CommentTok{\#\textgreater{}  Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{data-reduction}{%
-\section{\texorpdfstring{Data reduction\\
-}{Data reduction }}\label{data-reduction}}
+\section{Data reduction}\label{data-reduction}}
 
 In machine learning, dimensionality reduction tackles the challenge of high-dimensional data. Imagine a vast landscape with many features representing different directions. Dimensionality reduction techniques condense the data into a lower-dimensional space while preserving the most important information. This not only simplifies analysis and visualization but also improves the performance of machine learning algorithms by reducing computational costs and the risk of overfitting. Dimensionnality techniques include feature selection and feature extraction.
 
@@ -2262,15 +2534,14 @@ In machine learning, dimensionality reduction tackles the challenge of high-dime
   Feature selection
 \end{enumerate}
 
-\begin{itemize}
-\tightlist
-\item
-  Correlation analysis
-\item
-  Recursive Feature Elimination
-\item
-  Statistical tests
-\end{itemize}
+~~~- Correlation analysis:\\
+It identifies the degree of linear relationship between pairs of features, enabling the removal of highly correlated features to reduce redundancy and multicollinearity in the dataset.
+
+~~~- Recursive Feature Elimination:\\
+Feature selection refers to techniques that select a subset of the most relevant features for a dataset. It starts with a full set of features and iteratively eliminates the least important ones based on their impact on model performance. This process continues until the optimal subset of features is obtained.
+
+~~~- Statistical tests:\\
+It utilizes statistical measures (e.g., t-tests, ANOVA) to assess the significance of individual features in relation to the target variable, facilitating the selection of features that significantly contribute to the predictive power of the model.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2280,13 +2551,24 @@ In machine learning, dimensionality reduction tackles the challenge of high-dime
   Feature extraction
 \end{enumerate}
 
-\begin{itemize}
-\tightlist
-\item
-  Principal Component Analysis (PCA)
-\item
-  Linear Discriminant Analysis (LDA)
-\end{itemize}
+~~~- Principal Component Analysis (PCA):\\
+It reduces the dimensionality of the dataset by transforming correlated features into a smaller set of uncorrelated variables called principal components, capturing most of the variance in the data.
+
+~~~- Linear Discriminant Analysis (LDA):\\
+LDA finds new features (discriminant functions) that best separate different classes in your data. This helps focus the model on the key characteristics that differentiate the classes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggcorrplot)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\CommentTok{\#Correlation matrix}
+\NormalTok{corr }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(breast\_cancer[,}\SpecialCharTok{{-}}\DecValTok{6}\NormalTok{])}
+
+\FunctionTok{corrplot}\NormalTok{(corr, }\AttributeTok{method =} \StringTok{\textquotesingle{}number\textquotesingle{}}\NormalTok{, }\AttributeTok{type =} \StringTok{"upper"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{10-data_preparation_files/figure-latex/unnamed-chunk-6-1} \end{center}
 
 \hypertarget{handling-imbalanced-dataset}{%
 \section{Handling imbalanced dataset}\label{handling-imbalanced-dataset}}
@@ -2296,9 +2578,24 @@ We can handle imbalanced dataset by applying undersampling, oversampling or the 
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
   undersampling:\\
   The process of undersampling counts the number of minority samples in the dataset, then randomly selects the same number from the majority sample.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ROSE)}
+\CommentTok{\#\textgreater{} Warning: le package \textquotesingle{}ROSE\textquotesingle{} a été compilé avec la version R}
+\CommentTok{\#\textgreater{} 4.3.3}
+\CommentTok{\#\textgreater{} Loaded ROSE 0.0{-}4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
 \item
   oversampling:\\
   This method repeatedly duplicates randomly selected minority classes until there are an equal number of majority and minority samples.
@@ -2306,6 +2603,13 @@ We can handle imbalanced dataset by applying undersampling, oversampling or the 
   SMOTE(Synthetic Minority Oversampling Technique):\\
   A very simple explanation is that it randomly selects a minority data point and looks at its nearest k minority class neighbours. It then randomly selects one of these neighbours, draws a line between them and creates a new data point randomly along that line. This will be repeated until the minority class has reached a predetermined ratio to the majority class.
 \end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# library(devtools)}
+\CommentTok{\# install\_version("DMwR", version = "0.4.1",  repos = "http://cran.us.r{-}project.org")}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{model-training-and-hyperparameter-tuning}{%
 \chapter{Model training and hyperparameter tuning}\label{model-training-and-hyperparameter-tuning}}
@@ -2331,11 +2635,178 @@ We can handle imbalanced dataset by applying undersampling, oversampling or the 
 Model training is the process of teaching a machine learning algorithm to learn patterns and relationships in data by adjusting its parameters based on the provided training dataset.\\
 To train the model we will use the package \textbf{caret}.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#import libraries}
+\FunctionTok{library}\NormalTok{(tidymodels)}
+\FunctionTok{library}\NormalTok{(caTools)}
+\FunctionTok{library}\NormalTok{(caret)}
+
+\CommentTok{\#load the data}
+\CommentTok{\#breast\_cancer \textless{}{-} read.csv("data/Breast\_cancer\_data.csv")}
+
+\CommentTok{\#transform the target variable to factor}
+\NormalTok{breast\_cancer}\SpecialCharTok{$}\NormalTok{diagnosis }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(breast\_cancer}\SpecialCharTok{$}\NormalTok{diagnosis)}
+
+\CommentTok{\# fixing the observations in training set and test set}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\CommentTok{\# splitting the data set into ratio 0.80:0.20}
+\NormalTok{split }\OtherTok{\textless{}{-}}\NormalTok{ caTools}\SpecialCharTok{::}\FunctionTok{sample.split}\NormalTok{(breast\_cancer}\SpecialCharTok{$}\NormalTok{diagnosis, }\AttributeTok{SplitRatio =} \FloatTok{0.80}\NormalTok{)}
+
+\CommentTok{\# creating training dataset}
+\NormalTok{trainingSet }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(breast\_cancer, split }\SpecialCharTok{==} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# creating test data set}
+\NormalTok{testSet }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(breast\_cancer, split }\SpecialCharTok{==} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\#train the KNN model}
+\NormalTok{default\_knn\_mod }\OtherTok{=} \FunctionTok{train}\NormalTok{(}
+\NormalTok{  diagnosis }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}
+  \AttributeTok{data =}\NormalTok{ trainingSet,}
+  \AttributeTok{method =} \StringTok{"knn"}\NormalTok{,}
+  \AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{5}\NormalTok{)}
+\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(default\_knn\_mod)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{11-modeling_files/figure-latex/unnamed-chunk-2-1.pdf}
+
 \hypertarget{hyperparameter-tuning}{%
 \section{Hyperparameter tuning}\label{hyperparameter-tuning}}
 
+Hyperparameter tuning is the process of selecting the optimal set of hyperparameters for a machine learning model.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#tuning hyperparameters of the KNN model}
+\NormalTok{tune\_knn\_mod }\OtherTok{=} \FunctionTok{train}\NormalTok{(}
+\NormalTok{  diagnosis }\SpecialCharTok{\textasciitilde{}}\NormalTok{ .,}
+  \AttributeTok{data =}\NormalTok{ trainingSet,}
+  \AttributeTok{method =} \StringTok{"knn"}\NormalTok{,}
+  \AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{5}\NormalTok{),}
+  \AttributeTok{preProcess =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"scale"}\NormalTok{),}
+  \AttributeTok{tuneGrid =} \FunctionTok{expand.grid}\NormalTok{(}\AttributeTok{k =} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{40}\NormalTok{, }\AttributeTok{by =} \DecValTok{2}\NormalTok{))}
+\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(tune\_knn\_mod)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{11-modeling_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\hypertarget{model-evaluation}{%
+\section{\texorpdfstring{Model evaluation\\
+}{Model evaluation }}\label{model-evaluation}}
+
+Model evaluation is the process of assessing the performance and effectiveness of a machine learning model on unseen data. It involves various techniques and metrics to measure how well the model generalizes to new observations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#predictions on the test set for the first model}
+\NormalTok{model\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(default\_knn\_mod, }\AttributeTok{newdata =}\NormalTok{ testSet)}
+
+\CommentTok{\#confusion matrix for the fist model}
+\NormalTok{cm }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(model\_pred,testSet}\SpecialCharTok{$}\NormalTok{diagnosis)}
+\NormalTok{cm}
+\CommentTok{\#\textgreater{}           }
+\CommentTok{\#\textgreater{} model\_pred  0  1}
+\CommentTok{\#\textgreater{}          0 26  1}
+\CommentTok{\#\textgreater{}          1 16 70}
+
+\CommentTok{\#predictions on the test set for the second model}
+\NormalTok{model\_pred\_tune }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(tune\_knn\_mod, }\AttributeTok{newdata =}\NormalTok{ testSet)}
+
+\NormalTok{confusion\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(model\_pred\_tune,testSet}\SpecialCharTok{$}\NormalTok{diagnosis)}
+\NormalTok{confusion\_matrix}
+\CommentTok{\#\textgreater{}                }
+\CommentTok{\#\textgreater{} model\_pred\_tune  0  1}
+\CommentTok{\#\textgreater{}               0 31  0}
+\CommentTok{\#\textgreater{}               1 11 71}
+
+\CommentTok{\#Calculate the accuracy}
+\NormalTok{calc\_acc }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data) \{}
+\NormalTok{  data }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(data)}
+\NormalTok{  max\_accuracy\_index }\OtherTok{\textless{}{-}} \FunctionTok{which.max}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{Accuracy)}
+\NormalTok{  row\_with\_max\_accuracy }\OtherTok{\textless{}{-}}\NormalTok{ data[max\_accuracy\_index, ]}
+  \FunctionTok{return}\NormalTok{(row\_with\_max\_accuracy}\SpecialCharTok{$}\NormalTok{Accuracy)}
+\NormalTok{\}}
+
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The accuracy of the simple model is:"}\NormalTok{, }\FunctionTok{calc\_acc}\NormalTok{(default\_knn\_mod}\SpecialCharTok{$}\NormalTok{results)))}
+\CommentTok{\#\textgreater{} [1] "The accuracy of the simple model is: 0.899044433827042"}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"The accuracy of the tuned model is:"}\NormalTok{, }\FunctionTok{calc\_acc}\NormalTok{(tune\_knn\_mod}\SpecialCharTok{$}\NormalTok{results)))}
+\CommentTok{\#\textgreater{} [1] "The accuracy of the tuned model is: 0.936359292881032"}
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{model-deployment}{%
 \chapter{Model deployment}\label{model-deployment}}
+
+Model deployment in machine learning is the process of integrating your model into an existing production environment where it can take in an input and return an output. The objective is to enable others to access and utilize the predictive capabilities of your trained machine learning model.
+
+\hypertarget{model-serialization}{%
+\section{Model serialization}\label{model-serialization}}
+
+After achieving satisfactory performance with your model, it's essential to serialize and store it for future utilization. Serialization transforms the model into a binary format suitable for storage on disk.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#save the model}
+\FunctionTok{saveRDS}\NormalTok{(tune\_knn\_mod,}\StringTok{"./knn\_model.rds"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Use serialized model for predictions:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#load the model}
+\NormalTok{knn\_model }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"./knn\_model.rds"}\NormalTok{)}
+
+\CommentTok{\#use the model for predictions}
+\FunctionTok{predict}\NormalTok{(knn\_model, testSet)}
+\CommentTok{\#\textgreater{}   [1] 1 0 0 0 0 1 0 0 0 0 0 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 1}
+\CommentTok{\#\textgreater{}  [28] 1 1 1 1 1 0 0 0 1 1 1 1 0 0 0 1 1 1 1 1 1 1 1 1 0 0 1}
+\CommentTok{\#\textgreater{}  [55] 0 1 1 0 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1}
+\CommentTok{\#\textgreater{}  [82] 1 0 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 1 1 0 1}
+\CommentTok{\#\textgreater{} [109] 1 1 1 1 1}
+\CommentTok{\#\textgreater{} Levels: 0 1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{model-deployment-criteria}{%
+\section{Model Deployment Criteria}\label{model-deployment-criteria}}
+
+Before you deploy a model, there are a couple of criteria that your machine learning model needs to achieve before it's ready for deployment:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Portability: A portable model is one that can run efficiently on various hardware configurations and operating systems, with minimal adjustments required.
+\item
+  Scalability: A scalable model is one that can handle increasing demands and data volumes without compromising performance.
+\end{enumerate}
+
+\hypertarget{model-deployment-methods}{%
+\section{Model Deployment Methods}\label{model-deployment-methods}}
+
+There exist three general methods for deploying your machine learning model:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  One-off:\\
+  Sometimes a model is only needed once or periodically. In this case, the model can simply be trained ad-hoc when it's needed and pushed to production until it deteriorates enough to require fixing.
+\item
+  Batch:\\
+  Batch training involves updating a machine learning model using subsets of data at a time, ensuring scalability and up-to-date performance without requiring real-time predictions.
+\item
+  Real time:\\
+  Model deployment in real-time refers to the process of integrating a trained machine learning model into a production environment where it can make predictions or classifications on new data instantaneously as it arrives.
+\end{enumerate}
+
+Once a model is deployed, it's common to monitor its performance and consider retraining it with updated training data. Monitoring and maintaining the deployment through continuous delivery ensures that your model provides accurate and reliable predictions in real-world scenarios.
 
   \bibliography{book.bib,packages.bib}
 

@@ -23,8 +23,8 @@ Importing data from excel to R:
 library(readxl)
 
 #load data
-data_1 <- readxl::read_excel("./data/data_for_workshop1.xls")
-head(data_1)
+tasba_data <- readxl::read_excel("./data/data_for_workshop1.xls")
+head(tasba_data)
 #> # A tibble: 6 × 42
 #>   Sex    Age       `Are you married?` Do you  have childre…¹
 #>   <chr>  <chr>     <chr>              <chr>                 
@@ -135,28 +135,28 @@ To explore data in R we have many functions to achieve that.
 + Function head(): is used to view the first few rows of your dataset.
 
 ```r
-head(data_1,3)
+head(tasba_data,3)
 ```
 
 
 + Function tail(): is used to view the last few rows of your dataset.
 
 ```r
-tail(data_1)
+tail(tasba_data)
 ```
 
 
 + Function str(): is used to provide the structure of your data frame, showing you the data types.
 
 ```r
-str(data_1)
+str(tasba_data)
 ```
 
 
 + Function dim(): is used to know about the number of rows and columns.
 
 ```r
-dim(data_1)
+dim(tasba_data)
 #> [1] 107  42
 ```
 
@@ -164,14 +164,14 @@ dim(data_1)
 + Function summary(): it gives you an overview of your data, including minimum and maximum values, quartiles, and more.
 
 ```r
-summary(data_1)
+summary(tasba_data)
 ```
 
 
 + Function table(): used to build a contingency table of the counts at each combination of factor levels.
 
 ```r
-table(data_1$Sex)
+table(tasba_data$Sex)
 #> 
 #> Female   Male 
 #>     58     49
@@ -181,14 +181,14 @@ table(data_1$Sex)
 + Function unique(): The unique() function in R is used to eliminate or delete the duplicate values or the rows present in the vector, data frame, or matrix as well.
 
 ```r
-unique(data_1$`Do you  have children?`)
+unique(tasba_data$`Do you  have children?`)
 #> [1] "NO"  "YES"
 ```
 
 + Function hist(): function to plot a basic histogram to view distribution of a variable.
 
 ```r
-hist(data_1$`How many children do you have?`,
+hist(tasba_data$`How many children do you have?`,
      xlab = 'Number of childrens',
      main = 'Number of childrens')
 ```
@@ -200,7 +200,7 @@ hist(data_1$`How many children do you have?`,
 
 
 ```r
-boxplot(data_1$`How many children do you have?`)
+boxplot(tasba_data$`How many children do you have?`)
 ```
 
 <img src="04-data_manipulation_files/figure-html/unnamed-chunk-17-1.png" width="672" />
@@ -222,7 +222,7 @@ In order to manipulate and clean the data, R provides a library called dplyr whi
 Example:
 
 ```r
-dplyr::filter(data_1, Sex=="Female")
+dplyr::filter(tasba_data, Sex=="Female")
 ```
 
 + distinct(): 
@@ -234,7 +234,7 @@ dplyr::filter(data_1, Sex=="Female")
 Example:
 
 ```r
-data_1 %>% 
+tasba_data %>% 
   dplyr::distinct()
 ```
 
@@ -248,7 +248,7 @@ data_1 %>%
 Example:
 
 ```r
-data_1 %>% 
+tasba_data %>% 
   dplyr::arrange(Sex)
 ```
 
@@ -262,7 +262,7 @@ data_1 %>%
 Example:
 
 ```r
-data_1 %>% 
+tasba_data %>% 
   dplyr::select(Sex,`Do you  have children?`)
 ```
 
@@ -276,7 +276,7 @@ data_1 %>%
 Example:
 
 ```r
-data_1 %>%
+tasba_data %>%
   dplyr::rename(Status= `Are you married?`)
 ```
 
@@ -290,7 +290,7 @@ data_1 %>%
 Example:
 
 ```r
-data_1 %>%
+tasba_data %>%
   dplyr::mutate(sex=ifelse(Sex=="Female", "F", "M"))
 ```
 
@@ -304,7 +304,7 @@ data_1 %>%
 Example:
 
 ```r
-data_1 %>%
+tasba_data %>%
   dplyr::transmute(sex=ifelse(Sex=="Female", "F", "M"))
 ```
 
@@ -318,7 +318,7 @@ data_1 %>%
 Example:
 
 ```r
-data_1 %>%
+tasba_data %>%
   group_by(Sex) %>%
   summarize(mean=mean(`How many children do you have?`), count=n())
 ```

@@ -13,7 +13,7 @@ There are three main types of central tendency indicators:
 This is the most common one, also called the average. It's calculated by adding up all the values in your data set and then dividing by the number of values.\
 
 ```r
-mean(data_1$`What is the production in kg or ton/year?`)
+mean(tasba_data$production_kg)
 #> [1] 138.3084
 ```
 
@@ -22,7 +22,7 @@ mean(data_1$`What is the production in kg or ton/year?`)
 This is the middle number when you arrange your data set in order, from least to greatest. If you have an even number of data points, the median is the average of the two middle numbers.\
 
 ```r
-median(data_1$`What is the production in kg or ton/year?`)
+median(tasba_data$production_kg)
 #> [1] 8
 ```
 
@@ -31,7 +31,7 @@ median(data_1$`What is the production in kg or ton/year?`)
 This is the most frequent value in your data set. You can have multiple modes, by the way, if there are a couple of values that tie for the most frequent.
 
 ```r
-names(which.max(table(data_1$`Are you married?`)))
+names(which.max(table(tasba_data$marital_status)))
 #> [1] "YES"
 ```
 
@@ -44,7 +44,7 @@ Variability indicators, in contrast to central tendency, tell you how spread out
 This is the average of the squared deviations of each data point from the mean. It tells you how much your data varies on average, but since it uses squared values, it can be sensitive to extreme values.
 
 ```r
-var(data_1$`What is the production in kg or ton/year?`)
+var(tasba_data$production_kg)
 #> [1] 296798.9
 ```
 
@@ -54,11 +54,11 @@ This is the square root of the variance. Standard deviation is expressed in the 
 
 ```r
 #1st approch using the native function
-sd(data_1$`What is the production in kg or ton/year?`)
+sd(tasba_data$production_kg)
 #> [1] 544.7925
 
 #2nd approch
-sqrt(var(data_1$`What is the production in kg or ton/year?`))
+sqrt(var(tasba_data$production_kg))
 #> [1] 544.7925
 ```
 
@@ -67,7 +67,7 @@ sqrt(var(data_1$`What is the production in kg or ton/year?`))
 This is the simplest method. It's just the difference between the highest and lowest values in your data set. While easy to calculate, the range can be misleading if your data has outliers.
 
 ```r
-max(data_1$`How many children do you have?`) - min(data_1$`How many children do you have?`)
+max(tasba_data$nb_children) - min(tasba_data$nb_children)
 #> [1] 12
 ```
 
@@ -75,7 +75,7 @@ max(data_1$`How many children do you have?`) - min(data_1$`How many children do 
 This focuses on the middle half of your data. It represents the range between the first quartile (Q1) and the third quartile (Q3). Half your data falls within this IQR, giving a better idea of how spread out the bulk of the data is.
 
 ```r
-IQR(data_1$`How many children do you have?`)
+IQR(tasba_data$nb_children)
 #> [1] 4
 ```
 ## Quantiles
@@ -85,7 +85,7 @@ Quantiles are values that split sorted data or a probability distribution into e
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quartiles:
 
 ```r
-quantile(data_1$`How many children do you have?`)
+quantile(tasba_data$nb_children)
 #>   0%  25%  50%  75% 100% 
 #>    0    0    2    4   12
 ```
@@ -94,7 +94,7 @@ quantile(data_1$`How many children do you have?`)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deciles:
 
 ```r
-quantile(data_1$`How many children do you have?`,probs = seq(0, 1, by = 0.1))
+quantile(tasba_data$nb_children,probs = seq(0, 1, by = 0.1))
 #>   0%  10%  20%  30%  40%  50%  60%  70%  80%  90% 100% 
 #>    0    0    0    0    0    2    2    3    5    6   12
 ```
@@ -102,7 +102,7 @@ quantile(data_1$`How many children do you have?`,probs = seq(0, 1, by = 0.1))
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Percentiles:
 
 ```r
-quantile(data_1$`How many children do you have?`,probs = seq(0, 1, by = 0.01))
+quantile(tasba_data$nb_children,probs = seq(0, 1, by = 0.01))
 #>    0%    1%    2%    3%    4%    5%    6%    7%    8%    9% 
 #>  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00  0.00 
 #>   10%   11%   12%   13%   14%   15%   16%   17%   18%   19% 
@@ -131,10 +131,18 @@ quantile(data_1$`How many children do you have?`,probs = seq(0, 1, by = 0.01))
 A contingency table displays frequencies for combinations of two categorical variables. 
 
 ```r
-table(data_1$Sex, data_1$`Are you married?`)
+#contingency table with counts 
+table(tasba_data$Sex, tasba_data$marital_status)
 #>         
 #>          NO YES
 #>   Female 19  39
 #>   Male   28  21
+
+#contingency table with percentages
+round(prop.table(table(tasba_data$Sex, tasba_data$marital_status))*100,2) 
+#>         
+#>             NO   YES
+#>   Female 17.76 36.45
+#>   Male   26.17 19.63
 ```
 

@@ -16,9 +16,47 @@ During data cleansing, column renaming plays a crucial role in organizing and cl
 #load the package
 library(dplyr)
 
-#rename the variable "Are you married?"
-data_1 %>%
-  dplyr::rename(marital_status=`Are you married?`)
+tasba_data <- tasba_data %>%
+  dplyr::rename(marital_status =`Are you married?`) %>%
+  dplyr::rename(has_children =`Do you  have children?`) %>%
+  dplyr::rename(nb_children =`How many children do you have?`) %>%
+  dplyr::rename(religion =`What is your religion?`) %>%
+  dplyr::rename(has_tasba_farm = `Do have a tasba farm?`) %>%
+  dplyr::rename(size_farm = `What's the size of your farm?`) %>%
+  dplyr::rename(years_growing_tasba = `How long have you been growing tasba?`) %>%
+  dplyr::rename(direct_sowing = `Do you do direct sowing?`) %>%
+  dplyr::rename(culture_type = `What type of culture do you do?`) %>%
+  dplyr::rename(plants_grown_with_tasba = `If you do polyculture, with what plants do you grow Tasba with?`) %>%
+  dplyr::rename(period_sowing_tasba = `When or what time of the year do you sow Tasba?`) %>%
+  dplyr::rename(seeds_provider = `Where do you get your seeds?`) %>%
+  dplyr::rename(varieties = `What varieties do you grow?`) %>%
+  dplyr::rename(varieties_reproductive = `Are your varieties reproductive?`) %>%
+  dplyr::rename(nb_varieties_same_field = `How many varieties do you grow on the same plot or in the same field?`) %>%
+  dplyr::rename(campains_per_year = `How many campains do you per year?`) %>%
+  dplyr::rename(tasba_growth_duration = `How long is the growth cycle in the field?`) %>%
+  dplyr::rename(cost_bowl_tasba = `How much does a bowl of tasba cost (cost of buying or selling)`) %>%
+  dplyr::rename(cost_kg_seed = `How much does 1kg of tasba seed cost?`) %>%
+  dplyr::rename(store_seed = `How do you store your seed?`) %>%
+  dplyr::rename(hybrid_varieties = `Do there exist hybride varities?`) %>%
+  dplyr::rename(name_varieties = `How do you call these varieties you have?`) %>%
+  dplyr::rename(production_kg = `What is the production in kg or ton/year?`) %>%
+  dplyr::rename(cultural_system = `What is the cultural system that you use in the field?`) %>%
+  dplyr::rename(off_season_cultivation = `Do you do off-season cultivation?`) %>%
+  dplyr::rename(has_watering_system = `Do you have watering system?`) %>%
+  dplyr::rename(symptoms_noticed = `what symptoms have you noticed?`) %>%
+  dplyr::rename(insect_type = `What type of insect do you observe on plant during growth?`) %>%
+  dplyr::rename(treatment = `How do you treat them?`) %>%
+  dplyr::rename(phytosanitary_products_usage = `Do you use phytosanitary products? (Products used to fight against pests attacking plants)`) %>%
+  dplyr::rename(phytosanitary_products_names = `Please give the name of the phytosanitary products you use`) %>%
+  dplyr::rename(start_treatment = `To avoid diseases: at what age do you start treating plants?`) %>%
+  dplyr::rename(fertilizer_type = `What type of fertilizer do you apply in the field?`) %>%
+  dplyr::rename(effective_pest_treatment = `Have you found satisfactory treatment for the plant? ( Against pest action)`) %>%
+  dplyr::rename(tasba_leaf_consumption = `How do you eat the leaves of tasba?`) %>%
+  dplyr::rename(reason_consumption = `Why do you consume it?`) %>%
+  dplyr::rename(tasba_tea_consumption = `If you use like a tea; how do you drink it?`) %>%
+  dplyr::rename(treatment_human_disease = `Do you use the leaves of Tasba to treat human diseases?`) %>%
+  dplyr::rename(tasba_treatment_type_diseases = `What type of disease can be treated by the leaves of tasba?`) %>%
+  dplyr::rename(gic_work = `Do you work in GIC to grow Tasba?`)
 ```
 
 
@@ -36,16 +74,17 @@ we can use imputation by mean, median or mode.
 ```r
 library(stringr)
 #Create a new column of number of varieties
-data_1$number_variety <- stringr::str_sub(data_1$`How many varieties do you grow on the same plot or in the same field?`, 1, 1)
+tasba_data$nb_varieties_same_field <- stringr::str_sub(tasba_data$nb_varieties_same_field, 1, 1)
 
 #verify the type of the column
-str(data_1$number_variety)
+str(tasba_data$nb_varieties_same_field)
+#>  chr [1:107] NA NA NA NA NA "1" "1" "1" NA NA "1" "1" ...
 
 #transform the type into number
-data_1$number_variety <- as.integer(data_1$number_variety)
+tasba_data$nb_varieties_same_field <- as.integer(tasba_data$nb_varieties_same_field)
 
 #impute NA values by mean
-data_1$number_variety[is.na(data_1$number_variety)]<-round(mean(data_1$number_variety, na.rm = TRUE))
+tasba_data$nb_varieties_same_field[is.na(tasba_data$nb_varieties_same_field)]<-round(mean(tasba_data$nb_varieties_same_field, na.rm = TRUE))
 ```
 
 
@@ -54,14 +93,13 @@ data_1$number_variety[is.na(data_1$number_variety)]<-round(mean(data_1$number_va
 
 ```r
 #function to extract the number of kg in the column
-data_1$`What is the production in kg or ton/year?` <- sapply(data_1$`What is the production in kg or ton/year?`, function(x) {
+tasba_data$production_kg <- sapply(tasba_data$production_kg, function(x) {
     # Extract digits using regular expression and convert to numeric
     str_extract(x, "\\d+") %>% as.numeric()
 })
 
 #impute the column by median
-data_1$`What is the production in kg or ton/year?`[is.na(data_1$`What is the production in kg or ton/year?`)]<-median(data_1$`What is the production in kg or ton/year?`, na.rm = TRUE)
-
+tasba_data$production_kg[is.na(tasba_data$production_kg)] <- median(tasba_data$production_kg, na.rm = TRUE)
 ```
 
 
@@ -69,7 +107,7 @@ data_1$`What is the production in kg or ton/year?`[is.na(data_1$`What is the pro
 
 
 ```r
-data_1$`Where do you get your seeds?`[is.na(data_1$`Where do you get your seeds?`)] <- names(which.max(table(data_1$`Where do you get your seeds?`)))
+tasba_data$seeds_provider[is.na(tasba_data$seeds_provider)] <- names(which.max(table(tasba_data$seeds_provider)))
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2) Removing data
@@ -82,7 +120,7 @@ In this method, all data for an observation that has one or more missing values 
 
 
 ```r
-na.omit(data_1)
+na.omit(tasba_data)
 ```
 
 
@@ -92,7 +130,7 @@ If data is missing for a large proportion of the observations, it may be best to
 
 
 ```r
-subset( data_1, select = -c(`How do you call these varieties you have?`))
+subset( tasba_data, select = -c(name_varieties))
 ```
 
 ## Handling outliers
@@ -101,8 +139,8 @@ Data points far from the dataset’s other points are considered outliers. The p
 
 
 ```r
-outlier_values <- boxplot.stats(data_1$`How many children do you have?`)$out  # outlier values.
-boxplot(data_1$`How many children do you have?`, main="Number of children", boxwex=0.1)
+outlier_values <- boxplot.stats(tasba_data$nb_children)$out
+boxplot(tasba_data$nb_children, main="Number of children", boxwex=0.1)
 mtext(paste("Outliers: ", paste(outlier_values, collapse=", ")), cex=0.6)
 ```
 
@@ -113,11 +151,38 @@ After identify outliers you can handle it by either impute those outliers by a v
 ## Removing duplicates: \
 Removing duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.
 
+&nbsp;&nbsp;&nbsp;&nbsp;Remove duplicates consider all rows:
 
 ```r
-data_1 <- data_1 %>% 
+tasba_data <- tasba_data %>% 
   dplyr::distinct()
 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Remove duplicates on selected columns: 
+
+```r
+tasba_data %>% distinct(Sex, Age, .keep_all = TRUE)
+#> # A tibble: 9 × 42
+#>   Sex    Age         marital_status has_children nb_children
+#>   <chr>  <chr>       <chr>          <chr>              <dbl>
+#> 1 Male   25_40 years NO             NO                     0
+#> 2 Male   15_25 years NO             NO                     0
+#> 3 Female 15_25 years NO             NO                     0
+#> 4 Female 40_50 years YES            YES                    3
+#> 5 Male   40_50 years YES            YES                    5
+#> 6 Female 25_40 years YES            YES                    5
+#> 7 Female 50 years a… YES            YES                   10
+#> 8 Male   50 years a… YES            YES                   12
+#> 9 Male   25_40 FCFA  YES            YES                    1
+#> # ℹ 37 more variables: religion <chr>,
+#> #   has_tasba_farm <chr>, size_farm <chr>,
+#> #   years_growing_tasba <chr>, direct_sowing <chr>,
+#> #   culture_type <chr>, plants_grown_with_tasba <chr>,
+#> #   period_sowing_tasba <chr>, seeds_provider <chr>,
+#> #   varieties <chr>, varieties_reproductive <chr>,
+#> #   nb_varieties_same_field <dbl>, …
+```
+
 
 ## Checking data structure: 
 
@@ -125,10 +190,16 @@ Checking data types is a crucial step in data analysis because it ensures you're
 
 
 ```r
-str(data_1)
+str(tasba_data)
 ```
 
 You can change the type of your data across many functions like: as.numeric(), as.character(), as.factor() etc....if the data is not in the right type.
+Example:
+
+```r
+tasba_data$Sex <- as.factor(tasba_data$Sex)
+```
+
 
 ## Handling Inconsistent Categorical Data
 
@@ -136,8 +207,8 @@ Categorical variables may have inconsistent spellings or categories. The recode(
 
 
 ```r
-data_1 <- data_1 %>%
-  dplyr::mutate(`How do you store your seed?` = dplyr::recode(`How do you store your seed?`, "In bags" = "in bags"))
+tasba_data <- tasba_data %>%
+  dplyr::mutate(store_seed = dplyr::recode(store_seed, "In bags" = "in bags"))
 ```
 
 
@@ -190,8 +261,8 @@ Regular expressions (regex) are powerful tools for pattern matching and replacem
 
 
 ```r
-data_1$`How much does 1kg of tasba seed cost?` <- gsub("FCFA", "", 
-                        data_1$`How much does 1kg of tasba seed cost?`)
+tasba_data$cost_kg_seed <- gsub("FCFA", "",
+                        tasba_data$cost_kg_seed)
 ```
 
 
