@@ -141,7 +141,7 @@ boxplot(tasba_data$nb_children, main="Number of children", boxwex=0.1)
 mtext(paste("Outliers: ", paste(outlier_values, collapse=", ")), cex=0.6)
 ```
 
-After identify outliers you can handle it by either impute those outliers by a value (mean, median, mode) or use the method of capping (For missing values that lie outside the **1.5 * IQR** limits, we could cap it by replacing those observations outside the lower limit with the value of 5th percentile and those that lie above the upper limit, with the value of 95th percentile)
+After identify outliers you can handle it by either impute those outliers by a value (mean, median, mode).
 
 ## Removing duplicates: \
 Removing duplicates ensures that each data point is represented only once, leading to more accurate and consistent data for analysis.
