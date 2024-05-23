@@ -244,6 +244,6 @@ tasba_data %>%
 Example:
 ```{r eval=FALSE}
 tasba_data %>%
-  group_by(Sex) %>%
-  summarize(mean=mean(`How many children do you have?`), count=n())
+  dplyr::group_by(Sex) %>%
+  dplyr::summarize(mean=mean(`How many children do you have?`))
 ```
